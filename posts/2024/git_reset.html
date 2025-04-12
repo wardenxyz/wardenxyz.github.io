@@ -6,12 +6,19 @@
 		<title>git 重置当前分支</title>
 		<link rel="stylesheet" href="/assets/styles.css" />
 		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+		<meta name="description" content="A minimalist blog that uses pure markdown files">
 	</head>
 	<body>
 		<nav>
-			<a href="/">首页</a>
-			<a href="/categories.html">分类</a>
-			<a href="/tags.html">标签</a>
+			<div class="logo"><a href="/" style="font-size: 24px;">随便写写</a></div>
+			<div class="nav-links">
+				<!-- <a href="/">首页</a> -->
+				<a href="/categories.html">分类</a>
+				<a href="/tags.html">标签</a>
+			</div>
 		</nav>
 
 		<div class="container">
@@ -35,11 +42,6 @@
 <p>其中 <code>&lt;commit&gt;</code> 是你想重置到的提交的哈希值。如果你想重置到上一个提交，可以使用 <code>HEAD^</code> 代替 <code>&lt;commit&gt;</code>。例如：</p>
 <pre><code class="language-bash">git reset --hard HEAD^
 </code></pre></div>
-				<!-- <div class="sidebar"> -->
-					<!-- <div class="outline"> -->
-						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#git-">git 重置当前分支</a<ul><li><a href="#1-">1. 软重置（保留工作目录和暂存区的更改）：</a></li><li><a href="#2-">2. 混合重置（保留工作目录的更改，但重置暂存区）：</a></li><li><a href="#3-">3. 硬重置（丢弃工作目录和暂存区的更改）：</a></li></ul></li></ul></ul></div> -->
-					<!-- </div> -->
-				<!-- </div> -->
 			</div>
 		</div>
 

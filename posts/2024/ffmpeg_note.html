@@ -6,12 +6,19 @@
 		<title>ffmpeg 自用命令</title>
 		<link rel="stylesheet" href="/assets/styles.css" />
 		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+		<meta name="description" content="A minimalist blog that uses pure markdown files">
 	</head>
 	<body>
 		<nav>
-			<a href="/">首页</a>
-			<a href="/categories.html">分类</a>
-			<a href="/tags.html">标签</a>
+			<div class="logo"><a href="/" style="font-size: 24px;">随便写写</a></div>
+			<div class="nav-links">
+				<!-- <a href="/">首页</a> -->
+				<a href="/categories.html">分类</a>
+				<a href="/tags.html">标签</a>
+			</div>
 		</nav>
 
 		<div class="container">
@@ -247,11 +254,6 @@ file 'input2.mp4'
 <pre><code class="language-bash">ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of default=noprint_wrappers=1 input_video.mp4
 </code></pre>
 <p>这个命令会打印出视频的清晰度</p></div>
-				<!-- <div class="sidebar"> -->
-					<!-- <div class="outline"> -->
-						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#ffmpeg-">ffmpeg 自用命令</a<ul><li><a href="#">查看视频一共有多少帧数</a></li><li><a href="#">提升视频锐度</a></li><li><a href="#">提升视频分辨率</a></li><li><a href="#">查看视频分辨率</a></li><li><a href="#">查看视频元数据</a></li><li><a href="#">把多个视频合并为一个视频</a></li><li><a href="#">视频转换为不同的格式</a></li><li><a href="#">剪切视频</a></li><li><a href="#">把音频从视频中分离出来</a></li><li><a href="#">禁用音频，把视频文件分离出来</a></li><li><a href="#">改变音频格式</a></li><li><a href="#">调整视频的分辨率</a></li><li><a href="#">添加视频水印</a></li><li><a href="#">转码视频</a></li><li><a href="#">倒放视频</a></li><li><a href="#">录制当前页面视频</a></li><li><a href="#-gif">视频转换为 gif</a></li><li><a href="#-gif-">将 GIF 转换为视频</a></li><li><a href="#">查看视频尺寸</a></li><li><a href="#">剪切视频画面</a></li><li><a href="#">调整视频的亮度</a></li><li><a href="#">调整视频的对比度</a></li><li><a href="#">查看图片尺寸</a></li><li><a href="#m4s--ffmpeg--mp3-bilibili">m4s 的视频用 ffmpeg 转换为 mp3 bilibili</a></li><li><a href="#-m4s--mp4-bilibili">把 m4s 的视频转换为 mp4 bilibili</a></li><li><a href="#-bilibili">把视频和音频合并 bilibili</a></li><li><a href="#ffmpeg-">ffmpeg 降低画质的命令</a></li><li><a href="#">查看视频清晰度</a></li></ul></li></ul></ul></div> -->
-					<!-- </div> -->
-				<!-- </div> -->
 			</div>
 		</div>
 

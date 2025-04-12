@@ -6,12 +6,19 @@
 		<title>git-crypt 官方文档中文翻译</title>
 		<link rel="stylesheet" href="/assets/styles.css" />
 		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+		<meta name="description" content="A minimalist blog that uses pure markdown files">
 	</head>
 	<body>
 		<nav>
-			<a href="/">首页</a>
-			<a href="/categories.html">分类</a>
-			<a href="/tags.html">标签</a>
+			<div class="logo"><a href="/" style="font-size: 24px;">随便写写</a></div>
+			<div class="nav-links">
+				<!-- <a href="/">首页</a> -->
+				<a href="/categories.html">分类</a>
+				<a href="/tags.html">标签</a>
+			</div>
 		</nav>
 
 		<div class="container">
@@ -82,11 +89,6 @@ git-crypt 使用 AES-256 在 CTR 模式下加密文件，并使用从文件的 S
 <p>.gitattributes 文件不能被加密，因此请确保通配符不会意外地匹配到它。如有必要，你可以像这样将 .gitattributes 排除在加密之外：</p>
 <pre><code>.gitattributes !filter !diff
 </code></pre></div>
-				<!-- <div class="sidebar"> -->
-					<!-- <div class="outline"> -->
-						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#gitcrypt-">git-crypt 官方文档中文翻译</a<ul><li><a href="#gitcrypt--git-">git-crypt - Git 中的透明文件加密</a></li><li><a href="#-gitcrypt">构建 git-crypt</a></li><li><a href="#-gitcrypt">使用 git-crypt</a></li><li><a href="#">当前状态</a></li><li><a href="#">安全性</a></li><li><a href="#">局限性</a></li><li><a href="#gitattributes-">Gitattributes 文件</a></li></ul></li></ul></ul></div> -->
-					<!-- </div> -->
-				<!-- </div> -->
 			</div>
 		</div>
 

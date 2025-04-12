@@ -6,12 +6,19 @@
 		<title>现代加密学</title>
 		<link rel="stylesheet" href="/assets/styles.css" />
 		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+		<meta name="description" content="A minimalist blog that uses pure markdown files">
 	</head>
 	<body>
 		<nav>
-			<a href="/">首页</a>
-			<a href="/categories.html">分类</a>
-			<a href="/tags.html">标签</a>
+			<div class="logo"><a href="/" style="font-size: 24px;">随便写写</a></div>
+			<div class="nav-links">
+				<!-- <a href="/">首页</a> -->
+				<a href="/categories.html">分类</a>
+				<a href="/tags.html">标签</a>
+			</div>
 		</nav>
 
 		<div class="container">
@@ -144,11 +151,6 @@
 <p>在非对称加密中，私钥和公钥是一对，可以互相解密对方加密的信息。通常，公钥用于加密信息，然后使用私钥解密。这是因为公钥是公开的，任何人都可以使用它来加密信息，但只有私钥的持有者才能解密这些信息。</p>
 <p>然而，也可以反过来使用：使用私钥加密信息，然后使用公钥解密。这种方式常用于数字签名。在数字签名中，发送者使用私钥对信息的哈希值进行加密，生成签名。接收者可以使用发送者的公钥解密签名，得到哈希值，然后与他们自己计算的哈希值进行比较。如果两个哈希值匹配，那么就证明了信息是由私钥的持有者发送的，并且没有被篡改。</p>
 <p>所以，对于你的问题，答案是肯定的：如果你用私钥加密的文件，确实可以用相应的公钥解密。但是请注意，这并不是常规的使用方式，因为任何人都可以拥有公钥，所以这种方式并不提供保密性。它主要用于验证信息的来源和完整性，而不是保护信息的隐私。</p></div>
-				<!-- <div class="sidebar"> -->
-					<!-- <div class="outline"> -->
-						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#">现代加密学</a<ul><li><a href="#-aes-">简述 AES 算法</a></li><li><a href="#aes-">AES 的基本特点：</a></li><li><a href="#aes-">AES 的加密过程：</a></li><li><a href="#aes-">AES 的安全性：</a></li><li><a href="#">现代加密学的基础是什么</a></li><li><a href="#">质数是不是现代加密学的基础</a></li><li><a href="#-gpgaes-">有没有人在研究下一代加密算法（除 GPG、AES 等当前流行的加密算法）</a></li><li><a href="#-rsa--ecc-">有哪些后量子密码学算法被认为是有潜力的替代 RSA 和 ECC 的加密算法？</a></li><li><a href="#">以上四种算法有哪些是已经实际应用了</a></li><li><a href="#-gpgaes-">既然格基密码学等被称为后量子密码学，那 GPG、AES 等当前流行的主流加密算法被称为什么</a></li><li><a href="#-">有哪些主流的经典密码学算法 ？</a></li><li><a href="#">在非对称加密中，用私钥加密的哈希值可以用公钥解密，那我用私钥加密的其它文件是不是也可以用公钥解密</a></li></ul></li></ul></ul></div> -->
-					<!-- </div> -->
-				<!-- </div> -->
 			</div>
 		</div>
 

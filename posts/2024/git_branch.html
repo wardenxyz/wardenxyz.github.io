@@ -6,12 +6,19 @@
 		<title>git 分支操作</title>
 		<link rel="stylesheet" href="/assets/styles.css" />
 		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+		<meta name="description" content="A minimalist blog that uses pure markdown files">
 	</head>
 	<body>
 		<nav>
-			<a href="/">首页</a>
-			<a href="/categories.html">分类</a>
-			<a href="/tags.html">标签</a>
+			<div class="logo"><a href="/" style="font-size: 24px;">随便写写</a></div>
+			<div class="nav-links">
+				<!-- <a href="/">首页</a> -->
+				<a href="/categories.html">分类</a>
+				<a href="/tags.html">标签</a>
+			</div>
 		</nav>
 
 		<div class="container">
@@ -64,11 +71,6 @@ git checkout new_branch_name
 <pre><code class="language-bash">git branch --set-upstream-to=origin/master master
 </code></pre>
 <p>设置上游分支后，你可以使用 <code>git pull</code> 和 <code>git push</code> 命令来拉取和推送更改，而不需要每次都指定远程仓库和分支的名字。</p></div>
-				<!-- <div class="sidebar"> -->
-					<!-- <div class="outline"> -->
-						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#git-">git 分支操作</a<ul><li><a href="#-git-checkout-">我使用 git checkout 命令回溯到之前的某个提交，我该如何把仓库彻底固定在当前提交</a></li><li><a href="#-git-">如何在 Git 中删除一个分支？</a></li><li><a href="#">我该如何删除远程分支</a></li><li><a href="#">重命名分支</a></li><li><a href="#">如何把一个本地分支与一个远程分支建立联系</a></li></ul></li></ul></ul></div> -->
-					<!-- </div> -->
-				<!-- </div> -->
 			</div>
 		</div>
 

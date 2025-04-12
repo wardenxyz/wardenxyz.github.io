@@ -6,12 +6,19 @@
 		<title>正则表达式教程</title>
 		<link rel="stylesheet" href="/assets/styles.css" />
 		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+		<meta name="description" content="A minimalist blog that uses pure markdown files">
 	</head>
 	<body>
 		<nav>
-			<a href="/">首页</a>
-			<a href="/categories.html">分类</a>
-			<a href="/tags.html">标签</a>
+			<div class="logo"><a href="/" style="font-size: 24px;">随便写写</a></div>
+			<div class="nav-links">
+				<!-- <a href="/">首页</a> -->
+				<a href="/categories.html">分类</a>
+				<a href="/tags.html">标签</a>
+			</div>
 		</nav>
 
 		<div class="container">
@@ -581,11 +588,6 @@ print(result)  ## 输出 &quot;hello&quot;
 </code></pre>
 <p>在这个示例中，正则表达式 <code>(\w+)\s\1</code> 匹配了重复的单词，并使用 <code>\1</code> 将重复的单词替换为第一个捕获组的内容，最终输出结果为 "hello"。</p>
 <p><strong>高级阶段</strong>和<strong>进阶阶段</strong>用不到</p></div>
-				<!-- <div class="sidebar"> -->
-					<!-- <div class="outline"> -->
-						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#">正则表达式教程</a<ul><li><a href="#">初级阶段</a></li><li><a href="#">了解正则表达式的基本概念</a<ul><li><a href="#">什么是正则表达式？</a></li><li><a href="#">为什么要使用正则表达式？</a></li><li><a href="#">正则表达式的作用和应用场景</a></li></ul></li><li><a href="#">掌握基本语法和元字符</a<ul><li><a href="#">学习常见的元字符（如`.`、`*`、`+`、`?`等）的含义和用法</a></li></ul></li><li><a href="#">了解字符类`[]`和排除字符字类`[^]`的使用</a<ul><li><a href="#">理解元字符的贪婪匹配和非贪婪匹配</a></li></ul></li><li><a href="#">学习基本的匹配模式</a<ul><li><a href="#--">使用 `.` 匹配任意字符</a></li><li><a href="#">使用字符类`[]`匹配指定范围的字符</a></li><li><a href="#">使用元字符`*`、`+`、`?`进行重复匹配</a></li><li><a href="#">使用锚点`^`和`$`匹配行的开头和结尾</a></li></ul></li><li><a href="#">中级阶段</a></li><li><a href="#">深入理解分组和捕获</a<ul><li><a href="#">学习如何使用小括号`()`进行分组</a></li><li><a href="#">理解捕获组的概念和用法</a></li><li><a href="#">学习如何引用捕获组</a></li></ul></li><li><a href="#">掌握常用的预定义字符类</a<ul><li><a href="#dws">学习如何使用`\d`、`\w`、`\s`等预定义字符类匹配数字、字母、空白字符等</a></li></ul></li><li><a href="#">匹配数字字符</a></li><li><a href="#">匹配字母、数字或下划线字符</a></li><li><a href="#">匹配空白字符</a></li><li><a href="#">了解量词的贪婪与非贪婪</a<ul><li><a href="#">深入理解量词`*`、`+`、`?`的贪婪匹配和非贪婪匹配</a></li></ul></li><li><a href="#">学习反向引用</a<ul><li><a href="#12">掌握如何使用`\1`、`\2`等反向引用捕获组</a></li></ul></li></ul></li></ul></ul></div> -->
-					<!-- </div> -->
-				<!-- </div> -->
 			</div>
 		</div>
 
