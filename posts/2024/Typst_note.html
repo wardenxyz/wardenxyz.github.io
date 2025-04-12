@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Typst 笔记</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+	</head>
+	<body>
+		<nav>
+			<a href="/">首页</a>
+			<a href="/categories.html">分类</a>
+			<a href="/tags.html">标签</a>
+		</nav>
+
+		<div class="container">
+			<!-- <h1>Typst 笔记</h1> -->
+
+			<div class="metadata">2024-11-27 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#Typst">Typst</a></div></div>
+
+			<div class="content"><h1 id="typst">Typst 笔记</h1>
+<p><a href="https://typst.app/docs">Tyspt 官方文档</a></p>
+<h2 id="_1">导出命令</h2>
+<ul>
+<li>默认导出为 pdf</li>
+</ul>
+<pre><code class="language-bash">typst c main.typ 
+</code></pre>
+<ul>
+<li>导出第四页到 output-4.pdf</li>
+</ul>
+<pre><code class="language-bash">typst c main.typ output-4.pdf -f pdf --pages 4 
+</code></pre>
+<ul>
+<li>导出第四页到 output-4.png</li>
+</ul>
+<pre><code class="language-bash">typst c main.typ output-4.png -f png --pages 4 
+</code></pre>
+<ul>
+<li>导出第四页到 output-4.svg</li>
+</ul>
+<pre><code class="language-bash">typst c main.typ output-4.svg -f svg --pages 4 
+</code></pre>
+<h2 id="_2">标题</h2>
+<pre><code class="language-typst">= 第一级大标题
+== 第二级大标题
+</code></pre>
+<h2 id="_3">无序列表</h2>
+<pre><code class="language-typst">- 无序列表
+</code></pre>
+<h2 id="_4">有序列表</h2>
+<pre><code class="language-typst">1. 有序列表
++ 有序列表
+</code></pre>
+<h2 id="_5">加重字体</h2>
+<pre><code class="language-typst">*加重字体*
+</code></pre>
+<h2 id="_6">斜体</h2>
+<pre><code class="language-typst">_斜体_
+</code></pre>
+<h2 id="_7">字体</h2>
+<p>全局：</p>
+<pre><code class="language-typst">#set text(font: &quot;kaiti&quot;, fill: red, size: 12pt)
+大小为12磅，字体为楷体的红色内容
+</code></pre>
+<p>局部：</p>
+<pre><code class="language-typst">#text(font: &quot;kaiti&quot;, fill: red, size: 12pt)[大小为12磅，字体为楷体的红色内容]
+</code></pre>
+<h2 id="_8">位置</h2>
+<p>全局：</p>
+<pre><code class="language-typst">#set align(left)
+居左
+</code></pre>
+<p>局部：</p>
+<pre><code class="language-typst">#align(left)[居左]
+</code></pre>
+<h2 id="_9">下划线</h2>
+<pre><code class="language-typst">#underline[此处有下划线]
+</code></pre>
+<h2 id="_10">上划线</h2>
+<pre><code class="language-typst">#overline[此处有上划线]
+</code></pre>
+<h2 id="_11">上标</h2>
+<pre><code class="language-typst">#super[这里是上标内容]
+</code></pre>
+<h2 id="_12">下标</h2>
+<pre><code class="language-typst">#sub[这里是下标内容]
+</code></pre>
+<h2 id="_13">删除线</h2>
+<pre><code class="language-typst">#strike[被删除的内容]
+</code></pre>
+<h2 id="_14">高亮</h2>
+<pre><code class="language-typst">#highlight[高亮内容]
+</code></pre>
+<h2 id="_15">链接</h2>
+<pre><code class="language-typst">#link(&quot;https://baidu.com&quot;)[百度]
+</code></pre>
+<h2 id="_16">字间距&amp;行间距</h2>
+<pre><code class="language-typst">#set par(leading: 18pt) //行间距
+#set text(tracking: 0.1pt) //字间距
+</code></pre>
+<h2 id="_17">文档属性</h2>
+<pre><code class="language-typst">#set document(
+  title: title,
+  author: author,
+  keywords: str,array,
+  date: none, auto,datetime,
+)
+</code></pre>
+<h2 id="_18">页边距</h2>
+<pre><code class="language-typst">  #set page(margin: (
+    top: 2.54cm, //上边距
+    bottom: 2.54cm, //下边距
+    right: 2.54cm, //右边距
+    left: 2.54cm, //左边距
+  ))
+</code></pre>
+<h2 id="_19">水印</h2>
+<pre><code class="language-typst">#set page(background: rotate(45deg,
+  text(50pt, fill: rgb(&quot;FFCBC4&quot;))[
+    *这是水印*
+  ]
+))
+</code></pre>
+<h2 id="_20">引用</h2>
+<pre><code class="language-typst">#set quote(block: true) //开启引用块
+
+#quote(attribution: [引用文本的来源])[
+  引用的文本
+]
+</code></pre>
+<h2 id="_21">大纲</h2>
+<pre><code class="language-typst">#outline()
+</code></pre>
+<h2 id="_22">空白页</h2>
+<pre><code class="language-typst">#pagebreak()
+</code></pre>
+<h2 id="_23">插入图片</h2>
+<pre><code class="language-typst">#image(&quot;4.jpeg&quot;)
+</code></pre>
+<h2 id="_24">页眉</h2>
+<pre><code class="language-typst">#set page(header: [
+  页眉
+  #h(1fr)
+  页眉
+  #v(-8pt) // 页眉内容与线的距离
+  #line(length: 100%, stroke: (thickness: 1pt, dash: &quot;solid&quot;))
+])
+</code></pre>
+<h2 id="_25">页脚</h2>
+<pre><code class="language-typst">#set page(footer: context [
+  #v(8pt) //页脚与边距的距离
+  #line(length: 100%, stroke: (thickness: 1pt, dash: &quot;solid&quot;))
+  #v(-8pt) // 页脚内容与线的距离
+  页脚
+  #h(1fr)
+  #counter(page).display(
+    &quot;1/1&quot;,
+    both: true,
+  )
+])
+</code></pre></div>
+		</div>
+
+		<footer>
+			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
+		</footer>
+	</body>
+</html>

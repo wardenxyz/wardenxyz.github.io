@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>在 zed 上配置 typstyle</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+	</head>
+	<body>
+		<nav>
+			<a href="/">首页</a>
+			<a href="/categories.html">分类</a>
+			<a href="/tags.html">标签</a>
+		</nav>
+
+		<div class="container">
+			<!-- <h1>在 zed 上配置 typstyle</h1> -->
+
+			<div class="metadata">2025-03-21 <div class="category">分类: <a href="/categories.html#计算机技术">计算机技术</a></div> <div class="tags">标签: <a href="/tags.html#zed">zed</a>, <a href="/tags.html#Typst">Typst</a></div></div>
+
+			<div class="content"><h1 id="zed-typstyle">在 zed 上配置 typstyle</h1>
+<p>在 Zed 上配置 Typst 的格式化工具，在 settings.json 中写入以下即可</p>
+<pre><code class="language-json">&quot;languages&quot;: {
+&quot;Typst&quot;: {
+            &quot;show_edit_predictions&quot;: false,
+            &quot;format_on_save&quot;: &quot;on&quot;,
+            &quot;formatter&quot;: {
+                &quot;external&quot;: {
+                    &quot;command&quot;: &quot;typstyle&quot;
+                }
+            }
+        }
+}
+</code></pre>
+<p>Zed Typst 插件：https://github.com/weethet/typst.zed</p></div>
+		</div>
+
+		<footer>
+			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>zed 使用笔记</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+	</head>
+	<body>
+		<nav>
+			<a href="/">首页</a>
+			<a href="/categories.html">分类</a>
+			<a href="/tags.html">标签</a>
+		</nav>
+
+		<div class="container">
+			<!-- <h1>zed 使用笔记</h1> -->
+
+			<div class="metadata">2025-03-11 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#zed">zed</a></div></div>
+
+			<div class="content"><h1 id="zed">zed 使用笔记</h1>
+<p>系统：Windows11 24H2</p>
+<p>下载：https://github.com/deevus/zed-windows-builds</p>
+<h2 id="settingsjson">settings.json</h2>
+<p>https://zed.dev/docs/configuring-zed</p>
+<pre><code class="language-bash">C:\Users\admin\AppData\Roaming\Zed
+</code></pre>
+<h2 id="snippetsjson">snippets.json</h2>
+<p>https://zed.dev/docs/snippets</p>
+<pre><code class="language-bash">C:\Users\admin\AppData\Roaming\Zed
+</code></pre>
+<p>示例：</p>
+<pre><code class="language-json">{
+    &quot;zed snippets&quot;: {
+        &quot;body&quot;: &quot;Zed is a good editor.&quot;,
+        &quot;description&quot;: &quot;zed snippets example&quot;,
+        &quot;prefix&quot;: &quot;zed&quot;
+    }
+}
+</code></pre>
+<p>如果你想创建针对 JavaScript 文件的代码片段，你的文件将是 <code>javascript.json</code></p>
+<h2 id="_1">格式化</h2>
+<p><code>ctrl+shift+i</code> 保存加格式化</p>
+<h2 id="zed-2025-03-21">我的 Zed 配置(2025-03-21 更新)</h2>
+<pre><code class="language-json">{
+    // &quot;base_keymap&quot;: &quot;VSCode&quot;, //键盘快捷键
+
+    // &quot;vim_mode&quot;: true, //vim 模式
+    // &quot;relative_line_numbers&quot;: true, //相对行号
+
+    &quot;show_edit_predictions&quot;: false,
+    &quot;theme&quot;: &quot;One Dark&quot;, //主题
+
+    &quot;buffer_line_height&quot;: &quot;comfortable&quot;, //行高
+
+    &quot;buffer_font_family&quot;: &quot;JetBrains Mono&quot;, //编辑区字体
+    &quot;buffer_font_size&quot;: 17, //编辑区字体大小
+    &quot;buffer_font_fallbacks&quot;: [&quot;JetBrains Mono&quot;], //编辑区后备字体
+    &quot;ui_font_family&quot;: &quot;Zed Plex Mono&quot;, //UI 字体
+    &quot;ui_font_size&quot;: 17, //UI 大小
+    &quot;show_whitespaces&quot;: &quot;all&quot;, //显示空格
+    &quot;buffer_font_features&quot;: {
+        &quot;calt&quot;: false //连字，false 表示关闭
+    },
+
+    // AI 助手
+    &quot;assistant&quot;: {
+        &quot;default_model&quot;: {
+            &quot;provider&quot;: &quot;openai&quot;,
+            &quot;model&quot;: &quot;deepseek-v3&quot;
+        },
+        &quot;inline_alternatives&quot;: [
+            {
+                &quot;provider&quot;: &quot;openai&quot;,
+                &quot;model&quot;: &quot;deepseek-v3&quot;
+            }
+        ],
+        &quot;button&quot;: true,
+        &quot;version&quot;: &quot;2&quot;
+    },
+
+    //语言模型
+    &quot;language_models&quot;: {
+        &quot;openai&quot;: {
+            &quot;api_url&quot;: &quot;https://dashscope.aliyuncs.com/compatible-mode/v1&quot;,
+            &quot;available_models&quot;: [
+                {
+                    &quot;name&quot;: &quot;qwq-plus&quot;,
+                    &quot;display_name&quot;: &quot;QwQ-Plus&quot;,
+                    &quot;max_tokens&quot;: 131072,
+                    &quot;max_output_tokens&quot;: 8192
+                },
+                {
+                    &quot;name&quot;: &quot;qwq-32b&quot;,
+                    &quot;display_name&quot;: &quot;QwQ-32B&quot;,
+                    &quot;max_tokens&quot;: 131072,
+                    &quot;max_output_tokens&quot;: 8192
+                },
+                {
+                    &quot;name&quot;: &quot;deepseek-r1&quot;,
+                    &quot;display_name&quot;: &quot;DeepSeek-R1&quot;,
+                    &quot;max_tokens&quot;: 65792
+                },
+                {
+                    &quot;name&quot;: &quot;deepseek-v3&quot;,
+                    &quot;display_name&quot;: &quot;DeepSeek-V3&quot;,
+                    &quot;max_tokens&quot;: 65792
+                }
+            ],
+            &quot;version&quot;: &quot;1&quot;
+        }
+    },
+
+    &quot;features&quot;: {
+        &quot;edit_prediction_provider&quot;: &quot;zed&quot; // tab 编辑预测（不可选自己的模型）
+    },
+
+    &quot;enable_language_server&quot;: true, //lsp 功能
+
+    &quot;jupyter&quot;: {
+        &quot;enabled&quot;: false
+    },
+
+    &quot;terminal&quot;: {
+        &quot;copy_on_select&quot;: true //终端选择即复制
+    },
+
+    //顶部功能区
+    &quot;tab_bar&quot;: {
+        &quot;show&quot;: true,
+        &quot;show_nav_history_buttons&quot;: true,
+        &quot;show_tab_bar_buttons&quot;: true
+    },
+    //大纲栏位置
+    &quot;outline_panel&quot;: {
+        &quot;dock&quot;: &quot;right&quot;
+    },
+    //协作面板
+    &quot;collaboration_panel&quot;: {
+        &quot;button&quot;: false
+    },
+    //通知面板
+    &quot;notification_panel&quot;: {
+        &quot;button&quot;: false
+    },
+
+    //类似日记本的功能，可全局唤出
+    &quot;journal&quot;: {
+        &quot;path&quot;: &quot;D:\\workspace\\A-Next&quot;,
+        &quot;hour_format&quot;: &quot;hour24&quot;
+    },
+
+    &quot;use_smartcase_search&quot;: true, //如果搜索查询包含任何大写字母，则搜索将区分大小写；如果它只包含小写字母，则搜索将不区分大小写
+
+    //滚动条
+    &quot;scrollbar&quot;: {
+        &quot;axes&quot;: {
+            &quot;horizontal&quot;: false,
+            &quot;vertical&quot;: true
+        },
+        &quot;show&quot;: &quot;always&quot;
+    },
+
+    &quot;git&quot;: {
+        &quot;git_gutter&quot;: &quot;tracked_files&quot;, //在文件中显示 git 变动
+        //显示 git 提交消息
+        &quot;inline_blame&quot;: {
+            &quot;enabled&quot;: true,
+            &quot;show_commit_summary&quot;: false, //显示提交信息
+            &quot;delay_ms&quot;: 200
+        }
+    },
+
+    &quot;hard_tabs&quot;: true, //显示 tab 标识而不是显示空格
+
+    &quot;languages&quot;: {
+        &quot;Typst&quot;: {
+            &quot;show_edit_predictions&quot;: false,
+            &quot;format_on_save&quot;: &quot;on&quot;,
+            &quot;formatter&quot;: {
+                &quot;external&quot;: {
+                    &quot;command&quot;: &quot;typstyle&quot;
+                }
+            }
+        },
+        // 禁用以下语言的服务
+        &quot;Markdown&quot;: {
+            &quot;enable_language_server&quot;: false,
+            &quot;show_edit_predictions&quot;: false,
+            &quot;format_on_save&quot;: &quot;on&quot; //保存时自动格式
+        },
+        &quot;Rust&quot;: {
+            &quot;enable_language_server&quot;: false,
+            &quot;show_edit_predictions&quot;: false,
+            &quot;format_on_save&quot;: &quot;off&quot;
+        },
+        &quot;JavaScript&quot;: {
+            &quot;enable_language_server&quot;: false,
+            &quot;show_edit_predictions&quot;: false,
+            &quot;format_on_save&quot;: &quot;off&quot;
+        },
+        &quot;TypeScript&quot;: {
+            &quot;enable_language_server&quot;: false,
+            &quot;show_edit_predictions&quot;: false,
+            &quot;format_on_save&quot;: &quot;off&quot;
+        },
+        &quot;Go&quot;: {
+            &quot;enable_language_server&quot;: false,
+            &quot;show_edit_predictions&quot;: false,
+            &quot;format_on_save&quot;: &quot;off&quot;
+        },
+        &quot;HTML&quot;: {
+            &quot;enable_language_server&quot;: false,
+            &quot;show_edit_predictions&quot;: false,
+            &quot;format_on_save&quot;: &quot;off&quot;
+        },
+        &quot;Java&quot;: {
+            &quot;enable_language_server&quot;: false,
+            &quot;show_edit_predictions&quot;: false,
+            &quot;format_on_save&quot;: &quot;off&quot;
+        },
+        &quot;Kotlin&quot;: {
+            &quot;enable_language_server&quot;: false,
+            &quot;show_edit_predictions&quot;: false,
+            &quot;format_on_save&quot;: &quot;off&quot;
+        },
+        &quot;PHP&quot;: {
+            &quot;enable_language_server&quot;: false,
+            &quot;show_edit_predictions&quot;: false,
+            &quot;format_on_save&quot;: &quot;off&quot;
+        },
+        &quot;Python&quot;: {
+            &quot;enable_language_server&quot;: false,
+            &quot;show_edit_predictions&quot;: true,
+            &quot;format_on_save&quot;: &quot;off&quot;
+        },
+        &quot;Vue&quot;: {
+            &quot;enable_language_server&quot;: false,
+            &quot;show_edit_predictions&quot;: false,
+            &quot;format_on_save&quot;: &quot;off&quot;
+        }
+    },
+
+    &quot;vertical_scroll_margin&quot;: 6, //光标上下文
+
+    // 以下不会显示在左侧文件树中
+    &quot;file_scan_exclusions&quot;: [
+        &quot;**/.svn&quot;,
+        &quot;**/.hg&quot;,
+        &quot;**/CVS&quot;,
+        &quot;**/.DS_Store&quot;,
+        &quot;**/Thumbs.db&quot;,
+        &quot;**/.classpath&quot;,
+        &quot;**/vendor&quot;,
+        &quot;**/.tmp*&quot;,
+        &quot;**/.git&quot;
+    ],
+
+    //缩进配置
+    &quot;indent_guides&quot;: {
+        &quot;coloring&quot;: &quot;indent_aware&quot; //缩进线颜色
+        // &quot;background_coloring&quot;: &quot;indent_aware&quot; //缩进背景颜色
+    },
+
+    //自动保存
+    &quot;autosave&quot;: {
+        &quot;after_delay&quot;: {
+            &quot;milliseconds&quot;: 1000
+        }
+    },
+
+    //遥测
+    &quot;telemetry&quot;: {
+        &quot;diagnostics&quot;: true,
+        &quot;metrics&quot;: true
+    },
+
+    &quot;tabs&quot;: {
+        &quot;file_icons&quot;: true, //顶部 tab 页的文件图标
+        &quot;git_status&quot;: true // 顶部 tab 页显示 git 状态
+    },
+
+    &quot;confirm_quit&quot;: true, //关闭应用程序之前是否提示用户
+
+    &quot;soft_wrap&quot;: &quot;editor_width&quot;, //软换行
+
+    &quot;auto_update&quot;: false,
+
+    &quot;lsp&quot;: {
+        &quot;tinymist&quot;: {
+            &quot;initialization_options&quot;: {
+                // &quot;exportPdf&quot;: &quot;onSave&quot;,//保存时编译 pdf
+                &quot;outputPath&quot;: &quot;$root/$name&quot;
+            }
+        }
+    }
+}
+</code></pre></div>
+		</div>
+
+		<footer>
+			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
+		</footer>
+	</body>
+</html>

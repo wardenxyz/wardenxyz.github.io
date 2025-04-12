@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>git 强制覆盖本地仓库</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+	</head>
+	<body>
+		<nav>
+			<a href="/">首页</a>
+			<a href="/categories.html">分类</a>
+			<a href="/tags.html">标签</a>
+		</nav>
+
+		<div class="container">
+			<!-- <h1>git 强制覆盖本地仓库</h1> -->
+
+			<div class="metadata">2024-09-01 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#git">git</a></div></div>
+
+			<div class="content"><h1 id="git">git 强制覆盖本地仓库</h1>
+<p>git 强制覆盖本地仓库</p>
+<pre><code class="language-bash">git reset --hard origin/branch_name
+</code></pre>
+<p>是一个 Git 命令，用于将当前分支的状态重置为远程分支 <code>branch_name</code> 的状态。具体来说，它会：</p>
+<ol>
+<li>将当前分支的 HEAD 指针重置为 <code>origin/branch_name</code> 的最新提交。</li>
+<li>重置暂存区（index）以匹配这个提交。</li>
+<li>重置工作目录中的文件以匹配这个提交。</li>
+</ol>
+<p>这意味着本地所有未提交的更改和提交历史将被丢弃，工作目录将完全同步到远程分支的状态。请谨慎使用这个命令，因为它会丢失所有未提交的更改。</p></div>
+		</div>
+
+		<footer>
+			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
+		</footer>
+	</body>
+</html>

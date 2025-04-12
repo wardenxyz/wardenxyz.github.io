@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>在 Zed Editor 中配置 OpenAI API 兼容的模型</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+	</head>
+	<body>
+		<nav>
+			<a href="/">首页</a>
+			<a href="/categories.html">分类</a>
+			<a href="/tags.html">标签</a>
+		</nav>
+
+		<div class="container">
+			<!-- <h1>在 Zed Editor 中配置 OpenAI API 兼容的模型</h1> -->
+
+			<div class="metadata">2025-03-14 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#zed">zed</a></div></div>
+
+			<div class="content"><h1 id="zed-editor-openai-api">在 Zed Editor 中配置 OpenAI API 兼容的模型</h1>
+<p>在 setting.json 中写入</p>
+<pre><code class="language-json">&quot;language_models&quot;: {
+        &quot;openai&quot;: {
+            &quot;api_url&quot;: &quot;https://dashscope.aliyuncs.com/compatible-mode/v1&quot;,
+            &quot;available_models&quot;: [
+                {
+                    &quot;name&quot;: &quot;deepseek-r1&quot;,
+                    &quot;display_name&quot;: &quot;DeepSeek-R1&quot;,
+                    &quot;max_tokens&quot;: 65792,
+                    &quot;max_output_tokens&quot;: 2056
+                },
+            ],
+            &quot;version&quot;: &quot;1&quot;
+        }
+    },
+</code></pre>
+<p>接下来，在 Zed Editor 的 Assistant Panel Configuration 界面中，<br />
+找到 OpenAI 配置项，在此处输入阿里云 API 密钥，确认后按回车键保存配置。</p>
+<p>完成上述步骤后，即可在 Zed Editor 中流畅地使用 AI 功能了。</p>
+<h2 id="_1">感受</h2>
+<p>Zed 的 AI 功能不仅限于代码编写，更拓展到了创作领域。用户只需选中任意段落，即可轻松实现文章润色、多语言翻译或创意发想等操作</p>
+<p>反观 VSCode 的 GitHub Copilot 功能，其适用范围相对局限，主要聚焦于代码开发领域。<br />
+虽然有第三方插件，但与 vscode 的兼容性欠佳，难以获得与 GitHub Copilot 一致的优质体验。</p>
+<p>Zed 有 <strong>Git、AI、实时协作</strong>三大功能，我感觉基于 Zed 可以玩出更多花样来。</p></div>
+		</div>
+
+		<footer>
+			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
+		</footer>
+	</body>
+</html>

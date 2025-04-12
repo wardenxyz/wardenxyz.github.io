@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>vitepress 学习笔记</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+	</head>
+	<body>
+		<nav>
+			<a href="/">首页</a>
+			<a href="/categories.html">分类</a>
+			<a href="/tags.html">标签</a>
+		</nav>
+
+		<div class="container">
+			<!-- <h1>vitepress 学习笔记</h1> -->
+
+			<div class="metadata">2024-10-12 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#vitepress">vitepress</a></div></div>
+
+			<div class="content"><h1 id="vitepress">vitepress 学习笔记</h1>
+<p>我的 vitepress 目录结构是</p>
+<pre><code class="language-bash">.
+├─ .vitepress # vitepress 配置文件夹
+│  ├─ theme # 自定义主题
+│  │  └─ index.ts
+│  │  └─ style.css
+│  └─ config.mts # viepress 配置文件
+├─ cache # 缓存文件
+├─ html # 生成的静态文件
+├─ mkdocs # viepress 源文件夹
+│  ├─ public # 图片等文件
+│  └─ index.md # 首页
+└─ package-lock.json
+└─ package.json
+</code></pre>
+<p>步骤：</p>
+<p>https://vitepress.dev/zh/guide/getting-started</p>
+<h2 id="vitepress_1">第一步，下载 vitepress 包</h2>
+<pre><code class="language-bash">npm add -D vitepress
+</code></pre>
+<h2 id="vitepress_2">第二步，初始化 vitepress 项目</h2>
+<pre><code class="language-bash">npx vitepress init
+</code></pre>
+<p>这一步的输出如下</p>
+<pre><code class="language-bash">┌  Welcome to VitePress!
+│
+◇  Where should VitePress initialize the config? # 这里选择根目录
+│  ./ # [!code highlight]
+│
+◇  Site title: # confid.mts 的 title 字段
+│  My Awesome Project # [!code highlight]
+│
+◇  Site description: # confid.mts 的 description 字段
+│  A VitePress Site # [!code highlight]
+│
+◇  Theme: # 这里选默认主题 + 自定义主题
+│  Default Theme + Customization # [!code highlight]
+│
+◇  Use TypeScript for config and theme files? # 选 TypeScript 为配置文件
+│  Yes # [!code highlight]
+│
+◇  Add VitePress npm scripts to package.json? #不要在 package.json 中添加脚本
+│  No # [!code highlight]
+│
+└  You're all set! Now run npx vitepress dev and start writing.
+</code></pre>
+<h2 id="vitepress_3">第三步，修改 vitepress 配置文件</h2>
+<pre><code class="language-typescript">// .vitepress/config.mts
+export default(
+  defineConfig({
+    srcDir: 'mkdocs', // 这里面存放的是 markdown 文件 // [!code ++]
+    outDir: 'html', // 这里面存放的是生成的静态文件 // [!code ++]
+    cacheDir: 'cache', // 这里面存放的是缓存文件 // [!code ++]
+  })
+)
+</code></pre>
+<h2 id="_1">第四步，预览和构建站点</h2>
+<ul>
+<li>预览站点</li>
+</ul>
+<pre><code class="language-bash">npx vitepress dev
+</code></pre>
+<ul>
+<li>构建站点</li>
+</ul>
+<pre><code class="language-bash">npx vitepress build
+</code></pre>
+<ul>
+<li>预览构建好的站点</li>
+</ul>
+<pre><code class="language-bash">npx vitepress preview
+</code></pre>
+<h2 id="vitepress_4">vitepress 维护指南</h2>
+<p>每次更新 vitepress 文档，都需要执行以下步骤</p>
+<ol>
+<li>
+<p>运行 tags.py 和 categories.py 更新 tags.md 和 categories.md 文件（每次）</p>
+</li>
+<li>
+<p>更新仓库根目录下的 README.md 文件（每次）</p>
+</li>
+<li>
+<p>更新 config.mts 的 siderbar 链接（每次）</p>
+</li>
+</ol>
+<p>每次更新 vitepress 文档，至少有 5 个 git 变动</p>
+<hr />
+<ol start="4">
+<li>
+<p>每个月还得更新 index.md 的 features 列表（每月）</p>
+</li>
+<li>
+<p>每年都要更新 config.mts 的 nav 字段（每年）</p>
+</li>
+</ol></div>
+		</div>
+
+		<footer>
+			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
+		</footer>
+	</body>
+</html>

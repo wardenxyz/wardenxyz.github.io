@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>B站嵌入代码</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+	</head>
+	<body>
+		<nav>
+			<a href="/">首页</a>
+			<a href="/categories.html">分类</a>
+			<a href="/tags.html">标签</a>
+		</nav>
+
+		<div class="container">
+			<!-- <h1>B站嵌入代码</h1> -->
+
+			<div class="metadata">2024-08-01 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#B站">B站</a></div></div>
+
+			<div class="content"><h1 id="b">B站嵌入代码</h1>
+<h2 id="_1">正常显示</h2>
+<p>在</p>
+<pre><code>&lt;iframe src=&quot;//player.bilibili.com
+</code></pre>
+<p>之中添加 <code>https:</code> 变成</p>
+<pre><code>&lt;iframe src=&quot;https://player.bilibili.com
+</code></pre>
+<h2 id="_2">修改屏幕尺寸</h2>
+<pre><code>style=&quot;width:100%;aspect-ratio:16/9;&quot;
+</code></pre>
+<pre><code class="language-iframe">&lt;iframe src=&quot;//player.bilibili.com/player.html?aid=425938140&amp;bvid=BV1G3411M7BN&amp;cid=584177306&amp;p=1&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot; style=&quot;width:100%;aspect-ratio:16/9;&quot;&gt;&lt;/iframe&gt;
+</code></pre>
+<h2 id="_3">禁止自动播放</h2>
+<p>如果不修改代码，会在打开文章页面的时候，视频就会直接自动从头开始播放，突然的声音可能带来不必要的惊吓，并且会让访问者错过开头，显得很突兀。</p>
+<p>要取消自动播放，只需在视频 src=url 链接最后加上：&amp;autoplay=0</p>
+<pre><code class="language-iframe">&lt;iframe src=&quot;//player.bilibili.com/player.html?aid=425938140&amp;bvid=BV1G3411M7BN&amp;cid=584177306&amp;p=1&amp;autoplay=0&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot;&gt;&lt;/iframe&gt;
+</code></pre>
+<h2 id="b_1">更多B站嵌入代码修改</h2>
+<p>如果要更改更多B站视频嵌入代码设置选项，可以参考下面关于iframe引用的B站官方参数设置。</p>
+<p>设置方法就是在src=url链接后面添加:&amp;参数名=参数数值</p>
+<p>比如弹幕关闭：&amp;danmaku=0，以此类推</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数用途</th>
+<th>使用方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>autoplay</td>
+<td>是否自动播放(默认否)</td>
+<td>1: 开启, 0: 关闭</td>
+</tr>
+<tr>
+<td>danmaku</td>
+<td>默认弹幕开关(默认开启)</td>
+<td>1: 开启, 0: 关闭</td>
+</tr>
+<tr>
+<td>muted</td>
+<td>是否默认静音(默认否)</td>
+<td>1: 开启, 0: 关闭</td>
+</tr>
+<tr>
+<td>hasMuteButton</td>
+<td>一键静音按钮是否显示（默认不显示）</td>
+<td>1: 开启, 0: 关闭</td>
+</tr>
+<tr>
+<td>hideCoverInfo</td>
+<td>视频封面下方是都显示播放量弹幕量等信息(默认显示)</td>
+<td>1: 开启, 0: 关闭</td>
+</tr>
+<tr>
+<td>hideDanmakuButton</td>
+<td>是否隐藏弹幕按钮（默认不隐藏）</td>
+<td>1: 开启, 0: 关闭</td>
+</tr>
+<tr>
+<td>noFullScreenButton</td>
+<td>是否隐藏全屏按钮(默认显示)</td>
+<td>1: 开启, 0: 关闭</td>
+</tr>
+<tr>
+<td>fjw</td>
+<td>是否开始记忆播放(默认开启)</td>
+<td>1: 开启, 0: 关闭</td>
+</tr>
+<tr>
+<td>t</td>
+<td>默认开始时间(默认0)</td>
+<td>直接填写数值，单位秒</td>
+</tr>
+</tbody>
+</table></div>
+		</div>
+
+		<footer>
+			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
+		</footer>
+	</body>
+</html>

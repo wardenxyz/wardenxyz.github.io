@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>git-crypt 学习笔记</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+	</head>
+	<body>
+		<nav>
+			<a href="/">首页</a>
+			<a href="/categories.html">分类</a>
+			<a href="/tags.html">标签</a>
+		</nav>
+
+		<div class="container">
+			<!-- <h1>git-crypt 学习笔记</h1> -->
+
+			<div class="metadata">2024-07-10 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#git">git</a>, <a href="/tags.html#git-crypt">git-crypt</a></div></div>
+
+			<div class="content"><h1 id="git-crypt">git-crypt 学习笔记</h1>
+<p>从 git-crypt 的<a href="https://github.com/AGWA/git-crypt/blob/master/README.md">官方文档</a>中可知</p>
+<p>git-crypt 使用 AES-256 在 CTR 模式下对文件进行加密，并且使用基于文件 SHA-1 HMAC 生成的合成初始化向量（IV）。这种操作模式在确定性选择明文攻击下被证明具有语义安全性，确保除了判断两个文件是否完全相同之外，不会泄露其他任何信息。</p>
+<p>git-crypt 是结合了 GPG（GNU Privacy Guard）和 AES 加密技术的一个工具。它允许通过 GPG 公钥/私钥系统来管理和分发加密密钥，从而实现对 Git 仓库中特定文件的安全保护。对于每个需要加密的文件，git-crypt 利用 AES-256 加密算法在 CTR 模式下进行加密，以保证数据安全。</p>
+<p>因此，git-crypt 在实际应用中整合了 GPG 的密钥管理和 AES 加密算法，实现了透明的文件加密与解密功能，使得在版本控制的同时能够保护敏感信息的安全。</p>
+<p>也就是说，git-crypt 是一个将 GPG 和 AES 结合的项目，GPG 来管理用户权限，AES 来加密文件。</p>
+<h2 id="_1">环境准备</h2>
+<ul>
+<li><a href="https://www.gpg4win.org/">gpg4win</a></li>
+<li><a href="https://git-scm.com/">git</a></li>
+<li><a href="https://github.com/AGWA/git-crypt">git-crypt</a></li>
+</ul>
+<p>要把从 <a href="https://github.com/AGWA/git-crypt/releases">git-crypt</a> 下载的 <code>git-crypt-0.7.0-x86_64.exe</code> 重命名为 <code>git-crypt.exe</code>，否则检测不到环境变量</p>
+<p>把 <code>git-crypt.exe</code> 放到 <code>git\bin</code> 目录下</p>
+<h2 id="_2">步骤</h2>
+<h2 id="1">1. 初始化仓库</h2>
+<pre><code class="language-bash">git init
+</code></pre>
+<h2 id="2-git-crypt">2. 初始化 git-crypt</h2>
+<pre><code class="language-bash">git-crypt init
+</code></pre>
+<h2 id="3-gpg">3. 添加 GPG 用户</h2>
+<pre><code class="language-bash">git-crypt add-gpg-user &lt;GPG_KEY_ID&gt;
+</code></pre>
+<h2 id="4">4. 配置加密文件</h2>
+<p>在 <code>.gitattributes</code> 文件中添加</p>
+<pre><code class="language-plaintext">## 加密指定文件
+secretfile filter=git-crypt diff=git-crypt
+
+## 加密指定文件夹下的md文件
+Test/*.md filter=git-crypt diff=git-crypt
+
+## 加密指定文件夹下的所有文件
+Test/** filter=git-crypt diff=git-crypt
+</code></pre>
+<h2 id="5">5. 提交更改</h2>
+<pre><code class="language-bash">git add .gitattributes secret.txt
+git commit -m &quot;Add git-crypt configuration&quot;
+git push
+</code></pre>
+<h2 id="6">6. 解密文件</h2>
+<pre><code class="language-bash">git-crypt unlock
+</code></pre>
+<h2 id="_3">相关命令</h2>
+<pre><code class="language-bash">$ git-crypt status
+not encrypted: .gitattributes
+    encrypted: secretfile
+</code></pre>
+<h2 id="git-crypt_1">git-crypt 工作流示意图</h2>
+<p><strong>（由 DeepSeek-R1 生成）</strong></p>
+<pre><code class="language-mermaid">graph TD
+    A[管理员] --&gt; B[初始化仓库]
+    B --&gt; C[创建.gitattributes文件]
+    C --&gt; D[指定加密文件模式]
+    D --&gt; E[添加GPG用户/导出密钥]
+
+    subgraph 有权限开发者
+        F[开发者] --&gt; G[克隆仓库]
+        G --&gt; H[git-crypt unlock]
+        H --&gt; I[查看解密文件]
+        I --&gt; J[修改文件]
+        J --&gt; K[自动加密提交]
+    end
+
+    subgraph 无权限开发者
+        L[普通成员] --&gt; M[克隆仓库]
+        M --&gt; N[看到加密内容]
+        N --&gt; O[修改非加密文件]
+        O --&gt; P[正常提交]
+    end
+
+    E --&gt; F
+    E --&gt; L
+    K --&gt; Q[远程仓库]
+    P --&gt; Q
+    Q --&gt; G
+    Q --&gt; M
+</code></pre></div>
+		</div>
+
+		<footer>
+			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
+		</footer>
+	</body>
+</html>
