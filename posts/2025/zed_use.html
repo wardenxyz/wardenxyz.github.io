@@ -19,14 +19,15 @@
 
 			<div class="metadata">2025-03-11 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#zed">zed</a></div></div>
 
-			<div class="content"><h1 id="zed">zed 使用笔记</h1>
+			<div class="main-content">
+				<div class="content"><h1 id="zed">zed 使用笔记<a class="headerlink" href="#zed" title="Permanent link">&para;</a></h1>
 <p>系统：Windows11 24H2</p>
 <p>下载：https://github.com/deevus/zed-windows-builds</p>
-<h2 id="settingsjson">settings.json</h2>
+<h2 id="settingsjson">settings.json<a class="headerlink" href="#settingsjson" title="Permanent link">&para;</a></h2>
 <p>https://zed.dev/docs/configuring-zed</p>
 <pre><code class="language-bash">C:\Users\admin\AppData\Roaming\Zed
 </code></pre>
-<h2 id="snippetsjson">snippets.json</h2>
+<h2 id="snippetsjson">snippets.json<a class="headerlink" href="#snippetsjson" title="Permanent link">&para;</a></h2>
 <p>https://zed.dev/docs/snippets</p>
 <pre><code class="language-bash">C:\Users\admin\AppData\Roaming\Zed
 </code></pre>
@@ -40,9 +41,9 @@
 }
 </code></pre>
 <p>如果你想创建针对 JavaScript 文件的代码片段，你的文件将是 <code>javascript.json</code></p>
-<h2 id="_1">格式化</h2>
+<h2 id="_1">格式化<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p><code>ctrl+shift+i</code> 保存加格式化</p>
-<h2 id="zed-2025-03-21">我的 Zed 配置(2025-03-21 更新)</h2>
+<h2 id="zed-2025-03-21">我的 Zed 配置(2025-03-21 更新)<a class="headerlink" href="#zed-2025-03-21" title="Permanent link">&para;</a></h2>
 <pre><code class="language-json">{
     // &quot;base_keymap&quot;: &quot;VSCode&quot;, //键盘快捷键
 
@@ -297,10 +298,60 @@
     }
 }
 </code></pre></div>
+				<!-- <div class="sidebar"> -->
+					<!-- <div class="outline"> -->
+						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#zed-">zed 使用笔记</a<ul><li><a href="#settingsjson">settings.json</a></li><li><a href="#snippetsjson">snippets.json</a></li><li><a href="#">格式化</a></li><li><a href="#-zed-20250321-">我的 Zed 配置(2025-03-21 更新)</a></li></ul></li></ul></ul></div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			</div>
 		</div>
 
 		<footer>
 			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
 		</footer>
+
+		<script>
+			// Add copy buttons to code blocks
+			document.addEventListener('DOMContentLoaded', function() {
+				const codeBlocks = document.querySelectorAll('pre');
+				
+				codeBlocks.forEach(function(block) {
+					// Create copy button
+					const button = document.createElement('button');
+					button.className = 'copy-button';
+					button.textContent = '复制';
+					
+					// Add the button to the code block
+					block.appendChild(button);
+					
+					// Add click event
+					button.addEventListener('click', function() {
+						const code = block.querySelector('code')?.textContent || block.textContent;
+						
+						// Copy to clipboard
+						navigator.clipboard.writeText(code).then(function() {
+							// Success feedback
+							button.textContent = '已复制!';
+							button.classList.add('copied');
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+								button.classList.remove('copied');
+							}, 2000);
+						})
+						.catch(function(error) {
+							console.error('复制失败:', error);
+							button.textContent = '复制失败';
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+							}, 2000);
+						});
+					});
+				});
+			});
+		</script>
 	</body>
 </html>

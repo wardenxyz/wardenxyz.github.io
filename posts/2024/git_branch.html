@@ -19,14 +19,15 @@
 
 			<div class="metadata">2024-04-08 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#git">git</a></div></div>
 
-			<div class="content"><h1 id="git">git 分支操作</h1>
-<h2 id="git-checkout">我使用 git checkout 命令回溯到之前的某个提交，我该如何把仓库彻底固定在当前提交</h2>
+			<div class="main-content">
+				<div class="content"><h1 id="git">git 分支操作<a class="headerlink" href="#git" title="Permanent link">&para;</a></h1>
+<h2 id="git-checkout">我使用 git checkout 命令回溯到之前的某个提交，我该如何把仓库彻底固定在当前提交<a class="headerlink" href="#git-checkout" title="Permanent link">&para;</a></h2>
 <p>如果你想要将仓库彻底固定在当前提交，你可以创建一个新的分支。这样，你就可以在这个新的分支上进行工作，而不会影响到主分支。以下是如何创建新分支的命令：</p>
 <pre><code class="language-bash">git branch new_branch_name
 git checkout new_branch_name
 </code></pre>
 <p>这两行命令首先创建了一个名为 "new_branch_name" 的新分支，然后切换到这个新分支。你需要将 "new_branch_name" 替换为你想要的分支名。</p>
-<h2 id="git_1">如何在 Git 中删除一个分支？</h2>
+<h2 id="git_1">如何在 Git 中删除一个分支？<a class="headerlink" href="#git_1" title="Permanent link">&para;</a></h2>
 <p>在 Git 中，你可以使用以下命令来删除一个分支：</p>
 <pre><code class="language-bash">git branch -d branch_name
 </code></pre>
@@ -35,13 +36,13 @@ git checkout new_branch_name
 <pre><code class="language-bash">git branch -D branch_name
 </code></pre>
 <p>请注意，这个操作是不可逆的，所以在执行之前请确保你真的想要删除这个分支。</p>
-<h2 id="_1">我该如何删除远程分支</h2>
+<h2 id="_1">我该如何删除远程分支<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>在 Git 中，你可以使用以下命令来删除一个远程分支：</p>
 <pre><code class="language-bash">git push origin --delete branch_name
 </code></pre>
 <p>这个命令会删除名为 "branch_name" 的远程分支。你需要将 "branch_name" 替换为你想要删除的远程分支名。</p>
 <p>请注意，这个操作是不可逆的，所以在执行之前请确保你真的想要删除这个远程分支。</p>
-<h2 id="_2">重命名分支</h2>
+<h2 id="_2">重命名分支<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>在 Git 中，你可以使用以下命令来重命名一个分支：</p>
 <pre><code class="language-bash">git branch -m old_branch_name new_branch_name
 </code></pre>
@@ -53,7 +54,7 @@ git checkout new_branch_name
 <p>把本地的 main 分支与远程 main 分支绑定</p>
 <pre><code class="language-bash">git branch --set-upstream-to=origin/main main
 </code></pre>
-<h2 id="_3">如何把一个本地分支与一个远程分支建立联系</h2>
+<h2 id="_3">如何把一个本地分支与一个远程分支建立联系<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>你可以使用 <code>git branch --set-upstream-to</code> 命令来将一个本地分支与一个远程分支建立联系。这个命令会设置远程分支为本地分支的上游分支。</p>
 <p>以下是具体的命令：</p>
 <pre><code class="language-bash">git branch --set-upstream-to=&lt;remote&gt;/&lt;branch&gt; &lt;local-branch&gt;
@@ -63,10 +64,60 @@ git checkout new_branch_name
 <pre><code class="language-bash">git branch --set-upstream-to=origin/master master
 </code></pre>
 <p>设置上游分支后，你可以使用 <code>git pull</code> 和 <code>git push</code> 命令来拉取和推送更改，而不需要每次都指定远程仓库和分支的名字。</p></div>
+				<!-- <div class="sidebar"> -->
+					<!-- <div class="outline"> -->
+						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#git-">git 分支操作</a<ul><li><a href="#-git-checkout-">我使用 git checkout 命令回溯到之前的某个提交，我该如何把仓库彻底固定在当前提交</a></li><li><a href="#-git-">如何在 Git 中删除一个分支？</a></li><li><a href="#">我该如何删除远程分支</a></li><li><a href="#">重命名分支</a></li><li><a href="#">如何把一个本地分支与一个远程分支建立联系</a></li></ul></li></ul></ul></div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			</div>
 		</div>
 
 		<footer>
 			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
 		</footer>
+
+		<script>
+			// Add copy buttons to code blocks
+			document.addEventListener('DOMContentLoaded', function() {
+				const codeBlocks = document.querySelectorAll('pre');
+				
+				codeBlocks.forEach(function(block) {
+					// Create copy button
+					const button = document.createElement('button');
+					button.className = 'copy-button';
+					button.textContent = '复制';
+					
+					// Add the button to the code block
+					block.appendChild(button);
+					
+					// Add click event
+					button.addEventListener('click', function() {
+						const code = block.querySelector('code')?.textContent || block.textContent;
+						
+						// Copy to clipboard
+						navigator.clipboard.writeText(code).then(function() {
+							// Success feedback
+							button.textContent = '已复制!';
+							button.classList.add('copied');
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+								button.classList.remove('copied');
+							}, 2000);
+						})
+						.catch(function(error) {
+							console.error('复制失败:', error);
+							button.textContent = '复制失败';
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+							}, 2000);
+						});
+					});
+				});
+			});
+		</script>
 	</body>
 </html>

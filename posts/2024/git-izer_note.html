@@ -19,8 +19,9 @@
 
 			<div class="metadata">2024-10-01 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#git">git</a></div></div>
 
-			<div class="content"><h1 id="git-sizer">git-sizer 学习笔记</h1>
-<h2 id="git-sizer_1">git-sizer 命令输出</h2>
+			<div class="main-content">
+				<div class="content"><h1 id="git-sizer">git-sizer 学习笔记<a class="headerlink" href="#git-sizer" title="Permanent link">&para;</a></h1>
+<h2 id="git-sizer_1">git-sizer 命令输出<a class="headerlink" href="#git-sizer_1" title="Permanent link">&para;</a></h2>
 <pre><code class="language-bash">$ git-sizer --verbose
 
 Processing blobs: 1215
@@ -80,9 +81,9 @@ Processing references: 2
 [7]  7ef042f07987acc492f5ca5f8cf3fb0c15c58264 (1424d4955f210f89f1f82117b18822ead85ae617^{tree})
 [8]  78bdd67d7e37b0f4a8af0f6009236ef2270a7288 (f84cb9d396b1d2297dddea27dc72d6ed252f33cd^{tree})
 </code></pre>
-<h2 id="_1">输出解释</h2>
+<h2 id="_1">输出解释<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>从 <code>git-sizer</code> 的输出中可以看出，你的 Git 仓库的整体大小和结构信息。以下是一些关键点的解释：</p>
-<h2 id="_2">仓库整体大小</h2>
+<h2 id="_2">仓库整体大小<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Commits（提交）:</li>
 <li>Count（数量）: 513</li>
@@ -117,7 +118,7 @@ Processing references: 2
 <li>Branches（分支）: 1</li>
 <li>Remote-tracking refs（远程跟踪引用）: 1</li>
 </ul>
-<h2 id="_3">最大对象</h2>
+<h2 id="_3">最大对象<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Commits（提交）:</li>
 <li>Maximum size（最大大小）: 1.97 KiB</li>
@@ -135,12 +136,12 @@ Processing references: 2
 </li>
 <li>Maximum size（最大大小）: 3.79 MiB</li>
 </ul>
-<h2 id="_4">历史结构</h2>
+<h2 id="_4">历史结构<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Maximum history depth（最大历史深度）: 513</li>
 <li>Maximum tag depth（最大标签深度）: 0</li>
 </ul>
-<h2 id="_5">最大检出</h2>
+<h2 id="_5">最大检出<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Number of directories（目录数量）: 25</li>
 <li>Maximum path depth（最大路径深度）: 5</li>
@@ -150,7 +151,7 @@ Processing references: 2
 <li>Number of symlinks（符号链接数量）: 0</li>
 <li>Number of submodules（子模块数量）: 0</li>
 </ul>
-<h2 id="_6">具体对象</h2>
+<h2 id="_6">具体对象<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
 <li>[1]: 最大提交大小的对象 ID 是 <code>314be6877a8519aba4e703f2fdc7a9d540b441db</code></li>
 <li>[2]: 最大父级数量的提交 ID 是 <code>6a930f6bb128b4e023b5d40f4ec284650441cb19</code>（分支 <code>main</code>）</li>
@@ -162,30 +163,30 @@ Processing references: 2
 <li>[8]: 最大文件总大小的树对象 ID 是 <code>78bdd67d7e37b0f4a8af0f6009236ef2270a7288</code></li>
 </ul>
 <p>这些信息可以帮助你了解仓库的大小和结构，识别可能需要优化的部分。</p>
-<h2 id="_7">哪些部分需要优化</h2>
+<h2 id="_7">哪些部分需要优化<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <p>根据 <code>git-sizer</code> 的输出，以下是一些可能需要优化的部分：</p>
-<h2 id="1-blobs">1. Blobs（文件对象）</h2>
+<h2 id="1-blobs">1. Blobs（文件对象）<a class="headerlink" href="#1-blobs" title="Permanent link">&para;</a></h2>
 <ul>
 <li>最大文件对象大小: 3.79 MiB</li>
 <li>文件路径: <code>assets/文件.pdf</code></li>
 <li>大文件可能会导致仓库克隆和操作变慢。你可以考虑将大文件移到 Git LFS（Large File Storage）或其他外部存储解决方案。</li>
 </ul>
-<h2 id="2">2. 总文件大小</h2>
+<h2 id="2">2. 总文件大小<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
 <ul>
 <li>文件总大小: 20.6 MiB</li>
 <li>如果仓库中有很多大文件，可能会影响性能。你可以检查哪些文件占用了大量空间，并考虑是否可以将它们移到外部存储。</li>
 </ul>
-<h2 id="3">3. 树对象</h2>
+<h2 id="3">3. 树对象<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <ul>
 <li>最大条目数: 126</li>
 <li>树对象中的条目数较多，可能会影响性能。你可以检查这些目录，看看是否可以简化目录结构或减少文件数量。</li>
 </ul>
-<h2 id="4">4. 提交历史</h2>
+<h2 id="4">4. 提交历史<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <ul>
 <li>最大历史深度: 513</li>
 <li>提交历史较深，可能会影响性能。你可以考虑使用 <code>git rebase</code> 或 <code>git filter-branch</code> 来简化历史记录。</li>
 </ul>
-<h2 id="_8">具体优化建议：</h2>
+<h2 id="_8">具体优化建议：<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>使用 Git LFS:<br />
@@ -219,10 +220,60 @@ Processing references: 2
 </li>
 </ol>
 <p>通过这些优化措施，你可以减少仓库的大小，提高操作性能。</p></div>
+				<!-- <div class="sidebar"> -->
+					<!-- <div class="outline"> -->
+						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#gitsizer-">git-sizer 学习笔记</a<ul><li><a href="#gitsizer-">git-sizer 命令输出</a></li><li><a href="#">输出解释</a></li><li><a href="#">仓库整体大小</a></li><li><a href="#">最大对象</a></li><li><a href="#">历史结构</a></li><li><a href="#">最大检出</a></li><li><a href="#">具体对象</a></li><li><a href="#">哪些部分需要优化</a></li><li><a href="#1-blobs">1. Blobs（文件对象）</a></li><li><a href="#2-">2. 总文件大小</a></li><li><a href="#3-">3. 树对象</a></li><li><a href="#4-">4. 提交历史</a></li><li><a href="#">具体优化建议：</a></li></ul></li></ul></ul></div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			</div>
 		</div>
 
 		<footer>
 			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
 		</footer>
+
+		<script>
+			// Add copy buttons to code blocks
+			document.addEventListener('DOMContentLoaded', function() {
+				const codeBlocks = document.querySelectorAll('pre');
+				
+				codeBlocks.forEach(function(block) {
+					// Create copy button
+					const button = document.createElement('button');
+					button.className = 'copy-button';
+					button.textContent = '复制';
+					
+					// Add the button to the code block
+					block.appendChild(button);
+					
+					// Add click event
+					button.addEventListener('click', function() {
+						const code = block.querySelector('code')?.textContent || block.textContent;
+						
+						// Copy to clipboard
+						navigator.clipboard.writeText(code).then(function() {
+							// Success feedback
+							button.textContent = '已复制!';
+							button.classList.add('copied');
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+								button.classList.remove('copied');
+							}, 2000);
+						})
+						.catch(function(error) {
+							console.error('复制失败:', error);
+							button.textContent = '复制失败';
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+							}, 2000);
+						});
+					});
+				});
+			});
+		</script>
 	</body>
 </html>

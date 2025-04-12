@@ -19,9 +19,10 @@
 
 			<div class="metadata">2024-11-27 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#Typst">Typst</a></div></div>
 
-			<div class="content"><h1 id="typst">Typst 笔记</h1>
+			<div class="main-content">
+				<div class="content"><h1 id="typst">Typst 笔记<a class="headerlink" href="#typst" title="Permanent link">&para;</a></h1>
 <p><a href="https://typst.app/docs">Tyspt 官方文档</a></p>
-<h2 id="_1">导出命令</h2>
+<h2 id="_1">导出命令<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>默认导出为 pdf</li>
 </ul>
@@ -42,24 +43,24 @@
 </ul>
 <pre><code class="language-bash">typst c main.typ output-4.svg -f svg --pages 4 
 </code></pre>
-<h2 id="_2">标题</h2>
+<h2 id="_2">标题<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typst">= 第一级大标题
 == 第二级大标题
 </code></pre>
-<h2 id="_3">无序列表</h2>
+<h2 id="_3">无序列表<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typst">- 无序列表
 </code></pre>
-<h2 id="_4">有序列表</h2>
+<h2 id="_4">有序列表<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typst">1. 有序列表
 + 有序列表
 </code></pre>
-<h2 id="_5">加重字体</h2>
+<h2 id="_5">加重字体<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typst">*加重字体*
 </code></pre>
-<h2 id="_6">斜体</h2>
+<h2 id="_6">斜体<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typst">_斜体_
 </code></pre>
-<h2 id="_7">字体</h2>
+<h2 id="_7">字体<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <p>全局：</p>
 <pre><code class="language-typst">#set text(font: &quot;kaiti&quot;, fill: red, size: 12pt)
 大小为12磅，字体为楷体的红色内容
@@ -67,7 +68,7 @@
 <p>局部：</p>
 <pre><code class="language-typst">#text(font: &quot;kaiti&quot;, fill: red, size: 12pt)[大小为12磅，字体为楷体的红色内容]
 </code></pre>
-<h2 id="_8">位置</h2>
+<h2 id="_8">位置<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <p>全局：</p>
 <pre><code class="language-typst">#set align(left)
 居左
@@ -75,32 +76,32 @@
 <p>局部：</p>
 <pre><code class="language-typst">#align(left)[居左]
 </code></pre>
-<h2 id="_9">下划线</h2>
+<h2 id="_9">下划线<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typst">#underline[此处有下划线]
 </code></pre>
-<h2 id="_10">上划线</h2>
+<h2 id="_10">上划线<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typst">#overline[此处有上划线]
 </code></pre>
-<h2 id="_11">上标</h2>
+<h2 id="_11">上标<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typst">#super[这里是上标内容]
 </code></pre>
-<h2 id="_12">下标</h2>
+<h2 id="_12">下标<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typst">#sub[这里是下标内容]
 </code></pre>
-<h2 id="_13">删除线</h2>
+<h2 id="_13">删除线<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typst">#strike[被删除的内容]
 </code></pre>
-<h2 id="_14">高亮</h2>
+<h2 id="_14">高亮<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typst">#highlight[高亮内容]
 </code></pre>
-<h2 id="_15">链接</h2>
+<h2 id="_15">链接<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typst">#link(&quot;https://baidu.com&quot;)[百度]
 </code></pre>
-<h2 id="_16">字间距&amp;行间距</h2>
+<h2 id="_16">字间距&amp;行间距<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typst">#set par(leading: 18pt) //行间距
 #set text(tracking: 0.1pt) //字间距
 </code></pre>
-<h2 id="_17">文档属性</h2>
+<h2 id="_17">文档属性<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typst">#set document(
   title: title,
   author: author,
@@ -108,7 +109,7 @@
   date: none, auto,datetime,
 )
 </code></pre>
-<h2 id="_18">页边距</h2>
+<h2 id="_18">页边距<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typst">  #set page(margin: (
     top: 2.54cm, //上边距
     bottom: 2.54cm, //下边距
@@ -116,30 +117,30 @@
     left: 2.54cm, //左边距
   ))
 </code></pre>
-<h2 id="_19">水印</h2>
+<h2 id="_19">水印<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typst">#set page(background: rotate(45deg,
   text(50pt, fill: rgb(&quot;FFCBC4&quot;))[
     *这是水印*
   ]
 ))
 </code></pre>
-<h2 id="_20">引用</h2>
+<h2 id="_20">引用<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typst">#set quote(block: true) //开启引用块
 
 #quote(attribution: [引用文本的来源])[
   引用的文本
 ]
 </code></pre>
-<h2 id="_21">大纲</h2>
+<h2 id="_21">大纲<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typst">#outline()
 </code></pre>
-<h2 id="_22">空白页</h2>
+<h2 id="_22">空白页<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typst">#pagebreak()
 </code></pre>
-<h2 id="_23">插入图片</h2>
+<h2 id="_23">插入图片<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typst">#image(&quot;4.jpeg&quot;)
 </code></pre>
-<h2 id="_24">页眉</h2>
+<h2 id="_24">页眉<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typst">#set page(header: [
   页眉
   #h(1fr)
@@ -148,7 +149,7 @@
   #line(length: 100%, stroke: (thickness: 1pt, dash: &quot;solid&quot;))
 ])
 </code></pre>
-<h2 id="_25">页脚</h2>
+<h2 id="_25">页脚<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typst">#set page(footer: context [
   #v(8pt) //页脚与边距的距离
   #line(length: 100%, stroke: (thickness: 1pt, dash: &quot;solid&quot;))
@@ -161,10 +162,60 @@
   )
 ])
 </code></pre></div>
+				<!-- <div class="sidebar"> -->
+					<!-- <div class="outline"> -->
+						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#typst-">Typst 笔记</a<ul><li><a href="#">导出命令</a></li><li><a href="#">标题</a></li><li><a href="#">无序列表</a></li><li><a href="#">有序列表</a></li><li><a href="#">加重字体</a></li><li><a href="#">斜体</a></li><li><a href="#">字体</a></li><li><a href="#">位置</a></li><li><a href="#">下划线</a></li><li><a href="#">上划线</a></li><li><a href="#">上标</a></li><li><a href="#">下标</a></li><li><a href="#">删除线</a></li><li><a href="#">高亮</a></li><li><a href="#">链接</a></li><li><a href="#">字间距&行间距</a></li><li><a href="#">文档属性</a></li><li><a href="#">页边距</a></li><li><a href="#">水印</a></li><li><a href="#">引用</a></li><li><a href="#">大纲</a></li><li><a href="#">空白页</a></li><li><a href="#">插入图片</a></li><li><a href="#">页眉</a></li><li><a href="#">页脚</a></li></ul></li></ul></ul></div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			</div>
 		</div>
 
 		<footer>
 			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
 		</footer>
+
+		<script>
+			// Add copy buttons to code blocks
+			document.addEventListener('DOMContentLoaded', function() {
+				const codeBlocks = document.querySelectorAll('pre');
+				
+				codeBlocks.forEach(function(block) {
+					// Create copy button
+					const button = document.createElement('button');
+					button.className = 'copy-button';
+					button.textContent = '复制';
+					
+					// Add the button to the code block
+					block.appendChild(button);
+					
+					// Add click event
+					button.addEventListener('click', function() {
+						const code = block.querySelector('code')?.textContent || block.textContent;
+						
+						// Copy to clipboard
+						navigator.clipboard.writeText(code).then(function() {
+							// Success feedback
+							button.textContent = '已复制!';
+							button.classList.add('copied');
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+								button.classList.remove('copied');
+							}, 2000);
+						})
+						.catch(function(error) {
+							console.error('复制失败:', error);
+							button.textContent = '复制失败';
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+							}, 2000);
+						});
+					});
+				});
+			});
+		</script>
 	</body>
 </html>

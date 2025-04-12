@@ -19,15 +19,16 @@
 
 			<div class="metadata">2024-08-01 <div class="category">分类: <a href="/categories.html#计算机">计算机</a>, <a href="/categories.html#软件">软件</a></div> <div class="tags">标签: <a href="/tags.html#Windows">Windows</a>, <a href="/tags.html#Android">Android</a></div></div>
 
-			<div class="content"><h1 id="_1">个人自用软件</h1>
-<h2 id="android">Android</h2>
+			<div class="main-content">
+				<div class="content"><h1 id="_1">个人自用软件<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="android">Android<a class="headerlink" href="#android" title="Permanent link">&para;</a></h2>
 <p>simple_live https://github.com/xiaoyaocz/dart_simple_live</p>
 <p>pilipala https://github.com/guozhigq/pilipala</p>
 <p>Hydrogen https://github.com/huajiqaq/Hydrogen</p>
 <p>Aegis https://github.com/beemdevelopment/Aegis</p>
 <p>Localsend https://github.com/localsend/localsend</p>
 <p>KeePassDX https://github.com/Kunzisoft/KeePassDX</p>
-<h2 id="windows">Windows</h2>
+<h2 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h2>
 <p>vscode https://code.visualstudio.com/</p>
 <p>FileConverter https://github.com/Tichau/FileConverter</p>
 <p>SteamTools https://github.com/BeyondDimension/SteamTools</p>
@@ -36,10 +37,60 @@
 <p>gpg4win https://www.gpg4win.org</p>
 <p>git https://git-scm.com</p>
 <p>git-crypt https://github.com/AGWA/git-crypt</p></div>
+				<!-- <div class="sidebar"> -->
+					<!-- <div class="outline"> -->
+						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#">个人自用软件</a<ul><li><a href="#android">Android</a></li><li><a href="#windows">Windows</a></li></ul></li></ul></ul></div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			</div>
 		</div>
 
 		<footer>
 			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
 		</footer>
+
+		<script>
+			// Add copy buttons to code blocks
+			document.addEventListener('DOMContentLoaded', function() {
+				const codeBlocks = document.querySelectorAll('pre');
+				
+				codeBlocks.forEach(function(block) {
+					// Create copy button
+					const button = document.createElement('button');
+					button.className = 'copy-button';
+					button.textContent = '复制';
+					
+					// Add the button to the code block
+					block.appendChild(button);
+					
+					// Add click event
+					button.addEventListener('click', function() {
+						const code = block.querySelector('code')?.textContent || block.textContent;
+						
+						// Copy to clipboard
+						navigator.clipboard.writeText(code).then(function() {
+							// Success feedback
+							button.textContent = '已复制!';
+							button.classList.add('copied');
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+								button.classList.remove('copied');
+							}, 2000);
+						})
+						.catch(function(error) {
+							console.error('复制失败:', error);
+							button.textContent = '复制失败';
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+							}, 2000);
+						});
+					});
+				});
+			});
+		</script>
 	</body>
 </html>

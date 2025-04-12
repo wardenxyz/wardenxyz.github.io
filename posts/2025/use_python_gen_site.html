@@ -19,9 +19,10 @@
 
 			<div class="metadata">2025-04-12 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#python">python</a>, <a href="/tags.html#site">site</a></div></div>
 
-			<div class="content"><h1 id="python">使用 Python 生成静态网页</h1>
+			<div class="main-content">
+				<div class="content"><h1 id="python">使用 Python 生成静态网页<a class="headerlink" href="#python" title="Permanent link">&para;</a></h1>
 <p>一个简单的静态网站生成器，专门为我的博客设计，支持将 Markdown 文件转换为 HTML 静态网站。</p>
-<h2 id="_1">特点</h2>
+<h2 id="_1">特点<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>支持 Markdown 语法</li>
 <li>代码块语法高亮</li>
@@ -31,10 +32,10 @@
 <li>通过 GitHub Actions 自动构建和部署到 GitHub Pages</li>
 <li>使用 Python 3.12 构建</li>
 </ul>
-<h2 id="_2">安装</h2>
+<h2 id="_2">安装<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <pre><code class="language-bash">pip install -r requirements.txt
 </code></pre>
-<h2 id="_3">使用方法</h2>
+<h2 id="_3">使用方法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ol>
 <li>将你的 Markdown 文章放在 <code>posts/YYYY/</code> 目录中，其中 <code>YYYY</code> 是年份（例如 <code>2024</code>）</li>
 <li>确保每篇文章都有正确的 frontmatter 格式：</li>
@@ -56,29 +57,79 @@ category: [分类]
 <ol start="4">
 <li>生成的网站将位于 <code>site</code> 目录中</li>
 </ol>
-<h2 id="_4">本地预览</h2>
+<h2 id="_4">本地预览<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>生成网站后，您可以使用 Python 内置的 HTTP 服务器进行本地预览：</p>
 <pre><code class="language-bash">cd site
 python -m http.server
 </code></pre>
 <p>然后在浏览器中访问 <code>http://localhost:8000</code> 查看网站。</p>
-<h2 id="_5">部署</h2>
+<h2 id="_5">部署<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>该项目配置了 GitHub Actions 工作流，在你将代码推送到 GitHub 时自动构建和部署。</p>
 <ol>
 <li>确保已在 GitHub 仓库设置中启用了 GitHub Pages</li>
 <li>推送更改到 GitHub</li>
 <li>GitHub Actions 将自动构建并部署网站</li>
 </ol>
-<h2 id="_6">自定义</h2>
+<h2 id="_6">自定义<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ul>
 <li>修改 <code>template.html</code> 更改网站布局</li>
 <li>修改 <code>assets/styles.css</code> 更改网站样式</li>
 <li>在 <code>static_gen.py</code> 文件的顶部修改网站标题和其他配置</li>
 </ul></div>
+				<!-- <div class="sidebar"> -->
+					<!-- <div class="outline"> -->
+						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#-python-">使用 Python 生成静态网页</a<ul><li><a href="#">特点</a></li><li><a href="#">安装</a></li><li><a href="#">使用方法</a></li></ul></li><li><a href="#">文章内容开始</a<ul><li><a href="#">本地预览</a></li><li><a href="#">部署</a></li><li><a href="#">自定义</a></li></ul></li></ul></ul></div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			</div>
 		</div>
 
 		<footer>
 			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
 		</footer>
+
+		<script>
+			// Add copy buttons to code blocks
+			document.addEventListener('DOMContentLoaded', function() {
+				const codeBlocks = document.querySelectorAll('pre');
+				
+				codeBlocks.forEach(function(block) {
+					// Create copy button
+					const button = document.createElement('button');
+					button.className = 'copy-button';
+					button.textContent = '复制';
+					
+					// Add the button to the code block
+					block.appendChild(button);
+					
+					// Add click event
+					button.addEventListener('click', function() {
+						const code = block.querySelector('code')?.textContent || block.textContent;
+						
+						// Copy to clipboard
+						navigator.clipboard.writeText(code).then(function() {
+							// Success feedback
+							button.textContent = '已复制!';
+							button.classList.add('copied');
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+								button.classList.remove('copied');
+							}, 2000);
+						})
+						.catch(function(error) {
+							console.error('复制失败:', error);
+							button.textContent = '复制失败';
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+							}, 2000);
+						});
+					});
+				});
+			});
+		</script>
 	</body>
 </html>

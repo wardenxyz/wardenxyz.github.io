@@ -19,8 +19,9 @@
 
 			<div class="metadata">2024-04-08 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#git">git</a></div></div>
 
-			<div class="content"><h1 id="git">git 命令手册</h1>
-<h2 id="_1">常用语句</h2>
+			<div class="main-content">
+				<div class="content"><h1 id="git">git 命令手册<a class="headerlink" href="#git" title="Permanent link">&para;</a></h1>
+<h2 id="_1">常用语句<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <pre><code>== 初始化本地git仓库（创建新仓库）
 git init
 
@@ -254,7 +255,7 @@ git grep -e '#define' --and -e SORT_DIRENT
 git gc
 git fsck
 </code></pre>
-<h2 id="_2">新建仓库</h2>
+<h2 id="_2">新建仓库<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <pre><code>## 初始化当前项目
 $ git init
 
@@ -269,7 +270,7 @@ $ git init --bare &lt;directory&gt;
 ## 这个命令就是将一个版本库拷贝到另一个目录中，同时也将分支都拷贝到新的版本库中。这样就可以在新的版本库中提交到远程分支
 $ git clone [url]
 </code></pre>
-<h2 id="git_1">git 配置</h2>
+<h2 id="git_1">git 配置<a class="headerlink" href="#git_1" title="Permanent link">&para;</a></h2>
 <pre><code>## 显示当前的Git配置
 $ git config --list
 
@@ -289,14 +290,14 @@ $ git config --global alias.&lt;alias-name&gt; &lt;git-command&gt;
 ## 为Git命令创建一个快捷方式（别名）。
 $ git config --system core.editor &lt;editor&gt;
 </code></pre>
-<h2 id="git_2">git 状态</h2>
+<h2 id="git_2">git 状态<a class="headerlink" href="#git_2" title="Permanent link">&para;</a></h2>
 <pre><code>## 显示分支，未跟踪文件，更改和其他不同
 $ git status
 
 ## 查看其他的git status的用法
 $ git help status
 </code></pre>
-<h2 id="git_3">git 信息</h2>
+<h2 id="git_3">git 信息<a class="headerlink" href="#git_3" title="Permanent link">&para;</a></h2>
 <pre><code>## 显示commit历史，以及每次commit发生变更的文件
 $ git log --stat
 
@@ -376,7 +377,7 @@ $ git br --merged
 ## 查看尚未被合并到当前分支的分支
 $ git br --no-merged
 </code></pre>
-<h2 id="git_4">git 添加、暂存</h2>
+<h2 id="git_4">git 添加、暂存<a class="headerlink" href="#git_4" title="Permanent link">&para;</a></h2>
 <pre><code>## 添加一个文件
 $ git add test.js
 
@@ -399,7 +400,7 @@ $ git add .
 ## 对于同一个文件的多处变化，可以实现分次提交
 $ git add -p
 </code></pre>
-<h2 id="git_5">git 删除文件</h2>
+<h2 id="git_5">git 删除文件<a class="headerlink" href="#git_5" title="Permanent link">&para;</a></h2>
 <pre><code>## 移除 HelloWorld.js
 $ git rm HelloWorld.js
 
@@ -412,7 +413,7 @@ $ git rm [file1] [file2] ...
 ## 停止追踪指定文件，但该文件会保留在工作区
 $ git rm --cached [file]
 </code></pre>
-<h2 id="_3">管理分支</h2>
+<h2 id="_3">管理分支<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <pre><code>## 查看所有的分支和远程分支
 $ git branch -a
 
@@ -487,7 +488,7 @@ $ git br -d &lt;branch&gt;
 ## 强制删除某个分支 (未被合并的分支被删除的时候需要强制)
 $ git br -D &lt;branch&gt;
 </code></pre>
-<h2 id="git-checkout">git checkout</h2>
+<h2 id="git-checkout">git checkout<a class="headerlink" href="#git-checkout" title="Permanent link">&para;</a></h2>
 <pre><code>## 检出一个版本库，默认将更新到master分支
 $ git checkout
 ## 检出到一个特定的分支
@@ -495,7 +496,7 @@ $ git checkout branchName
 ## 新建一个分支，并且切换过去，相当于&quot;git branch &lt;名字&gt;; git checkout &lt;名字&gt;&quot;
 $ git checkout -b newBranch
 </code></pre>
-<h2 id="_4">添加远程仓库</h2>
+<h2 id="_4">添加远程仓库<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <pre><code>## 下载远程仓库的所有变动
 $ git fetch [remote]
 
@@ -532,7 +533,7 @@ $ git push [remote] --force
 ## 推送所有分支到远程仓库
 $ git push [remote] --all
 </code></pre>
-<h2 id="_5">撤销：</h2>
+<h2 id="_5">撤销：<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <pre><code>## 恢复暂存区的指定文件到工作区
 $ git checkout [file]
 
@@ -577,7 +578,7 @@ $ git stash apply
 ## 删除暂存区
 $ git stash drop
 </code></pre>
-<h2 id="commit">提交 commit</h2>
+<h2 id="commit">提交 commit<a class="headerlink" href="#commit" title="Permanent link">&para;</a></h2>
 <pre><code>## 提交暂存区到仓库区附带提交信息
 $ git commit -m [message]
 
@@ -597,7 +598,7 @@ $ git commit --amend -m [message]
 ## 重做上一次commit，并包括指定文件的新变化
 $ git commit --amend [file1] [file2] ...
 </code></pre>
-<h2 id="git-diff">git diff</h2>
+<h2 id="git-diff">git diff<a class="headerlink" href="#git-diff" title="Permanent link">&para;</a></h2>
 <pre><code>## 显示工作目录和索引的不同
 $ git diff
 
@@ -607,7 +608,7 @@ $ git diff --cached
 ## 显示工作目录和最近一次提交的不同
 $ git diff HEAD
 </code></pre>
-<h2 id="git-grep">git grep</h2>
+<h2 id="git-grep">git grep<a class="headerlink" href="#git-grep" title="Permanent link">&para;</a></h2>
 <pre><code>可选配置：
 ## 感谢Travis Jeffery提供的以下用法：
 ## 在搜索结果中显示行号
@@ -621,7 +622,7 @@ $ git grep 'variableName' -- '*.java'
 ## 搜索包含 &quot;arrayListName&quot; 和, &quot;add&quot; 或 &quot;remove&quot; 的所有行
 $ git grep -e 'arrayListName' --and \( -e add -e remove \)
 </code></pre>
-<h2 id="git-log">git log</h2>
+<h2 id="git-log">git log<a class="headerlink" href="#git-log" title="Permanent link">&para;</a></h2>
 <pre><code>## 显示所有提交
 $ git log
 
@@ -643,7 +644,7 @@ $ git log -p -2
 #查看提交统计信息
 $ git log --stat
 </code></pre>
-<h2 id="merge">merge</h2>
+<h2 id="merge">merge<a class="headerlink" href="#merge" title="Permanent link">&para;</a></h2>
 <pre><code>## 将其他分支合并到当前分支
 $ git merge branchName
 
@@ -651,7 +652,7 @@ $ git merge branchName
 ## 不要 Fast-Foward 合并，这样可以生成 merge 提交
 $ git merge --no-ff branchName
 </code></pre>
-<h2 id="mv">mv 重命名或移动一个文件</h2>
+<h2 id="mv">mv 重命名或移动一个文件<a class="headerlink" href="#mv" title="Permanent link">&para;</a></h2>
 <pre><code>## 重命名
 $ git mv test.js test2.js
 
@@ -665,7 +666,7 @@ $ git mv [file-original] [file-renamed]
 ## 这个文件已经存在，将要覆盖掉
 $ git mv -f myFile existingFile
 </code></pre>
-<h2 id="tag">tag</h2>
+<h2 id="tag">tag<a class="headerlink" href="#tag" title="Permanent link">&para;</a></h2>
 <pre><code>## 列出所有tag
 $ git tag
 
@@ -693,7 +694,7 @@ $ git push [remote] --tags
 ## 新建一个分支，指向某个tag
 $ git checkout -b [branch] [tag]
 </code></pre>
-<h2 id="push">push</h2>
+<h2 id="push">push<a class="headerlink" href="#push" title="Permanent link">&para;</a></h2>
 <pre><code>## 从远端origin的master分支更新版本库
 ## git pull &lt;远端&gt; &lt;分支&gt;
 $ git pull origin master
@@ -701,7 +702,7 @@ $ git pull origin master
 ## 抓取远程仓库所有分支更新并合并到本地，不要快进合并
 $ git pull --no-ff
 </code></pre>
-<h2 id="ci">ci</h2>
+<h2 id="ci">ci<a class="headerlink" href="#ci" title="Permanent link">&para;</a></h2>
 <pre><code>$ git ci &lt;file&gt;
 $ git ci .
 ## 将git add, git rm和git ci等操作都合并在一起做
@@ -710,7 +711,7 @@ $ git ci -am &quot;some comments&quot;
 ## 修改最后一次提交记录
 $ git ci --amend
 </code></pre>
-<h2 id="rebase">rebase</h2>
+<h2 id="rebase">rebase<a class="headerlink" href="#rebase" title="Permanent link">&para;</a></h2>
 <pre><code>## 将experimentBranch应用到master上面
 ## git rebase &lt;basebranch&gt; &lt;topicbranch&gt;
 $ git rebase master experimentBranch
@@ -730,7 +731,7 @@ $ git reset dha78as
 ## 并且删除所有未提交的改变和指定提交之后的所有提交
 $ git reset --hard dha78as
 </code></pre>
-<h2 id="_6">其他</h2>
+<h2 id="_6">其他<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <pre><code>## 生成一个可供发布的压缩包
 $ git archive
 
@@ -743,10 +744,60 @@ $ git apply --check ../sync.patch
 ## 查看Git的版本
 $ git --version
 </code></pre></div>
+				<!-- <div class="sidebar"> -->
+					<!-- <div class="outline"> -->
+						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#git-">git 命令手册</a<ul><li><a href="#">常用语句</a></li><li><a href="#">新建仓库</a></li><li><a href="#">初始化当前项目</a></li><li><a href="#git">新建一个目录，将其初始化为Git代码库</a></li><li><a href="#-git--directory-git-">在指定目录创建一个空的 Git 仓库。运行这个命令会创建一个名为 directory，只包含 .git 子目录的空目录。</a></li><li><a href="#">下载一个项目和它的整个代码历史</a></li><li><a href="#">这个命令就是将一个版本库拷贝到另一个目录中，同时也将分支都拷贝到新的版本库中。这样就可以在新的版本库中提交到远程分支</a></li><li><a href="#git-">git 配置</a></li><li><a href="#git">显示当前的Git配置</a></li><li><a href="#git">编辑Git配置文件</a></li><li><a href="#">输出、设置基本的全局变量</a></li><li><a href="#">定义当前用户所有提交使用的作者邮箱。</a></li><li><a href="#git">为Git命令创建一个快捷方式（别名）。</a></li><li><a href="#git-">git 状态</a></li><li><a href="#">显示分支，未跟踪文件，更改和其他不同</a></li><li><a href="#git-status">查看其他的git status的用法</a></li><li><a href="#git-">git 信息</a></li><li><a href="#commitcommit">显示commit历史，以及每次commit发生变更的文件</a></li><li><a href="#">搜索提交历史，根据关键词</a></li><li><a href="#commitcommit">显示某个commit之后的所有变动，每个commit占据一行</a></li><li><a href="#commit">显示某个commit之后的所有变动，其"提交说明"必须符合搜索条件</a></li><li><a href="#">显示某个文件的版本历史，包括文件改名</a></li><li><a href="#diff">显示指定文件相关的每一次diff</a></li><li><a href="#5">显示过去5次提交</a></li><li><a href="#">显示所有提交过的用户，按提交次数排序</a></li><li><a href="#">显示指定文件是什么人在什么时间修改过</a></li><li><a href="#">显示暂存区和工作区的差异</a></li><li><a href="#commit">显示暂存区和上一个commit的差异</a></li><li><a href="#commit">显示工作区与当前分支最新commit之间的差异</a></li><li><a href="#">显示两次提交之间的差异</a></li><li><a href="#">显示今天你写了多少行代码</a></li><li><a href="#">比较暂存区和版本库差异</a></li><li><a href="#">比较暂存区和版本库差异</a></li><li><a href="#">仅仅比较统计信息</a></li><li><a href="#">显示某次提交的元数据和内容变化</a></li><li><a href="#">显示某次提交发生变化的文件</a></li><li><a href="#">显示某次提交时，某个文件的内容</a></li><li><a href="#">显示当前分支的最近几次提交</a></li><li><a href="#">查看远程分支</a></li><li><a href="#">创建新的分支</a></li><li><a href="#">查看各个分支最后提交信息</a></li><li><a href="#">查看已经被合并到当前分支的分支</a></li><li><a href="#">查看尚未被合并到当前分支的分支</a></li><li><a href="#git-">git 添加、暂存</a></li><li><a href="#">添加一个文件</a></li><li><a href="#">添加一个子目录中的文件</a></li><li><a href="#">支持正则表达式</a></li><li><a href="#">添加指定文件到暂存区</a></li><li><a href="#">添加指定目录到暂存区，包括子目录</a></li><li><a href="#">添加当前目录的所有文件到暂存区</a></li><li><a href="#">添加每个变化前，都会要求确认</a></li><li><a href="#">对于同一个文件的多处变化，可以实现分次提交</a></li><li><a href="#git-">git 删除文件</a></li><li><a href="#-helloworldjs">移除 HelloWorld.js</a></li><li><a href="#">移除子目录中的文件</a></li><li><a href="#">删除工作区文件，并且将这次删除放入暂存区</a></li><li><a href="#">停止追踪指定文件，但该文件会保留在工作区</a></li><li><a href="#">管理分支</a></li><li><a href="#">查看所有的分支和远程分支</a></li><li><a href="#">创建一个新的分支</a></li><li><a href="#">重命名分支</a></li><li><a href="#git-branch-m--">git branch -m <旧名称> <新名称></a></li><li><a href="#">编辑分支的介绍</a></li><li><a href="#">列出所有本地分支</a></li><li><a href="#">列出所有远程分支</a></li><li><a href="#">新建一个分支，但依然停留在当前分支</a></li><li><a href="#">新建一个分支，并切换到该分支</a></li><li><a href="#commit">新建一个分支，指向指定commit</a></li><li><a href="#">新建一个分支，与指定的远程分支建立追踪关系</a></li><li><a href="#">切换到指定分支，并更新工作区</a></li><li><a href="#">切换到上一个分支</a></li><li><a href="#">建立追踪关系，在现有分支与指定的远程分支之间</a></li><li><a href="#">合并指定分支到当前分支</a></li><li><a href="#commit">选择一个commit，合并进当前分支</a></li><li><a href="#">删除分支</a></li><li><a href="#">删除远程分支</a></li><li><a href="#">切换到某个分支</a></li><li><a href="#">创建新的分支，并且切换过去</a></li><li><a href="#branchnewbranch">基于branch创建新的new_branch</a></li><li><a href="#checkout">把某次历史提交记录checkout出来，但无分支信息，切换到其他分支会自动删除</a></li><li><a href="#checkout">把某次历史提交记录checkout出来，创建成一个分支</a></li><li><a href="#">删除某个分支</a></li><li><a href="#-">强制删除某个分支 (未被合并的分支被删除的时候需要强制)</a></li><li><a href="#git-checkout">git checkout</a></li><li><a href="#master">检出一个版本库，默认将更新到master分支</a></li><li><a href="#">检出到一个特定的分支</a></li><li><a href="#git-branch--git-checkout-">新建一个分支，并且切换过去，相当于"git branch <名字>; git checkout <名字>"</a></li><li><a href="#">添加远程仓库</a></li><li><a href="#">下载远程仓库的所有变动</a></li><li><a href="#">显示所有远程仓库</a></li><li><a href="#">显示某个远程仓库的信息</a></li><li><a href="#">增加一个新的远程仓库，并命名</a></li><li><a href="#">查看远程服务器地址和仓库名称</a></li><li><a href="#">添加远程仓库地址</a></li><li><a href="#">设置远程仓库地址(用于修改远程仓库地址)</a></li><li><a href="#">删除远程仓库</a></li><li><a href="#">上传本地指定分支到远程仓库</a></li><li><a href="#originmaster">把本地的分支更新到远端origin的master分支上</a></li><li><a href="#git-push--">git push <远端> <分支></a></li><li><a href="#git-push--git-push-origin-master">git push 相当于 git push origin master</a></li><li><a href="#">强行推送当前分支到远程仓库，即使有冲突</a></li><li><a href="#">推送所有分支到远程仓库</a></li><li><a href="#">撤销：</a></li><li><a href="#">恢复暂存区的指定文件到工作区</a></li><li><a href="#commit">恢复某个commit的指定文件到暂存区和工作区</a></li><li><a href="#">恢复暂存区的所有文件到工作区</a></li><li><a href="#commit">重置暂存区的指定文件，与上一次commit保持一致，但工作区不变</a></li><li><a href="#commit">重置暂存区与工作区，与上一次commit保持一致</a></li><li><a href="#commit">重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变</a></li><li><a href="#headcommitcommit">重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致</a></li><li><a href="#headcommit">重置当前HEAD为指定commit，但保持暂存区和工作区不变</a></li><li><a href="#commitcommit">新建一个commit，用来撤销指定commit</a></li><li><a href="#">后者的所有变化都将被前者抵消，并且应用到当前分支</a></li><li><a href="#">恢复最后一次提交的状态</a></li><li><a href="#">暂时将未提交的变化移除，稍后再移入</a></li><li><a href="#stash">列所有stash</a></li><li><a href="#">恢复暂存的内容</a></li><li><a href="#">删除暂存区</a></li><li><a href="#-commit">提交 commit</a></li><li><a href="#">提交暂存区到仓库区附带提交信息</a></li><li><a href="#">提交暂存区的指定文件到仓库区</a></li><li><a href="#commit">提交工作区自上次commit之后的变化，直接到仓库区</a></li><li><a href="#diff">提交时显示所有diff信息</a></li><li><a href="#commit">使用一次新的commit，替代上一次提交</a></li><li><a href="#commit">如果代码没有任何新变化，则用来改写上一次commit的提交信息</a></li><li><a href="#commit">重做上一次commit，并包括指定文件的新变化</a></li><li><a href="#git-diff">git diff</a></li><li><a href="#">显示工作目录和索引的不同</a></li><li><a href="#">显示索引和最近一次提交的不同</a></li><li><a href="#">显示工作目录和最近一次提交的不同</a></li><li><a href="#git-grep">git grep</a></li><li><a href="#travis-jeffery">感谢Travis Jeffery提供的以下用法：</a></li><li><a href="#">在搜索结果中显示行号</a></li><li><a href="#">是搜索结果可读性更好</a></li><li><a href="#javavariablename">在所有的java中查找variableName</a></li><li><a href="#-arraylistname--add--remove-">搜索包含 "arrayListName" 和, "add" 或 "remove" 的所有行</a></li><li><a href="#git-log">git log</a></li><li><a href="#">显示所有提交</a></li><li><a href="#">显示某几条提交信息</a></li><li><a href="#">仅显示合并提交</a></li><li><a href="#">查看该文件每次提交记录</a></li><li><a href="#diff">查看每次详细修改内容的diff</a></li><li><a href="#diff">查看最近两次详细修改内容的diff</a></li><li><a href="#merge">merge</a></li><li><a href="#">将其他分支合并到当前分支</a></li><li><a href="#">在合并时创建一个新的合并后的提交</a></li><li><a href="#-fastfoward--merge-">不要 Fast-Foward 合并，这样可以生成 merge 提交</a></li><li><a href="#mv-">mv 重命名或移动一个文件</a></li><li><a href="#">重命名</a></li><li><a href="#">移动</a></li><li><a href="#">改名文件，并且将这个改名放入暂存区</a></li><li><a href="#">强制重命名或移动</a></li><li><a href="#">这个文件已经存在，将要覆盖掉</a></li><li><a href="#tag">tag</a></li><li><a href="#tag">列出所有tag</a></li><li><a href="#tagcommit">新建一个tag在当前commit</a></li><li><a href="#tagcommit">新建一个tag在指定commit</a></li><li><a href="#tag">删除本地tag</a></li><li><a href="#tag">删除远程tag</a></li><li><a href="#tag">查看tag信息</a></li><li><a href="#tag">提交指定tag</a></li><li><a href="#tag">提交所有tag</a></li><li><a href="#tag">新建一个分支，指向某个tag</a></li><li><a href="#push">push</a></li><li><a href="#originmaster">从远端origin的master分支更新版本库</a></li><li><a href="#git-pull--">git pull <远端> <分支></a></li><li><a href="#">抓取远程仓库所有分支更新并合并到本地，不要快进合并</a></li><li><a href="#ci">ci</a></li><li><a href="#git-add-git-rmgit-ci">将git add, git rm和git ci等操作都合并在一起做</a></li><li><a href="#">修改最后一次提交记录</a></li><li><a href="#rebase">rebase</a></li><li><a href="#experimentbranchmaster">将experimentBranch应用到master上面</a></li><li><a href="#git-rebase-basebranch-topicbranch">git rebase <basebranch> <topicbranch></a></li><li><a href="#-staging-">使 staging 区域恢复到上次提交时的状态，不改变现在的工作目录</a></li><li><a href="#-staging-">使 staging 区域恢复到上次提交时的状态，覆盖现在的工作目录</a></li><li><a href="#">将当前分支恢复到某次提交，不改变现在的工作目录</a></li><li><a href="#">在工作目录中所有的改变仍然存在</a></li><li><a href="#">将当前分支恢复到某次提交，覆盖现在的工作目录</a></li><li><a href="#">并且删除所有未提交的改变和指定提交之后的所有提交</a></li><li><a href="#">其他</a></li><li><a href="#">生成一个可供发布的压缩包</a></li><li><a href="#">打补丁</a></li><li><a href="#">测试补丁能否成功</a></li><li><a href="#git">查看Git的版本</a></li></ul></li></ul></ul></div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			</div>
 		</div>
 
 		<footer>
 			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
 		</footer>
+
+		<script>
+			// Add copy buttons to code blocks
+			document.addEventListener('DOMContentLoaded', function() {
+				const codeBlocks = document.querySelectorAll('pre');
+				
+				codeBlocks.forEach(function(block) {
+					// Create copy button
+					const button = document.createElement('button');
+					button.className = 'copy-button';
+					button.textContent = '复制';
+					
+					// Add the button to the code block
+					block.appendChild(button);
+					
+					// Add click event
+					button.addEventListener('click', function() {
+						const code = block.querySelector('code')?.textContent || block.textContent;
+						
+						// Copy to clipboard
+						navigator.clipboard.writeText(code).then(function() {
+							// Success feedback
+							button.textContent = '已复制!';
+							button.classList.add('copied');
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+								button.classList.remove('copied');
+							}, 2000);
+						})
+						.catch(function(error) {
+							console.error('复制失败:', error);
+							button.textContent = '复制失败';
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+							}, 2000);
+						});
+					});
+				});
+			});
+		</script>
 	</body>
 </html>

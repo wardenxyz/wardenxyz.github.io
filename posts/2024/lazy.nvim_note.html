@@ -19,38 +19,89 @@
 
 			<div class="metadata">2024-10-04 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#vim">vim</a>, <a href="/tags.html#lazy.nvim">lazy.nvim</a></div></div>
 
-			<div class="content"><h1 id="lazynvim">lazy.nvim 学习笔记</h1>
-<h2 id="lazynvim_1">lazy.nvim 路径</h2>
+			<div class="main-content">
+				<div class="content"><h1 id="lazynvim">lazy.nvim 学习笔记<a class="headerlink" href="#lazynvim" title="Permanent link">&para;</a></h1>
+<h2 id="lazynvim_1">lazy.nvim 路径<a class="headerlink" href="#lazynvim_1" title="Permanent link">&para;</a></h2>
 <pre><code class="language-bash">C:\Users\admin\AppData\Local\nvim-data\site\pack\packer\start\lazy.nvim
 </code></pre>
 <p>命令是</p>
 <pre><code class="language-bash">git clone https://github.com/folke/lazy.nvim.git C:\Users\admin\AppData\Local\nvim-data\site\pack\packer\start\lazy.nvim
 </code></pre>
-<h2 id="initlua">init.lua 路径</h2>
+<h2 id="initlua">init.lua 路径<a class="headerlink" href="#initlua" title="Permanent link">&para;</a></h2>
 <pre><code class="language-bash">C:\Users\admin\AppData\Local\nvim
 </code></pre>
 <p>命令是</p>
 <pre><code class="language-bash">git clone https://gitee.com/MechCrafter/lazy.nvim.git C:\Users\admin\AppData\Local\nvim
 </code></pre>
 <p>（这是我的配置文件，是私有仓库，你拉不下来）</p>
-<h2 id="neovim">Neovim 插件路径</h2>
+<h2 id="neovim">Neovim 插件路径<a class="headerlink" href="#neovim" title="Permanent link">&para;</a></h2>
 <pre><code class="language-bash">C:\Users\admin\AppData\Local\nvim-data\lazy
 </code></pre>
 <p>这个里面放的就是你的插件</p>
 <hr />
 <p>步骤：</p>
-<h2 id="lazynvim_2">第一步，拉取 lazy.nvim</h2>
+<h2 id="lazynvim_2">第一步，拉取 lazy.nvim<a class="headerlink" href="#lazynvim_2" title="Permanent link">&para;</a></h2>
 <pre><code class="language-bash">git clone https://github.com/folke/lazy.nvim.git C:\Users\admin\AppData\Local\nvim-data\site\pack\packer\start\lazy.nvim
 </code></pre>
-<h2 id="_1">第二步，拉取配置文件</h2>
+<h2 id="_1">第二步，拉取配置文件<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <pre><code class="language-bash">git clone https://gitee.com/MechCrafter/lazy.nvim.git C:\Users\admin\AppData\Local\nvim
 </code></pre>
-<h2 id="_2">第三步，下载插件</h2>
+<h2 id="_2">第三步，下载插件<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>打开 Neovim，lazy.nvim 会自动下载插件，下载完成后，重启 Neovim</p></div>
+				<!-- <div class="sidebar"> -->
+					<!-- <div class="outline"> -->
+						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#lazynvim-">lazy.nvim 学习笔记</a<ul><li><a href="#lazynvim-">lazy.nvim 路径</a></li><li><a href="#initlua-">init.lua 路径</a></li><li><a href="#neovim-">Neovim 插件路径</a></li><li><a href="#-lazynvim">第一步，拉取 lazy.nvim</a></li><li><a href="#">第二步，拉取配置文件</a></li><li><a href="#">第三步，下载插件</a></li></ul></li></ul></ul></div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			</div>
 		</div>
 
 		<footer>
 			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
 		</footer>
+
+		<script>
+			// Add copy buttons to code blocks
+			document.addEventListener('DOMContentLoaded', function() {
+				const codeBlocks = document.querySelectorAll('pre');
+				
+				codeBlocks.forEach(function(block) {
+					// Create copy button
+					const button = document.createElement('button');
+					button.className = 'copy-button';
+					button.textContent = '复制';
+					
+					// Add the button to the code block
+					block.appendChild(button);
+					
+					// Add click event
+					button.addEventListener('click', function() {
+						const code = block.querySelector('code')?.textContent || block.textContent;
+						
+						// Copy to clipboard
+						navigator.clipboard.writeText(code).then(function() {
+							// Success feedback
+							button.textContent = '已复制!';
+							button.classList.add('copied');
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+								button.classList.remove('copied');
+							}, 2000);
+						})
+						.catch(function(error) {
+							console.error('复制失败:', error);
+							button.textContent = '复制失败';
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+							}, 2000);
+						});
+					});
+				});
+			});
+		</script>
 	</body>
 </html>

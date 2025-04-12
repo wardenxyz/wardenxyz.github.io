@@ -19,7 +19,8 @@
 
 			<div class="metadata">2024-04-08 <div class="category">分类: <a href="/categories.html#软件">软件</a></div> <div class="tags">标签: <a href="/tags.html#邮箱">邮箱</a></div></div>
 
-			<div class="content"><h1 id="qqmail-foxmail">第三方邮箱客户端配置QQmail &amp; Foxmail</h1>
+			<div class="main-content">
+				<div class="content"><h1 id="qqmail-foxmail">第三方邮箱客户端配置QQmail &amp; Foxmail<a class="headerlink" href="#qqmail-foxmail" title="Permanent link">&para;</a></h1>
 <p>如果您的邮件客户端不在上述列出的范围内，您可以尝试如下通用配置：</p>
 <p>接收邮件服务器：imap.qq.com</p>
 <p>发送邮件服务器：smtp.qq.com</p>
@@ -33,10 +34,60 @@
 <p>账户名：您的 QQ 邮箱账户名（如果您是 VIP 帐号或 Foxmail 帐号，账户名需要填写完整的邮件地址）</p>
 <p>密码：您的 QQ 邮箱密码</p>
 <p>电子邮件地址：您的 QQ 邮箱的完整邮件地址</p></div>
+				<!-- <div class="sidebar"> -->
+					<!-- <div class="outline"> -->
+						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#qqmail--foxmail">第三方邮箱客户端配置QQmail & Foxmail</a></li></ul></ul></div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			</div>
 		</div>
 
 		<footer>
 			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
 		</footer>
+
+		<script>
+			// Add copy buttons to code blocks
+			document.addEventListener('DOMContentLoaded', function() {
+				const codeBlocks = document.querySelectorAll('pre');
+				
+				codeBlocks.forEach(function(block) {
+					// Create copy button
+					const button = document.createElement('button');
+					button.className = 'copy-button';
+					button.textContent = '复制';
+					
+					// Add the button to the code block
+					block.appendChild(button);
+					
+					// Add click event
+					button.addEventListener('click', function() {
+						const code = block.querySelector('code')?.textContent || block.textContent;
+						
+						// Copy to clipboard
+						navigator.clipboard.writeText(code).then(function() {
+							// Success feedback
+							button.textContent = '已复制!';
+							button.classList.add('copied');
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+								button.classList.remove('copied');
+							}, 2000);
+						})
+						.catch(function(error) {
+							console.error('复制失败:', error);
+							button.textContent = '复制失败';
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+							}, 2000);
+						});
+					});
+				});
+			});
+		</script>
 	</body>
 </html>

@@ -19,14 +19,15 @@
 
 			<div class="metadata">2024-06-01 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#GitHub">GitHub</a></div></div>
 
-			<div class="content"><h1 id="readme">README 文档结构</h1>
-<h2 id="foobar">Foobar （项目名称）</h2>
+			<div class="main-content">
+				<div class="content"><h1 id="readme">README 文档结构<a class="headerlink" href="#readme" title="Permanent link">&para;</a></h1>
+<h2 id="foobar">Foobar （项目名称）<a class="headerlink" href="#foobar" title="Permanent link">&para;</a></h2>
 <p>Foobar is a Python library for dealing with word pluralization.（项目简介）</p>
-<h2 id="installation">Installation（安装）</h2>
+<h2 id="installation">Installation（安装）<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <p>Use the package manager <a href="https://pip.pypa.io/en/stable/">pip</a> to install foobar.</p>
 <pre><code class="language-bash">pip install foobar
 </code></pre>
-<h2 id="usage">Usage（使用）</h2>
+<h2 id="usage">Usage（使用）<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <pre><code class="language-python">import foobar
 ## returns 'words'
 foobar.pluralize('word')
@@ -35,16 +36,66 @@ foobar.pluralize('goose')
 ## returns 'phenomenon'
 foobar.singularize('phenomena')
 </code></pre>
-<h2 id="contributing">Contributing（如何贡献）</h2>
+<h2 id="contributing">Contributing（如何贡献）<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h2>
 <p>Pull requests are welcome. For major changes, please open an issue first</p>
 <p>to discuss what you would like to change.</p>
 <p>Please make sure to update tests as appropriate.</p>
-<h2 id="license">License（许可证）</h2>
+<h2 id="license">License（许可证）<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
 <p><a href="https://choosealicense.com/licenses/mit/">MIT</a></p></div>
+				<!-- <div class="sidebar"> -->
+					<!-- <div class="outline"> -->
+						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#readme-">README 文档结构</a<ul><li><a href="#foobar-">Foobar （项目名称）</a></li><li><a href="#installation">Installation（安装）</a></li><li><a href="#usage">Usage（使用）</a></li><li><a href="#returns-words">returns 'words'</a></li><li><a href="#returns-geese">returns 'geese'</a></li><li><a href="#returns-phenomenon">returns 'phenomenon'</a></li><li><a href="#contributing">Contributing（如何贡献）</a></li><li><a href="#license">License（许可证）</a></li></ul></li></ul></ul></div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			</div>
 		</div>
 
 		<footer>
 			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
 		</footer>
+
+		<script>
+			// Add copy buttons to code blocks
+			document.addEventListener('DOMContentLoaded', function() {
+				const codeBlocks = document.querySelectorAll('pre');
+				
+				codeBlocks.forEach(function(block) {
+					// Create copy button
+					const button = document.createElement('button');
+					button.className = 'copy-button';
+					button.textContent = '复制';
+					
+					// Add the button to the code block
+					block.appendChild(button);
+					
+					// Add click event
+					button.addEventListener('click', function() {
+						const code = block.querySelector('code')?.textContent || block.textContent;
+						
+						// Copy to clipboard
+						navigator.clipboard.writeText(code).then(function() {
+							// Success feedback
+							button.textContent = '已复制!';
+							button.classList.add('copied');
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+								button.classList.remove('copied');
+							}, 2000);
+						})
+						.catch(function(error) {
+							console.error('复制失败:', error);
+							button.textContent = '复制失败';
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+							}, 2000);
+						});
+					});
+				});
+			});
+		</script>
 	</body>
 </html>

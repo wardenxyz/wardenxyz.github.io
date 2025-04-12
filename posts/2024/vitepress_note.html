@@ -19,7 +19,8 @@
 
 			<div class="metadata">2024-10-12 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#vitepress">vitepress</a></div></div>
 
-			<div class="content"><h1 id="vitepress">vitepress 学习笔记</h1>
+			<div class="main-content">
+				<div class="content"><h1 id="vitepress">vitepress 学习笔记<a class="headerlink" href="#vitepress" title="Permanent link">&para;</a></h1>
 <p>我的 vitepress 目录结构是</p>
 <pre><code class="language-bash">.
 ├─ .vitepress # vitepress 配置文件夹
@@ -37,10 +38,10 @@
 </code></pre>
 <p>步骤：</p>
 <p>https://vitepress.dev/zh/guide/getting-started</p>
-<h2 id="vitepress_1">第一步，下载 vitepress 包</h2>
+<h2 id="vitepress_1">第一步，下载 vitepress 包<a class="headerlink" href="#vitepress_1" title="Permanent link">&para;</a></h2>
 <pre><code class="language-bash">npm add -D vitepress
 </code></pre>
-<h2 id="vitepress_2">第二步，初始化 vitepress 项目</h2>
+<h2 id="vitepress_2">第二步，初始化 vitepress 项目<a class="headerlink" href="#vitepress_2" title="Permanent link">&para;</a></h2>
 <pre><code class="language-bash">npx vitepress init
 </code></pre>
 <p>这一步的输出如下</p>
@@ -66,7 +67,7 @@
 │
 └  You're all set! Now run npx vitepress dev and start writing.
 </code></pre>
-<h2 id="vitepress_3">第三步，修改 vitepress 配置文件</h2>
+<h2 id="vitepress_3">第三步，修改 vitepress 配置文件<a class="headerlink" href="#vitepress_3" title="Permanent link">&para;</a></h2>
 <pre><code class="language-typescript">// .vitepress/config.mts
 export default(
   defineConfig({
@@ -76,7 +77,7 @@ export default(
   })
 )
 </code></pre>
-<h2 id="_1">第四步，预览和构建站点</h2>
+<h2 id="_1">第四步，预览和构建站点<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>预览站点</li>
 </ul>
@@ -92,7 +93,7 @@ export default(
 </ul>
 <pre><code class="language-bash">npx vitepress preview
 </code></pre>
-<h2 id="vitepress_4">vitepress 维护指南</h2>
+<h2 id="vitepress_4">vitepress 维护指南<a class="headerlink" href="#vitepress_4" title="Permanent link">&para;</a></h2>
 <p>每次更新 vitepress 文档，都需要执行以下步骤</p>
 <ol>
 <li>
@@ -115,10 +116,60 @@ export default(
 <p>每年都要更新 config.mts 的 nav 字段（每年）</p>
 </li>
 </ol></div>
+				<!-- <div class="sidebar"> -->
+					<!-- <div class="outline"> -->
+						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#vitepress-">vitepress 学习笔记</a<ul><li><a href="#-vitepress-">第一步，下载 vitepress 包</a></li><li><a href="#-vitepress-">第二步，初始化 vitepress 项目</a></li><li><a href="#-vitepress-">第三步，修改 vitepress 配置文件</a></li><li><a href="#">第四步，预览和构建站点</a></li><li><a href="#vitepress-">vitepress 维护指南</a></li></ul></li></ul></ul></div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			</div>
 		</div>
 
 		<footer>
 			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
 		</footer>
+
+		<script>
+			// Add copy buttons to code blocks
+			document.addEventListener('DOMContentLoaded', function() {
+				const codeBlocks = document.querySelectorAll('pre');
+				
+				codeBlocks.forEach(function(block) {
+					// Create copy button
+					const button = document.createElement('button');
+					button.className = 'copy-button';
+					button.textContent = '复制';
+					
+					// Add the button to the code block
+					block.appendChild(button);
+					
+					// Add click event
+					button.addEventListener('click', function() {
+						const code = block.querySelector('code')?.textContent || block.textContent;
+						
+						// Copy to clipboard
+						navigator.clipboard.writeText(code).then(function() {
+							// Success feedback
+							button.textContent = '已复制!';
+							button.classList.add('copied');
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+								button.classList.remove('copied');
+							}, 2000);
+						})
+						.catch(function(error) {
+							console.error('复制失败:', error);
+							button.textContent = '复制失败';
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+							}, 2000);
+						});
+					});
+				});
+			});
+		</script>
 	</body>
 </html>

@@ -19,8 +19,9 @@
 
 			<div class="metadata">2024-10-06 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#OpenSSL">OpenSSL</a>, <a href="/tags.html#加密">加密</a></div></div>
 
-			<div class="content"><h1 id="openssl">OpenSSL 加解密学习笔记</h1>
-<h2 id="_1">加解密命令</h2>
+			<div class="main-content">
+				<div class="content"><h1 id="openssl">OpenSSL 加解密学习笔记<a class="headerlink" href="#openssl" title="Permanent link">&para;</a></h1>
+<h2 id="_1">加解密命令<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>加密命令：</p>
 <pre><code class="language-bash">openssl enc -p -aes-256-cbc -pbkdf2 -iter 20000 -pass pass:somepassword -in ./sometext.txt -out ./sometext.txt.enc
 </code></pre>
@@ -93,7 +94,7 @@
 </ul>
 <p>总的来说，这个命令使用了 AES-256-CBC 算法和 PBKDF2 密钥派生函数，以及一个密码，对一个加密的文件进行解密，并将解密后的结果输出到另一个文件。同时，它还会打印出解密过程中使用的盐值和密钥。</p>
 <hr />
-<h2 id="_2">用文件密钥加密</h2>
+<h2 id="_2">用文件密钥加密<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>OpenSSL 的 <code>enc</code> 命令不直接支持同时使用密码和密钥文件进行加密</p>
 <p>OpenSSL支持许多加密算法，其中一些可以使用文件密钥和数字密钥一起进行加密。在这种情况下，通常会使用一个密钥派生函数（如PBKDF2或scrypt）来从文件密钥和数字密钥派生出一个加密密钥。</p>
 <p>例如，你可以使用以下命令来使用AES-256-CBC模式和PBKDF2密钥派生函数进行加密：</p>
@@ -111,7 +112,7 @@
 <li><code>-pass file:./keyfile</code>表示密码是从文件<code>./keyfile</code>中读取的。</li>
 </ul>
 <p>注意，这只是一个示例。实际使用时，你应该根据你的具体需求和环境选择合适的加密算法和密钥派生函数，并妥善保管你的密钥。</p>
-<h2 id="_3">生成一个包含随机数据的二进制文件</h2>
+<h2 id="_3">生成一个包含随机数据的二进制文件<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>你可以使用OpenSSL的<code>rand</code>命令来生成一个无意义的二进制文件。以下是一个示例：</p>
 <pre><code class="language-bash">openssl rand -out random.bin 1024
 </code></pre>
@@ -129,7 +130,7 @@
 </code></pre>
 <p>这个命令会生成一个包含1048576字节（即1024KB或1MB）随机数据的文件 <code>random.bin</code>。</p>
 <hr />
-<h2 id="openssl_1">OpenSSL 检测哈希值</h2>
+<h2 id="openssl_1">OpenSSL 检测哈希值<a class="headerlink" href="#openssl_1" title="Permanent link">&para;</a></h2>
 <p>在 OpenSSL 中，你可以使用 <code>dgst</code> 命令来计算文件的哈希值。以下是具体的步骤：</p>
 <ol>
 <li>首先，你需要打开终端。</li>
@@ -142,7 +143,7 @@
 <p>请将 <code>filename</code> 替换为你想要检测的文件的名称。</p>
 <p>这个命令会计算文件的 SHA-256 哈希值，并将结果打印到终端。</p>
 <hr />
-<h2 id="rsa">生成 RSA 密钥</h2>
+<h2 id="rsa">生成 RSA 密钥<a class="headerlink" href="#rsa" title="Permanent link">&para;</a></h2>
 <p>在 OpenSSL 中，你可以使用以下的命令来生成 RSA 密钥对：</p>
 <pre><code class="language-bash">openssl genpkey -algorithm RSA -out private_key.pem
 openssl rsa -pubout -in private_key.pem -out public_key.pem
@@ -158,7 +159,7 @@ openssl rsa -pubout -in private_key.pem -out public_key.pem
 </ul>
 <p>完成以上步骤后，你就会得到一个 RSA 密钥对，私钥保存在 <code>private_key.pem</code> 文件中，公钥保存在 <code>public_key.pem</code> 文件中。</p>
 <hr />
-<h2 id="openssl_2">OpenSSL 支持的算法</h2>
+<h2 id="openssl_2">OpenSSL 支持的算法<a class="headerlink" href="#openssl_2" title="Permanent link">&para;</a></h2>
 <p>OpenSSL 支持多种加密算法，包括对称加密算法、非对称加密算法和哈希函数。你可以使用以下的命令来列出 OpenSSL 支持的所有算法：</p>
 <ol>
 <li>
@@ -178,10 +179,60 @@ openssl list -digest-commands</code></p>
 </li>
 </ol>
 <p>这些命令会列出 OpenSSL 支持的所有对应类型的算法。请注意，可用的算法可能会根据你的 OpenSSL 版本和配置有所不同。</p></div>
+				<!-- <div class="sidebar"> -->
+					<!-- <div class="outline"> -->
+						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#openssl-">OpenSSL 加解密学习笔记</a<ul><li><a href="#">加解密命令</a></li><li><a href="#">用文件密钥加密</a></li><li><a href="#">生成一个包含随机数据的二进制文件</a></li><li><a href="#openssl-">OpenSSL 检测哈希值</a></li><li><a href="#-rsa-">生成 RSA 密钥</a></li><li><a href="#openssl-">OpenSSL 支持的算法</a></li></ul></li></ul></ul></div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			</div>
 		</div>
 
 		<footer>
 			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
 		</footer>
+
+		<script>
+			// Add copy buttons to code blocks
+			document.addEventListener('DOMContentLoaded', function() {
+				const codeBlocks = document.querySelectorAll('pre');
+				
+				codeBlocks.forEach(function(block) {
+					// Create copy button
+					const button = document.createElement('button');
+					button.className = 'copy-button';
+					button.textContent = '复制';
+					
+					// Add the button to the code block
+					block.appendChild(button);
+					
+					// Add click event
+					button.addEventListener('click', function() {
+						const code = block.querySelector('code')?.textContent || block.textContent;
+						
+						// Copy to clipboard
+						navigator.clipboard.writeText(code).then(function() {
+							// Success feedback
+							button.textContent = '已复制!';
+							button.classList.add('copied');
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+								button.classList.remove('copied');
+							}, 2000);
+						})
+						.catch(function(error) {
+							console.error('复制失败:', error);
+							button.textContent = '复制失败';
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+							}, 2000);
+						});
+					});
+				});
+			});
+		</script>
 	</body>
 </html>

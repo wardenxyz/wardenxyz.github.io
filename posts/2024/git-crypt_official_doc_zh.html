@@ -19,14 +19,15 @@
 
 			<div class="metadata">2024-07-01 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#git-crypt">git-crypt</a>, <a href="/tags.html#git">git</a></div></div>
 
-			<div class="content"><h1 id="git-crypt">git-crypt 官方文档中文翻译</h1>
-<h2 id="git-crypt-git">git-crypt - Git 中的透明文件加密</h2>
+			<div class="main-content">
+				<div class="content"><h1 id="git-crypt">git-crypt 官方文档中文翻译<a class="headerlink" href="#git-crypt" title="Permanent link">&para;</a></h1>
+<h2 id="git-crypt-git">git-crypt - Git 中的透明文件加密<a class="headerlink" href="#git-crypt-git" title="Permanent link">&para;</a></h2>
 <p>git-crypt 使 Git 仓库中的文件可以实现透明的加密和解密。您可以选择需要保护的文件，在提交时进行加密，在检出时进行解密。git-crypt 可以让您自由共享包含公共和私有内容的仓库。即使开发者没有密钥，git-crypt 也能让其实现克隆和提交含有加密文件的仓库。这样，您可以将秘密资料（如密钥或密码）存储在与代码相同的仓库中，而不需要锁定整个仓库。</p>
 <p>git-crypt 是由 <a href="https://www.agwa.name">Andrew Ayer</a>（ agwa@andrewayer.name ）编写的。<br />
 更多信息，请访问 <a href="https://www.agwa.name/projects/git-crypt">https://www.agwa.name/projects/git-crypt</a>。</p>
-<h2 id="git-crypt_1">构建 git-crypt</h2>
+<h2 id="git-crypt_1">构建 git-crypt<a class="headerlink" href="#git-crypt_1" title="Permanent link">&para;</a></h2>
 <p>参考 <a href="https://github.com/AGWA/git-crypt/blob/master/INSTALL.md">INSTALL.md</a> ​ 文件进行安装。</p>
-<h2 id="git-crypt_2">使用 git-crypt</h2>
+<h2 id="git-crypt_2">使用 git-crypt<a class="headerlink" href="#git-crypt_2" title="Permanent link">&para;</a></h2>
 <p>配置仓库以使用 git-crypt：</p>
 <pre><code>cd repo
 git-crypt init
@@ -54,17 +55,17 @@ SPECIFY A USER ID"）。注意：<code>git-crypt add-gpg-user</code> ​ 会<br 
 <pre><code>git-crypt unlock /path/to/key
 </code></pre>
 <p>这就是你需要做的全部工作——在 <code>git-crypt</code> ​ 配置完成后（无论是通过 <code>git-crypt init</code> ​ 还是 <code>git-crypt unlock</code> ​），你可以像往常一样使用 <code>git</code> ​。加密和解密过程会透明地进行。</p>
-<h2 id="_1">当前状态</h2>
+<h2 id="_1">当前状态<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>git-crypt 的最新版本是 <a href="https://github.com/AGWA/git-crypt/blob/master/NEWS.md">0.7.0</a>，发布于<br />
 2022-04-21。git-crypt 旨在实现无缺陷且可靠，即它不应崩溃、失效或泄露您的机密数据。然而，它尚未成熟，即它的文档、功能丰富性或易用性尚未达到应有的水平。此外，在 1.0 版本之前，可能会引入不向后兼容的变更。</p>
-<h2 id="_2">安全性</h2>
+<h2 id="_2">安全性<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>git-crypt 比其他透明的 git 加密系统更安全。<br />
 git-crypt 使用 AES-256 在 CTR 模式下加密文件，并使用从文件的 SHA-1 HMAC 派生的合成 IV。<br />
 这种操作模式在确定性选择明文攻击下被证明是语义安全的。<br />
 这意味着尽管加密是确定性的（这是必需的，以便 git 可以区分文件是否已更改），<br />
 但它不会泄露任何信息，只会暴露两个文件是否相同。<br />
 其他透明的 git 加密方案使用 ECB 或 CBC 模式和固定 IV。这些系统在语义上不安全，会泄露信息。</p>
-<h2 id="_3">局限性</h2>
+<h2 id="_3">局限性<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>git-crypt 依赖于 git 过滤器，而这些过滤器并非为加密设计。因此，git-crypt 并非加密版本库中大多数或全部文件的最佳工具。git-crypt 真正擅长的是这样一种场景：你的版本库绝大多数内容是公开的，但其中有一些文件（可能是一组命名为*. key 的私钥，或是一个含有 API 凭证的文件）需要加密。如果需要加密整个版本库，考虑使用 <a href="https://spwhitton.name/tech/code/git-remote-gcrypt/">git-remote-gcrypt</a> 这类工具。（注：本文不对 git-remote-gcrypt 的安全性作出评价。）</p>
 <p>git-crypt 不会加密文件名、提交信息、符号链接目标、gitlink 或其他元数据。</p>
 <p>git-crypt 无法隐藏文件是否发生更改、文件长度，或者两个文件完全相同这一事实（参见上方“安全性”部分）</p>
@@ -73,7 +74,7 @@ git-crypt 使用 AES-256 在 CTR 模式下加密文件，并使用从文件的 S
 <p>虽然 git-crypt 使用 SHA-1 HMAC 保护单个文件内容，但如果整个仓库没有做防篡改保护，git-crypt 就不能安全使用（如果攻击者可以篡改你的仓库，他们就可以修改你的. gitattributes 文件来禁用加密）。如果必要，可以使用 git 的特性，例如签名标签，而不是仅仅依靠 git-crypt 来保证完整性。</p>
 <p>使用 git-crypt 加密的文件不能用 git-apply 打补丁，除非补丁本身也是加密的。要生成一个加密的补丁，可以使用命令 <code>git diff --no-textconv --binary</code> ​。或者，你也可以在 git 外部使用 patch 命令来打明文补丁。</p>
 <p>git-crypt 在一些第三方 git 图形用户界面（GUI）上无法可靠工作，例如 <a href="https://jira.atlassian.com/browse/SRCTREE-2511">Atlassian SourceTree</a> 和 GitHub for Mac。文件可能会保持未加密状态。</p>
-<h2 id="gitattributes">Gitattributes 文件</h2>
+<h2 id="gitattributes">Gitattributes 文件<a class="headerlink" href="#gitattributes" title="Permanent link">&para;</a></h2>
 <p>.gitattributes 文件的文档位于 gitattributes (5) 手册页面中。文件匹配模式与. gitignore 中使用的格式相同，详情可参见 gitignore (5) 手册页面，但需要注意的是，仅指定一个目录（例如 <code>/dir/</code> ​）不足以对该目录下的所有文件进行加密。</p>
 <p>另请注意，<code>dir/*</code> ​模式不会匹配 <code>dir</code> ​子目录下的文件。如果要加密整个 <code>dir</code> ​子树，请使用 <code>dir/**</code> ​：</p>
 <pre><code>dir/** filter=git-crypt diff=git-crypt
@@ -81,10 +82,60 @@ git-crypt 使用 AES-256 在 CTR 模式下加密文件，并使用从文件的 S
 <p>.gitattributes 文件不能被加密，因此请确保通配符不会意外地匹配到它。如有必要，你可以像这样将 .gitattributes 排除在加密之外：</p>
 <pre><code>.gitattributes !filter !diff
 </code></pre></div>
+				<!-- <div class="sidebar"> -->
+					<!-- <div class="outline"> -->
+						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#gitcrypt-">git-crypt 官方文档中文翻译</a<ul><li><a href="#gitcrypt--git-">git-crypt - Git 中的透明文件加密</a></li><li><a href="#-gitcrypt">构建 git-crypt</a></li><li><a href="#-gitcrypt">使用 git-crypt</a></li><li><a href="#">当前状态</a></li><li><a href="#">安全性</a></li><li><a href="#">局限性</a></li><li><a href="#gitattributes-">Gitattributes 文件</a></li></ul></li></ul></ul></div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			</div>
 		</div>
 
 		<footer>
 			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
 		</footer>
+
+		<script>
+			// Add copy buttons to code blocks
+			document.addEventListener('DOMContentLoaded', function() {
+				const codeBlocks = document.querySelectorAll('pre');
+				
+				codeBlocks.forEach(function(block) {
+					// Create copy button
+					const button = document.createElement('button');
+					button.className = 'copy-button';
+					button.textContent = '复制';
+					
+					// Add the button to the code block
+					block.appendChild(button);
+					
+					// Add click event
+					button.addEventListener('click', function() {
+						const code = block.querySelector('code')?.textContent || block.textContent;
+						
+						// Copy to clipboard
+						navigator.clipboard.writeText(code).then(function() {
+							// Success feedback
+							button.textContent = '已复制!';
+							button.classList.add('copied');
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+								button.classList.remove('copied');
+							}, 2000);
+						})
+						.catch(function(error) {
+							console.error('复制失败:', error);
+							button.textContent = '复制失败';
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+							}, 2000);
+						});
+					});
+				});
+			});
+		</script>
 	</body>
 </html>

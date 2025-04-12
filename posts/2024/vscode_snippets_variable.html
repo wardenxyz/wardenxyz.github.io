@@ -19,9 +19,10 @@
 
 			<div class="metadata">2024-05-01 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#vscode">vscode</a></div></div>
 
-			<div class="content"><h1 id="vscode-snippets">vscode snippets 预置变量</h1>
+			<div class="main-content">
+				<div class="content"><h1 id="vscode-snippets">vscode snippets 预置变量<a class="headerlink" href="#vscode-snippets" title="Permanent link">&para;</a></h1>
 <p>在 Visual Studio Code 中，你可以使用许多预定义的变量来创建代码片段（snippets）。以下是一些常用的预定义变量：</p>
-<h2 id="_1">常用变量</h2>
+<h2 id="_1">常用变量<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>$TM_SELECTED_TEXT</code>：当前选中的文本。</li>
 <li><code>$TM_CURRENT_LINE</code>：当前行的内容。</li>
@@ -39,7 +40,7 @@
 <li><code>$CURSOR_INDEX</code>：光标索引（基于0）。</li>
 <li><code>$CURSOR_NUMBER</code>：光标编号（基于1）。</li>
 </ul>
-<h2 id="_2">日期和时间变量</h2>
+<h2 id="_2">日期和时间变量<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>$CURRENT_YEAR</code>：当前年份。</li>
 <li><code>$CURRENT_YEAR_SHORT</code>：当前年份的最后两位数字。</li>
@@ -55,13 +56,13 @@
 <li><code>$CURRENT_SECONDS_UNIX</code>：当前 Unix 时间戳。</li>
 <li><code>$CURRENT_TIMEZONE_OFFSET</code>：当前的 UTC 时间偏移量表示为 <code>+HH:MM</code> 或 <code>-HH:MM</code>（例如<code>-07:00</code>）。</li>
 </ul>
-<h2 id="uuid">随机数和 UUID</h2>
+<h2 id="uuid">随机数和 UUID<a class="headerlink" href="#uuid" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>$RANDOM</code>：一个随机整数。</li>
 <li><code>$RANDOM_HEX</code>：一个随机的十六进制字符串。</li>
 <li><code>$UUID</code>：一个随机的 UUID。</li>
 </ul>
-<h2 id="_3">注释标记</h2>
+<h2 id="_3">注释标记<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>$BLOCK_COMMENT_START</code>：块注释的开始标记。</li>
 <li><code>$BLOCK_COMMENT_END</code>：块注释的结束标记。</li>
@@ -77,10 +78,60 @@
 }
 </code></pre>
 <p>更多关于代码片段的信息 <a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets#_variables">Visual Studio Code 的官方文档</a>。</p></div>
+				<!-- <div class="sidebar"> -->
+					<!-- <div class="outline"> -->
+						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#vscode-snippets-">vscode snippets 预置变量</a<ul><li><a href="#">常用变量</a></li><li><a href="#">日期和时间变量</a></li><li><a href="#-uuid">随机数和 UUID</a></li><li><a href="#">注释标记</a></li></ul></li></ul></ul></div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			</div>
 		</div>
 
 		<footer>
 			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
 		</footer>
+
+		<script>
+			// Add copy buttons to code blocks
+			document.addEventListener('DOMContentLoaded', function() {
+				const codeBlocks = document.querySelectorAll('pre');
+				
+				codeBlocks.forEach(function(block) {
+					// Create copy button
+					const button = document.createElement('button');
+					button.className = 'copy-button';
+					button.textContent = '复制';
+					
+					// Add the button to the code block
+					block.appendChild(button);
+					
+					// Add click event
+					button.addEventListener('click', function() {
+						const code = block.querySelector('code')?.textContent || block.textContent;
+						
+						// Copy to clipboard
+						navigator.clipboard.writeText(code).then(function() {
+							// Success feedback
+							button.textContent = '已复制!';
+							button.classList.add('copied');
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+								button.classList.remove('copied');
+							}, 2000);
+						})
+						.catch(function(error) {
+							console.error('复制失败:', error);
+							button.textContent = '复制失败';
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+							}, 2000);
+						});
+					});
+				});
+			});
+		</script>
 	</body>
 </html>

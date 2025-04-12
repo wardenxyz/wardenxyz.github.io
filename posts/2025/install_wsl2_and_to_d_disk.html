@@ -19,8 +19,9 @@
 
 			<div class="metadata">2025-04-10 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#WSL2">WSL2</a>, <a href="/tags.html#Linux">Linux</a></div></div>
 
-			<div class="content"><h1 id="wsl2-d">安装 WSL2 并迁移到 D 盘</h1>
-<h2 id="wsl2">安装 WSL2</h2>
+			<div class="main-content">
+				<div class="content"><h1 id="wsl2-d">安装 WSL2 并迁移到 D 盘<a class="headerlink" href="#wsl2-d" title="Permanent link">&para;</a></h1>
+<h2 id="wsl2">安装 WSL2<a class="headerlink" href="#wsl2" title="Permanent link">&para;</a></h2>
 <p>以下是在 Windows 上安装 WSL2 的主要步骤：</p>
 <ol>
 <li>启用必要功能</li>
@@ -42,7 +43,7 @@
 <pre><code class="language-powershell">wsl --install -d Ubuntu
 </code></pre>
 <p>安装完成后，启动并按照指示设置用户名和密码。</p>
-<h2 id="d">迁移到 D 盘</h2>
+<h2 id="d">迁移到 D 盘<a class="headerlink" href="#d" title="Permanent link">&para;</a></h2>
 <p>以下是把 WSL2 迁移到 D 盘的步骤：</p>
 <ol>
 <li>
@@ -73,15 +74,65 @@
 <pre><code class="language-powershell">wsl --set-default Ubuntu
 </code></pre>
 <p>这样就完成了在 D 盘安装或迁移相应 WSL2 发行版的流程。若需要多个发行版，也可按照上述方法依次导出-导入。</p>
-<h2 id="ubuntu">查看安装的 Ubuntu 版本</h2>
+<h2 id="ubuntu">查看安装的 Ubuntu 版本<a class="headerlink" href="#ubuntu" title="Permanent link">&para;</a></h2>
 <p>打开 WSL2 终端。</p>
 <pre><code class="language-bash">cat /etc/os-release
 </code></pre>
 <p>输出结果中，<code>VERSION</code> 和 <code>VERSION_ID</code> 行会显示 Ubuntu 的版本信息。</p></div>
+				<!-- <div class="sidebar"> -->
+					<!-- <div class="outline"> -->
+						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#-wsl2--d-">安装 WSL2 并迁移到 D 盘</a<ul><li><a href="#-wsl2">安装 WSL2</a></li><li><a href="#-d-">迁移到 D 盘</a></li><li><a href="#-ubuntu-">查看安装的 Ubuntu 版本</a></li></ul></li></ul></ul></div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			</div>
 		</div>
 
 		<footer>
 			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
 		</footer>
+
+		<script>
+			// Add copy buttons to code blocks
+			document.addEventListener('DOMContentLoaded', function() {
+				const codeBlocks = document.querySelectorAll('pre');
+				
+				codeBlocks.forEach(function(block) {
+					// Create copy button
+					const button = document.createElement('button');
+					button.className = 'copy-button';
+					button.textContent = '复制';
+					
+					// Add the button to the code block
+					block.appendChild(button);
+					
+					// Add click event
+					button.addEventListener('click', function() {
+						const code = block.querySelector('code')?.textContent || block.textContent;
+						
+						// Copy to clipboard
+						navigator.clipboard.writeText(code).then(function() {
+							// Success feedback
+							button.textContent = '已复制!';
+							button.classList.add('copied');
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+								button.classList.remove('copied');
+							}, 2000);
+						})
+						.catch(function(error) {
+							console.error('复制失败:', error);
+							button.textContent = '复制失败';
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+							}, 2000);
+						});
+					});
+				});
+			});
+		</script>
 	</body>
 </html>

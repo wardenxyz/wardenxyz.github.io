@@ -19,7 +19,8 @@
 
 			<div class="metadata">2024-09-01 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#git">git</a></div></div>
 
-			<div class="content"><h1 id="git">git 强制覆盖本地仓库</h1>
+			<div class="main-content">
+				<div class="content"><h1 id="git">git 强制覆盖本地仓库<a class="headerlink" href="#git" title="Permanent link">&para;</a></h1>
 <p>git 强制覆盖本地仓库</p>
 <pre><code class="language-bash">git reset --hard origin/branch_name
 </code></pre>
@@ -30,10 +31,60 @@
 <li>重置工作目录中的文件以匹配这个提交。</li>
 </ol>
 <p>这意味着本地所有未提交的更改和提交历史将被丢弃，工作目录将完全同步到远程分支的状态。请谨慎使用这个命令，因为它会丢失所有未提交的更改。</p></div>
+				<!-- <div class="sidebar"> -->
+					<!-- <div class="outline"> -->
+						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#git-">git 强制覆盖本地仓库</a></li></ul></ul></div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			</div>
 		</div>
 
 		<footer>
 			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
 		</footer>
+
+		<script>
+			// Add copy buttons to code blocks
+			document.addEventListener('DOMContentLoaded', function() {
+				const codeBlocks = document.querySelectorAll('pre');
+				
+				codeBlocks.forEach(function(block) {
+					// Create copy button
+					const button = document.createElement('button');
+					button.className = 'copy-button';
+					button.textContent = '复制';
+					
+					// Add the button to the code block
+					block.appendChild(button);
+					
+					// Add click event
+					button.addEventListener('click', function() {
+						const code = block.querySelector('code')?.textContent || block.textContent;
+						
+						// Copy to clipboard
+						navigator.clipboard.writeText(code).then(function() {
+							// Success feedback
+							button.textContent = '已复制!';
+							button.classList.add('copied');
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+								button.classList.remove('copied');
+							}, 2000);
+						})
+						.catch(function(error) {
+							console.error('复制失败:', error);
+							button.textContent = '复制失败';
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+							}, 2000);
+						});
+					});
+				});
+			});
+		</script>
 	</body>
 </html>

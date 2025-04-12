@@ -19,8 +19,9 @@
 
 			<div class="metadata">2025-03-15 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#conda">conda</a>, <a href="/tags.html#python">python</a></div></div>
 
-			<div class="content"><h1 id="conda">conda 使用笔记</h1>
-<h2 id="conda_1">conda 常用命令</h2>
+			<div class="main-content">
+				<div class="content"><h1 id="conda">conda 使用笔记<a class="headerlink" href="#conda" title="Permanent link">&para;</a></h1>
+<h2 id="conda_1">conda 常用命令<a class="headerlink" href="#conda_1" title="Permanent link">&para;</a></h2>
 <pre><code class="language-bash"># 创建环境时指定 Python 版本
 conda create --name myenv python=3.8
 
@@ -70,7 +71,7 @@ conda env update -f environment.yml
 # 查看可用的 Python 版本
 conda search python
 </code></pre>
-<h2 id="python">Python 虚拟环境管理</h2>
+<h2 id="python">Python 虚拟环境管理<a class="headerlink" href="#python" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../2024/python_note.md">Python 学习笔记</a></li>
 </ul>
@@ -100,10 +101,60 @@ pip uninstall -r requirements.txt -y
 ## 停用虚拟环境
 deactivate
 </code></pre></div>
+				<!-- <div class="sidebar"> -->
+					<!-- <div class="outline"> -->
+						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#conda-">conda 使用笔记</a<ul><li><a href="#conda-">conda 常用命令</a></li></ul></li><li><a href="#-python-">创建环境时指定 Python 版本</a></li><li><a href="#">更精确的版本控制</a></li><li><a href="#">激活环境</a></li><li><a href="#-conda-">列出所有的 conda 虚拟环境</a></li><li><a href="#-conda-">删除 conda 虚拟环境</a></li><li><a href="#-python-">在现有环境中安装/更新 Python 版本</a></li><li><a href="#">或者直接指定环境</a></li><li><a href="#">列出当前环境的包</a></li><li><a href="#">查看指定环境的包</a></li><li><a href="#">在当前环境搜索包</a></li><li><a href="#">在指定环境搜索</a></li><li><a href="#-yaml-">导出为 YAML 文件</a></li><li><a href="#">或只导出手动安装的包</a></li><li><a href="#">导入环境:</a></li><li><a href="#">更新现有环境</a></li><li><a href="#-python-">查看可用的 Python 版本</a<ul><li><a href="#python-">Python 虚拟环境管理</a></li><li><a href="#">创建虚拟环境</a></li><li><a href="#">激活虚拟环境</a></li><li><a href="#">或者</a></li><li><a href="#">安装第三方库</a></li><li><a href="#">卸载第三方库</a></li><li><a href="#">生成依赖文件</a></li><li><a href="#">根据依赖文件下载第三方库</a></li><li><a href="#">根据依赖文件卸载第三方库</a></li><li><a href="#">停用虚拟环境</a></li></ul></li></ul></ul></div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			</div>
 		</div>
 
 		<footer>
 			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
 		</footer>
+
+		<script>
+			// Add copy buttons to code blocks
+			document.addEventListener('DOMContentLoaded', function() {
+				const codeBlocks = document.querySelectorAll('pre');
+				
+				codeBlocks.forEach(function(block) {
+					// Create copy button
+					const button = document.createElement('button');
+					button.className = 'copy-button';
+					button.textContent = '复制';
+					
+					// Add the button to the code block
+					block.appendChild(button);
+					
+					// Add click event
+					button.addEventListener('click', function() {
+						const code = block.querySelector('code')?.textContent || block.textContent;
+						
+						// Copy to clipboard
+						navigator.clipboard.writeText(code).then(function() {
+							// Success feedback
+							button.textContent = '已复制!';
+							button.classList.add('copied');
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+								button.classList.remove('copied');
+							}, 2000);
+						})
+						.catch(function(error) {
+							console.error('复制失败:', error);
+							button.textContent = '复制失败';
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+							}, 2000);
+						});
+					});
+				});
+			});
+		</script>
 	</body>
 </html>

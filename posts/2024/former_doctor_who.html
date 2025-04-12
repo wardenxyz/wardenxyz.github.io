@@ -19,7 +19,8 @@
 
 			<div class="metadata">2024-04-08 <div class="category">分类: <a href="/categories.html#生活">生活</a></div> <div class="tags">标签: <a href="/tags.html#神秘博士">神秘博士</a></div></div>
 
-			<div class="content"><h1 id="_1">神秘博士复活时间表</h1>
+			<div class="main-content">
+				<div class="content"><h1 id="_1">神秘博士复活时间表<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <ul>
 <li>第一任博士是在老版第三季的《第十行星》中重生的，这个视频资料已经丢失了只能在哔哩哔哩动画上找到重生瞬间。重生原因是因为博士要毁灭赛博人母星，结果能量超载损害了博士的健康从而重生。</li>
 <li>第二任博士是在老版的《战争游戏》一集，重生的资料应该也丢失了，至少我是没找到。是因？为博士要送还战争领主抓来的人类壮丁，而把行踪暴露给了时间领主而被捕，并且除以流放地球和强制重生的处罚</li>
@@ -31,10 +32,60 @@
 <li>第八任博士是在 2013 年短片《博士之夜》中，为了救地球人（地球人？）cass 逃离时间之战未果而死，后被 karn 姐妹会救活 4 分钟后，选择直面时间之战从而喝下了重生药水，抛弃了博士之名以和平与理性之名重生成了 the warrior（另一种叫法是 the war doctor，或者是 8.5 任）</li>
 <li>the warrior 是在 50 周年特别篇《博士之日》中，听从了 clara 的劝告，放弃毁灭伽里弗雷，并与 10 任，11 任两位博士一同召唤 1 任~12 任博士，13 位博士一起把伽里弗雷冰冻保存后在塔迪斯里重生成第九任</li>
 </ul></div>
+				<!-- <div class="sidebar"> -->
+					<!-- <div class="outline"> -->
+						<!-- <div class="toc-container"><h3>目录</h3><ul class="toc-list"><ul><li><a href="#">神秘博士复活时间表</a></li></ul></ul></div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			</div>
 		</div>
 
 		<footer>
 			<p>© 2024-2025 随便写写 | 由 Python 静态站点生成器生成</p>
 		</footer>
+
+		<script>
+			// Add copy buttons to code blocks
+			document.addEventListener('DOMContentLoaded', function() {
+				const codeBlocks = document.querySelectorAll('pre');
+				
+				codeBlocks.forEach(function(block) {
+					// Create copy button
+					const button = document.createElement('button');
+					button.className = 'copy-button';
+					button.textContent = '复制';
+					
+					// Add the button to the code block
+					block.appendChild(button);
+					
+					// Add click event
+					button.addEventListener('click', function() {
+						const code = block.querySelector('code')?.textContent || block.textContent;
+						
+						// Copy to clipboard
+						navigator.clipboard.writeText(code).then(function() {
+							// Success feedback
+							button.textContent = '已复制!';
+							button.classList.add('copied');
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+								button.classList.remove('copied');
+							}, 2000);
+						})
+						.catch(function(error) {
+							console.error('复制失败:', error);
+							button.textContent = '复制失败';
+							
+							// Reset after 2 seconds
+							setTimeout(function() {
+								button.textContent = '复制';
+							}, 2000);
+						});
+					});
+				});
+			});
+		</script>
 	</body>
 </html>
