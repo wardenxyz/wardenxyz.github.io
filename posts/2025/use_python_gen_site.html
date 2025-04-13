@@ -40,56 +40,59 @@
 
 			<div class="main-content">
 				<div class="content"><h1 id="python">使用 Python 生成静态网页<a class="headerlink" href="#python" title="Permanent link">&para;</a></h1>
-<p>一个简单的静态网站生成器，专门为我的博客设计，支持将 Markdown 文件转换为 HTML 静态网站。</p>
-<h2 id="_1">特点<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ul>
-<li>支持 Markdown 语法</li>
-<li>代码块语法高亮</li>
-<li>表格渲染</li>
-<li>有序和无序列表支持</li>
-<li>窄页面设计（非全宽页面）</li>
-<li>通过 GitHub Actions 自动构建和部署到 GitHub Pages</li>
-<li>使用 Python 3.12 构建</li>
-</ul>
-<h2 id="_2">安装<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>环境：</p>
+<pre><code class="language-bash">PS D:\workspace\blog&gt; python --version
+
+Python 3.12.0
+</code></pre>
+<p>步骤：</p>
+<p>第一步，创建虚拟环境</p>
+<pre><code class="language-bash">python -m venv venv
+</code></pre>
+<pre><code class="language-bash">.\venv\Scripts\activate
+</code></pre>
+<p>第二步，下载依赖</p>
 <pre><code class="language-bash">pip install -r requirements.txt
 </code></pre>
-<h2 id="_3">使用方法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<ol>
-<li>将你的 Markdown 文章放在 <code>posts/YYYY/</code> 目录中，其中 <code>YYYY</code> 是年份（例如 <code>2024</code>）</li>
-<li>确保每篇文章都有正确的 frontmatter 格式：</li>
-</ol>
+<p>第三步，生成索引</p>
+<pre><code class="language-bash">python .github\scripts\update_indexes.py
+</code></pre>
+<p>第四步，生成静态网页</p>
+<pre><code class="language-bash">python .github\scripts\static_gen.py
+</code></pre>
+<p>第五步，预览</p>
+<pre><code class="language-bash">python -m http.server -d site
+</code></pre>
+<p>在浏览器中访问 http://localhost:8000</p>
+<h2 id="_1">创建新的文章<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>在 posts 文件夹下按照年份创建文件，格式为</p>
 <pre><code class="language-markdown">---
-title: 文章标题
-date: YYYY-MM-DD
-tags: [标签1, 标签2]
-category: [分类]
+title: 标题
+date: 2025-04-13
+tags: [tag1, tag2]
+category: [category]
 ---
 
-# 文章内容开始
+# 标题
 </code></pre>
-<ol start="3">
-<li>运行静态网站生成器：</li>
-</ol>
-<pre><code class="language-bash">python static_gen.py
+<p>写完之后生成索引</p>
+<pre><code class="language-bash">python .github\scripts\update_indexes.py
 </code></pre>
-<ol start="4">
-<li>生成的网站将位于 <code>site</code> 目录中</li>
-</ol>
-<h2 id="_4">本地预览<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>生成网站后，您可以使用 Python 内置的 HTTP 服务器进行本地预览：</p>
-<pre><code class="language-bash">cd site
-python -m http.server
+<p>生成静态网页</p>
+<pre><code class="language-bash">python .github\scripts\static_gen.py
 </code></pre>
-<p>然后在浏览器中访问 <code>http://localhost:8000</code> 查看网站。</p>
-<h2 id="_5">部署<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>本地预览</p>
+<pre><code class="language-bash">python -m http.server -d site
+</code></pre>
+<p>在浏览器中访问 http://localhost:8000</p>
+<h2 id="_2">部署<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>该项目配置了 GitHub Actions 工作流，在你将代码推送到 GitHub 时自动构建和部署。</p>
 <ol>
 <li>确保已在 GitHub 仓库设置中启用了 GitHub Pages</li>
 <li>推送更改到 GitHub</li>
 <li>GitHub Actions 将自动构建并部署网站</li>
 </ol>
-<h2 id="_6">自定义<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_3">自定义<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul>
 <li>修改 <code>template.html</code> 更改网站布局</li>
 <li>修改 <code>assets/styles.css</code> 更改网站样式</li>
@@ -97,6 +100,12 @@ python -m http.server
 </ul></div>
 			</div>
 		</div>
+
+		<button id="back-to-top" aria-label="回到顶部">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<polyline points="18 15 12 9 6 15"></polyline>
+			</svg>
+		</button>
 
 		<footer>
 			<p>MIT License</p>
@@ -186,6 +195,30 @@ python -m http.server
 									button.textContent = "复制";
 								}, 2000);
 							});
+					});
+				});
+			});
+		</script>
+		
+		<script>
+			// Back to top button functionality
+			document.addEventListener("DOMContentLoaded", function() {
+				const backToTopButton = document.getElementById("back-to-top");
+				
+				// Show button when user scrolls down 300px from the top
+				window.addEventListener("scroll", function() {
+					if (window.pageYOffset > 300) {
+						backToTopButton.classList.add("visible");
+					} else {
+						backToTopButton.classList.remove("visible");
+					}
+				});
+				
+				// Smooth scroll to top when button is clicked
+				backToTopButton.addEventListener("click", function() {
+					window.scrollTo({
+						top: 0,
+						behavior: "smooth"
 					});
 				});
 			});
