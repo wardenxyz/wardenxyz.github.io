@@ -6,18 +6,30 @@
 		<title>vim 学习笔记</title>
 		<link rel="stylesheet" href="/assets/styles.css" />
 		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-		<meta name="description" content="A minimalist blog that uses pure markdown files">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+		<!-- MathJax for mathematical formula support -->
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<meta
+			name="description"
+			content="A minimalist blog that uses pure markdown files"
+		/>
 	</head>
 	<body>
 		<nav>
-			<div class="logo"><a href="/" style="font-size: 24px;">随便写写</a></div>
+			<div class="logo">
+				<a href="/" style="font-size: 24px">随便写写</a>
+			</div>
 			<div class="nav-links">
 				<!-- <a href="/">首页</a> -->
 				<a href="/categories.html">分类</a>
 				<a href="/tags.html">标签</a>
+				<a href="/search.html?focus=true" id="search-nav-link">搜索</a>
 			</div>
 		</nav>
 
@@ -263,124 +275,196 @@
 <h2 id="_6">在当前行上移动光标<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p><code>0</code> 移动到行头</p>
 <p><code>^</code> 移动到本行的第一个不是 blank 字符</p>
-<p><code>$</code> 移动到行尾</p>
-<p><code>g_</code> 移动到本行最后一个不是 blank 字符的位置</p>
-<p><code>w</code> 光标移动到下一个单词的开头</p>
-<p><code>e</code> 光标移动到下一个单词的结尾</p>
-<p><code>fa</code> 移动到本行下一个为 a 的字符处，fb 移动到下一个为 b 的字符处</p>
-<p><code>nfa</code> 移动到本行光标处开始的第 n 个 字符为 a 的地方(n 是 1，2，3，4 ... 数字)</p>
-<p><code>Fa</code> 同 <code>fa</code> 一样，光标移动方向同 <code>fa</code> 相反</p>
-<p><code>nFa</code> 同 <code>nfa</code> 类似，光标移动方向同 <code>nfa</code>相反</p>
-<p><code>ta</code> 移动光标至 a 字符的前一个字符</p>
-<p><code>nta</code> 移动到第二个 a 字符的前一个字符处</p>
-<p><code>Ta</code> 同 <code>ta</code> 移动光标方向相反</p>
-<p><code>nTa</code> 同 <code>nta</code> 移动光标方向相反</p>
-<p><code>;</code> 和<code>,</code> 当使用 f, F, t ,T, 关键字指定字符跳转的时候，使用 <code>；</code>可以快速跳转到下一个指定的字符，<code>,</code> 是跳到前一个指定的字符</p>
-<h2 id="_7">跨行移动光标<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p><code>nG</code> 光标定位到第 n 行的行首</p>
-<p><code>gg</code> 光标定位到第一行的行首</p>
-<p><code>G</code> 光标定位到最后一行的行首</p>
-<p><code>H</code> 光标定位到当前屏幕的第一行行首</p>
-<p><code>M</code> 光标移动到当前屏幕的中间</p>
-<p><code>L</code> 光标移动到当前屏幕的尾部</p>
-<p><code>zt</code> 把当前行移动到当前屏幕的最上方，也就是第一行</p>
-<p><code>zz</code> 把当前行移动到当前屏幕的中间</p>
-<p><code>zb</code> 把当前行移动到当前屏幕的尾部</p>
-<p><code>%</code> 匹配括号移动，包括 <code>(</code> , <code>{</code> , <code>\[</code> 需要把光标先移动到括号上</p>
-<p><code>*</code> 和 <code>#</code> 匹配光标当前所在的单词，移动光标到下一个(或者上一个)匹配的单词( <code>*</code> 是下一个，<code>#</code> 是上一个)</p>
-<h2 id="_8">翻页操作<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<p><code>ctrl+f</code> 查看下一页内容</p>
-<p><code>ctrl+b</code> 查看上一页内容</p>
-<h2 id="vim_16">VIM 的复制，黏贴，删除<a class="headerlink" href="#vim_16" title="Permanent link">&para;</a></h2>
-<p>三个重要的快捷键 <code>d</code> , <code>y</code> , <code>p</code></p>
-<p><code>d</code> 是删除的意思，通常搭配一个字符 ( 删除范围 ) 实现删除功能，常用的如下：</p>
-<p><code>dw</code> 删除一个单词</p>
-<p><code>dnw</code> 删除 n 个单词，</p>
-<p><code>dfa</code> 删除光标处到下一个 a 的字符处( fa 定位光标到 a 处 )</p>
-<p><code>dnfa</code> 删除光标处到第 n 个 a 的字符处</p>
-<p><code>dd</code> 删除一整行</p>
-<p><code>ndd</code> 删除光标处开始的 n 行</p>
-<p><code>d$</code> 删除光标到本行的结尾</p>
+<p><code>$` 移动到行尾
+
+`g_` 移动到本行最后一个不是 blank 字符的位置
+
+`w` 光标移动到下一个单词的开头
+
+`e` 光标移动到下一个单词的结尾
+
+`fa` 移动到本行下一个为 a 的字符处，fb 移动到下一个为 b 的字符处
+
+`nfa` 移动到本行光标处开始的第 n 个 字符为 a 的地方(n 是 1，2，3，4 ... 数字)
+
+`Fa` 同 `fa` 一样，光标移动方向同 `fa` 相反
+
+`nFa` 同 `nfa` 类似，光标移动方向同 `nfa`相反
+
+`ta` 移动光标至 a 字符的前一个字符
+
+`nta` 移动到第二个 a 字符的前一个字符处
+
+`Ta` 同 `ta` 移动光标方向相反
+
+`nTa` 同 `nta` 移动光标方向相反
+
+`;` 和`,` 当使用 f, F, t ,T, 关键字指定字符跳转的时候，使用 `；`可以快速跳转到下一个指定的字符，`,` 是跳到前一个指定的字符
+
+## 跨行移动光标
+
+`nG` 光标定位到第 n 行的行首
+
+`gg` 光标定位到第一行的行首
+
+`G` 光标定位到最后一行的行首
+
+`H` 光标定位到当前屏幕的第一行行首
+
+`M` 光标移动到当前屏幕的中间
+
+`L` 光标移动到当前屏幕的尾部
+
+`zt` 把当前行移动到当前屏幕的最上方，也就是第一行
+
+`zz` 把当前行移动到当前屏幕的中间
+
+`zb` 把当前行移动到当前屏幕的尾部
+
+`%` 匹配括号移动，包括 `(` , `{` , `\[` 需要把光标先移动到括号上
+
+`*` 和 `#` 匹配光标当前所在的单词，移动光标到下一个(或者上一个)匹配的单词( `*` 是下一个，`#` 是上一个)
+
+## 翻页操作
+
+`ctrl+f` 查看下一页内容
+
+`ctrl+b` 查看上一页内容
+
+## VIM 的复制，黏贴，删除
+
+三个重要的快捷键 `d` , `y` , `p`
+
+`d` 是删除的意思，通常搭配一个字符 ( 删除范围 ) 实现删除功能，常用的如下：
+
+`dw` 删除一个单词
+
+`dnw` 删除 n 个单词，
+
+`dfa` 删除光标处到下一个 a 的字符处( fa 定位光标到 a 处 )
+
+`dnfa` 删除光标处到第 n 个 a 的字符处
+
+`dd` 删除一整行
+
+`ndd` 删除光标处开始的 n 行
+
+`d$</code> 删除光标到本行的结尾</p>
 <p><code>dH</code> 删除屏幕显示的第一行文本到光标所在的行</p>
 <p><code>dG</code> 删除光标所在行到文本的结束</p>
 <p><code>y</code> 是复制的意思，通常搭配一个字符(复制范围)实现复制的功能，常用的如下：</p>
 <p><code>yw</code> 复制一个单词，还有 <code>ynw</code></p>
 <p><code>yfa</code> 复制光标到下一个 a 的字符处,还有<code>ynfa</code></p>
 <p><code>yy</code> 复制一行，还有 <code>nyy</code></p>
-<p><code>y$</code> 复制光标到本号的结尾</p>
-<p><code>yH</code> 复制屏幕显示的第一行文本到光标所在的行</p>
-<p><code>yG</code> 复制光标所在行到文本的结束</p>
-<p><code>p</code> ，<code>P</code>是黏贴的意思，当执行完复制或者黏贴的命令以后，VIM 会把文本寄存起来。</p>
-<p><code>p</code> 在光标后开始黏贴</p>
-<p><code>P</code> 大写的 P 光标前开始粘贴</p>
-<h2 id="vim_17">VIM 的重复命令<a class="headerlink" href="#vim_17" title="Permanent link">&para;</a></h2>
-<p><code>.</code> 该命令是重复上一个操作的命令 <code>n&lt;command&gt;</code> 重复某个命令 n 次，如 <code>10p</code> 复制 10 次，<code>10dd</code> 删除十次。</p>
-<h2 id="_9">撤销操作和恢复<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<p><code>u</code> 撤销刚才的操作</p>
-<p><code>ctrl + r</code> 恢复撤销操作</p>
-<h2 id="_10">删除字符操作和替换<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
-<p><code>x</code> 删除光标当前所在的字符</p>
-<p><code>r</code> 替换掉光标当前所在的字符</p>
-<p><code>R</code> 替换掉从光标开始以后的所有字符，除非 <code>&lt;ESC&gt;</code> 退出，或者 <code>jj</code> (代替 <code>&lt;ESC&gt;</code> 上文有提到)退出。</p>
-<h2 id="_11">大小写<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
-<p><code>~</code> 将光标下的字母改变大小写<br />
-<code>3~</code> 将光标位置开始的3个字母改变其大小写<br />
-<code>g~~</code> 改变当前行字母的大小写<br />
-<code>gUU</code> 将当前行的字母改成大写<br />
-<code>guu</code> 将当前行的字母全改成小写</p>
-<p><code>3gUU</code> 将从光标开始到下面3行字母改成大写<br />
-<code>gUw</code> 将光标下的单词改成大写。<br />
-<code>guw</code> 将光标下的单词改成小写</p>
-<h2 id="vim_18">VIM 可视化模式<a class="headerlink" href="#vim_18" title="Permanent link">&para;</a></h2>
-<p><code>v</code> <code>V</code> <code>Ctrl+v</code></p>
-<p><code>v</code> 字符可视化，按下键盘上的 <code>v</code> 以后，屏幕底部应该会有一个 VISUAl 的提示，操作 <code>h,j,k,l</code> 就选中文本，继续按 <code>v</code> 退出可视化模式。</p>
-<p>V 行可视化，按下键盘上的 <code>V</code> 以后，屏幕底部应该有一个 VISUAL LINE 的提示，操作 <code>j,k</code> 可以向上或者向下以行为单位选中文本，继续按下 V 退出可视化模式。</p>
-<p><code>Ctrl+v</code> 块状可视化，按下键盘上的 <code>Ctrl+v</code> 以后，屏幕底部应该会有一个提示 VISUALBLOCK ，可以通过 <code>h,j,k,l</code> 块状的操作选择区域，这是很多编辑器都不可以做到的，继续按下 <code>Ctrl+v</code> 会退出可视化模式。</p>
-<h2 id="_12">可视化模式下操作文本<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
-<p>可视化模式下选择操作区域以后，<br />
-按下 <code>d</code> 会删除选择的区域，<br />
-按下 <code>y</code> 会复制选择的区域，按下 <code>p</code> 会黏贴选择的区域。</p>
-<h2 id="_13">块区域下的特殊操作<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
-<p><code>Ctrl+v</code> 选中块区域以后，按下大写的 <code>I</code> 或者 <code>A</code> 可以在区域的前面或者后面输入内容，按下 <code>jj</code> 或者 <code>&lt;ESC&gt;</code>,可以看到选中的区域前面或者后面会有输入的内容。</p>
-<h2 id="vim_19">VIM 的宏录制<a class="headerlink" href="#vim_19" title="Permanent link">&para;</a></h2>
-<p>假设需要操作的文本如下,需要将如下文本的每一行的行首插入入一个 tab 键。</p>
-<p>hello<br />
-hello world<br />
-hello world , vim</p>
-<h2 id="_14">宏录制的录制操作<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
-<p>先将光标移动到第一行，在普通模式下按下 q 键(<strong>宏录制是 q 键启动的</strong>),在按一个 a (字母随意),表示该宏注册为 a ，按下 I 在行首插入一个 tab 键，按下jj或者 <code>&lt;ESC&gt;</code> 退出编辑模式,按下 j 将光标移动到下一行行首，最后按下 q 键完成录制操作(<strong>宏录制是 q 键结束的</strong>)。<br />
-总结上面例子的操作流程：<br />
-q → a → I → tab → jj → j → q<br />
-上面的例子成功地把在行首插入 tab 的功能录制了下来，那么如何应用到其他行呢？</p>
-<h2 id="_15">宏录制的使用<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
-<p>上述的例子，在正常模式下，按 @a执行宏录制的一系列动作，将会在第二行执行插入 tab 。<br />
-@@ 是对上一次宏使用的重复操作。n@a 就会执行 n 次一系列的动作。使用宏录制可以一次执行一系列的操作，可以针对一些重复度较高的操作进行宏录制。</p>
-<hr />
-<h2 id="_16">快捷键速查<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
-<h2 id="_17">模式切换<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
-<ul>
-<li><code>i</code> 进入插入模式</li>
-<li><code>v</code> 进入可视模式</li>
-<li><code>:</code> 进入命令模式</li>
-<li><code>Esc</code> 退出当前模式，回到普通模式</li>
-</ul>
-<h2 id="_18">光标移动<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
-<ul>
-<li><code>h</code> 左移</li>
-<li><code>j</code> 下移</li>
-<li><code>k</code> 上移</li>
-<li><code>l</code> 右移</li>
-<li><code>w</code> 跳到下一个单词的开头</li>
-<li><code>e</code> 跳到下一个单词的末尾</li>
-<li><code>b</code> 跳到上一个单词的开头</li>
-<li><code>0</code> 跳到行首</li>
-<li><code>$</code> 跳到行尾</li>
-<li><code>gg</code> 跳到文件开头</li>
-<li><code>G</code> 跳到文件末尾</li>
-<li><code>Ctrl + f</code> 向下翻页</li>
-<li><code>Ctrl + b</code> 向上翻页</li>
-</ul>
-<h2 id="_19">编辑命令<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
+<p><code>y$` 复制光标到本号的结尾
+
+`yH` 复制屏幕显示的第一行文本到光标所在的行
+
+`yG` 复制光标所在行到文本的结束
+
+`p` ，`P`是黏贴的意思，当执行完复制或者黏贴的命令以后，VIM 会把文本寄存起来。
+
+`p` 在光标后开始黏贴
+
+`P` 大写的 P 光标前开始粘贴
+
+## VIM 的重复命令
+
+`.` 该命令是重复上一个操作的命令 `n<command>` 重复某个命令 n 次，如 `10p` 复制 10 次，`10dd` 删除十次。
+
+## 撤销操作和恢复
+
+`u` 撤销刚才的操作
+
+`ctrl + r` 恢复撤销操作
+
+## 删除字符操作和替换
+
+`x` 删除光标当前所在的字符
+
+`r` 替换掉光标当前所在的字符
+
+`R` 替换掉从光标开始以后的所有字符，除非 `<ESC>` 退出，或者 `jj` (代替 `<ESC>` 上文有提到)退出。
+
+## 大小写
+
+`~` 将光标下的字母改变大小写
+`3~` 将光标位置开始的3个字母改变其大小写
+`g~~` 改变当前行字母的大小写
+`gUU` 将当前行的字母改成大写
+`guu` 将当前行的字母全改成小写
+
+`3gUU` 将从光标开始到下面3行字母改成大写
+`gUw` 将光标下的单词改成大写。
+`guw` 将光标下的单词改成小写
+
+## VIM 可视化模式
+
+`v` `V` `Ctrl+v`
+
+`v` 字符可视化，按下键盘上的 `v` 以后，屏幕底部应该会有一个 VISUAl 的提示，操作 `h,j,k,l` 就选中文本，继续按 `v` 退出可视化模式。
+
+V 行可视化，按下键盘上的 `V` 以后，屏幕底部应该有一个 VISUAL LINE 的提示，操作 `j,k` 可以向上或者向下以行为单位选中文本，继续按下 V 退出可视化模式。
+
+`Ctrl+v` 块状可视化，按下键盘上的 `Ctrl+v` 以后，屏幕底部应该会有一个提示 VISUALBLOCK ，可以通过 `h,j,k,l` 块状的操作选择区域，这是很多编辑器都不可以做到的，继续按下 `Ctrl+v` 会退出可视化模式。
+
+## 可视化模式下操作文本
+
+可视化模式下选择操作区域以后，
+按下 `d` 会删除选择的区域，
+按下 `y` 会复制选择的区域，按下 `p` 会黏贴选择的区域。
+
+## 块区域下的特殊操作
+
+`Ctrl+v` 选中块区域以后，按下大写的 `I` 或者 `A` 可以在区域的前面或者后面输入内容，按下 `jj` 或者 `<ESC>`,可以看到选中的区域前面或者后面会有输入的内容。
+
+## VIM 的宏录制
+
+假设需要操作的文本如下,需要将如下文本的每一行的行首插入入一个 tab 键。
+
+hello
+hello world
+hello world , vim
+
+## 宏录制的录制操作
+
+先将光标移动到第一行，在普通模式下按下 q 键(**宏录制是 q 键启动的**),在按一个 a (字母随意),表示该宏注册为 a ，按下 I 在行首插入一个 tab 键，按下jj或者 `<ESC>` 退出编辑模式,按下 j 将光标移动到下一行行首，最后按下 q 键完成录制操作(**宏录制是 q 键结束的**)。
+总结上面例子的操作流程：
+q → a → I → tab → jj → j → q
+上面的例子成功地把在行首插入 tab 的功能录制了下来，那么如何应用到其他行呢？
+
+## 宏录制的使用
+
+上述的例子，在正常模式下，按 @a执行宏录制的一系列动作，将会在第二行执行插入 tab 。
+@@ 是对上一次宏使用的重复操作。n@a 就会执行 n 次一系列的动作。使用宏录制可以一次执行一系列的操作，可以针对一些重复度较高的操作进行宏录制。
+
+---
+
+## 快捷键速查
+
+## 模式切换
+
+- `i` 进入插入模式
+- `v` 进入可视模式
+- `:` 进入命令模式
+- `Esc` 退出当前模式，回到普通模式
+
+## 光标移动
+
+- `h` 左移
+- `j` 下移
+- `k` 上移
+- `l` 右移
+- `w` 跳到下一个单词的开头
+- `e` 跳到下一个单词的末尾
+- `b` 跳到上一个单词的开头
+- `0` 跳到行首
+- `$</code> 跳到行尾<br />
+- <code>gg</code> 跳到文件开头<br />
+- <code>G</code> 跳到文件末尾<br />
+- <code>Ctrl + f</code> 向下翻页<br />
+- <code>Ctrl + b</code> 向上翻页</p>
+<h2 id="_7">编辑命令<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>x</code> 删除光标下的字符</li>
 <li><code>dd</code> 删除当前行</li>
@@ -394,7 +478,7 @@ q → a → I → tab → jj → j → q<br />
 <li><code>ciw</code> 更改整个单词</li>
 <li><code>:%s/old/new/g</code> 替换全文中的 old 为 new</li>
 </ul>
-<h2 id="_20">保存和退出<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<h2 id="_8">保存和退出<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>:w</code> 保存</li>
 <li><code>:q</code> 退出</li>
@@ -403,7 +487,7 @@ q → a → I → tab → jj → j → q<br />
 <li><code>:wq!</code> 强制保存并退出</li>
 </ul>
 <p>以上只是 Vim 的基础快捷键，Vim 的功能非常强大，还有很多高级的命令和技巧等待你去探索。</p>
-<h2 id="vim_20">Vim 多个文件之间切换<a class="headerlink" href="#vim_20" title="Permanent link">&para;</a></h2>
+<h2 id="vim_16">Vim 多个文件之间切换<a class="headerlink" href="#vim_16" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>:e filename</code> 打开一个文件</li>
 <li><code>:bn</code> 切换到下一个文件</li>
@@ -411,7 +495,7 @@ q → a → I → tab → jj → j → q<br />
 <li><code>:ls</code> 列出所有打开的文件</li>
 <li><code>:b number</code> 切换到指定编号的文件，编号可以通过 <code>:ls</code> 命令查看</li>
 </ul>
-<h2 id="vim_21">Vim 在不同的屏幕之间切换<a class="headerlink" href="#vim_21" title="Permanent link">&para;</a></h2>
+<h2 id="vim_17">Vim 在不同的屏幕之间切换<a class="headerlink" href="#vim_17" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>Ctrl + w w</code> 在窗口之间循环切换</li>
 <li><code>Ctrl + w h</code> 切换到左边的窗口</li>
@@ -419,14 +503,14 @@ q → a → I → tab → jj → j → q<br />
 <li><code>Ctrl + w k</code> 切换到上边的窗口</li>
 <li><code>Ctrl + w l</code> 切换到右边的窗口</li>
 </ul>
-<h2 id="vim_22">Vim 创建新的一行<a class="headerlink" href="#vim_22" title="Permanent link">&para;</a></h2>
+<h2 id="vim_18">Vim 创建新的一行<a class="headerlink" href="#vim_18" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>o</code> 在当前行的下面创建新的一行并进入插入模式</li>
 <li><code>O</code> 在当前行的上面创建新的一行并进入插入模式</li>
 </ul>
 <p>这两个命令都会自动将你的光标移动到新创建的行上，并切换到插入模式，让你可以立即开始输入新的内容。</p>
 <hr />
-<h2 id="vim_23">vim 宏<a class="headerlink" href="#vim_23" title="Permanent link">&para;</a></h2>
+<h2 id="vim_19">vim 宏<a class="headerlink" href="#vim_19" title="Permanent link">&para;</a></h2>
 <p>宏是一种编程概念，它允许你录制一系列的命令或操作，然后在需要的时候重复执行这些命令或操作。宏可以帮助你自动化重复的任务，提高工作效率。</p>
 <p>在 Vim 中，你可以使用 <code>q</code> 键来录制和执行宏。以下是一个例子：</p>
 <p>假设你有一个文本文件，其中包含多行文本，你想在每行的开始处添加一个星号 (<code>*</code>)。你可以使用 Vim 的宏功能来自动化这个任务。</p>
@@ -450,49 +534,93 @@ q → a → I → tab → jj → j → q<br />
 		</div>
 
 		<footer>
-			<p>MIT License.</p>
+			<p>MIT License</p>
 			<p>Copyright © 2024-2025 wardenxyz</p>
 		</footer>
 
 		<script>
+			// Initialize Mermaid diagrams
+			document.addEventListener("DOMContentLoaded", function () {
+				mermaid.initialize({
+					startOnLoad: true,
+					theme:
+						window.matchMedia &&
+						window.matchMedia("(prefers-color-scheme: dark)")
+							.matches
+							? "dark"
+							: "default",
+					flowchart: { curve: "basis" },
+					securityLevel: "loose",
+				});
+
+				// Configure MathJax
+				window.MathJax = {
+					tex: {
+						inlineMath: [
+							["$", "$"],
+							["\\(", "\\)"],
+						],
+						displayMath: [
+							["$$", "$$"],
+							["\\[", "\\]"],
+						],
+						processEscapes: true,
+						processEnvironments: true,
+					},
+					options: {
+						skipHtmlTags: [
+							"script",
+							"noscript",
+							"style",
+							"textarea",
+							"pre",
+						],
+					},
+				};
+			});
+
 			// Add copy buttons to code blocks
-			document.addEventListener('DOMContentLoaded', function() {
-				const codeBlocks = document.querySelectorAll('pre');
-				
-				codeBlocks.forEach(function(block) {
+			document.addEventListener("DOMContentLoaded", function () {
+				const codeBlocks = document.querySelectorAll("pre");
+
+				codeBlocks.forEach(function (block) {
 					// Create copy button
-					const button = document.createElement('button');
-					button.className = 'copy-button';
-					button.textContent = '复制';
-					
+					const button = document.createElement("button");
+					button.className = "copy-button";
+					button.textContent = "复制";
+
 					// Add the button to the code block
 					block.appendChild(button);
-					
+
 					// Add click event
-					button.addEventListener('click', function() {
-						const code = block.querySelector('code')?.textContent || block.textContent;
-						
+					button.addEventListener("click", function () {
+						const code =
+							block.querySelector("code")?.textContent ||
+							block.textContent;
+
 						// Copy to clipboard
-						navigator.clipboard.writeText(code).then(function() {
-							// Success feedback
-							button.textContent = '已复制!';
-							button.classList.add('copied');
-							
-							// Reset after 2 seconds
-							setTimeout(function() {
-								button.textContent = '复制';
-								button.classList.remove('copied');
-							}, 2000);
-						})
-						.catch(function(error) {
-							console.error('复制失败:', error);
-							button.textContent = '复制失败';
-							
-							// Reset after 2 seconds
-							setTimeout(function() {
-								button.textContent = '复制';
-							}, 2000);
-						});
+						navigator.clipboard
+							.writeText(code)
+							.then(function () {
+								// Success feedback
+								button.textContent = "已复制!";
+								button.classList.add("copied");
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+									button.classList.remove("copied");
+								}, 2000);
+							})
+							.catch(function (error) {
+								console.error("复制失败:", error);
+								button.textContent = "复制失败";
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+								}, 2000);
+							});
 					});
 				});
 			});

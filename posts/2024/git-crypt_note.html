@@ -6,18 +6,30 @@
 		<title>git-crypt 学习笔记</title>
 		<link rel="stylesheet" href="/assets/styles.css" />
 		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-		<meta name="description" content="A minimalist blog that uses pure markdown files">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+		<!-- MathJax for mathematical formula support -->
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<meta
+			name="description"
+			content="A minimalist blog that uses pure markdown files"
+		/>
 	</head>
 	<body>
 		<nav>
-			<div class="logo"><a href="/" style="font-size: 24px;">随便写写</a></div>
+			<div class="logo">
+				<a href="/" style="font-size: 24px">随便写写</a>
+			</div>
 			<div class="nav-links">
 				<!-- <a href="/">首页</a> -->
 				<a href="/categories.html">分类</a>
 				<a href="/tags.html">标签</a>
+				<a href="/search.html?focus=true" id="search-nav-link">搜索</a>
 			</div>
 		</nav>
 
@@ -77,81 +89,125 @@ not encrypted: .gitattributes
 </code></pre>
 <h2 id="git-crypt_1">git-crypt 工作流示意图<a class="headerlink" href="#git-crypt_1" title="Permanent link">&para;</a></h2>
 <p><strong>（由 DeepSeek-R1 生成）</strong></p>
-<pre><code class="language-mermaid">graph TD
-    A[管理员] --&gt; B[初始化仓库]
-    B --&gt; C[创建.gitattributes文件]
-    C --&gt; D[指定加密文件模式]
-    D --&gt; E[添加GPG用户/导出密钥]
+<div class="mermaid">graph TD
+    A[管理员] --> B[初始化仓库]
+    B --> C[创建.gitattributes文件]
+    C --> D[指定加密文件模式]
+    D --> E[添加GPG用户/导出密钥]
 
     subgraph 有权限开发者
-        F[开发者] --&gt; G[克隆仓库]
-        G --&gt; H[git-crypt unlock]
-        H --&gt; I[查看解密文件]
-        I --&gt; J[修改文件]
-        J --&gt; K[自动加密提交]
+        F[开发者] --> G[克隆仓库]
+        G --> H[git-crypt unlock]
+        H --> I[查看解密文件]
+        I --> J[修改文件]
+        J --> K[自动加密提交]
     end
 
     subgraph 无权限开发者
-        L[普通成员] --&gt; M[克隆仓库]
-        M --&gt; N[看到加密内容]
-        N --&gt; O[修改非加密文件]
-        O --&gt; P[正常提交]
+        L[普通成员] --> M[克隆仓库]
+        M --> N[看到加密内容]
+        N --> O[修改非加密文件]
+        O --> P[正常提交]
     end
 
-    E --&gt; F
-    E --&gt; L
-    K --&gt; Q[远程仓库]
-    P --&gt; Q
-    Q --&gt; G
-    Q --&gt; M
-</code></pre></div>
+    E --> F
+    E --> L
+    K --> Q[远程仓库]
+    P --> Q
+    Q --> G
+    Q --> M
+</div></div>
 			</div>
 		</div>
 
 		<footer>
-			<p>MIT License.</p>
+			<p>MIT License</p>
 			<p>Copyright © 2024-2025 wardenxyz</p>
 		</footer>
 
 		<script>
+			// Initialize Mermaid diagrams
+			document.addEventListener("DOMContentLoaded", function () {
+				mermaid.initialize({
+					startOnLoad: true,
+					theme:
+						window.matchMedia &&
+						window.matchMedia("(prefers-color-scheme: dark)")
+							.matches
+							? "dark"
+							: "default",
+					flowchart: { curve: "basis" },
+					securityLevel: "loose",
+				});
+
+				// Configure MathJax
+				window.MathJax = {
+					tex: {
+						inlineMath: [
+							["$", "$"],
+							["\\(", "\\)"],
+						],
+						displayMath: [
+							["$$", "$$"],
+							["\\[", "\\]"],
+						],
+						processEscapes: true,
+						processEnvironments: true,
+					},
+					options: {
+						skipHtmlTags: [
+							"script",
+							"noscript",
+							"style",
+							"textarea",
+							"pre",
+						],
+					},
+				};
+			});
+
 			// Add copy buttons to code blocks
-			document.addEventListener('DOMContentLoaded', function() {
-				const codeBlocks = document.querySelectorAll('pre');
-				
-				codeBlocks.forEach(function(block) {
+			document.addEventListener("DOMContentLoaded", function () {
+				const codeBlocks = document.querySelectorAll("pre");
+
+				codeBlocks.forEach(function (block) {
 					// Create copy button
-					const button = document.createElement('button');
-					button.className = 'copy-button';
-					button.textContent = '复制';
-					
+					const button = document.createElement("button");
+					button.className = "copy-button";
+					button.textContent = "复制";
+
 					// Add the button to the code block
 					block.appendChild(button);
-					
+
 					// Add click event
-					button.addEventListener('click', function() {
-						const code = block.querySelector('code')?.textContent || block.textContent;
-						
+					button.addEventListener("click", function () {
+						const code =
+							block.querySelector("code")?.textContent ||
+							block.textContent;
+
 						// Copy to clipboard
-						navigator.clipboard.writeText(code).then(function() {
-							// Success feedback
-							button.textContent = '已复制!';
-							button.classList.add('copied');
-							
-							// Reset after 2 seconds
-							setTimeout(function() {
-								button.textContent = '复制';
-								button.classList.remove('copied');
-							}, 2000);
-						})
-						.catch(function(error) {
-							console.error('复制失败:', error);
-							button.textContent = '复制失败';
-							
-							// Reset after 2 seconds
-							setTimeout(function() {
-								button.textContent = '复制';
-							}, 2000);
-						});
+						navigator.clipboard
+							.writeText(code)
+							.then(function () {
+								// Success feedback
+								button.textContent = "已复制!";
+								button.classList.add("copied");
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+									button.classList.remove("copied");
+								}, 2000);
+							})
+							.catch(function (error) {
+								console.error("复制失败:", error);
+								button.textContent = "复制失败";
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+								}, 2000);
+							});
 					});
 				});
 			});

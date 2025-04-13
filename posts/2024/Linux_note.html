@@ -6,18 +6,30 @@
 		<title>Linux 学习笔记</title>
 		<link rel="stylesheet" href="/assets/styles.css" />
 		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-		<meta name="description" content="A minimalist blog that uses pure markdown files">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+		<!-- MathJax for mathematical formula support -->
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<meta
+			name="description"
+			content="A minimalist blog that uses pure markdown files"
+		/>
 	</head>
 	<body>
 		<nav>
-			<div class="logo"><a href="/" style="font-size: 24px;">随便写写</a></div>
+			<div class="logo">
+				<a href="/" style="font-size: 24px">随便写写</a>
+			</div>
 			<div class="nav-links">
 				<!-- <a href="/">首页</a> -->
 				<a href="/categories.html">分类</a>
 				<a href="/tags.html">标签</a>
+				<a href="/search.html?focus=true" id="search-nav-link">搜索</a>
 			</div>
 		</nav>
 
@@ -51,26 +63,27 @@
 </ul>
 <p>这些只是一些常见的子目录，具体的子目录可能会根据你的系统配置和使用情况而变化。</p>
 <h2 id="_1">文件树结构简图<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<pre><code class="language-mermaid">graph LR
-  / --&gt; |&quot;bin&quot;| Bin[二进制可执行文件]
-  / --&gt; |&quot;boot&quot;| Boot[启动加载器文件]
-  / --&gt; |&quot;dev&quot;| Dev[设备文件]
-  / --&gt; |&quot;etc&quot;| Etc[配置文件]
-  / --&gt; |&quot;home&quot;| Home[用户主目录]
-  / --&gt; |&quot;lib&quot;| Lib[共享库文件]
-  / --&gt; |&quot;media&quot;| Media[可移除媒体]
-  / --&gt; |&quot;mnt&quot;| Mnt[临时挂载点]
-  / --&gt; |&quot;opt&quot;| Opt[可选的应用软件包]
-  / --&gt; |&quot;proc&quot;| Proc[进程信息虚拟文件系统]
-  / --&gt; |&quot;root&quot;| RootDir[超级用户的主目录]
-  / --&gt; |&quot;run&quot;| Run[运行时数据]
-  / --&gt; |&quot;sbin&quot;| Sbin[系统管理二进制可执行文件]
-  / --&gt; |&quot;srv&quot;| Srv[服务数据]
-  / --&gt; |&quot;sys&quot;| Sys[设备和系统信息]
-  / --&gt; |&quot;tmp&quot;| Tmp[临时文件]
-  / --&gt; |&quot;usr&quot;| Usr[用户程序和数据]
-  / --&gt; |&quot;var&quot;| Var[可变数据]
-</code></pre>
+<div class="mermaid">graph LR
+  / --> |"bin"| Bin[二进制可执行文件]
+  / --> |"boot"| Boot[启动加载器文件]
+  / --> |"dev"| Dev[设备文件]
+  / --> |"etc"| Etc[配置文件]
+  / --> |"home"| Home[用户主目录]
+  / --> |"lib"| Lib[共享库文件]
+  / --> |"media"| Media[可移除媒体]
+  / --> |"mnt"| Mnt[临时挂载点]
+  / --> |"opt"| Opt[可选的应用软件包]
+  / --> |"proc"| Proc[进程信息虚拟文件系统]
+  / --> |"root"| RootDir[超级用户的主目录]
+  / --> |"run"| Run[运行时数据]
+  / --> |"sbin"| Sbin[系统管理二进制可执行文件]
+  / --> |"srv"| Srv[服务数据]
+  / --> |"sys"| Sys[设备和系统信息]
+  / --> |"tmp"| Tmp[临时文件]
+  / --> |"usr"| Usr[用户程序和数据]
+  / --> |"var"| Var[可变数据]
+</div>
+
 <p>由上图可看出，所有文件夹都挂载在 <code>/</code> 目录下。</p>
 <h2 id="linux_2">Linux 的命令<a class="headerlink" href="#linux_2" title="Permanent link">&para;</a></h2>
 <p>当你登录 Ubuntu 系统后，你通常会在你的家目录下。每个用户都有一个家目录，用于存储用户的个人文件。家目录的路径通常是 <code>/home/用户名</code>，例如，如果你的用户名是 <code>john</code>，那么你的家目录就是 <code>/home/john</code>。</p>
@@ -559,49 +572,93 @@ Change: 2024-02-14 11:22:43.321543138 +0800
 		</div>
 
 		<footer>
-			<p>MIT License.</p>
+			<p>MIT License</p>
 			<p>Copyright © 2024-2025 wardenxyz</p>
 		</footer>
 
 		<script>
+			// Initialize Mermaid diagrams
+			document.addEventListener("DOMContentLoaded", function () {
+				mermaid.initialize({
+					startOnLoad: true,
+					theme:
+						window.matchMedia &&
+						window.matchMedia("(prefers-color-scheme: dark)")
+							.matches
+							? "dark"
+							: "default",
+					flowchart: { curve: "basis" },
+					securityLevel: "loose",
+				});
+
+				// Configure MathJax
+				window.MathJax = {
+					tex: {
+						inlineMath: [
+							["$", "$"],
+							["\\(", "\\)"],
+						],
+						displayMath: [
+							["$$", "$$"],
+							["\\[", "\\]"],
+						],
+						processEscapes: true,
+						processEnvironments: true,
+					},
+					options: {
+						skipHtmlTags: [
+							"script",
+							"noscript",
+							"style",
+							"textarea",
+							"pre",
+						],
+					},
+				};
+			});
+
 			// Add copy buttons to code blocks
-			document.addEventListener('DOMContentLoaded', function() {
-				const codeBlocks = document.querySelectorAll('pre');
-				
-				codeBlocks.forEach(function(block) {
+			document.addEventListener("DOMContentLoaded", function () {
+				const codeBlocks = document.querySelectorAll("pre");
+
+				codeBlocks.forEach(function (block) {
 					// Create copy button
-					const button = document.createElement('button');
-					button.className = 'copy-button';
-					button.textContent = '复制';
-					
+					const button = document.createElement("button");
+					button.className = "copy-button";
+					button.textContent = "复制";
+
 					// Add the button to the code block
 					block.appendChild(button);
-					
+
 					// Add click event
-					button.addEventListener('click', function() {
-						const code = block.querySelector('code')?.textContent || block.textContent;
-						
+					button.addEventListener("click", function () {
+						const code =
+							block.querySelector("code")?.textContent ||
+							block.textContent;
+
 						// Copy to clipboard
-						navigator.clipboard.writeText(code).then(function() {
-							// Success feedback
-							button.textContent = '已复制!';
-							button.classList.add('copied');
-							
-							// Reset after 2 seconds
-							setTimeout(function() {
-								button.textContent = '复制';
-								button.classList.remove('copied');
-							}, 2000);
-						})
-						.catch(function(error) {
-							console.error('复制失败:', error);
-							button.textContent = '复制失败';
-							
-							// Reset after 2 seconds
-							setTimeout(function() {
-								button.textContent = '复制';
-							}, 2000);
-						});
+						navigator.clipboard
+							.writeText(code)
+							.then(function () {
+								// Success feedback
+								button.textContent = "已复制!";
+								button.classList.add("copied");
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+									button.classList.remove("copied");
+								}, 2000);
+							})
+							.catch(function (error) {
+								console.error("复制失败:", error);
+								button.textContent = "复制失败";
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+								}, 2000);
+							});
 					});
 				});
 			});
