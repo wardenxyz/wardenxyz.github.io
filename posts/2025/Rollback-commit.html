@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>搜索 - 随便写写</title>
+		<title>回滚提交</title>
 		<link rel="stylesheet" href="/assets/styles.css" />
 		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,23 +34,34 @@
 		</nav>
 
 		<div class="container">
-			<!-- <h1>搜索 - 随便写写</h1> -->
+			<!-- <h1>回滚提交</h1> -->
 
-			<div class="metadata">  </div>
+			<div class="metadata">2025-04-14 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#git">git</a></div></div>
 
 			<div class="main-content">
-				<div class="content">
-    <h1>搜索</h1>
-    <div class="search-container">
-        <input type="text" id="search-input" class="search-input" placeholder="请输入搜索内容..." aria-label="搜索">
-        <div id="loading-indicator" style="display: none; text-align: center; margin: 20px 0;">正在加载搜索数据...</div>
-        <div class="search-keyboard-help">
-            <small>键盘导航: 使用 <kbd>↑</kbd> <kbd>↓</kbd> 键选择结果, <kbd>Enter</kbd> 打开选中结果, <kbd>Esc</kbd> 返回搜索框</small>
-        </div>
-    </div>
-    <div id="search-results" class="search-results"></div>
-    <script src="/assets/search.js"></script>
-    </div>
+				<div class="content"><h1 id="_1">回滚提交<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>要强制回滚到前两个提交之前，可以使用以下 Git 命令：</p>
+<ol>
+<li>
+<p>打开终端并导航到项目目录：</p>
+</li>
+<li>
+<p>查看提交历史以确认目标提交：</p>
+</li>
+</ol>
+<pre><code class="language-bash">git log --oneline
+</code></pre>
+<ol start="3">
+<li>强制回滚到前两个提交之前（假设目标提交的哈希为 <code>abc123</code>）：</li>
+</ol>
+<pre><code class="language-bash">git reset --hard abc123
+</code></pre>
+<ol start="4">
+<li>如果需要将更改强制推送到远程仓库：</li>
+</ol>
+<pre><code class="language-bash">git push origin --force
+</code></pre>
+<p><strong>注意</strong>：强制回滚和推送会覆盖远程仓库的历史记录</p></div>
 			</div>
 		</div>
 
