@@ -41,21 +41,21 @@
 			<div class="main-content">
 				<div class="content"><h1 id="zed-editor-openai-api">在 Zed Editor 中配置 OpenAI API 兼容的模型<a class="headerlink" href="#zed-editor-openai-api" title="Permanent link">&para;</a></h1>
 <p>在 setting.json 中写入</p>
-<pre><code class="language-json">&quot;language_models&quot;: {
-        &quot;openai&quot;: {
-            &quot;api_url&quot;: &quot;https://dashscope.aliyuncs.com/compatible-mode/v1&quot;,
-            &quot;available_models&quot;: [
-                {
-                    &quot;name&quot;: &quot;deepseek-r1&quot;,
-                    &quot;display_name&quot;: &quot;DeepSeek-R1&quot;,
-                    &quot;max_tokens&quot;: 65792,
-                    &quot;max_output_tokens&quot;: 2056
-                },
-            ],
-            &quot;version&quot;: &quot;1&quot;
-        }
-    },
-</code></pre>
+<p><pre><code class="language-json">"language_models": {
+		"openai": {
+			"api_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+			"available_models": [
+				{
+					"name": "deepseek-r1",
+					"display_name": "DeepSeek-R1",
+					"max_tokens": 65792,
+					"max_output_tokens": 2056
+				},
+			],
+			"version": "1"
+		}
+	},
+</code></pre></p>
 <p>接下来，在 Zed Editor 的 Assistant Panel Configuration 界面中，<br />
 找到 OpenAI 配置项，在此处输入阿里云 API 密钥，确认后按回车键保存配置。</p>
 <p>完成上述步骤后，即可在 Zed Editor 中流畅地使用 AI 功能了。</p>

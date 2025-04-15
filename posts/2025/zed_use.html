@@ -44,279 +44,279 @@
 <p>下载：https://github.com/deevus/zed-windows-builds</p>
 <h2 id="settingsjson">settings.json<a class="headerlink" href="#settingsjson" title="Permanent link">&para;</a></h2>
 <p>https://zed.dev/docs/configuring-zed</p>
-<pre><code class="language-bash">C:\Users\admin\AppData\Roaming\Zed
-</code></pre>
+<p><pre><code class="language-bash">C:\Users\admin\AppData\Roaming\Zed
+</code></pre></p>
 <h2 id="snippetsjson">snippets.json<a class="headerlink" href="#snippetsjson" title="Permanent link">&para;</a></h2>
 <p>https://zed.dev/docs/snippets</p>
-<pre><code class="language-bash">C:\Users\admin\AppData\Roaming\Zed
-</code></pre>
+<p><pre><code class="language-bash">C:\Users\admin\AppData\Roaming\Zed
+</code></pre></p>
 <p>示例：</p>
-<pre><code class="language-json">{
-    &quot;zed snippets&quot;: {
-        &quot;body&quot;: &quot;Zed is a good editor.&quot;,
-        &quot;description&quot;: &quot;zed snippets example&quot;,
-        &quot;prefix&quot;: &quot;zed&quot;
-    }
+<p><pre><code class="language-json">{
+	"zed snippets": {
+		"body": "Zed is a good editor.",
+		"description": "zed snippets example",
+		"prefix": "zed"
+	}
 }
-</code></pre>
+</code></pre></p>
 <p>如果你想创建针对 JavaScript 文件的代码片段，你的文件将是 <code>javascript.json</code></p>
 <h2 id="_1">格式化<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p><code>ctrl+shift+i</code> 保存加格式化</p>
 <h2 id="zed-2025-03-21">我的 Zed 配置(2025-03-21 更新)<a class="headerlink" href="#zed-2025-03-21" title="Permanent link">&para;</a></h2>
-<pre><code class="language-json">{
-    // &quot;base_keymap&quot;: &quot;VSCode&quot;, //键盘快捷键
+<p><pre><code class="language-json">{
+	// "base_keymap": "VSCode", //键盘快捷键
 
-    // &quot;vim_mode&quot;: true, //vim 模式
-    // &quot;relative_line_numbers&quot;: true, //相对行号
+	// "vim_mode": true, //vim 模式
+	// "relative_line_numbers": true, //相对行号
 
-    &quot;show_edit_predictions&quot;: false,
-    &quot;theme&quot;: &quot;One Dark&quot;, //主题
+	"show_edit_predictions": false,
+	"theme": "One Dark", //主题
 
-    &quot;buffer_line_height&quot;: &quot;comfortable&quot;, //行高
+	"buffer_line_height": "comfortable", //行高
 
-    &quot;buffer_font_family&quot;: &quot;JetBrains Mono&quot;, //编辑区字体
-    &quot;buffer_font_size&quot;: 17, //编辑区字体大小
-    &quot;buffer_font_fallbacks&quot;: [&quot;JetBrains Mono&quot;], //编辑区后备字体
-    &quot;ui_font_family&quot;: &quot;Zed Plex Mono&quot;, //UI 字体
-    &quot;ui_font_size&quot;: 17, //UI 大小
-    &quot;show_whitespaces&quot;: &quot;all&quot;, //显示空格
-    &quot;buffer_font_features&quot;: {
-        &quot;calt&quot;: false //连字，false 表示关闭
-    },
+	"buffer_font_family": "JetBrains Mono", //编辑区字体
+	"buffer_font_size": 17, //编辑区字体大小
+	"buffer_font_fallbacks": ["JetBrains Mono"], //编辑区后备字体
+	"ui_font_family": "Zed Plex Mono", //UI 字体
+	"ui_font_size": 17, //UI 大小
+	"show_whitespaces": "all", //显示空格
+	"buffer_font_features": {
+		"calt": false //连字，false 表示关闭
+	},
 
-    // AI 助手
-    &quot;assistant&quot;: {
-        &quot;default_model&quot;: {
-            &quot;provider&quot;: &quot;openai&quot;,
-            &quot;model&quot;: &quot;deepseek-v3&quot;
-        },
-        &quot;inline_alternatives&quot;: [
-            {
-                &quot;provider&quot;: &quot;openai&quot;,
-                &quot;model&quot;: &quot;deepseek-v3&quot;
-            }
-        ],
-        &quot;button&quot;: true,
-        &quot;version&quot;: &quot;2&quot;
-    },
+	// AI 助手
+	"assistant": {
+		"default_model": {
+			"provider": "openai",
+			"model": "deepseek-v3"
+		},
+		"inline_alternatives": [
+			{
+				"provider": "openai",
+				"model": "deepseek-v3"
+			}
+		],
+		"button": true,
+		"version": "2"
+	},
 
-    //语言模型
-    &quot;language_models&quot;: {
-        &quot;openai&quot;: {
-            &quot;api_url&quot;: &quot;https://dashscope.aliyuncs.com/compatible-mode/v1&quot;,
-            &quot;available_models&quot;: [
-                {
-                    &quot;name&quot;: &quot;qwq-plus&quot;,
-                    &quot;display_name&quot;: &quot;QwQ-Plus&quot;,
-                    &quot;max_tokens&quot;: 131072,
-                    &quot;max_output_tokens&quot;: 8192
-                },
-                {
-                    &quot;name&quot;: &quot;qwq-32b&quot;,
-                    &quot;display_name&quot;: &quot;QwQ-32B&quot;,
-                    &quot;max_tokens&quot;: 131072,
-                    &quot;max_output_tokens&quot;: 8192
-                },
-                {
-                    &quot;name&quot;: &quot;deepseek-r1&quot;,
-                    &quot;display_name&quot;: &quot;DeepSeek-R1&quot;,
-                    &quot;max_tokens&quot;: 65792
-                },
-                {
-                    &quot;name&quot;: &quot;deepseek-v3&quot;,
-                    &quot;display_name&quot;: &quot;DeepSeek-V3&quot;,
-                    &quot;max_tokens&quot;: 65792
-                }
-            ],
-            &quot;version&quot;: &quot;1&quot;
-        }
-    },
+	//语言模型
+	"language_models": {
+		"openai": {
+			"api_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+			"available_models": [
+				{
+					"name": "qwq-plus",
+					"display_name": "QwQ-Plus",
+					"max_tokens": 131072,
+					"max_output_tokens": 8192
+				},
+				{
+					"name": "qwq-32b",
+					"display_name": "QwQ-32B",
+					"max_tokens": 131072,
+					"max_output_tokens": 8192
+				},
+				{
+					"name": "deepseek-r1",
+					"display_name": "DeepSeek-R1",
+					"max_tokens": 65792
+				},
+				{
+					"name": "deepseek-v3",
+					"display_name": "DeepSeek-V3",
+					"max_tokens": 65792
+				}
+			],
+			"version": "1"
+		}
+	},
 
-    &quot;features&quot;: {
-        &quot;edit_prediction_provider&quot;: &quot;zed&quot; // tab 编辑预测（不可选自己的模型）
-    },
+	"features": {
+		"edit_prediction_provider": "zed" // tab 编辑预测（不可选自己的模型）
+	},
 
-    &quot;enable_language_server&quot;: true, //lsp 功能
+	"enable_language_server": true, //lsp 功能
 
-    &quot;jupyter&quot;: {
-        &quot;enabled&quot;: false
-    },
+	"jupyter": {
+		"enabled": false
+	},
 
-    &quot;terminal&quot;: {
-        &quot;copy_on_select&quot;: true //终端选择即复制
-    },
+	"terminal": {
+		"copy_on_select": true //终端选择即复制
+	},
 
-    //顶部功能区
-    &quot;tab_bar&quot;: {
-        &quot;show&quot;: true,
-        &quot;show_nav_history_buttons&quot;: true,
-        &quot;show_tab_bar_buttons&quot;: true
-    },
-    //大纲栏位置
-    &quot;outline_panel&quot;: {
-        &quot;dock&quot;: &quot;right&quot;
-    },
-    //协作面板
-    &quot;collaboration_panel&quot;: {
-        &quot;button&quot;: false
-    },
-    //通知面板
-    &quot;notification_panel&quot;: {
-        &quot;button&quot;: false
-    },
+	//顶部功能区
+	"tab_bar": {
+		"show": true,
+		"show_nav_history_buttons": true,
+		"show_tab_bar_buttons": true
+	},
+	//大纲栏位置
+	"outline_panel": {
+		"dock": "right"
+	},
+	//协作面板
+	"collaboration_panel": {
+		"button": false
+	},
+	//通知面板
+	"notification_panel": {
+		"button": false
+	},
 
-    //类似日记本的功能，可全局唤出
-    &quot;journal&quot;: {
-        &quot;path&quot;: &quot;D:\\workspace\\A-Next&quot;,
-        &quot;hour_format&quot;: &quot;hour24&quot;
-    },
+	//类似日记本的功能，可全局唤出
+	"journal": {
+		"path": "D:\\workspace\\A-Next",
+		"hour_format": "hour24"
+	},
 
-    &quot;use_smartcase_search&quot;: true, //如果搜索查询包含任何大写字母，则搜索将区分大小写；如果它只包含小写字母，则搜索将不区分大小写
+	"use_smartcase_search": true, //如果搜索查询包含任何大写字母，则搜索将区分大小写；如果它只包含小写字母，则搜索将不区分大小写
 
-    //滚动条
-    &quot;scrollbar&quot;: {
-        &quot;axes&quot;: {
-            &quot;horizontal&quot;: false,
-            &quot;vertical&quot;: true
-        },
-        &quot;show&quot;: &quot;always&quot;
-    },
+	//滚动条
+	"scrollbar": {
+		"axes": {
+			"horizontal": false,
+			"vertical": true
+		},
+		"show": "always"
+	},
 
-    &quot;git&quot;: {
-        &quot;git_gutter&quot;: &quot;tracked_files&quot;, //在文件中显示 git 变动
-        //显示 git 提交消息
-        &quot;inline_blame&quot;: {
-            &quot;enabled&quot;: true,
-            &quot;show_commit_summary&quot;: false, //显示提交信息
-            &quot;delay_ms&quot;: 200
-        }
-    },
+	"git": {
+		"git_gutter": "tracked_files", //在文件中显示 git 变动
+		//显示 git 提交消息
+		"inline_blame": {
+			"enabled": true,
+			"show_commit_summary": false, //显示提交信息
+			"delay_ms": 200
+		}
+	},
 
-    &quot;hard_tabs&quot;: true, //显示 tab 标识而不是显示空格
+	"hard_tabs": true, //显示 tab 标识而不是显示空格
 
-    &quot;languages&quot;: {
-        &quot;Typst&quot;: {
-            &quot;show_edit_predictions&quot;: false,
-            &quot;format_on_save&quot;: &quot;on&quot;,
-            &quot;formatter&quot;: {
-                &quot;external&quot;: {
-                    &quot;command&quot;: &quot;typstyle&quot;
-                }
-            }
-        },
-        // 禁用以下语言的服务
-        &quot;Markdown&quot;: {
-            &quot;enable_language_server&quot;: false,
-            &quot;show_edit_predictions&quot;: false,
-            &quot;format_on_save&quot;: &quot;on&quot; //保存时自动格式
-        },
-        &quot;Rust&quot;: {
-            &quot;enable_language_server&quot;: false,
-            &quot;show_edit_predictions&quot;: false,
-            &quot;format_on_save&quot;: &quot;off&quot;
-        },
-        &quot;JavaScript&quot;: {
-            &quot;enable_language_server&quot;: false,
-            &quot;show_edit_predictions&quot;: false,
-            &quot;format_on_save&quot;: &quot;off&quot;
-        },
-        &quot;TypeScript&quot;: {
-            &quot;enable_language_server&quot;: false,
-            &quot;show_edit_predictions&quot;: false,
-            &quot;format_on_save&quot;: &quot;off&quot;
-        },
-        &quot;Go&quot;: {
-            &quot;enable_language_server&quot;: false,
-            &quot;show_edit_predictions&quot;: false,
-            &quot;format_on_save&quot;: &quot;off&quot;
-        },
-        &quot;HTML&quot;: {
-            &quot;enable_language_server&quot;: false,
-            &quot;show_edit_predictions&quot;: false,
-            &quot;format_on_save&quot;: &quot;off&quot;
-        },
-        &quot;Java&quot;: {
-            &quot;enable_language_server&quot;: false,
-            &quot;show_edit_predictions&quot;: false,
-            &quot;format_on_save&quot;: &quot;off&quot;
-        },
-        &quot;Kotlin&quot;: {
-            &quot;enable_language_server&quot;: false,
-            &quot;show_edit_predictions&quot;: false,
-            &quot;format_on_save&quot;: &quot;off&quot;
-        },
-        &quot;PHP&quot;: {
-            &quot;enable_language_server&quot;: false,
-            &quot;show_edit_predictions&quot;: false,
-            &quot;format_on_save&quot;: &quot;off&quot;
-        },
-        &quot;Python&quot;: {
-            &quot;enable_language_server&quot;: false,
-            &quot;show_edit_predictions&quot;: true,
-            &quot;format_on_save&quot;: &quot;off&quot;
-        },
-        &quot;Vue&quot;: {
-            &quot;enable_language_server&quot;: false,
-            &quot;show_edit_predictions&quot;: false,
-            &quot;format_on_save&quot;: &quot;off&quot;
-        }
-    },
+	"languages": {
+		"Typst": {
+			"show_edit_predictions": false,
+			"format_on_save": "on",
+			"formatter": {
+				"external": {
+					"command": "typstyle"
+				}
+			}
+		},
+		// 禁用以下语言的服务
+		"Markdown": {
+			"enable_language_server": false,
+			"show_edit_predictions": false,
+			"format_on_save": "on" //保存时自动格式
+		},
+		"Rust": {
+			"enable_language_server": false,
+			"show_edit_predictions": false,
+			"format_on_save": "off"
+		},
+		"JavaScript": {
+			"enable_language_server": false,
+			"show_edit_predictions": false,
+			"format_on_save": "off"
+		},
+		"TypeScript": {
+			"enable_language_server": false,
+			"show_edit_predictions": false,
+			"format_on_save": "off"
+		},
+		"Go": {
+			"enable_language_server": false,
+			"show_edit_predictions": false,
+			"format_on_save": "off"
+		},
+		"HTML": {
+			"enable_language_server": false,
+			"show_edit_predictions": false,
+			"format_on_save": "off"
+		},
+		"Java": {
+			"enable_language_server": false,
+			"show_edit_predictions": false,
+			"format_on_save": "off"
+		},
+		"Kotlin": {
+			"enable_language_server": false,
+			"show_edit_predictions": false,
+			"format_on_save": "off"
+		},
+		"PHP": {
+			"enable_language_server": false,
+			"show_edit_predictions": false,
+			"format_on_save": "off"
+		},
+		"Python": {
+			"enable_language_server": false,
+			"show_edit_predictions": true,
+			"format_on_save": "off"
+		},
+		"Vue": {
+			"enable_language_server": false,
+			"show_edit_predictions": false,
+			"format_on_save": "off"
+		}
+	},
 
-    &quot;vertical_scroll_margin&quot;: 6, //光标上下文
+	"vertical_scroll_margin": 6, //光标上下文
 
-    // 以下不会显示在左侧文件树中
-    &quot;file_scan_exclusions&quot;: [
-        &quot;**/.svn&quot;,
-        &quot;**/.hg&quot;,
-        &quot;**/CVS&quot;,
-        &quot;**/.DS_Store&quot;,
-        &quot;**/Thumbs.db&quot;,
-        &quot;**/.classpath&quot;,
-        &quot;**/vendor&quot;,
-        &quot;**/.tmp*&quot;,
-        &quot;**/.git&quot;
-    ],
+	// 以下不会显示在左侧文件树中
+	"file_scan_exclusions": [
+		"**/.svn",
+		"**/.hg",
+		"**/CVS",
+		"**/.DS_Store",
+		"**/Thumbs.db",
+		"**/.classpath",
+		"**/vendor",
+		"**/.tmp*",
+		"**/.git"
+	],
 
-    //缩进配置
-    &quot;indent_guides&quot;: {
-        &quot;coloring&quot;: &quot;indent_aware&quot; //缩进线颜色
-        // &quot;background_coloring&quot;: &quot;indent_aware&quot; //缩进背景颜色
-    },
+	//缩进配置
+	"indent_guides": {
+		"coloring": "indent_aware" //缩进线颜色
+		// "background_coloring": "indent_aware" //缩进背景颜色
+	},
 
-    //自动保存
-    &quot;autosave&quot;: {
-        &quot;after_delay&quot;: {
-            &quot;milliseconds&quot;: 1000
-        }
-    },
+	//自动保存
+	"autosave": {
+		"after_delay": {
+			"milliseconds": 1000
+		}
+	},
 
-    //遥测
-    &quot;telemetry&quot;: {
-        &quot;diagnostics&quot;: true,
-        &quot;metrics&quot;: true
-    },
+	//遥测
+	"telemetry": {
+		"diagnostics": true,
+		"metrics": true
+	},
 
-    &quot;tabs&quot;: {
-        &quot;file_icons&quot;: true, //顶部 tab 页的文件图标
-        &quot;git_status&quot;: true // 顶部 tab 页显示 git 状态
-    },
+	"tabs": {
+		"file_icons": true, //顶部 tab 页的文件图标
+		"git_status": true // 顶部 tab 页显示 git 状态
+	},
 
-    &quot;confirm_quit&quot;: true, //关闭应用程序之前是否提示用户
+	"confirm_quit": true, //关闭应用程序之前是否提示用户
 
-    &quot;soft_wrap&quot;: &quot;editor_width&quot;, //软换行
+	"soft_wrap": "editor_width", //软换行
 
-    &quot;auto_update&quot;: false,
+	"auto_update": false,
 
-    &quot;lsp&quot;: {
-        &quot;tinymist&quot;: {
-            &quot;initialization_options&quot;: {
-                // &quot;exportPdf&quot;: &quot;onSave&quot;,//保存时编译 pdf
-                &quot;outputPath&quot;: &quot;$root/$name&quot;
-            }
-        }
-    }
+	"lsp": {
+		"tinymist": {
+			"initialization_options": {
+				// "exportPdf": "onSave",//保存时编译 pdf
+				"outputPath": "$root/$name"
+			}
+		}
+	}
 }
-</code></pre></div>
+</code></pre></p></div>
 			</div>
 		</div>
 

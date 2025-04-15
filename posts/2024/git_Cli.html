@@ -41,14 +41,14 @@
 			<div class="main-content">
 				<div class="content"><h1 id="git">git 命令手册<a class="headerlink" href="#git" title="Permanent link">&para;</a></h1>
 <h2 id="_1">常用语句<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<pre><code>== 初始化本地git仓库（创建新仓库）
+<p><pre><code>== 初始化本地git仓库（创建新仓库）
 git init
 
 == 配置用户名
-git config --global user.name &quot;xxx&quot;
+git config --global user.name "xxx"
 
 == 配置邮件
-git config --global user.email &quot;xxx@xxx.com&quot;
+git config --global user.email "xxx@xxx.com"
 
 == git status等命令自动着色
 git config --global color.ui true
@@ -268,14 +268,14 @@ git stash show -p stash@{0}
 git stash apply stash@{0}
 
 == 文件中搜索文本“delete from”
-git grep &quot;delete from&quot;
+git grep "delete from"
 git grep -e '#define' --and -e SORT_DIRENT
 
 git gc
 git fsck
-</code></pre>
+</code></pre></p>
 <h2 id="_2">新建仓库<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<pre><code>## 初始化当前项目
+<p><pre><code>## 初始化当前项目
 $ git init
 
 ## 新建一个目录，将其初始化为Git代码库
@@ -288,9 +288,9 @@ $ git init --bare <directory>
 ## 下载一个项目和它的整个代码历史
 ## 这个命令就是将一个版本库拷贝到另一个目录中，同时也将分支都拷贝到新的版本库中。这样就可以在新的版本库中提交到远程分支
 $ git clone [url]
-</code></pre>
+</code></pre></p>
 <h2 id="git_1">git 配置<a class="headerlink" href="#git_1" title="Permanent link">&para;</a></h2>
-<pre><code>## 显示当前的Git配置
+<p><pre><code>## 显示当前的Git配置
 $ git config --list
 
 ## 编辑Git配置文件
@@ -301,23 +301,23 @@ $ git config --global user.email
 $ git config --global user.name
 
 $ git config --global user.email "MyEmail@gmail.com"
-$ git config --global user.name &quot;My Name&quot;
+$ git config --global user.name "My Name"
 
 ## 定义当前用户所有提交使用的作者邮箱。
 $ git config --global alias.<alias-name> <git-command>
 
 ## 为Git命令创建一个快捷方式（别名）。
-$ git config --system core.editor &lt;editor&gt;
-</code></pre>
+$ git config --system core.editor <editor>
+</code></pre></p>
 <h2 id="git_2">git 状态<a class="headerlink" href="#git_2" title="Permanent link">&para;</a></h2>
-<pre><code>## 显示分支，未跟踪文件，更改和其他不同
+<p><pre><code>## 显示分支，未跟踪文件，更改和其他不同
 $ git status
 
 ## 查看其他的git status的用法
 $ git help status
-</code></pre>
+</code></pre></p>
 <h2 id="git_3">git 信息<a class="headerlink" href="#git_3" title="Permanent link">&para;</a></h2>
-<pre><code>## 显示commit历史，以及每次commit发生变更的文件
+<p><pre><code>## 显示commit历史，以及每次commit发生变更的文件
 $ git log --stat
 
 ## 搜索提交历史，根据关键词
@@ -385,7 +385,7 @@ $ git reflog
 $ git br -r
 
 ## 创建新的分支
-$ git br &lt;new_branch&gt;
+$ git br <new_branch>
 
 ## 查看各个分支最后提交信息
 $ git br -v
@@ -395,12 +395,9 @@ $ git br --merged
 
 ## 查看尚未被合并到当前分支的分支
 $ git br --no-merged
-```
-
-## git 添加、暂存
-
-```
-## 添加一个文件
+</code></pre></p>
+<h2 id="git_4">git 添加、暂存<a class="headerlink" href="#git_4" title="Permanent link">&para;</a></h2>
+<p><pre><code>## 添加一个文件
 $ git add test.js
 
 ## 添加一个子目录中的文件
@@ -421,9 +418,9 @@ $ git add .
 ## 添加每个变化前，都会要求确认
 ## 对于同一个文件的多处变化，可以实现分次提交
 $ git add -p
-</code></pre>
-<h2 id="git_4">git 删除文件<a class="headerlink" href="#git_4" title="Permanent link">&para;</a></h2>
-<pre><code>## 移除 HelloWorld.js
+</code></pre></p>
+<h2 id="git_5">git 删除文件<a class="headerlink" href="#git_5" title="Permanent link">&para;</a></h2>
+<p><pre><code>## 移除 HelloWorld.js
 $ git rm HelloWorld.js
 
 ## 移除子目录中的文件
@@ -434,16 +431,16 @@ $ git rm [file1] [file2] ...
 
 ## 停止追踪指定文件，但该文件会保留在工作区
 $ git rm --cached [file]
-</code></pre>
+</code></pre></p>
 <h2 id="_3">管理分支<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<pre><code>## 查看所有的分支和远程分支
+<p><pre><code>## 查看所有的分支和远程分支
 $ git branch -a
 
 ## 创建一个新的分支
 $ git branch [branch-name]
 
 ## 重命名分支
-## git branch -m &lt;旧名称&gt; &lt;新名称&gt;
+## git branch -m <旧名称> <新名称>
 $ git branch -m [branch-name] [new-branch-name]
 
 ## 编辑分支的介绍
@@ -493,7 +490,7 @@ $ git branch -dr [remote/branch]
 $ git co <branch>
 
 ## 创建新的分支，并且切换过去
-$ git co -b &lt;new_branch&gt;
+$ git co -b <new_branch>
 
 ## 基于branch创建新的new_branch
 $ git co -b <new_branch> <branch>
@@ -505,24 +502,21 @@ $ git co $id
 $ git co $id -b <new_branch>
 
 ## 删除某个分支
-$ git br -d &lt;branch&gt;
+$ git br -d <branch>
 
 ## 强制删除某个分支 (未被合并的分支被删除的时候需要强制)
 $ git br -D <branch>
-```
-
-## git checkout
-
-```
-## 检出一个版本库，默认将更新到master分支
+</code></pre></p>
+<h2 id="git-checkout">git checkout<a class="headerlink" href="#git-checkout" title="Permanent link">&para;</a></h2>
+<p><pre><code>## 检出一个版本库，默认将更新到master分支
 $ git checkout
 ## 检出到一个特定的分支
 $ git checkout branchName
 ## 新建一个分支，并且切换过去，相当于"git branch <名字>; git checkout <名字>"
 $ git checkout -b newBranch
-</code></pre>
+</code></pre></p>
 <h2 id="_4">添加远程仓库<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<pre><code>## 下载远程仓库的所有变动
+<p><pre><code>## 下载远程仓库的所有变动
 $ git fetch [remote]
 
 ## 显示所有远程仓库
@@ -544,11 +538,11 @@ $ git remote add origin git@ github:xxx/xxx.git
 $ git remote set-url origin git@ github.com:xxx/xxx.git
 
 ## 删除远程仓库
-$ git remote rm &lt;repository&gt;
+$ git remote rm <repository>
 
 ## 上传本地指定分支到远程仓库
 ## 把本地的分支更新到远端origin的master分支上
-## git push &lt;远端&gt; &lt;分支&gt;
+## git push <远端> <分支>
 ## git push 相当于 git push origin master
 $ git push [remote] [branch]
 
@@ -557,12 +551,9 @@ $ git push [remote] --force
 
 ## 推送所有分支到远程仓库
 $ git push [remote] --all
-```
-
-## 撤销：
-
-```
-## 恢复暂存区的指定文件到工作区
+</code></pre></p>
+<h2 id="_5">撤销：<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p><pre><code>## 恢复暂存区的指定文件到工作区
 $ git checkout [file]
 
 ## 恢复某个commit的指定文件到暂存区和工作区
@@ -605,9 +596,9 @@ $ git stash apply
 
 ## 删除暂存区
 $ git stash drop
-</code></pre>
+</code></pre></p>
 <h2 id="commit">提交 commit<a class="headerlink" href="#commit" title="Permanent link">&para;</a></h2>
-<pre><code>## 提交暂存区到仓库区附带提交信息
+<p><pre><code>## 提交暂存区到仓库区附带提交信息
 $ git commit -m [message]
 
 ## 提交暂存区的指定文件到仓库区
@@ -625,9 +616,9 @@ $ git commit --amend -m [message]
 
 ## 重做上一次commit，并包括指定文件的新变化
 $ git commit --amend [file1] [file2] ...
-</code></pre>
+</code></pre></p>
 <h2 id="git-diff">git diff<a class="headerlink" href="#git-diff" title="Permanent link">&para;</a></h2>
-<pre><code>## 显示工作目录和索引的不同
+<p><pre><code>## 显示工作目录和索引的不同
 $ git diff
 
 ## 显示索引和最近一次提交的不同
@@ -635,12 +626,9 @@ $ git diff --cached
 
 ## 显示工作目录和最近一次提交的不同
 $ git diff HEAD
-```
-
-## git grep
-
-```
-可选配置：
+</code></pre></p>
+<h2 id="git-grep">git grep<a class="headerlink" href="#git-grep" title="Permanent link">&para;</a></h2>
+<p><pre><code>可选配置：
 ## 感谢Travis Jeffery提供的以下用法：
 ## 在搜索结果中显示行号
 $ git config --global grep.lineNumber true
@@ -650,14 +638,11 @@ $ git config --global alias.g "grep --break --heading --line-number"
 ## 在所有的java中查找variableName
 $ git grep 'variableName' -- '*.java'
 
-## 搜索包含 &quot;arrayListName&quot; 和, &quot;add&quot; 或 &quot;remove&quot; 的所有行
+## 搜索包含 "arrayListName" 和, "add" 或 "remove" 的所有行
 $ git grep -e 'arrayListName' --and \( -e add -e remove \)
-```
-
-## git log
-
-```
-## 显示所有提交
+</code></pre></p>
+<h2 id="git-log">git log<a class="headerlink" href="#git-log" title="Permanent link">&para;</a></h2>
+<p><pre><code>## 显示所有提交
 $ git log
 
 ## 显示某几条提交信息
@@ -670,24 +655,24 @@ $ git log --merges
 $ git log <file>
 
 ## 查看每次详细修改内容的diff
-$ git log -p &lt;file&gt;
+$ git log -p <file>
 
 ## 查看最近两次详细修改内容的diff
 $ git log -p -2
 
 #查看提交统计信息
 $ git log --stat
-</code></pre>
+</code></pre></p>
 <h2 id="merge">merge<a class="headerlink" href="#merge" title="Permanent link">&para;</a></h2>
-<pre><code>## 将其他分支合并到当前分支
+<p><pre><code>## 将其他分支合并到当前分支
 $ git merge branchName
 
 ## 在合并时创建一个新的合并后的提交
 ## 不要 Fast-Foward 合并，这样可以生成 merge 提交
 $ git merge --no-ff branchName
-</code></pre>
+</code></pre></p>
 <h2 id="mv">mv 重命名或移动一个文件<a class="headerlink" href="#mv" title="Permanent link">&para;</a></h2>
-<pre><code>## 重命名
+<p><pre><code>## 重命名
 $ git mv test.js test2.js
 
 ## 移动
@@ -699,9 +684,9 @@ $ git mv [file-original] [file-renamed]
 ## 强制重命名或移动
 ## 这个文件已经存在，将要覆盖掉
 $ git mv -f myFile existingFile
-</code></pre>
+</code></pre></p>
 <h2 id="tag">tag<a class="headerlink" href="#tag" title="Permanent link">&para;</a></h2>
-<pre><code>## 列出所有tag
+<p><pre><code>## 列出所有tag
 $ git tag
 
 ## 新建一个tag在当前commit
@@ -727,33 +712,27 @@ $ git push [remote] --tags
 
 ## 新建一个分支，指向某个tag
 $ git checkout -b [branch] [tag]
-```
-
-## push
-
-```
-## 从远端origin的master分支更新版本库
+</code></pre></p>
+<h2 id="push">push<a class="headerlink" href="#push" title="Permanent link">&para;</a></h2>
+<p><pre><code>## 从远端origin的master分支更新版本库
 ## git pull <远端> <分支>
 $ git pull origin master
 
 ## 抓取远程仓库所有分支更新并合并到本地，不要快进合并
 $ git pull --no-ff
-```
-
-## ci
-
-```
-$ git ci &lt;file&gt;
+</code></pre></p>
+<h2 id="ci">ci<a class="headerlink" href="#ci" title="Permanent link">&para;</a></h2>
+<p><pre><code>$ git ci <file>
 $ git ci .
 ## 将git add, git rm和git ci等操作都合并在一起做
 $ git ci -a
 $ git ci -am "some comments"
 ## 修改最后一次提交记录
 $ git ci --amend
-</code></pre>
+</code></pre></p>
 <h2 id="rebase">rebase<a class="headerlink" href="#rebase" title="Permanent link">&para;</a></h2>
-<pre><code>## 将experimentBranch应用到master上面
-## git rebase &lt;basebranch&gt; &lt;topicbranch&gt;
+<p><pre><code>## 将experimentBranch应用到master上面
+## git rebase <basebranch> <topicbranch>
 $ git rebase master experimentBranch
 reset (谨慎使用)
 将当前的头指针复位到一个特定的状态。这样可以使你撤销 merge、pull、commits、add 等 这是个很强大的命令，但是在使用时一定要清楚其所产生的后果
@@ -770,12 +749,9 @@ $ git reset dha78as
 ## 将当前分支恢复到某次提交，覆盖现在的工作目录
 ## 并且删除所有未提交的改变和指定提交之后的所有提交
 $ git reset --hard dha78as
-```
-
-## 其他
-
-```
-## 生成一个可供发布的压缩包
+</code></pre></p>
+<h2 id="_6">其他<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p><pre><code>## 生成一个可供发布的压缩包
 $ git archive
 
 ## 打补丁
@@ -786,7 +762,7 @@ $ git apply --check ../sync.patch
 
 ## 查看Git的版本
 $ git --version
-</code></pre></div>
+</code></pre></p></div>
 			</div>
 		</div>
 

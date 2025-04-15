@@ -42,18 +42,18 @@
 				<div class="content"><h1 id="git">git 重置当前分支<a class="headerlink" href="#git" title="Permanent link">&para;</a></h1>
 <p><code>git reset</code> 命令用于重置当前分支的 HEAD 到指定的状态。以下是一些常用的 <code>git reset</code> 命令：</p>
 <h2 id="1">1. 软重置（保留工作目录和暂存区的更改）：<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<pre><code class="language-bash">git reset --soft &lt;commit&gt;
-</code></pre>
+<p><pre><code class="language-bash">git reset --soft <commit>
+</code></pre></p>
 <h2 id="2">2. 混合重置（保留工作目录的更改，但重置暂存区）：<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
-<pre><code class="language-bash">git reset --mixed &lt;commit&gt;
-</code></pre>
-<p>这是默认选项，如果不指定参数，<code>git reset</code> 会默认使用 <code>--mixed</code>。</p>
+<p><pre><code class="language-bash">git reset --mixed <commit>
+</code></pre><br />
+这是默认选项，如果不指定参数，<code>git reset</code> 会默认使用 <code>--mixed</code>。</p>
 <h2 id="3">3. 硬重置（丢弃工作目录和暂存区的更改）：<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
-<pre><code class="language-bash">git reset --hard &lt;commit&gt;
-</code></pre>
-<p>其中 <code>&lt;commit&gt;</code> 是你想重置到的提交的哈希值。如果你想重置到上一个提交，可以使用 <code>HEAD^</code> 代替 <code>&lt;commit&gt;</code>。例如：</p>
-<pre><code class="language-bash">git reset --hard HEAD^
-</code></pre></div>
+<p><pre><code class="language-bash">git reset --hard <commit>
+</code></pre></p>
+<p>其中 <code><commit></code> 是你想重置到的提交的哈希值。如果你想重置到上一个提交，可以使用 <code>HEAD^</code> 代替 <code><commit></code>。例如：</p>
+<p><pre><code class="language-bash">git reset --hard HEAD^
+</code></pre></p></div>
 			</div>
 		</div>
 

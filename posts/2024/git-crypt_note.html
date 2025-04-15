@@ -55,17 +55,17 @@
 <p>把 <code>git-crypt.exe</code> 放到 <code>git\bin</code> 目录下</p>
 <h2 id="_2">步骤<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <h2 id="1">1. 初始化仓库<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<pre><code class="language-bash">git init
-</code></pre>
+<p><pre><code class="language-bash">git init
+</code></pre></p>
 <h2 id="2-git-crypt">2. 初始化 git-crypt<a class="headerlink" href="#2-git-crypt" title="Permanent link">&para;</a></h2>
-<pre><code class="language-bash">git-crypt init
-</code></pre>
+<p><pre><code class="language-bash">git-crypt init
+</code></pre></p>
 <h2 id="3-gpg">3. 添加 GPG 用户<a class="headerlink" href="#3-gpg" title="Permanent link">&para;</a></h2>
-<pre><code class="language-bash">git-crypt add-gpg-user &lt;GPG_KEY_ID&gt;
-</code></pre>
+<p><pre><code class="language-bash">git-crypt add-gpg-user <GPG_KEY_ID>
+</code></pre></p>
 <h2 id="4">4. 配置加密文件<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <p>在 <code>.gitattributes</code> 文件中添加</p>
-<pre><code class="language-plaintext">## 加密指定文件
+<p><pre><code class="language-plaintext">## 加密指定文件
 secretfile filter=git-crypt diff=git-crypt
 
 ## 加密指定文件夹下的md文件
@@ -73,20 +73,20 @@ Test/*.md filter=git-crypt diff=git-crypt
 
 ## 加密指定文件夹下的所有文件
 Test/** filter=git-crypt diff=git-crypt
-</code></pre>
+</code></pre></p>
 <h2 id="5">5. 提交更改<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
-<pre><code class="language-bash">git add .gitattributes secret.txt
-git commit -m &quot;Add git-crypt configuration&quot;
+<p><pre><code class="language-bash">git add .gitattributes secret.txt
+git commit -m "Add git-crypt configuration"
 git push
-</code></pre>
+</code></pre></p>
 <h2 id="6">6. 解密文件<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
-<pre><code class="language-bash">git-crypt unlock
-</code></pre>
+<p><pre><code class="language-bash">git-crypt unlock
+</code></pre></p>
 <h2 id="_3">相关命令<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<pre><code class="language-bash">$ git-crypt status
+<p><pre><code class="language-bash">$ git-crypt status
 not encrypted: .gitattributes
     encrypted: secretfile
-</code></pre>
+</code></pre></p>
 <h2 id="git-crypt_1">git-crypt 工作流示意图<a class="headerlink" href="#git-crypt_1" title="Permanent link">&para;</a></h2>
 <p><strong>（由 DeepSeek-R1 生成）</strong></p>
 <div class="mermaid">graph TD

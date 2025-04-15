@@ -42,21 +42,21 @@
 				<div class="content"><h1 id="b">B站嵌入代码<a class="headerlink" href="#b" title="Permanent link">&para;</a></h1>
 <h2 id="_1">正常显示<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>在</p>
-<pre><code>&lt;iframe src=&quot;//player.bilibili.com
-</code></pre>
-<p>之中添加 <code>https:</code> 变成</p>
-<pre><code>&lt;iframe src=&quot;https://player.bilibili.com
-</code></pre>
+<p><pre><code><iframe src="//player.bilibili.com
+</code></pre></p>
+<p>之中添加 <code>https:</code> 变成<br />
+<pre><code><iframe src="https://player.bilibili.com
+</code></pre></p>
 <h2 id="_2">修改屏幕尺寸<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<pre><code>style=&quot;width:100%;aspect-ratio:16/9;&quot;
-</code></pre>
-<pre><code class="language-iframe">&lt;iframe src=&quot;//player.bilibili.com/player.html?aid=425938140&amp;bvid=BV1G3411M7BN&amp;cid=584177306&amp;p=1&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot; style=&quot;width:100%;aspect-ratio:16/9;&quot;&gt;&lt;/iframe&gt;
-</code></pre>
+<p><pre><code>style="width:100%;aspect-ratio:16/9;"
+</code></pre></p>
+<p><pre><code class="language-iframe"><iframe src="//player.bilibili.com/player.html?aid=425938140&bvid=BV1G3411M7BN&cid=584177306&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:100%;aspect-ratio:16/9;"></iframe>
+</code></pre></p>
 <h2 id="_3">禁止自动播放<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>如果不修改代码，会在打开文章页面的时候，视频就会直接自动从头开始播放，突然的声音可能带来不必要的惊吓，并且会让访问者错过开头，显得很突兀。</p>
 <p>要取消自动播放，只需在视频 src=url 链接最后加上：&amp;autoplay=0</p>
-<pre><code class="language-iframe">&lt;iframe src=&quot;//player.bilibili.com/player.html?aid=425938140&amp;bvid=BV1G3411M7BN&amp;cid=584177306&amp;p=1&amp;autoplay=0&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;no&quot; framespacing=&quot;0&quot; allowfullscreen=&quot;true&quot;&gt;&lt;/iframe&gt;
-</code></pre>
+<p><pre><code class="language-iframe"><iframe src="//player.bilibili.com/player.html?aid=425938140&bvid=BV1G3411M7BN&cid=584177306&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+</code></pre></p>
 <h2 id="b_1">更多B站嵌入代码修改<a class="headerlink" href="#b_1" title="Permanent link">&para;</a></h2>
 <p>如果要更改更多B站视频嵌入代码设置选项，可以参考下面关于iframe引用的B站官方参数设置。</p>
 <p>设置方法就是在src=url链接后面添加:&amp;参数名=参数数值</p>

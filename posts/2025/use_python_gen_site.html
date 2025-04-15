@@ -41,32 +41,32 @@
 			<div class="main-content">
 				<div class="content"><h1 id="python">使用 Python 生成静态网页<a class="headerlink" href="#python" title="Permanent link">&para;</a></h1>
 <p>环境：</p>
-<pre><code class="language-bash">PS D:\workspace\blog&gt; python --version
+<p><pre><code class="language-bash">PS D:\workspace\blog> python --version
 
 Python 3.12.0
-</code></pre>
+</code></pre></p>
 <p>步骤：</p>
 <p>第一步，创建虚拟环境</p>
-<pre><code class="language-bash">python -m venv venv
-</code></pre>
-<pre><code class="language-bash">.\venv\Scripts\activate
-</code></pre>
+<p><pre><code class="language-bash">python -m venv venv
+</code></pre></p>
+<p><pre><code class="language-bash">.\venv\Scripts\activate
+</code></pre></p>
 <p>第二步，下载依赖</p>
-<pre><code class="language-bash">pip install -r requirements.txt
-</code></pre>
+<p><pre><code class="language-bash">pip install -r requirements.txt
+</code></pre></p>
 <p>第三步，生成索引</p>
-<pre><code class="language-bash">python .github\scripts\update_indexes.py
-</code></pre>
+<p><pre><code class="language-bash">python .github\scripts\update_indexes.py
+</code></pre></p>
 <p>第四步，生成静态网页</p>
-<pre><code class="language-bash">python .github\scripts\static_gen.py
-</code></pre>
+<p><pre><code class="language-bash">python .github\scripts\static_gen.py
+</code></pre></p>
 <p>第五步，预览</p>
-<pre><code class="language-bash">python -m http.server -d site
-</code></pre>
+<p><pre><code class="language-bash">python -m http.server -d site
+</code></pre></p>
 <p>在浏览器中访问 http://localhost:8000</p>
 <h2 id="_1">创建新的文章<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>在 posts 文件夹下按照年份创建文件，格式为</p>
-<pre><code class="language-markdown">---
+<p><pre><code class="language-markdown">---
 title: 标题
 date: 2025-04-13
 tags: [tag1, tag2]
@@ -74,16 +74,16 @@ category: [category]
 ---
 
 # 标题
-</code></pre>
+</code></pre></p>
 <p>写完之后生成索引</p>
-<pre><code class="language-bash">python .github\scripts\update_indexes.py
-</code></pre>
+<p><pre><code class="language-bash">python .github\scripts\update_indexes.py
+</code></pre></p>
 <p>生成静态网页</p>
-<pre><code class="language-bash">python .github\scripts\static_gen.py
-</code></pre>
+<p><pre><code class="language-bash">python .github\scripts\static_gen.py
+</code></pre></p>
 <p>本地预览</p>
-<pre><code class="language-bash">python -m http.server -d site
-</code></pre>
+<p><pre><code class="language-bash">python -m http.server -d site
+</code></pre></p>
 <p>在浏览器中访问 http://localhost:8000</p>
 <h2 id="_2">部署<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>该项目配置了 GitHub Actions 工作流，在你将代码推送到 GitHub 时自动构建和部署。</p>

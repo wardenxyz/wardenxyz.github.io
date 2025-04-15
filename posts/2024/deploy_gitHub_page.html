@@ -41,18 +41,18 @@
 			<div class="main-content">
 				<div class="content"><h1 id="github-page">GitHub page 搭建学习笔记<a class="headerlink" href="#github-page" title="Permanent link">&para;</a></h1>
 <h2 id="git-ssh">git 生成 SSH 密钥<a class="headerlink" href="#git-ssh" title="Permanent link">&para;</a></h2>
-<pre><code class="language-bash">ssh-keygen -t ed25519 -C &quot;your_email@example.com&quot; -f ./id_rsa
-</code></pre>
+<p><pre><code class="language-bash">ssh-keygen -t ed25519 -C "your_email@example.com" -f ./id_rsa
+</code></pre></p>
 <p>其中 <code>id_rsa</code> 是私钥，<code>id_rsa.pub</code> 是公钥</p>
 <h2 id="markdown">私钥放在 markdown 帖子所在仓库<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h2>
 <p>settings ——&gt; Secrets and variables ——&gt; Actions ——&gt; New repository secret 添加 SSH 私钥，名称是：</p>
-<pre><code class="language-yaml">DEPLOY_KEY
-</code></pre>
+<p><pre><code class="language-yaml">DEPLOY_KEY
+</code></pre></p>
 <h2 id="usernamegithubio">公钥放在 username.github.io 仓库<a class="headerlink" href="#usernamegithubio" title="Permanent link">&para;</a></h2>
 <p>settings ——&gt; Deploy keys ——&gt; Add deploy key</p>
 <p>勾选 Allow write access</p>
 <h2 id="github-action">GitHub Action 配置<a class="headerlink" href="#github-action" title="Permanent link">&para;</a></h2>
-<pre><code class="language-yaml">name: Deploy to GitHub Pages
+<p><pre><code class="language-yaml">name: Deploy to GitHub Pages
 
 on:
   push:
@@ -72,7 +72,7 @@ jobs:
     - name: 设置 Node.js 环境 # 根据 SSG 来确定环境 # [!code highlight]
       uses: actions/setup-node@v3
       with:
-        node-version: '&gt;=20.18.0'
+        node-version: '>=20.18.0'
 
     - name: 下载依赖 # [!code highlight]
       run: |
@@ -84,7 +84,7 @@ jobs:
     - name: 设置 SSH 密钥
       run: |
         mkdir -p ~/.ssh
-        echo &quot;${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
+        echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan github.com >> ~/.ssh/known_hosts
 
@@ -102,9 +102,9 @@ jobs:
         git config --global user.name 'GitHub Actions'
         git config --global user.email 'actions@github.com'
         git add .
-        git commit -m "Deploy - $(date -u '+%Y-%m-%d %H:%M:%S' -d '8 hour')&quot;
+        git commit -m "Deploy - $(date -u '+%Y-%m-%d %H:%M:%S' -d '8 hour')"
         git push origin main
-</code></pre></div>
+</code></pre></p></div>
 			</div>
 		</div>
 

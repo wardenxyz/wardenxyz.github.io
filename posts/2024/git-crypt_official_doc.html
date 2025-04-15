@@ -59,14 +59,14 @@ For more information, see <a href="https://www.agwa.name/projects/git-crypt">htt
 <p>See the <a href="https://github.com/AGWA/git-crypt/blob/master/INSTALL.md">INSTALL.md</a> file.</p>
 <h2 id="using-git-crypt">Using git-crypt<a class="headerlink" href="#using-git-crypt" title="Permanent link">&para;</a></h2>
 <p>Configure a repository to use git-crypt:</p>
-<pre><code>cd repo
+<p><pre><code>cd repo
 git-crypt init
-</code></pre>
+</code></pre></p>
 <p>Specify files to encrypt by creating a .gitattributes file:</p>
-<pre><code>secretfile filter=git-crypt diff=git-crypt
+<p><pre><code>secretfile filter=git-crypt diff=git-crypt
 *.key filter=git-crypt diff=git-crypt
 secretdir/** filter=git-crypt diff=git-crypt
-</code></pre>
+</code></pre></p>
 <p>Like a .gitignore file, it can match wildcards and should be checked into<br />
 the repository.  See below for more information about .gitattributes.<br />
 Make sure you don't accidentally encrypt the .gitattributes file itself<br />
@@ -74,8 +74,8 @@ Make sure you don't accidentally encrypt the .gitattributes file itself<br />
 .gitattributes rules are in place <em>before</em> you add sensitive files, or<br />
 those files won't be encrypted!</p>
 <p>Share the repository with others (or with yourself) using GPG:</p>
-<pre><code>git-crypt add-gpg-user USER_ID
-</code></pre>
+<p><pre><code>git-crypt add-gpg-user USER_ID
+</code></pre></p>
 <p><code>USER_ID</code> can be a key ID, a full fingerprint, an email address, or<br />
 anything else that uniquely identifies a public key to GPG (see "HOW TO<br />
 SPECIFY A USER ID" in the gpg man page).  Note: <code>git-crypt add-gpg-user</code><br />
@@ -84,14 +84,14 @@ of the root of your repository.</p>
 <p>Alternatively, you can export a symmetric secret key, which you must<br />
 securely convey to collaborators (GPG is not required, and no files<br />
 are added to your repository):</p>
-<pre><code>git-crypt export-key /path/to/key
-</code></pre>
+<p><pre><code>git-crypt export-key /path/to/key
+</code></pre></p>
 <p>After cloning a repository with encrypted files, unlock with GPG:</p>
-<pre><code>git-crypt unlock
-</code></pre>
+<p><pre><code>git-crypt unlock
+</code></pre></p>
 <p>Or with a symmetric key:</p>
-<pre><code>git-crypt unlock /path/to/key
-</code></pre>
+<p><pre><code>git-crypt unlock /path/to/key
+</code></pre></p>
 <p>That's all you need to do - after git-crypt is set up (either with<br />
 <code>git-crypt init</code> or <code>git-crypt unlock</code>), you can use git normally -<br />
 encryption and decryption happen transparently.</p>
@@ -160,13 +160,13 @@ specifying merely a directory (e.g. <code>/dir/</code>) is <em>not</em> sufficie
 encrypt all files beneath it.</p>
 <p>Also note that the pattern <code>dir/*</code> does not match files under<br />
 sub-directories of dir/.  To encrypt an entire sub-tree dir/, use <code>dir/**</code>:</p>
-<pre><code>dir/** filter=git-crypt diff=git-crypt
-</code></pre>
+<p><pre><code>dir/** filter=git-crypt diff=git-crypt
+</code></pre></p>
 <p>The .gitattributes file must not be encrypted, so make sure wildcards don't<br />
 match it accidentally.  If necessary, you can exclude .gitattributes from<br />
 encryption like this:</p>
-<pre><code>.gitattributes !filter !diff
-</code></pre></div>
+<p><pre><code>.gitattributes !filter !diff
+</code></pre></p></div>
 			</div>
 		</div>
 

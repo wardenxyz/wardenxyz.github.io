@@ -42,11 +42,11 @@
 				<div class="content"><h1 id="vscode">vscode<a class="headerlink" href="#vscode" title="Permanent link">&para;</a></h1>
 <h2 id="vscode-ubuntu">vscode 连接服务器配置(Ubuntu)<a class="headerlink" href="#vscode-ubuntu" title="Permanent link">&para;</a></h2>
 <p>本地电脑用 <code>ssh-keygen</code> 生成密钥，到 <code>C:\Users\admin\.ssh</code> 目录下找到公钥，把公钥复制到服务器的 <code>~/.ssh/authorized_keys</code> 文件中，然后配置本地文件 <code>C:\Users\admin\.ssh\config</code> 配置如下</p>
-<pre><code class="language-bash">Host iZbp1a0xr3k0ekwjuqna9cZ //在服务器用 hostname 命令获得
+<p><pre><code class="language-bash">Host iZbp1a0xr3k0ekwjuqna9cZ //在服务器用 hostname 命令获得
 HostName 127.0.0.1 //服务器公网IP
 User admin
-</code></pre>
-<p>在服务器中用 <code>hostname</code> 命令获得上述的 <code>host</code>，上述的 <code>hostname</code> 是服务器公网IP，<code>User</code> 是服务器用户名</p>
+</code></pre><br />
+在服务器中用 <code>hostname</code> 命令获得上述的 <code>host</code>，上述的 <code>hostname</code> 是服务器公网IP，<code>User</code> 是服务器用户名</p>
 <p>在服务器中用 <code>sudo passwd username</code> 命令重置密码，连接服务器时根据提示输入密码</p>
 <p>连接</p>
 <h2 id="vscode_1">为什么 vscode 连接服务器时，打开文件夹、打开终端时需要输入密码<a class="headerlink" href="#vscode_1" title="Permanent link">&para;</a></h2>
@@ -57,11 +57,11 @@ User admin
 <h2 id="vscodium">vscodium 更换默认扩展源<a class="headerlink" href="#vscodium" title="Permanent link">&para;</a></h2>
 <p>vscodium 默认使用的扩展源是 <code>open-vsx.org</code>，部分扩展没有加入此扩展源，需要使用微软官方扩展源才能直接安装和自动更新。</p>
 <p>修改 <code>安装根目录/resources/app/product.json</code> 文件中的 <code>extensionsGallery</code> 键对应的值如下：</p>
-<pre><code class="language-json">&quot;extensionsGallery&quot;: {
-    &quot;serviceUrl&quot;: &quot;https://marketplace.visualstudio.com/_apis/public/gallery&quot;,
-    &quot;itemUrl&quot;: &quot;https://marketplace.visualstudio.com/items&quot;
+<p><pre><code class="language-json">"extensionsGallery": {
+    "serviceUrl": "https://marketplace.visualstudio.com/_apis/public/gallery",
+    "itemUrl": "https://marketplace.visualstudio.com/items"
 }
-</code></pre>
+</code></pre></p>
 <p>重启 vscodium。扩展里就可以搜索安装微软官方扩展源里的扩展。</p>
 <hr />
 <h2 id="vscode_2">vscode 多光标编辑<a class="headerlink" href="#vscode_2" title="Permanent link">&para;</a></h2>

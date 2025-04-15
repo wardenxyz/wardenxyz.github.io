@@ -48,31 +48,31 @@
 <p>参考 <a href="https://github.com/AGWA/git-crypt/blob/master/INSTALL.md">INSTALL.md</a> ​ 文件进行安装。</p>
 <h2 id="git-crypt_2">使用 git-crypt<a class="headerlink" href="#git-crypt_2" title="Permanent link">&para;</a></h2>
 <p>配置仓库以使用 git-crypt：</p>
-<pre><code>cd repo
+<p><pre><code>cd repo
 git-crypt init
-</code></pre>
+</code></pre></p>
 <p>通过创建 .gitattributes 文件来指定要加密的文件：</p>
-<pre><code>secretfile filter=git-crypt diff=git-crypt
+<p><pre><code>secretfile filter=git-crypt diff=git-crypt
 *.key filter=git-crypt diff=git-crypt
 secretdir/** filter=git-crypt diff=git-crypt
-</code></pre>
+</code></pre></p>
 <p>.gitattributes 文件跟 .gitignore 类似，可以匹配通配符，并且应该提交到仓库里。更多信息可以查看下方内容。请确认不要错误地加密了 .gitattributes 文件本身（或者其他 Git 文件，例如 .gitignore 或者 .gitmodules）。请确认你的 .gitattributes 规则已经生效<em>在提交敏感文件之前</em>，否则这些文件将不会被加密！</p>
 <p>使用 GPG 分享仓库（给他人或自己）：</p>
-<pre><code>git-crypt add-gpg-user USER_ID
-</code></pre>
+<p><pre><code>git-crypt add-gpg-user USER_ID
+</code></pre></p>
 <p>​ <code>USER_ID</code> ​ 可以是一个密钥 ID、完整指纹、电子邮件地址或<br />
 其他任何唯一标识 GPG 公钥的方式（参见 gpg 手册页中的 "HOW TO<br />
 SPECIFY A USER ID"）。注意：<code>git-crypt add-gpg-user</code> ​ 会<br />
 在仓库根目录的 .git-crypt 目录下添加并提交一个 GPG 加密的密钥文件。</p>
 <p>另外，你可以导出一个对称密钥，安全地传递给协作者即可（无需 GPG，也不会在仓库中增加文件）：</p>
-<pre><code>git-crypt export-key /path/to/key
-</code></pre>
+<p><pre><code>git-crypt export-key /path/to/key
+</code></pre></p>
 <p>克隆包含加密文件的存储库后，使用 GPG 进行解密：</p>
-<pre><code>git-crypt unlock
-</code></pre>
+<p><pre><code>git-crypt unlock
+</code></pre></p>
 <p>或者使用对称密钥：</p>
-<pre><code>git-crypt unlock /path/to/key
-</code></pre>
+<p><pre><code>git-crypt unlock /path/to/key
+</code></pre></p>
 <p>这就是你需要做的全部工作——在 <code>git-crypt</code> ​ 配置完成后（无论是通过 <code>git-crypt init</code> ​ 还是 <code>git-crypt unlock</code> ​），你可以像往常一样使用 <code>git</code> ​。加密和解密过程会透明地进行。</p>
 <h2 id="_1">当前状态<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>git-crypt 的最新版本是 <a href="https://github.com/AGWA/git-crypt/blob/master/NEWS.md">0.7.0</a>，发布于<br />
@@ -96,11 +96,11 @@ git-crypt 使用 AES-256 在 CTR 模式下加密文件，并使用从文件的 S
 <h2 id="gitattributes">Gitattributes 文件<a class="headerlink" href="#gitattributes" title="Permanent link">&para;</a></h2>
 <p>.gitattributes 文件的文档位于 gitattributes (5) 手册页面中。文件匹配模式与. gitignore 中使用的格式相同，详情可参见 gitignore (5) 手册页面，但需要注意的是，仅指定一个目录（例如 <code>/dir/</code> ​）不足以对该目录下的所有文件进行加密。</p>
 <p>另请注意，<code>dir/*</code> ​模式不会匹配 <code>dir</code> ​子目录下的文件。如果要加密整个 <code>dir</code> ​子树，请使用 <code>dir/**</code> ​：</p>
-<pre><code>dir/** filter=git-crypt diff=git-crypt
-</code></pre>
+<p><pre><code>dir/** filter=git-crypt diff=git-crypt
+</code></pre></p>
 <p>.gitattributes 文件不能被加密，因此请确保通配符不会意外地匹配到它。如有必要，你可以像这样将 .gitattributes 排除在加密之外：</p>
-<pre><code>.gitattributes !filter !diff
-</code></pre></div>
+<p><pre><code>.gitattributes !filter !diff
+</code></pre></p></div>
 			</div>
 		</div>
 

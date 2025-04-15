@@ -41,7 +41,7 @@
 			<div class="main-content">
 				<div class="content"><h1 id="vitepress">vitepress 学习笔记<a class="headerlink" href="#vitepress" title="Permanent link">&para;</a></h1>
 <p>我的 vitepress 目录结构是</p>
-<pre><code class="language-bash">.
+<p><pre><code class="language-bash">.
 ├─ .vitepress # vitepress 配置文件夹
 │  ├─ theme # 自定义主题
 │  │  └─ index.ts
@@ -54,17 +54,17 @@
 │  └─ index.md # 首页
 └─ package-lock.json
 └─ package.json
-</code></pre>
+</code></pre></p>
 <p>步骤：</p>
 <p>https://vitepress.dev/zh/guide/getting-started</p>
 <h2 id="vitepress_1">第一步，下载 vitepress 包<a class="headerlink" href="#vitepress_1" title="Permanent link">&para;</a></h2>
-<pre><code class="language-bash">npm add -D vitepress
-</code></pre>
+<p><pre><code class="language-bash">npm add -D vitepress
+</code></pre></p>
 <h2 id="vitepress_2">第二步，初始化 vitepress 项目<a class="headerlink" href="#vitepress_2" title="Permanent link">&para;</a></h2>
-<pre><code class="language-bash">npx vitepress init
-</code></pre>
+<p><pre><code class="language-bash">npx vitepress init
+</code></pre></p>
 <p>这一步的输出如下</p>
-<pre><code class="language-bash">┌  Welcome to VitePress!
+<p><pre><code class="language-bash">┌  Welcome to VitePress!
 │
 ◇  Where should VitePress initialize the config? # 这里选择根目录
 │  ./ # [!code highlight]
@@ -85,9 +85,9 @@
 │  No # [!code highlight]
 │
 └  You're all set! Now run npx vitepress dev and start writing.
-</code></pre>
+</code></pre></p>
 <h2 id="vitepress_3">第三步，修改 vitepress 配置文件<a class="headerlink" href="#vitepress_3" title="Permanent link">&para;</a></h2>
-<pre><code class="language-typescript">// .vitepress/config.mts
+<p><pre><code class="language-typescript">// .vitepress/config.mts
 export default(
   defineConfig({
     srcDir: 'mkdocs', // 这里面存放的是 markdown 文件 // [!code ++]
@@ -95,23 +95,23 @@ export default(
     cacheDir: 'cache', // 这里面存放的是缓存文件 // [!code ++]
   })
 )
-</code></pre>
+</code></pre></p>
 <h2 id="_1">第四步，预览和构建站点<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>预览站点</li>
 </ul>
-<pre><code class="language-bash">npx vitepress dev
-</code></pre>
+<p><pre><code class="language-bash">npx vitepress dev
+</code></pre></p>
 <ul>
 <li>构建站点</li>
 </ul>
-<pre><code class="language-bash">npx vitepress build
-</code></pre>
+<p><pre><code class="language-bash">npx vitepress build
+</code></pre></p>
 <ul>
 <li>预览构建好的站点</li>
 </ul>
-<pre><code class="language-bash">npx vitepress preview
-</code></pre>
+<p><pre><code class="language-bash">npx vitepress preview
+</code></pre></p>
 <h2 id="vitepress_4">vitepress 维护指南<a class="headerlink" href="#vitepress_4" title="Permanent link">&para;</a></h2>
 <p>每次更新 vitepress 文档，都需要执行以下步骤</p>
 <ol>
