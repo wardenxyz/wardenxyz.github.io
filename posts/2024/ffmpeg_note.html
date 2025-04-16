@@ -231,37 +231,35 @@ file 'input2.mp4'
 <h2 id="ffmpeg_1">ffmpeg 降低画质的命令<a class="headerlink" href="#ffmpeg_1" title="Permanent link">&para;</a></h2>
 <p>在使用 <code>ffmpeg</code> 进行视频处理时，有时需要降低视频的画质以减小文件大小或适应特定的网络传输需求。以下是一些常用的 <code>ffmpeg</code> 命令来降低视频画质：</p>
 <ol>
-<li>
-<p><strong>调整视频比特率（Bitrate）</strong>：<br />
-   <pre><code class="language-bash">   ffmpeg -i input.mp4 -b:v 1000k output.mp4
-   </code></pre><br />
-   这条命令将视频的比特率设置为 1000 kbps，从而降低视频的画质。比特率越低，画质越差。</p>
-</li>
-<li>
-<p><strong>使用 CRF（Constant Rate Factor）</strong>：<br />
-   <pre><code class="language-bash">   ffmpeg -i input.mp4 -c:v libx264 -crf 28 output.mp4
-   </code></pre><br />
-   CRF 是 x264 和 x265 编码器的一个参数，用于控制输出视频的质量。CRF 值越大，视频质量越低。默认值通常是 23，范围是 0-51。</p>
-</li>
-<li>
-<p><strong>调整分辨率</strong>：<br />
-   <pre><code class="language-bash">   ffmpeg -i input.mp4 -vf "scale=1280:720" output.mp4
-   </code></pre><br />
-   这条命令将视频的分辨率调整为 1280x720，从而降低画质。分辨率越低，画质越差。</p>
-</li>
-<li>
-<p><strong>同时调整比特率和分辨率</strong>：<br />
-   <pre><code class="language-bash">   ffmpeg -i input.mp4 -b:v 800k -vf "scale=640:360" output.mp4
-   </code></pre><br />
-   这条命令同时降低了视频的比特率和分辨率，进一步降低了画质。</p>
-</li>
-<li>
-<p><strong>使用预设（Preset）</strong>：<br />
-   <pre><code class="language-bash">   ffmpeg -i input.mp4 -c:v libx264 -preset veryslow -crf 28 output.mp4
-   </code></pre><br />
-   预设参数控制编码速度和输出质量之间的平衡。<code>veryslow</code> 预设会花费更多时间进行编码，但通常能产生更好的压缩效果和更低的文件大小。其他预设有 <code>ultrafast</code>, <code>superfast</code>, <code>fast</code>, <code>medium</code>, <code>slow</code>, <code>slower</code> 等。</p>
-</li>
+<li><strong>调整视频比特率（Bitrate）</strong>：</li>
 </ol>
+<p><pre><code class="language-bash">ffmpeg -i input.mp4 -b:v 1000k output.mp4
+</code></pre></p>
+<p>这条命令将视频的比特率设置为 1000 kbps，从而降低视频的画质。比特率越低，画质越差。</p>
+<ol start="2">
+<li><strong>使用 CRF（Constant Rate Factor）</strong>：</li>
+</ol>
+<p><pre><code class="language-bash">ffmpeg -i input.mp4 -c:v libx264 -crf 28 output.mp4
+</code></pre></p>
+<p>CRF 是 x264 和 x265 编码器的一个参数，用于控制输出视频的质量。CRF 值越大，视频质量越低。默认值通常是 23，范围是 0-51。</p>
+<ol start="3">
+<li><strong>调整分辨率</strong>：</li>
+</ol>
+<p><pre><code class="language-bash">ffmpeg -i input.mp4 -vf "scale=1280:720" output.mp4
+</code></pre></p>
+<p>这条命令将视频的分辨率调整为 1280x720，从而降低画质。分辨率越低，画质越差。</p>
+<ol start="4">
+<li><strong>同时调整比特率和分辨率</strong>：</li>
+</ol>
+<p><pre><code class="language-bash">ffmpeg -i input.mp4 -b:v 800k -vf "scale=640:360" output.mp4
+</code></pre></p>
+<p>这条命令同时降低了视频的比特率和分辨率，进一步降低了画质。</p>
+<ol start="5">
+<li><strong>使用预设（Preset）</strong>：</li>
+</ol>
+<p><pre><code class="language-bash">ffmpeg -i input.mp4 -c:v libx264 -preset veryslow -crf 28 output.mp4
+</code></pre></p>
+<p>预设参数控制编码速度和输出质量之间的平衡。<code>veryslow</code> 预设会花费更多时间进行编码，但通常能产生更好的压缩效果和更低的文件大小。其他预设有 <code>ultrafast</code>, <code>superfast</code>, <code>fast</code>, <code>medium</code>, <code>slow</code>, <code>slower</code> 等。</p>
 <h2 id="_22">查看视频清晰度<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
 <p><pre><code class="language-bash">ffprobe -v error -select_streams v:0 -show_entries stream=width,height -of default=noprint_wrappers=1 input_video.mp4
 </code></pre></p>
