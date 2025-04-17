@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>vitepress 学习笔记</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+		<!-- MathJax for mathematical formula support -->
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<meta
+			name="description"
+			content="A minimalist blog that uses pure markdown files"
+		/>
+	</head>
+	<body>
+		<nav>
+			<div class="logo">
+				<a href="/" style="font-size: 24px">随便写写</a>
+			</div>
+			<div class="nav-links">
+				<!-- <a href="/">首页</a> -->
+				<a href="/categories.html">分类</a>
+				<a href="/tags.html">标签</a>
+				<a href="/search.html?focus=true" id="search-nav-link">搜索</a>
+			</div>
+		</nav>
+
+		<div class="container">
+			<!-- <h1>vitepress 学习笔记</h1> -->
+
+			<div class="metadata">2024-10-12 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#vitepress">vitepress</a></div></div>
+
+			<div class="main-content">
+				<div class="content"><h1 id="vitepress">vitepress 学习笔记<a class="headerlink" href="#vitepress" title="Permanent link">&para;</a></h1>
+<p>我的 vitepress 目录结构是</p>
+<p><pre><code class="language-bash">.
+├─ .vitepress # vitepress 配置文件夹
+│  ├─ theme # 自定义主题
+│  │  └─ index.ts
+│  │  └─ style.css
+│  └─ config.mts # viepress 配置文件
+├─ cache # 缓存文件
+├─ html # 生成的静态文件
+├─ mkdocs # viepress 源文件夹
+│  ├─ public # 图片等文件
+│  └─ index.md # 首页
+└─ package-lock.json
+└─ package.json
+</code></pre></p>
+<p>步骤：</p>
+<p>https://vitepress.dev/zh/guide/getting-started</p>
+<h2 id="vitepress_1">第一步，下载 vitepress 包<a class="headerlink" href="#vitepress_1" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-bash">npm add -D vitepress
+</code></pre></p>
+<h2 id="vitepress_2">第二步，初始化 vitepress 项目<a class="headerlink" href="#vitepress_2" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-bash">npx vitepress init
+</code></pre></p>
+<p>这一步的输出如下</p>
+<p><pre><code class="language-bash">┌  Welcome to VitePress!
+│
+◇  Where should VitePress initialize the config? # 这里选择根目录
+│  ./ # [!code highlight]
+│
+◇  Site title: # confid.mts 的 title 字段
+│  My Awesome Project # [!code highlight]
+│
+◇  Site description: # confid.mts 的 description 字段
+│  A VitePress Site # [!code highlight]
+│
+◇  Theme: # 这里选默认主题 + 自定义主题
+│  Default Theme + Customization # [!code highlight]
+│
+◇  Use TypeScript for config and theme files? # 选 TypeScript 为配置文件
+│  Yes # [!code highlight]
+│
+◇  Add VitePress npm scripts to package.json? #不要在 package.json 中添加脚本
+│  No # [!code highlight]
+│
+└  You're all set! Now run npx vitepress dev and start writing.
+</code></pre></p>
+<h2 id="vitepress_3">第三步，修改 vitepress 配置文件<a class="headerlink" href="#vitepress_3" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typescript">// .vitepress/config.mts
+export default(
+  defineConfig({
+    srcDir: 'mkdocs', // 这里面存放的是 markdown 文件 // [!code ++]
+    outDir: 'html', // 这里面存放的是生成的静态文件 // [!code ++]
+    cacheDir: 'cache', // 这里面存放的是缓存文件 // [!code ++]
+  })
+)
+</code></pre></p>
+<h2 id="_1">第四步，预览和构建站点<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>预览站点</li>
+</ul>
+<p><pre><code class="language-bash">npx vitepress dev
+</code></pre></p>
+<ul>
+<li>构建站点</li>
+</ul>
+<p><pre><code class="language-bash">npx vitepress build
+</code></pre></p>
+<ul>
+<li>预览构建好的站点</li>
+</ul>
+<p><pre><code class="language-bash">npx vitepress preview
+</code></pre></p>
+<h2 id="vitepress_4">vitepress 维护指南<a class="headerlink" href="#vitepress_4" title="Permanent link">&para;</a></h2>
+<p>每次更新 vitepress 文档，都需要执行以下步骤</p>
+<ol>
+<li>
+<p>运行 tags.py 和 categories.py 更新 tags.md 和 categories.md 文件（每次）</p>
+</li>
+<li>
+<p>更新仓库根目录下的 README.md 文件（每次）</p>
+</li>
+<li>
+<p>更新 config.mts 的 siderbar 链接（每次）</p>
+</li>
+</ol>
+<p>每次更新 vitepress 文档，至少有 5 个 git 变动</p>
+<hr />
+<ol start="4">
+<li>
+<p>每个月还得更新 index.md 的 features 列表（每月）</p>
+</li>
+<li>
+<p>每年都要更新 config.mts 的 nav 字段（每年）</p>
+</li>
+</ol></div>
+			</div>
+		</div>
+
+		<button id="back-to-top" aria-label="回到顶部">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<polyline points="18 15 12 9 6 15"></polyline>
+			</svg>
+		</button>
+
+		<footer>
+			<p>MIT License</p>
+			<p>Copyright © 2024-2025 wardenxyz</p>
+		</footer>
+
+		<script>
+			// Initialize Mermaid diagrams
+			document.addEventListener("DOMContentLoaded", function () {
+				mermaid.initialize({
+					startOnLoad: true,
+					theme:
+						window.matchMedia &&
+						window.matchMedia("(prefers-color-scheme: dark)")
+							.matches
+							? "dark"
+							: "default",
+					flowchart: { curve: "basis" },
+					securityLevel: "loose",
+				});
+
+				// Configure MathJax
+				window.MathJax = {
+					tex: {
+						inlineMath: [
+							["$", "$"],
+							["\\(", "\\)"],
+						],
+						displayMath: [
+							["$$", "$$"],
+							["\\[", "\\]"],
+						],
+						processEscapes: true,
+						processEnvironments: true,
+					},
+					options: {
+						skipHtmlTags: [
+							"script",
+							"noscript",
+							"style",
+							"textarea",
+							"pre",
+						],
+					},
+				};
+			});
+
+			// Add copy buttons to code blocks
+			document.addEventListener("DOMContentLoaded", function () {
+				const codeBlocks = document.querySelectorAll("pre");
+
+				codeBlocks.forEach(function (block) {
+					// Create copy button
+					const button = document.createElement("button");
+					button.className = "copy-button";
+					button.textContent = "复制";
+
+					// Add the button to the code block
+					block.appendChild(button);
+
+					// Add click event
+					button.addEventListener("click", function () {
+						const code =
+							block.querySelector("code")?.textContent ||
+							block.textContent;
+
+						// Copy to clipboard
+						navigator.clipboard
+							.writeText(code)
+							.then(function () {
+								// Success feedback
+								button.textContent = "已复制!";
+								button.classList.add("copied");
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+									button.classList.remove("copied");
+								}, 2000);
+							})
+							.catch(function (error) {
+								console.error("复制失败:", error);
+								button.textContent = "复制失败";
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+								}, 2000);
+							});
+					});
+				});
+			});
+		</script>
+		
+		<script>
+			// Back to top button functionality
+			document.addEventListener("DOMContentLoaded", function() {
+				const backToTopButton = document.getElementById("back-to-top");
+				
+				// Show button when user scrolls down 300px from the top
+				window.addEventListener("scroll", function() {
+					if (window.pageYOffset > 300) {
+						backToTopButton.classList.add("visible");
+					} else {
+						backToTopButton.classList.remove("visible");
+					}
+				});
+				
+				// Smooth scroll to top when button is clicked
+				backToTopButton.addEventListener("click", function() {
+					window.scrollTo({
+						top: 0,
+						behavior: "smooth"
+					});
+				});
+			});
+		</script>
+		
+		<!-- 引入高亮搜索内容的脚本 -->
+		<script src="/assets/highlight.js"></script>
+		
+		<!-- 外部链接在新标签页打开 -->
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				// 获取所有链接
+				const links = document.querySelectorAll('a');
+				
+				links.forEach(function(link) {
+					const href = link.getAttribute('href');
+					
+					if (href) {
+						// 处理所有https链接和外部链接
+						if (
+							href.startsWith('http:') || 
+							href.startsWith('https:') || 
+							href.indexOf('://') !== -1 ||
+							(!href.startsWith('/') && !href.startsWith('#') && !href.startsWith('.'))
+						) {
+							// 直接为所有http/https链接添加target="_blank"
+							if (!link.hasAttribute('target')) {
+								link.setAttribute('target', '_blank');
+								link.setAttribute('rel', 'noopener noreferrer');
+							}
+						}
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

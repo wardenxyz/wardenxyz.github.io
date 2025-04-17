@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>git 强制覆盖本地仓库</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+		<!-- MathJax for mathematical formula support -->
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<meta
+			name="description"
+			content="A minimalist blog that uses pure markdown files"
+		/>
+	</head>
+	<body>
+		<nav>
+			<div class="logo">
+				<a href="/" style="font-size: 24px">随便写写</a>
+			</div>
+			<div class="nav-links">
+				<!-- <a href="/">首页</a> -->
+				<a href="/categories.html">分类</a>
+				<a href="/tags.html">标签</a>
+				<a href="/search.html?focus=true" id="search-nav-link">搜索</a>
+			</div>
+		</nav>
+
+		<div class="container">
+			<!-- <h1>git 强制覆盖本地仓库</h1> -->
+
+			<div class="metadata">2024-09-01 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#git">git</a></div></div>
+
+			<div class="main-content">
+				<div class="content"><h1 id="git">git 强制覆盖本地仓库<a class="headerlink" href="#git" title="Permanent link">&para;</a></h1>
+<p>git 强制覆盖本地仓库</p>
+<p><pre><code class="language-bash">git reset --hard origin/branch_name
+</code></pre></p>
+<p>是一个 Git 命令，用于将当前分支的状态重置为远程分支 <code>branch_name</code> 的状态。具体来说，它会：</p>
+<ol>
+<li>将当前分支的 HEAD 指针重置为 <code>origin/branch_name</code> 的最新提交。</li>
+<li>重置暂存区（index）以匹配这个提交。</li>
+<li>重置工作目录中的文件以匹配这个提交。</li>
+</ol>
+<p>这意味着本地所有未提交的更改和提交历史将被丢弃，工作目录将完全同步到远程分支的状态。请谨慎使用这个命令，因为它会丢失所有未提交的更改。</p></div>
+			</div>
+		</div>
+
+		<button id="back-to-top" aria-label="回到顶部">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<polyline points="18 15 12 9 6 15"></polyline>
+			</svg>
+		</button>
+
+		<footer>
+			<p>MIT License</p>
+			<p>Copyright © 2024-2025 wardenxyz</p>
+		</footer>
+
+		<script>
+			// Initialize Mermaid diagrams
+			document.addEventListener("DOMContentLoaded", function () {
+				mermaid.initialize({
+					startOnLoad: true,
+					theme:
+						window.matchMedia &&
+						window.matchMedia("(prefers-color-scheme: dark)")
+							.matches
+							? "dark"
+							: "default",
+					flowchart: { curve: "basis" },
+					securityLevel: "loose",
+				});
+
+				// Configure MathJax
+				window.MathJax = {
+					tex: {
+						inlineMath: [
+							["$", "$"],
+							["\\(", "\\)"],
+						],
+						displayMath: [
+							["$$", "$$"],
+							["\\[", "\\]"],
+						],
+						processEscapes: true,
+						processEnvironments: true,
+					},
+					options: {
+						skipHtmlTags: [
+							"script",
+							"noscript",
+							"style",
+							"textarea",
+							"pre",
+						],
+					},
+				};
+			});
+
+			// Add copy buttons to code blocks
+			document.addEventListener("DOMContentLoaded", function () {
+				const codeBlocks = document.querySelectorAll("pre");
+
+				codeBlocks.forEach(function (block) {
+					// Create copy button
+					const button = document.createElement("button");
+					button.className = "copy-button";
+					button.textContent = "复制";
+
+					// Add the button to the code block
+					block.appendChild(button);
+
+					// Add click event
+					button.addEventListener("click", function () {
+						const code =
+							block.querySelector("code")?.textContent ||
+							block.textContent;
+
+						// Copy to clipboard
+						navigator.clipboard
+							.writeText(code)
+							.then(function () {
+								// Success feedback
+								button.textContent = "已复制!";
+								button.classList.add("copied");
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+									button.classList.remove("copied");
+								}, 2000);
+							})
+							.catch(function (error) {
+								console.error("复制失败:", error);
+								button.textContent = "复制失败";
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+								}, 2000);
+							});
+					});
+				});
+			});
+		</script>
+		
+		<script>
+			// Back to top button functionality
+			document.addEventListener("DOMContentLoaded", function() {
+				const backToTopButton = document.getElementById("back-to-top");
+				
+				// Show button when user scrolls down 300px from the top
+				window.addEventListener("scroll", function() {
+					if (window.pageYOffset > 300) {
+						backToTopButton.classList.add("visible");
+					} else {
+						backToTopButton.classList.remove("visible");
+					}
+				});
+				
+				// Smooth scroll to top when button is clicked
+				backToTopButton.addEventListener("click", function() {
+					window.scrollTo({
+						top: 0,
+						behavior: "smooth"
+					});
+				});
+			});
+		</script>
+		
+		<!-- 引入高亮搜索内容的脚本 -->
+		<script src="/assets/highlight.js"></script>
+		
+		<!-- 外部链接在新标签页打开 -->
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				// 获取所有链接
+				const links = document.querySelectorAll('a');
+				
+				links.forEach(function(link) {
+					const href = link.getAttribute('href');
+					
+					if (href) {
+						// 处理所有https链接和外部链接
+						if (
+							href.startsWith('http:') || 
+							href.startsWith('https:') || 
+							href.indexOf('://') !== -1 ||
+							(!href.startsWith('/') && !href.startsWith('#') && !href.startsWith('.'))
+						) {
+							// 直接为所有http/https链接添加target="_blank"
+							if (!link.hasAttribute('target')) {
+								link.setAttribute('target', '_blank');
+								link.setAttribute('rel', 'noopener noreferrer');
+							}
+						}
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Typst 笔记</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+		<!-- MathJax for mathematical formula support -->
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<meta
+			name="description"
+			content="A minimalist blog that uses pure markdown files"
+		/>
+	</head>
+	<body>
+		<nav>
+			<div class="logo">
+				<a href="/" style="font-size: 24px">随便写写</a>
+			</div>
+			<div class="nav-links">
+				<!-- <a href="/">首页</a> -->
+				<a href="/categories.html">分类</a>
+				<a href="/tags.html">标签</a>
+				<a href="/search.html?focus=true" id="search-nav-link">搜索</a>
+			</div>
+		</nav>
+
+		<div class="container">
+			<!-- <h1>Typst 笔记</h1> -->
+
+			<div class="metadata">2024-11-27 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#Typst">Typst</a></div></div>
+
+			<div class="main-content">
+				<div class="content"><h1 id="typst">Typst 笔记<a class="headerlink" href="#typst" title="Permanent link">&para;</a></h1>
+<p><a href="https://typst.app/docs">Tyspt 官方文档</a></p>
+<h2 id="_1">导出命令<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>默认导出为 pdf</li>
+</ul>
+<p><pre><code class="language-bash">typst c main.typ 
+</code></pre></p>
+<ul>
+<li>导出第四页到 output-4.pdf</li>
+</ul>
+<p><pre><code class="language-bash">typst c main.typ output-4.pdf -f pdf --pages 4 
+</code></pre></p>
+<ul>
+<li>导出第四页到 output-4.png</li>
+</ul>
+<p><pre><code class="language-bash">typst c main.typ output-4.png -f png --pages 4 
+</code></pre></p>
+<ul>
+<li>导出第四页到 output-4.svg</li>
+</ul>
+<p><pre><code class="language-bash">typst c main.typ output-4.svg -f svg --pages 4 
+</code></pre></p>
+<h2 id="_2">标题<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">= 第一级大标题
+== 第二级大标题
+</code></pre></p>
+<h2 id="_3">无序列表<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">- 无序列表
+</code></pre></p>
+<h2 id="_4">有序列表<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">1. 有序列表
++ 有序列表
+</code></pre></p>
+<h2 id="_5">加重字体<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">*加重字体*
+</code></pre></p>
+<h2 id="_6">斜体<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">_斜体_
+</code></pre></p>
+<h2 id="_7">字体<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>全局：</p>
+<p><pre><code class="language-typst">#set text(font: "kaiti", fill: red, size: 12pt)
+大小为12磅，字体为楷体的红色内容
+</code></pre></p>
+<p>局部：</p>
+<p><pre><code class="language-typst">#text(font: "kaiti", fill: red, size: 12pt)[大小为12磅，字体为楷体的红色内容]
+</code></pre></p>
+<h2 id="_8">位置<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>全局：</p>
+<p><pre><code class="language-typst">#set align(left)
+居左
+</code></pre></p>
+<p>局部：</p>
+<p><pre><code class="language-typst">#align(left)[居左]
+</code></pre></p>
+<h2 id="_9">下划线<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">#underline[此处有下划线]
+</code></pre></p>
+<h2 id="_10">上划线<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">#overline[此处有上划线]
+</code></pre></p>
+<h2 id="_11">上标<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">#super[这里是上标内容]
+</code></pre></p>
+<h2 id="_12">下标<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">#sub[这里是下标内容]
+</code></pre></p>
+<h2 id="_13">删除线<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">#strike[被删除的内容]
+</code></pre></p>
+<h2 id="_14">高亮<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">#highlight[高亮内容]
+</code></pre></p>
+<h2 id="_15">链接<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">#link("https://baidu.com")[百度]
+</code></pre></p>
+<h2 id="_16">字间距&amp;行间距<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">#set par(leading: 18pt) //行间距
+#set text(tracking: 0.1pt) //字间距
+</code></pre></p>
+<h2 id="_17">文档属性<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">#set document(
+  title: title,
+  author: author,
+  keywords: str,array,
+  date: none, auto,datetime,
+)
+</code></pre></p>
+<h2 id="_18">页边距<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">  #set page(margin: (
+    top: 2.54cm, //上边距
+    bottom: 2.54cm, //下边距
+    right: 2.54cm, //右边距
+    left: 2.54cm, //左边距
+  ))
+</code></pre></p>
+<h2 id="_19">水印<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">#set page(background: rotate(45deg,
+  text(50pt, fill: rgb("FFCBC4"))[
+    *这是水印*
+  ]
+))
+</code></pre></p>
+<h2 id="_20">引用<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">#set quote(block: true) //开启引用块
+
+#quote(attribution: [引用文本的来源])[
+  引用的文本
+]
+</code></pre></p>
+<h2 id="_21">大纲<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">#outline()
+</code></pre></p>
+<h2 id="_22">空白页<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">#pagebreak()
+</code></pre></p>
+<h2 id="_23">插入图片<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">#image("4.jpeg")
+</code></pre></p>
+<h2 id="_24">页眉<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">#set page(header: [
+  页眉
+  #h(1fr)
+  页眉
+  #v(-8pt) // 页眉内容与线的距离
+  #line(length: 100%, stroke: (thickness: 1pt, dash: "solid"))
+])
+</code></pre></p>
+<h2 id="_25">页脚<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">#set page(footer: context [
+  #v(8pt) //页脚与边距的距离
+  #line(length: 100%, stroke: (thickness: 1pt, dash: "solid"))
+  #v(-8pt) // 页脚内容与线的距离
+  页脚
+  #h(1fr)
+  #counter(page).display(
+    "1/1",
+    both: true,
+  )
+])
+</code></pre></p></div>
+			</div>
+		</div>
+
+		<button id="back-to-top" aria-label="回到顶部">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<polyline points="18 15 12 9 6 15"></polyline>
+			</svg>
+		</button>
+
+		<footer>
+			<p>MIT License</p>
+			<p>Copyright © 2024-2025 wardenxyz</p>
+		</footer>
+
+		<script>
+			// Initialize Mermaid diagrams
+			document.addEventListener("DOMContentLoaded", function () {
+				mermaid.initialize({
+					startOnLoad: true,
+					theme:
+						window.matchMedia &&
+						window.matchMedia("(prefers-color-scheme: dark)")
+							.matches
+							? "dark"
+							: "default",
+					flowchart: { curve: "basis" },
+					securityLevel: "loose",
+				});
+
+				// Configure MathJax
+				window.MathJax = {
+					tex: {
+						inlineMath: [
+							["$", "$"],
+							["\\(", "\\)"],
+						],
+						displayMath: [
+							["$$", "$$"],
+							["\\[", "\\]"],
+						],
+						processEscapes: true,
+						processEnvironments: true,
+					},
+					options: {
+						skipHtmlTags: [
+							"script",
+							"noscript",
+							"style",
+							"textarea",
+							"pre",
+						],
+					},
+				};
+			});
+
+			// Add copy buttons to code blocks
+			document.addEventListener("DOMContentLoaded", function () {
+				const codeBlocks = document.querySelectorAll("pre");
+
+				codeBlocks.forEach(function (block) {
+					// Create copy button
+					const button = document.createElement("button");
+					button.className = "copy-button";
+					button.textContent = "复制";
+
+					// Add the button to the code block
+					block.appendChild(button);
+
+					// Add click event
+					button.addEventListener("click", function () {
+						const code =
+							block.querySelector("code")?.textContent ||
+							block.textContent;
+
+						// Copy to clipboard
+						navigator.clipboard
+							.writeText(code)
+							.then(function () {
+								// Success feedback
+								button.textContent = "已复制!";
+								button.classList.add("copied");
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+									button.classList.remove("copied");
+								}, 2000);
+							})
+							.catch(function (error) {
+								console.error("复制失败:", error);
+								button.textContent = "复制失败";
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+								}, 2000);
+							});
+					});
+				});
+			});
+		</script>
+		
+		<script>
+			// Back to top button functionality
+			document.addEventListener("DOMContentLoaded", function() {
+				const backToTopButton = document.getElementById("back-to-top");
+				
+				// Show button when user scrolls down 300px from the top
+				window.addEventListener("scroll", function() {
+					if (window.pageYOffset > 300) {
+						backToTopButton.classList.add("visible");
+					} else {
+						backToTopButton.classList.remove("visible");
+					}
+				});
+				
+				// Smooth scroll to top when button is clicked
+				backToTopButton.addEventListener("click", function() {
+					window.scrollTo({
+						top: 0,
+						behavior: "smooth"
+					});
+				});
+			});
+		</script>
+		
+		<!-- 引入高亮搜索内容的脚本 -->
+		<script src="/assets/highlight.js"></script>
+		
+		<!-- 外部链接在新标签页打开 -->
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				// 获取所有链接
+				const links = document.querySelectorAll('a');
+				
+				links.forEach(function(link) {
+					const href = link.getAttribute('href');
+					
+					if (href) {
+						// 处理所有https链接和外部链接
+						if (
+							href.startsWith('http:') || 
+							href.startsWith('https:') || 
+							href.indexOf('://') !== -1 ||
+							(!href.startsWith('/') && !href.startsWith('#') && !href.startsWith('.'))
+						) {
+							// 直接为所有http/https链接添加target="_blank"
+							if (!link.hasAttribute('target')) {
+								link.setAttribute('target', '_blank');
+								link.setAttribute('rel', 'noopener noreferrer');
+							}
+						}
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

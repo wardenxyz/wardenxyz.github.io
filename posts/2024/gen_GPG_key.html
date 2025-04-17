@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>生成 GPG 密钥</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+		<!-- MathJax for mathematical formula support -->
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<meta
+			name="description"
+			content="A minimalist blog that uses pure markdown files"
+		/>
+	</head>
+	<body>
+		<nav>
+			<div class="logo">
+				<a href="/" style="font-size: 24px">随便写写</a>
+			</div>
+			<div class="nav-links">
+				<!-- <a href="/">首页</a> -->
+				<a href="/categories.html">分类</a>
+				<a href="/tags.html">标签</a>
+				<a href="/search.html?focus=true" id="search-nav-link">搜索</a>
+			</div>
+		</nav>
+
+		<div class="container">
+			<!-- <h1>生成 GPG 密钥</h1> -->
+
+			<div class="metadata">2024-07-10 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#GPG">GPG</a></div></div>
+
+			<div class="main-content">
+				<div class="content"><h1 id="gpg">生成 GPG 密钥<a class="headerlink" href="#gpg" title="Permanent link">&para;</a></h1>
+<p>下载 GPG：<a href="https://www.gpg4win.org/">gpg4win</a></p>
+<p>生成 gpg 密钥</p>
+<p><pre><code class="language-bash">gpg2 --full-gen-key      < 2.1.17
+gpg --full-generate-key  >= 2.1.17
+</code></pre></p>
+<p><pre><code class="language-bash">gpg (GnuPG) 2.4.3; Copyright (C) 2023 g10 Code GmbH
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Please select what kind of key you want:
+   (1) RSA and RSA
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+   (9) ECC (sign and encrypt) *default*
+  (10) ECC (sign only)
+  (14) Existing key from card
+Your selection? 1           <--选择密钥类型
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (3072)         <--选择密钥长度，在 1024到4096 之间，默认为 3072
+Requested keysize is 3072 bits
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days    <-- <n>  = 密钥在 n 天后过期
+      <n>w = key expires in n weeks   <-- <n>w = 密钥在 n 周后过期
+      <n>m = key expires in n months  <-- <n>m = 密钥在 n 月后过期
+      <n>y = key expires in n years   <-- <n>y = 密钥在 n 年后过期
+Key is valid for? (0)     <--选择密钥有效期
+Key does not expire at all
+Is this correct? (y/N)   <--确认
+
+GnuPG needs to construct a user ID to identify your key.
+
+Real name: YOUR_NAME      <--输入密钥名称
+Email address: test@test.com       <--输入密钥邮箱
+Comment: test          <--输入密钥注释
+You are using the 'utf-8' character set.
+You selected this USER-ID:
+    "YOUR_NAME (test) <test@test.com>"
+
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? o  <--最终确认，如果你想修改密钥名称则输入 n，以此类推，最终确认则输入 o
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.    <--这一步输入密钥密码
+gpg: revocation certificate stored as 'C:\\Users\\user\\AppData\\Roaming\\gnupg\\openpgp-revocs.d\\095A4F5A6125D5EB02FE5CB824B8F8F7EAFFD84D.rev'
+public and secret key created and signed.
+
+pub   rsa3072 2024-02-25 [SC]
+      095A4F5A6125D5EB02FE5CB824B8F8F7EAFFD84D
+uid                      YOUR_NAME (test) <test@test.com>
+sub   rsa3072 2024-02-25 [E]
+</code></pre></p></div>
+			</div>
+		</div>
+
+		<button id="back-to-top" aria-label="回到顶部">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<polyline points="18 15 12 9 6 15"></polyline>
+			</svg>
+		</button>
+
+		<footer>
+			<p>MIT License</p>
+			<p>Copyright © 2024-2025 wardenxyz</p>
+		</footer>
+
+		<script>
+			// Initialize Mermaid diagrams
+			document.addEventListener("DOMContentLoaded", function () {
+				mermaid.initialize({
+					startOnLoad: true,
+					theme:
+						window.matchMedia &&
+						window.matchMedia("(prefers-color-scheme: dark)")
+							.matches
+							? "dark"
+							: "default",
+					flowchart: { curve: "basis" },
+					securityLevel: "loose",
+				});
+
+				// Configure MathJax
+				window.MathJax = {
+					tex: {
+						inlineMath: [
+							["$", "$"],
+							["\\(", "\\)"],
+						],
+						displayMath: [
+							["$$", "$$"],
+							["\\[", "\\]"],
+						],
+						processEscapes: true,
+						processEnvironments: true,
+					},
+					options: {
+						skipHtmlTags: [
+							"script",
+							"noscript",
+							"style",
+							"textarea",
+							"pre",
+						],
+					},
+				};
+			});
+
+			// Add copy buttons to code blocks
+			document.addEventListener("DOMContentLoaded", function () {
+				const codeBlocks = document.querySelectorAll("pre");
+
+				codeBlocks.forEach(function (block) {
+					// Create copy button
+					const button = document.createElement("button");
+					button.className = "copy-button";
+					button.textContent = "复制";
+
+					// Add the button to the code block
+					block.appendChild(button);
+
+					// Add click event
+					button.addEventListener("click", function () {
+						const code =
+							block.querySelector("code")?.textContent ||
+							block.textContent;
+
+						// Copy to clipboard
+						navigator.clipboard
+							.writeText(code)
+							.then(function () {
+								// Success feedback
+								button.textContent = "已复制!";
+								button.classList.add("copied");
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+									button.classList.remove("copied");
+								}, 2000);
+							})
+							.catch(function (error) {
+								console.error("复制失败:", error);
+								button.textContent = "复制失败";
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+								}, 2000);
+							});
+					});
+				});
+			});
+		</script>
+		
+		<script>
+			// Back to top button functionality
+			document.addEventListener("DOMContentLoaded", function() {
+				const backToTopButton = document.getElementById("back-to-top");
+				
+				// Show button when user scrolls down 300px from the top
+				window.addEventListener("scroll", function() {
+					if (window.pageYOffset > 300) {
+						backToTopButton.classList.add("visible");
+					} else {
+						backToTopButton.classList.remove("visible");
+					}
+				});
+				
+				// Smooth scroll to top when button is clicked
+				backToTopButton.addEventListener("click", function() {
+					window.scrollTo({
+						top: 0,
+						behavior: "smooth"
+					});
+				});
+			});
+		</script>
+		
+		<!-- 引入高亮搜索内容的脚本 -->
+		<script src="/assets/highlight.js"></script>
+		
+		<!-- 外部链接在新标签页打开 -->
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				// 获取所有链接
+				const links = document.querySelectorAll('a');
+				
+				links.forEach(function(link) {
+					const href = link.getAttribute('href');
+					
+					if (href) {
+						// 处理所有https链接和外部链接
+						if (
+							href.startsWith('http:') || 
+							href.startsWith('https:') || 
+							href.indexOf('://') !== -1 ||
+							(!href.startsWith('/') && !href.startsWith('#') && !href.startsWith('.'))
+						) {
+							// 直接为所有http/https链接添加target="_blank"
+							if (!link.hasAttribute('target')) {
+								link.setAttribute('target', '_blank');
+								link.setAttribute('rel', 'noopener noreferrer');
+							}
+						}
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

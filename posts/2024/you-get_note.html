@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>用 you-get 下载B站视频</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+		<!-- MathJax for mathematical formula support -->
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<meta
+			name="description"
+			content="A minimalist blog that uses pure markdown files"
+		/>
+	</head>
+	<body>
+		<nav>
+			<div class="logo">
+				<a href="/" style="font-size: 24px">随便写写</a>
+			</div>
+			<div class="nav-links">
+				<!-- <a href="/">首页</a> -->
+				<a href="/categories.html">分类</a>
+				<a href="/tags.html">标签</a>
+				<a href="/search.html?focus=true" id="search-nav-link">搜索</a>
+			</div>
+		</nav>
+
+		<div class="container">
+			<!-- <h1>用 you-get 下载B站视频</h1> -->
+
+			<div class="metadata">2024-08-01 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#python">python</a>, <a href="/tags.html#B站">B站</a></div></div>
+
+			<div class="main-content">
+				<div class="content"><h1 id="you-get-b">用 you-get 下载B站视频<a class="headerlink" href="#you-get-b" title="Permanent link">&para;</a></h1>
+<h2 id="1-you-get">1. 拉取 you-get<a class="headerlink" href="#1-you-get" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-bash">pip install you-get
+</code></pre></p>
+<h2 id="2-b-cookies">2. 获取B站 cookies<a class="headerlink" href="#2-b-cookies" title="Permanent link">&para;</a></h2>
+<p>在 edge 浏览器下载 <a href="https://microsoftedge.microsoft.com/addons/detail/cookieeditor/neaplmfkghagebokkhpjpoebhdledlfi?hl=zh-CN">Cookie-Editor</a> 扩展，然后打开 <a href="https://bilibili.com">B站</a>，通过 Cookie-Editor 导出B站的 cookie</p>
+<blockquote>
+<p>导出格式要为 Netscape 格式，因为 you-get 目前只支持 Mozilla 的 cookies.sqlite 和 Netscape 的 cookies.txt 两种格式的 cookies，所以我们需要导出符合格式的 cookies</p>
+</blockquote>
+<h2 id="3">3. 下载视频<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>把保存好的 cookies.txt 放到你所执行命令的目录下，然后执行</p>
+<p><pre><code>you-get --cookies=cookies.txt "https://www.bilibili.com/video/BVxxxxxx"
+</code></pre></p>
+<p>命令</p>
+<p>you-get 会默认下载最高清晰度</p>
+<p>就 ok 了</p></div>
+			</div>
+		</div>
+
+		<button id="back-to-top" aria-label="回到顶部">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<polyline points="18 15 12 9 6 15"></polyline>
+			</svg>
+		</button>
+
+		<footer>
+			<p>MIT License</p>
+			<p>Copyright © 2024-2025 wardenxyz</p>
+		</footer>
+
+		<script>
+			// Initialize Mermaid diagrams
+			document.addEventListener("DOMContentLoaded", function () {
+				mermaid.initialize({
+					startOnLoad: true,
+					theme:
+						window.matchMedia &&
+						window.matchMedia("(prefers-color-scheme: dark)")
+							.matches
+							? "dark"
+							: "default",
+					flowchart: { curve: "basis" },
+					securityLevel: "loose",
+				});
+
+				// Configure MathJax
+				window.MathJax = {
+					tex: {
+						inlineMath: [
+							["$", "$"],
+							["\\(", "\\)"],
+						],
+						displayMath: [
+							["$$", "$$"],
+							["\\[", "\\]"],
+						],
+						processEscapes: true,
+						processEnvironments: true,
+					},
+					options: {
+						skipHtmlTags: [
+							"script",
+							"noscript",
+							"style",
+							"textarea",
+							"pre",
+						],
+					},
+				};
+			});
+
+			// Add copy buttons to code blocks
+			document.addEventListener("DOMContentLoaded", function () {
+				const codeBlocks = document.querySelectorAll("pre");
+
+				codeBlocks.forEach(function (block) {
+					// Create copy button
+					const button = document.createElement("button");
+					button.className = "copy-button";
+					button.textContent = "复制";
+
+					// Add the button to the code block
+					block.appendChild(button);
+
+					// Add click event
+					button.addEventListener("click", function () {
+						const code =
+							block.querySelector("code")?.textContent ||
+							block.textContent;
+
+						// Copy to clipboard
+						navigator.clipboard
+							.writeText(code)
+							.then(function () {
+								// Success feedback
+								button.textContent = "已复制!";
+								button.classList.add("copied");
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+									button.classList.remove("copied");
+								}, 2000);
+							})
+							.catch(function (error) {
+								console.error("复制失败:", error);
+								button.textContent = "复制失败";
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+								}, 2000);
+							});
+					});
+				});
+			});
+		</script>
+		
+		<script>
+			// Back to top button functionality
+			document.addEventListener("DOMContentLoaded", function() {
+				const backToTopButton = document.getElementById("back-to-top");
+				
+				// Show button when user scrolls down 300px from the top
+				window.addEventListener("scroll", function() {
+					if (window.pageYOffset > 300) {
+						backToTopButton.classList.add("visible");
+					} else {
+						backToTopButton.classList.remove("visible");
+					}
+				});
+				
+				// Smooth scroll to top when button is clicked
+				backToTopButton.addEventListener("click", function() {
+					window.scrollTo({
+						top: 0,
+						behavior: "smooth"
+					});
+				});
+			});
+		</script>
+		
+		<!-- 引入高亮搜索内容的脚本 -->
+		<script src="/assets/highlight.js"></script>
+		
+		<!-- 外部链接在新标签页打开 -->
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				// 获取所有链接
+				const links = document.querySelectorAll('a');
+				
+				links.forEach(function(link) {
+					const href = link.getAttribute('href');
+					
+					if (href) {
+						// 处理所有https链接和外部链接
+						if (
+							href.startsWith('http:') || 
+							href.startsWith('https:') || 
+							href.indexOf('://') !== -1 ||
+							(!href.startsWith('/') && !href.startsWith('#') && !href.startsWith('.'))
+						) {
+							// 直接为所有http/https链接添加target="_blank"
+							if (!link.hasAttribute('target')) {
+								link.setAttribute('target', '_blank');
+								link.setAttribute('rel', 'noopener noreferrer');
+							}
+						}
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

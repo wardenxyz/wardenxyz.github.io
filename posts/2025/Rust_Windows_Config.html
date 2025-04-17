@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>在 Windows 上配置 Rust 环境</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+		<!-- MathJax for mathematical formula support -->
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<meta
+			name="description"
+			content="A minimalist blog that uses pure markdown files"
+		/>
+	</head>
+	<body>
+		<nav>
+			<div class="logo">
+				<a href="/" style="font-size: 24px">随便写写</a>
+			</div>
+			<div class="nav-links">
+				<!-- <a href="/">首页</a> -->
+				<a href="/categories.html">分类</a>
+				<a href="/tags.html">标签</a>
+				<a href="/search.html?focus=true" id="search-nav-link">搜索</a>
+			</div>
+		</nav>
+
+		<div class="container">
+			<!-- <h1>在 Windows 上配置 Rust 环境</h1> -->
+
+			<div class="metadata">2025-03-16 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#Rust">Rust</a></div></div>
+
+			<div class="main-content">
+				<div class="content"><h1 id="windows-rust">在 Windows 上配置 Rust 环境<a class="headerlink" href="#windows-rust" title="Permanent link">&para;</a></h1>
+<p>起因：想编译 Zed 的 Windows 版，但不想下载 visual studio</p>
+<p>视频：https://www.bilibili.com/video/BV12RDhYPE7M/?share_source=copy_web&amp;vd_source=7a8cdea3693bb45fc81a5ee43e70eaa3</p>
+<h2 id="_1">准备工作<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="gcc">配置 gcc 环境<a class="headerlink" href="#gcc" title="Permanent link">&para;</a></h3>
+<p>在 <a href="https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-posix/seh/">mingw</a> 网页下下载 <code>x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z</code></p>
+<p>解压后把 <code>bin</code> 路径放到环境变量中</p>
+<p>检测</p>
+<p><pre><code class="language-ps">gcc -v
+
+Using built-in specs.
+COLLECT_GCC=D:\workspace\mingw64\bin\gcc.exe
+COLLECT_LTO_WRAPPER=D:/workspace/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/8.1.0/lto-wrapper.exe
+Target: x86_64-w64-mingw32
+Configured with: ../../../src/gcc-8.1.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --with-sysroot=/c/mingw810/x86_64-810-posix-seh-rt_v6-rev0/mingw64 --enable-shared --enable-static --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=posix --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=nocona --with-tune=core2 --with-libiconv --with-system-zlib --with-gmp=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-mpc=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-isl=/c/mingw810/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-posix-seh-rev0, Built by MinGW-W64 project' --with-bugurl=https://sourceforge.net/projects/mingw-w64 CFLAGS='-O2 -pipe -fno-ident -I/c/mingw810/x86_64-810-posix-seh-rt_v6-rev0/mingw64/opt/include -I/c/mingw810/prerequisites/x86_64-zlib-static/include -I/c/mingw810/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/mingw810/x86_64-810-posix-seh-rt_v6-rev0/mingw64/opt/include -I/c/mingw810/prerequisites/x86_64-zlib-static/include -I/c/mingw810/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/c/mingw810/x86_64-810-posix-seh-rt_v6-rev0/mingw64/opt/include -I/c/mingw810/prerequisites/x86_64-zlib-static/include -I/c/mingw810/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/mingw810/x86_64-810-posix-seh-rt_v6-rev0/mingw64/opt/lib -L/c/mingw810/prerequisites/x86_64-zlib-static/lib -L/c/mingw810/prerequisites/x86_64-w64-mingw32-static/lib '
+Thread model: posix
+gcc version 8.1.0 (x86_64-posix-seh-rev0, Built by MinGW-W64 project)
+</code></pre></p>
+<h3 id="rust">下载 Rust<a class="headerlink" href="#rust" title="Permanent link">&para;</a></h3>
+<p>这里下载 <a href="https://www.rust-lang.org/zh-CN/learn/get-started">Rust</a>，32 位和 64 位两种，根据实际情况选取</p>
+<h3 id="rust-toolchain">配置 Rust Toolchain 镜像源<a class="headerlink" href="#rust-toolchain" title="Permanent link">&para;</a></h3>
+<ul>
+<li>中科大镜像源：https://mirrors.ustc.edu.cn/help/rust-static.html#rust-toolchain</li>
+</ul>
+<p><pre><code class="language-powershell">$env:RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static"
+$env:RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup"
+</code></pre></p>
+<ul>
+<li>Rsproxy 源：https://rsproxy.cn/#getStarted</li>
+</ul>
+<p><pre><code class="language-powershell">export RUSTUP_DIST_SERVER="https://rsproxy.cn"
+export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
+</code></pre></p>
+<p>上面两个二选一</p>
+<p>配置好的用户变量：</p>
+<p><pre><code>变量                                值
+RUSTUP_DIST_SERVER                 https://rsproxy.cn
+RUSTUP_UPDATE_ROOT                 https://rsproxy.cn/rustup
+</code></pre></p>
+<h3 id="_2">配置安装位置<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>在 D 盘下创建两个文件夹</p>
+<p><pre><code>D:\Rust\rustup
+D:\Rust\cargo
+</code></pre></p>
+<p>把这两个文件夹加入到用户变量中去</p>
+<p><pre><code>变量                                值
+RUSTUP_HOME                        D:\Rust\rustup
+CARGO_HOME                         D:\Rust\cargo
+</code></pre></p>
+<h2 id="_3">安装<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>点击下载的 <code>rustup-init.exe</code>，运行开启一个终端，如下</p>
+<p><pre><code class="language-powershell">Rust Visual C++ prerequisites
+
+Rust requires a linker and Windows API libraries but they don't seem to beavailable.
+
+These components can be acquired through a Visual Studio installer.
+
+1) Quick install via the Visual Studio Community installer
+(free for individuals,academic uses, and open source).
+
+2) Manually install the prerequisites
+(for enterprise and advanced users).
+
+3) Don't install the prerequisites
+(if you're targeting the GNU ABI)
+
+>2                  <----------------------------------------------------- 这里选第 2 个
+
+You can acquire the build tools by installing Hicrosoft Visual Studio.
+
+		https://visualstudio.microsoft.com/downloads
+
+Check the box for "Desktop development with C++" which will ensure that the needed components are installed.If your locale language is not Englishthen additionally check the box for English under Language packs.
+
+For more details see:
+
+		https://rust-lang.github.io/rustup/installation/windows-msvc.html
+
+Install the C++ build tools before proceeding.
+
+If you will be targeting the GNU ABI or otherwise know what you are
+doing then it is fine to continue installation without the build
+tools, but otherwise, install the C++ build tools before proceeding.
+
+Continue?(y/N)
+y                 <----------------------------------------------------------------- Yes
+
+The Cargo home directory is located at:
+
+		D:\Rust\cargo
+
+This can be modified with the CARGO_HOME environment variable.
+
+The cargo, rustc, rustup and other commands will be added to Cargo's bin directory, located at:
+
+		D:\Rust\cargo\bin
+
+This path will then be added to your PATH environment variable by
+modifying the HKEY_CURRENT_USER/Environment/PATH registry key.
+
+You can uninstall at any time with rustup self uninstall and these changes will be reverted.
+
+Current installation options:
+
+		default host triple: x86_64-pc-windows-msvc
+			default toolchain: stable(default)
+								profile: default
+	 modify PATH variable: yes
+
+1) Proceed with standard installation(default - just press enter)
+
+2) Customize installation
+
+3) Cancel installation
+>2                    <------------------------------------------------------------------- 选第 2 个
+
+I'm going to ask you the value of each of these installation options.
+You may simply press the Enter key to leave unchanged.
+
+Default host triple? [x86_64-pc-windows-msvc]
+x86_64-pc-windows-gnu            <------------------------------------ 输入 x86_64-pc-windows-gnu
+
+Default toolchain?(stable/beta/nightly/none) [stable]
+        <----------------------------------------------- 回车
+
+Profile (which tools and data to install)?(minimal/default/complete) [default]
+        <----------------------------------------------- 回车
+
+Modify PATH variable?(Y/n)
+y             <----------------------------------------------------------------------- Yes
+
+Current installation options:
+
+		default host triple: x86_64-pc-windows-gnu
+			default toolchain: table
+								profile: default
+	 modify PATH variable: yes
+
+1) Proceed with selected options(default - just press enter)
+2) Customize installation
+3) Cancel installation
+>1                   <--------------------------------------------------------------- 选第 1 个
+
+info: profile set to 'default'
+info: setting default host triple to x86_64-pc-windows-gnu
+info: syncing channel updates for 'stable-x86_64-pc-windows-gnu'
+info: latest update on 2024-10-17, rust version 1.82.0(f6e511eec 2024-10-15)
+info:downloading component 'cargo'
+	10.3 MiB/  10.3MiB (100%)   4.8MiB/s in  2s  ETA: 0S
+info: downloading component 'clippy'
+	 4.1 MiB/   4.1MiB (100%)   4.1MiB/s in  1s  ETA: 0s
+info: downloading component 'rust-docs'
+	16.3 MiB/  16.3MiB (100%)   1.7MiB/s in  9s  ETA: 0s
+info: downloading component 'rust-mingw'
+	 4.7 MiB/   4.7MiB (100%)   2.3MiB/s in  2s  ETA: 0s
+info: downloading component 'rust-std'
+	23.7 MiB/  23.7MiB (100%)   3.7MiB/s in  8s  ETA: 0s
+info: downloading component 'rustc'
+	79.2 MiB/  79.2MiB (100%)   3.7MiB/s in 21s  ETA: 0s
+info: downloading component 'rustfmt'
+info: installing component 'cargo'
+info: installing component 'clippy'
+info: installing component 'rust-docs'
+	16.3 MiB/  16.3MiB (100%)   3.2MiB/s in  5s  ETA: 0s
+info: installing component 'rust-mingw'
+info: installing component'rust-std'
+	23.7 MiB/  23.7MiB (100%)  14.3MiB/s in  1S  ETA: 0s
+info: installing component 'rustc'
+	79.2 MiB/  79.2MiB (100%)  14.2MiB/s in  5s  ETA: 0s
+info: installing component 'rustfmt'
+info: default toolchain set to 'stable-x86_64-pc-windows-gnu'
+
+		stable-x86_64-pc-windows-gnu installed - rustc 1.82.0(f6e511eec 2024-10-15)
+
+Rust is installed now. Great!
+
+To get started you may need to restart your current shell
+This would reload its PATH environment variable to include
+Cargo's bin directory(D:Rust\cargo\bin)
+Press the Enter key to continue.
+</code></pre></p>
+<p>一共八步</p>
+<p>检测</p>
+<p><pre><code class="language-ps">rustup --version
+
+rustup 1.28.1 (f9edccde0 2025-03-05)
+info: This is the version for the rustup toolchain manager, not the rustc compiler.
+info: The currently active `rustc` version is `rustc 1.85.0 (4d91de4e4 2025-02-17)`
+</code></pre></p>
+<p><pre><code class="language-ps">cargo --version
+
+cargo 1.85.0 (d73d2caf9 2024-12-31)
+</code></pre></p>
+<h2 id="cargo">配置 cargo 镜像源<a class="headerlink" href="#cargo" title="Permanent link">&para;</a></h2>
+<p>这里选择中科大镜像源：https://mirrors.ustc.edu.cn/help/crates.io-index.html</p>
+<p>在 <code>D:\Rust\cargo\config.toml</code> 中添加如下内容</p>
+<p><pre><code class="language-toml">[source.crates-io]
+replace-with = 'ustc'
+
+[source.ustc]
+registry = "sparse+https://mirrors.ustc.edu.cn/crates.io-index/"
+
+[registries.ustc]
+index = "sparse+https://mirrors.ustc.edu.cn/crates.io-index/"
+</code></pre></p></div>
+			</div>
+		</div>
+
+		<button id="back-to-top" aria-label="回到顶部">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<polyline points="18 15 12 9 6 15"></polyline>
+			</svg>
+		</button>
+
+		<footer>
+			<p>MIT License</p>
+			<p>Copyright © 2024-2025 wardenxyz</p>
+		</footer>
+
+		<script>
+			// Initialize Mermaid diagrams
+			document.addEventListener("DOMContentLoaded", function () {
+				mermaid.initialize({
+					startOnLoad: true,
+					theme:
+						window.matchMedia &&
+						window.matchMedia("(prefers-color-scheme: dark)")
+							.matches
+							? "dark"
+							: "default",
+					flowchart: { curve: "basis" },
+					securityLevel: "loose",
+				});
+
+				// Configure MathJax
+				window.MathJax = {
+					tex: {
+						inlineMath: [
+							["$", "$"],
+							["\\(", "\\)"],
+						],
+						displayMath: [
+							["$$", "$$"],
+							["\\[", "\\]"],
+						],
+						processEscapes: true,
+						processEnvironments: true,
+					},
+					options: {
+						skipHtmlTags: [
+							"script",
+							"noscript",
+							"style",
+							"textarea",
+							"pre",
+						],
+					},
+				};
+			});
+
+			// Add copy buttons to code blocks
+			document.addEventListener("DOMContentLoaded", function () {
+				const codeBlocks = document.querySelectorAll("pre");
+
+				codeBlocks.forEach(function (block) {
+					// Create copy button
+					const button = document.createElement("button");
+					button.className = "copy-button";
+					button.textContent = "复制";
+
+					// Add the button to the code block
+					block.appendChild(button);
+
+					// Add click event
+					button.addEventListener("click", function () {
+						const code =
+							block.querySelector("code")?.textContent ||
+							block.textContent;
+
+						// Copy to clipboard
+						navigator.clipboard
+							.writeText(code)
+							.then(function () {
+								// Success feedback
+								button.textContent = "已复制!";
+								button.classList.add("copied");
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+									button.classList.remove("copied");
+								}, 2000);
+							})
+							.catch(function (error) {
+								console.error("复制失败:", error);
+								button.textContent = "复制失败";
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+								}, 2000);
+							});
+					});
+				});
+			});
+		</script>
+		
+		<script>
+			// Back to top button functionality
+			document.addEventListener("DOMContentLoaded", function() {
+				const backToTopButton = document.getElementById("back-to-top");
+				
+				// Show button when user scrolls down 300px from the top
+				window.addEventListener("scroll", function() {
+					if (window.pageYOffset > 300) {
+						backToTopButton.classList.add("visible");
+					} else {
+						backToTopButton.classList.remove("visible");
+					}
+				});
+				
+				// Smooth scroll to top when button is clicked
+				backToTopButton.addEventListener("click", function() {
+					window.scrollTo({
+						top: 0,
+						behavior: "smooth"
+					});
+				});
+			});
+		</script>
+		
+		<!-- 引入高亮搜索内容的脚本 -->
+		<script src="/assets/highlight.js"></script>
+		
+		<!-- 外部链接在新标签页打开 -->
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				// 获取所有链接
+				const links = document.querySelectorAll('a');
+				
+				links.forEach(function(link) {
+					const href = link.getAttribute('href');
+					
+					if (href) {
+						// 处理所有https链接和外部链接
+						if (
+							href.startsWith('http:') || 
+							href.startsWith('https:') || 
+							href.indexOf('://') !== -1 ||
+							(!href.startsWith('/') && !href.startsWith('#') && !href.startsWith('.'))
+						) {
+							// 直接为所有http/https链接添加target="_blank"
+							if (!link.hasAttribute('target')) {
+								link.setAttribute('target', '_blank');
+								link.setAttribute('rel', 'noopener noreferrer');
+							}
+						}
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
