@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>B站嵌入代码</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+		<!-- MathJax for mathematical formula support -->
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<meta
+			name="description"
+			content="A minimalist blog that uses pure markdown files"
+		/>
+	</head>
+	<body>
+		<nav>
+			<div class="logo">
+				<a href="/" style="font-size: 24px">随便写写</a>
+			</div>
+			<div class="nav-links">
+				<!-- <a href="/">首页</a> -->
+				<a href="/categories">分类</a>
+				<a href="/tags">标签</a>
+				<a href="/search?focus=true" id="search-nav-link">搜索</a>
+			</div>
+		</nav>
+
+		<div class="container">
+			<!-- <h1>B站嵌入代码</h1> -->
+
+			<div class="metadata">2024-08-01 <div class="category">分类: <a href="/categories/#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags/#B站">B站</a></div></div>
+
+			<div class="main-content">
+				<div class="content"><h1 id="b">B站嵌入代码<a class="headerlink" href="#b" title="Permanent link">&para;</a></h1>
+<h2 id="_1">正常显示<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>在</p>
+<p><pre><code><iframe src="//player.bilibili.com
+</code></pre></p>
+<p>之中添加 <code>https:</code> 变成<br />
+<pre><code><iframe src="https://player.bilibili.com
+</code></pre></p>
+<h2 id="_2">修改屏幕尺寸<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><pre><code>style="width:100%;aspect-ratio:16/9;"
+</code></pre></p>
+<p><pre><code class="language-iframe"><iframe src="//player.bilibili.com/player.html?aid=425938140&bvid=BV1G3411M7BN&cid=584177306&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:100%;aspect-ratio:16/9;"></iframe>
+</code></pre></p>
+<h2 id="_3">禁止自动播放<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>如果不修改代码，会在打开文章页面的时候，视频就会直接自动从头开始播放，突然的声音可能带来不必要的惊吓，并且会让访问者错过开头，显得很突兀。</p>
+<p>要取消自动播放，只需在视频 src=url 链接最后加上：&amp;autoplay=0</p>
+<p><pre><code class="language-iframe"><iframe src="//player.bilibili.com/player.html?aid=425938140&bvid=BV1G3411M7BN&cid=584177306&p=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+</code></pre></p>
+<h2 id="b_1">更多B站嵌入代码修改<a class="headerlink" href="#b_1" title="Permanent link">&para;</a></h2>
+<p>如果要更改更多B站视频嵌入代码设置选项，可以参考下面关于iframe引用的B站官方参数设置。</p>
+<p>设置方法就是在src=url链接后面添加:&amp;参数名=参数数值</p>
+<p>比如弹幕关闭：&amp;danmaku=0，以此类推</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>参数用途</th>
+<th>使用方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>autoplay</td>
+<td>是否自动播放(默认否)</td>
+<td>1: 开启, 0: 关闭</td>
+</tr>
+<tr>
+<td>danmaku</td>
+<td>默认弹幕开关(默认开启)</td>
+<td>1: 开启, 0: 关闭</td>
+</tr>
+<tr>
+<td>muted</td>
+<td>是否默认静音(默认否)</td>
+<td>1: 开启, 0: 关闭</td>
+</tr>
+<tr>
+<td>hasMuteButton</td>
+<td>一键静音按钮是否显示（默认不显示）</td>
+<td>1: 开启, 0: 关闭</td>
+</tr>
+<tr>
+<td>hideCoverInfo</td>
+<td>视频封面下方是都显示播放量弹幕量等信息(默认显示)</td>
+<td>1: 开启, 0: 关闭</td>
+</tr>
+<tr>
+<td>hideDanmakuButton</td>
+<td>是否隐藏弹幕按钮（默认不隐藏）</td>
+<td>1: 开启, 0: 关闭</td>
+</tr>
+<tr>
+<td>noFullScreenButton</td>
+<td>是否隐藏全屏按钮(默认显示)</td>
+<td>1: 开启, 0: 关闭</td>
+</tr>
+<tr>
+<td>fjw</td>
+<td>是否开始记忆播放(默认开启)</td>
+<td>1: 开启, 0: 关闭</td>
+</tr>
+<tr>
+<td>t</td>
+<td>默认开始时间(默认0)</td>
+<td>直接填写数值，单位秒</td>
+</tr>
+</tbody>
+</table></div>
+			</div>
+		</div>
+
+		<button id="back-to-top" aria-label="回到顶部">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<polyline points="18 15 12 9 6 15"></polyline>
+			</svg>
+		</button>
+
+		<footer>
+			<p>MIT License</p>
+			<p>Copyright © 2024-2025 wardenxyz</p>
+		</footer>
+
+		<script>
+			// Initialize Mermaid diagrams
+			document.addEventListener("DOMContentLoaded", function () {
+				mermaid.initialize({
+					startOnLoad: true,
+					theme:
+						window.matchMedia &&
+						window.matchMedia("(prefers-color-scheme: dark)")
+							.matches
+							? "dark"
+							: "default",
+					flowchart: { curve: "basis" },
+					securityLevel: "loose",
+				});
+
+				// Configure MathJax
+				window.MathJax = {
+					tex: {
+						inlineMath: [
+							["$", "$"],
+							["\\(", "\\)"],
+						],
+						displayMath: [
+							["$$", "$$"],
+							["\\[", "\\]"],
+						],
+						processEscapes: true,
+						processEnvironments: true,
+					},
+					options: {
+						skipHtmlTags: [
+							"script",
+							"noscript",
+							"style",
+							"textarea",
+							"pre",
+						],
+					},
+				};
+			});
+
+			// Add copy buttons to code blocks
+			document.addEventListener("DOMContentLoaded", function () {
+				const codeBlocks = document.querySelectorAll("pre");
+
+				codeBlocks.forEach(function (block) {
+					// Create copy button
+					const button = document.createElement("button");
+					button.className = "copy-button";
+					button.textContent = "复制";
+
+					// Add the button to the code block
+					block.appendChild(button);
+
+					// Add click event
+					button.addEventListener("click", function () {
+						const code =
+							block.querySelector("code")?.textContent ||
+							block.textContent;
+
+						// Copy to clipboard
+						navigator.clipboard
+							.writeText(code)
+							.then(function () {
+								// Success feedback
+								button.textContent = "已复制!";
+								button.classList.add("copied");
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+									button.classList.remove("copied");
+								}, 2000);
+							})
+							.catch(function (error) {
+								console.error("复制失败:", error);
+								button.textContent = "复制失败";
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+								}, 2000);
+							});
+					});
+				});
+			});
+		</script>
+		
+		<script>
+			// Back to top button functionality
+			document.addEventListener("DOMContentLoaded", function() {
+				const backToTopButton = document.getElementById("back-to-top");
+				
+				// Show button when user scrolls down 300px from the top
+				window.addEventListener("scroll", function() {
+					if (window.pageYOffset > 300) {
+						backToTopButton.classList.add("visible");
+					} else {
+						backToTopButton.classList.remove("visible");
+					}
+				});
+				
+				// Smooth scroll to top when button is clicked
+				backToTopButton.addEventListener("click", function() {
+					window.scrollTo({
+						top: 0,
+						behavior: "smooth"
+					});
+				});
+			});
+		</script>
+		
+		<!-- 引入高亮搜索内容的脚本 -->
+		<script src="/assets/highlight.js"></script>
+		
+		<!-- 外部链接在新标签页打开 -->
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				// 获取所有链接
+				const links = document.querySelectorAll('a');
+				
+				links.forEach(function(link) {
+					const href = link.getAttribute('href');
+					
+					if (href) {
+						// 处理所有https链接和外部链接
+						if (
+							href.startsWith('http:') || 
+							href.startsWith('https:') || 
+							href.indexOf('://') !== -1 ||
+							(!href.startsWith('/') && !href.startsWith('#') && !href.startsWith('.'))
+						) {
+							// 直接为所有http/https链接添加target="_blank"
+							if (!link.hasAttribute('target')) {
+								link.setAttribute('target', '_blank');
+								link.setAttribute('rel', 'noopener noreferrer');
+							}
+						}
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
