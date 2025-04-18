@@ -40,26 +40,188 @@
 
 			<div class="main-content">
 				<div class="content"><h1 id="gpg">GPG 在通信中的简单理解<a class="headerlink" href="#gpg" title="Permanent link">&para;</a></h1>
-<p><a href="https://gpg4win.org/index.html">下载 gpg4win</a></p>
-<p>使用 GPG 加密邮件交流的前提是双方都有对方的公钥</p>
-<p>在 RSA 加密算法中，secret key 可以推导出 public key</p>
-<p>数字签名的实现就是以非对称加密为基础，<br />
-现有 Alice 和 Bob，他们两人都有一个密钥对</p>
-<p><font color=blue>A 公钥</font>  <font color=green>B 公钥</font></p>
-<p><font color=blue>A 私钥</font>  <font color=green>B 私钥</font></p>
-<p>由于公钥是公开的，所以 Alice 和 Bob 都有对方的公钥</p>
-<p>Alice        Bob</p>
-<p><font color=blue>A 公钥</font>      <font color=green>B 公钥</font></p>
-<p><font color=blue>A 私钥</font>      <font color=green>B 私钥</font></p>
-<p><font color=green>B 公钥</font>      <font color=blue>A 公钥</font></p>
-<p>场景：Alice 想要发送一段文本给 Bob</p>
+<p><pre><code>+----------------+          +----------------+
+| Alice生成密钥对 |          | Bob生成密钥对  |
+| 公钥A | 私钥A   |          | 公钥B | 私钥B  |
++-------+--------+          +-------+--------+
+        | 交换公钥 |                    |
+        +--------->+<------------------+
+                   |
++------------------|-------------------+
+| 加密阶段：        | 解密阶段：         |
+| Alice用公钥B加密  → 密文 → Bob用私钥B解密 |
++------------------|-------------------+
+| 签名阶段：        | 验证阶段：         |
+| Alice用私钥A签名 → 签名 → Bob用公钥A验证 |
++--------------------------------------+
+</code></pre></p>
+<h2 id="_1">核心概念<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><strong>非对称加密体系</strong>：</p>
+<ul>
+<li>公钥（Public Key）：可公开分发的加密钥匙</li>
+<li>私钥（Private Key）：必须严格保密的解密钥匙</li>
+<li>数学关系：公钥由私钥推导得出，但无法逆向反推</li>
+</ul>
+<p><strong>数字签名三要素</strong>：</p>
 <ol>
-<li>Alice 用 Bob 的公钥<font color=green>B 公钥</font>加密原始数据</li>
-<li>Alice 再计算出加密后数据的哈希值，再用自己的私钥<font color=blue>A 私钥</font>加密哈希值，这一步就是数字签名，再将加密后的文本和加密后的哈希值一起打包发送给 Bob</li>
-<li>Bob 收到 Alice 的数据后用 Alice 的公钥<font color=blue>A 公钥</font>解密哈希值，再与传输过来的数据校验，如果 Bob 解密后的而哈希值与传输过来的加密数据哈希值一致则可以确定是 Alice 发送的</li>
-<li>Bob 用自己的私钥<font color=green>B 私钥</font>解密数据，得到数据</li>
+<li>身份认证（Authentication） - 确认消息来源</li>
+<li>完整性验证（Integrity） - 确保内容未被篡改</li>
+<li>不可否认性（Non-repudiation） - 发送方无法否认发送行为</li>
 </ol>
-<p>解密需要公钥，数字签名中私钥签名，公钥解密</p></div>
+<h2 id="_2">密钥管理流程<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-bash"># 生成密钥对（4096位 RSA）
+gpg --full-generate-key
+
+# 导出公钥
+gpg --armor --export alice@example.com > alice_pubkey.asc
+
+# 导入他人公钥
+gpg --import bob_pubkey.asc
+
+# 查看密钥列表
+gpg --list-keys
+</code></pre></p>
+<h2 id="alice-bob">完整通信流程（Alice → Bob）<a class="headerlink" href="#alice-bob" title="Permanent link">&para;</a></h2>
+<h3 id="_3">准备阶段<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ol>
+<li>双方生成密钥对</li>
+<li>交换公钥（通过密钥服务器/邮件/当面交换）</li>
+<li>互相签名验证公钥真实性</li>
+</ol>
+<h3 id="_4">加密阶段<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Alice 撰写原始消息 <code>message.txt</code></p>
+</li>
+<li>
+<p>使用 Bob 的公钥加密：</p>
+</li>
+</ol>
+<p><pre><code class="language-bash">gpg --encrypt --recipient bob@example.com message.txt
+</code></pre></p>
+<ol start="3">
+<li>生成数字签名：</li>
+</ol>
+<p><pre><code class="language-bash">gpg --sign --detach-sig message.txt.gpg
+</code></pre></p>
+<h3 id="_5">解密验证阶段<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Bob 接收加密文件 <code>message.txt.gpg</code> 和签名文件 <code>message.sig</code></p>
+</li>
+<li>
+<p>验证签名：</p>
+</li>
+</ol>
+<p><pre><code class="language-bash">gpg --verify message.sig message.txt.gpg
+</code></pre></p>
+<ol start="3">
+<li>解密文件：</li>
+</ol>
+<p><pre><code class="language-bash">gpg --decrypt message.txt.gpg > decrypted_message.txt
+</code></pre></p>
+<h2 id="_6">安全机制解析<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>使用密钥</th>
+<th>数学运算</th>
+<th>安全目标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>消息加密</td>
+<td>Bob 的公钥</td>
+<td>RSA 加密</td>
+<td>机密性</td>
+</tr>
+<tr>
+<td>生成哈希值</td>
+<td>SHA-256</td>
+<td>哈希计算</td>
+<td>完整性校验</td>
+</tr>
+<tr>
+<td>签名加密</td>
+<td>Alice 的私钥</td>
+<td>RSA 加密</td>
+<td>身份认证/不可否认性</td>
+</tr>
+<tr>
+<td>签名验证</td>
+<td>Alice 的公钥</td>
+<td>RSA 解密</td>
+<td>验证来源</td>
+</tr>
+<tr>
+<td>消息解密</td>
+<td>Bob 的私钥</td>
+<td>RSA 解密</td>
+<td>获取明文</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_7">典型应用场景<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ol>
+<li>安全电子邮件（Thunderbird + Enigmail）</li>
+<li>软件包签名验证（Linux 软件源）</li>
+<li>Git commit 签名</li>
+<li>加密文件存储</li>
+<li>SSH 认证（GPG 作为 SSH 密钥）</li>
+</ol>
+<h2 id="_8">常见问题解答<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>Q：私钥泄露怎么办？<br />
+A：立即吊销密钥并重新生成：</p>
+<p><pre><code class="language-bash">gpg --gen-revoke [key-id]
+</code></pre></p>
+<p>Q：如何验证公钥真实性？<br />
+A：通过指纹校验（16位短指纹更易验证）：</p>
+<p><pre><code class="language-bash">gpg --fingerprint bob@example.com
+</code></pre></p>
+<p>Q：为什么需要交叉签名？<br />
+A：建立信任链，推荐做法：</p>
+<ol>
+<li>当面交换密钥指纹</li>
+<li>参加密钥签名聚会（Key Signing Party）</li>
+<li>使用 Web of Trust 信任网络</li>
+</ol>
+<p>Q：GPG 与对称加密的区别？<br />
+A：对比表</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>GPG（非对称）</th>
+<th>AES（对称）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>密钥数量</td>
+<td>密钥对（2个）</td>
+<td>单一密钥</td>
+</tr>
+<tr>
+<td>加密速度</td>
+<td>慢（适合小数据）</td>
+<td>快（适合大数据）</td>
+</tr>
+<tr>
+<td>密钥交换</td>
+<td>无需安全通道</td>
+<td>需要安全通道</td>
+</tr>
+<tr>
+<td>典型用途</td>
+<td>数字签名/密钥交换</td>
+<td>文件加密</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><a href="https://gpg4win.org/index.html">下载 gpg4win</a> | <a href="https://gnupg.org/documentation/">GPG 官方手册</a></p></div>
 			</div>
 		</div>
 
