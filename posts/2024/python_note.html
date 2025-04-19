@@ -68,8 +68,8 @@ pip uninstall -r requirements.txt -y
 deactivate
 </code></pre></p>
 <h2 id="python_1">python 换源<a class="headerlink" href="#python_1" title="Permanent link">&para;</a></h2>
-<p>清华源：<br />
-<pre><code class="language-bash">pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+<p>清华源：</p>
+<p><pre><code class="language-bash">pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 </code></pre></p>
 <p>查看源</p>
 <p><pre><code class="language-bash">pip config list
@@ -82,6 +82,16 @@ deactivate
 </code></pre></p>
 <p>配置文件位置：</p>
 <p><pre><code class="language-bash">C:\Users\admin\AppData\Roaming\pip\pip.ini
+</code></pre></p>
+<h2 id="pip-install">修改 pip install 位置<a class="headerlink" href="#pip-install" title="Permanent link">&para;</a></h2>
+<p>在 <code>C:\Users\admin\AppData\Roaming\pip\pip.ini</code> 中写入</p>
+<p><pre><code class="language-txt">[global]
+target = D:\Python\Python312\Lib\site-packages
+</code></pre></p>
+<h2 id="pipini">pip.ini 配置<a class="headerlink" href="#pipini" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-txt">[global]
+target = D:\Python\Python312\Lib\site-packages
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 </code></pre></p>
 <h2 id="_2">查看第三方库的位置<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p><pre><code class="language-bash">python -m site
