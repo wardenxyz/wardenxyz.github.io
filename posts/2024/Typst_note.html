@@ -42,25 +42,36 @@
 				<div class="content"><h1 id="typst">Typst 笔记<a class="headerlink" href="#typst" title="Permanent link">&para;</a></h1>
 <p><a href="https://typst.app/docs">Tyspt 官方文档</a></p>
 <h2 id="_1">导出命令<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ul>
-<li>默认导出为 pdf</li>
-</ul>
-<p><pre><code class="language-bash">typst c main.typ 
+<p><strong>Typst 导出格式总结</strong></p>
+<p>Typst 支持多种导出格式，适用于不同场景<code>{p}</code> 参数为导出文件命名以下是主要格式及其特点：</p>
+<h2 id="1-pdf">1. PDF（默认格式）<a class="headerlink" href="#1-pdf" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-bash">typst c input.typ
+</code></pre></p>
+<p><pre><code class="language-bash">typst c --pages 1-3 input.typ  # 仅导出第1-3页
+</code></pre></p>
+<h2 id="2-png">2. PNG<a class="headerlink" href="#2-png" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-bash">typst c input.typ output.png
 </code></pre></p>
 <ul>
-<li>导出第四页到 output-4.pdf</li>
+<li>
+<p>多页时必须使用 <code>{p}</code> 参数为导出文件命名</p>
+</li>
+<li>
+<p>可通过 <code>--ppi</code> 调整分辨率（默认 144 PPI）<code>{p}</code> 参数为导出文件命名</p>
+</li>
 </ul>
-<p><pre><code class="language-bash">typst c main.typ output-4.pdf -f pdf --pages 4 
+<p><pre><code class="language-bash">typst c --ppi 300 input.typ "png-{0p}.png"  # 300 DPI，补零页码
+</code></pre></p>
+<h2 id="3-svg">3. SVG<a class="headerlink" href="#3-svg" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-bash">typst c input.typ output.svg
 </code></pre></p>
 <ul>
-<li>导出第四页到 output-4.png</li>
+<li>多页时必须使用 <code>{p}</code> 参数为导出文件命名</li>
 </ul>
-<p><pre><code class="language-bash">typst c main.typ output-4.png -f png --pages 4 
+<p><pre><code class="language-bash">typst c --pages 2,4-6 input.typ "svg-{0p}.svg"  # 导出第 2、4、5、6 页
 </code></pre></p>
-<ul>
-<li>导出第四页到 output-4.svg</li>
-</ul>
-<p><pre><code class="language-bash">typst c main.typ output-4.svg -f svg --pages 4 
+<h2 id="4-html">4. HTML（实验性功能）<a class="headerlink" href="#4-html" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-bash">typst c --features html input.typ output.html
 </code></pre></p>
 <h2 id="_2">标题<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p><pre><code class="language-typst">= 第一级大标题
@@ -116,7 +127,7 @@
 <h2 id="_15">链接<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
 <p><pre><code class="language-typst">#link("https://baidu.com")[百度]
 </code></pre></p>
-<h2 id="_16">字间距&amp;行间距<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<h2 id="_16">字间距 &amp; 行间距<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
 <p><pre><code class="language-typst">#set par(leading: 18pt) //行间距
 #set text(tracking: 0.1pt) //字间距
 </code></pre></p>
@@ -153,33 +164,16 @@
 <h2 id="_21">大纲<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
 <p><pre><code class="language-typst">#outline()
 </code></pre></p>
-<h2 id="_22">空白页<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
+<h2 id="_22">手动分页<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
 <p><pre><code class="language-typst">#pagebreak()
 </code></pre></p>
 <h2 id="_23">插入图片<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h2>
 <p><pre><code class="language-typst">#image("4.jpeg")
 </code></pre></p>
-<h2 id="_24">页眉<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h2>
-<p><pre><code class="language-typst">#set page(header: [
-  页眉
-  #h(1fr)
-  页眉
-  #v(-8pt) // 页眉内容与线的距离
-  #line(length: 100%, stroke: (thickness: 1pt, dash: "solid"))
-])
-</code></pre></p>
-<h2 id="_25">页脚<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h2>
-<p><pre><code class="language-typst">#set page(footer: context [
-  #v(8pt) //页脚与边距的距离
-  #line(length: 100%, stroke: (thickness: 1pt, dash: "solid"))
-  #v(-8pt) // 页脚内容与线的距离
-  页脚
-  #h(1fr)
-  #counter(page).display(
-    "1/1",
-    both: true,
-  )
-])
+<p><pre><code class="language-typst">#figure(
+	image("图片路径", width: 10pt),
+	caption: "说明"
+)
 </code></pre></p></div>
 			</div>
 		</div>
