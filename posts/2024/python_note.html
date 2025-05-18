@@ -114,8 +114,12 @@ index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 <h2 id="_2">查看第三方库的位置<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p><pre><code class="language-bash">python -m site
 </code></pre></p>
+<p><pre><code class="language-bash">uv python -m site
+</code></pre></p>
 <h2 id="_3">查看指定库的详细信息<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p><pre><code class="language-bash">pip show requests
+</code></pre></p>
+<p><pre><code class="language-bash">uv pip show requests
 </code></pre></p>
 <p><pre><code class="language-bash">Name: requests
 Version: 2.25.1
@@ -131,8 +135,12 @@ Required-by:
 <h2 id="python_2">查看 Python 已安装的第三方库<a class="headerlink" href="#python_2" title="Permanent link">&para;</a></h2>
 <p><pre><code class="language-bash">pip list
 </code></pre></p>
+<p><pre><code class="language-bash">uv pip list
+</code></pre></p>
 <h2 id="python_3">python 列出依赖库<a class="headerlink" href="#python_3" title="Permanent link">&para;</a></h2>
 <p><pre><code class="language-bash">pip freeze > requirements.txt
+</code></pre></p>
+<p><pre><code class="language-bash">uv pip freeze > requirements.txt
 </code></pre></p></div>
 			</div>
 		</div>
