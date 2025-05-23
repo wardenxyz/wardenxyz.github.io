@@ -257,5 +257,17 @@ git-crypt 使用 AES-256 在 CTR 模式下加密文件，并使用从文件的 S
 				});
 			});
 		</script>
+		<script>
+			// Add Ctrl+P shortcut for search
+			document.addEventListener("keydown", function(event) {
+				if (event.ctrlKey && event.key === "p") {
+					event.preventDefault(); // Prevent default browser action (like printing)
+					const searchLink = document.getElementById("search-nav-link");
+					if (searchLink) {
+						searchLink.click(); // Simulate a click on the search link
+					}
+				}
+			});
+		</script>
 	</body>
 </html>

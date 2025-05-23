@@ -49,16 +49,16 @@ Python 3.12.0
 <p>第一步，创建虚拟环境</p>
 <p><pre><code class="language-bash">uv venv
 </code></pre></p>
-<p><pre><code class="language-bash">.\venv\Scripts\activate
+<p><pre><code class="language-bash">.venv\Scripts\activate
 </code></pre></p>
 <p>第二步，下载依赖</p>
 <p><pre><code class="language-bash">uv pip install -r requirements.txt
 </code></pre></p>
 <p>第三步，生成索引（本地跳过这一步）</p>
-<p><pre><code class="language-bash">python .github\scripts\update_indexes.py
+<p><pre><code class="language-bash">uv run .github\scripts\update_indexes.py
 </code></pre></p>
 <p>第四步，生成静态网页</p>
-<p><pre><code class="language-bash">python .github\scripts\static_gen.py
+<p><pre><code class="language-bash">uv run .github\scripts\static_gen.py
 </code></pre></p>
 <p>第五步，预览</p>
 <p><pre><code class="language-bash">python -m http.server -d site
@@ -76,10 +76,10 @@ category: [category]
 # 标题
 </code></pre></p>
 <p>写完之后生成索引</p>
-<p><pre><code class="language-bash">python .github\scripts\update_indexes.py
+<p><pre><code class="language-bash">uv run .github\scripts\update_indexes.py
 </code></pre></p>
 <p>生成静态网页</p>
-<p><pre><code class="language-bash">python .github\scripts\static_gen.py
+<p><pre><code class="language-bash">uv run .github\scripts\static_gen.py
 </code></pre></p>
 <p>本地预览</p>
 <p><pre><code class="language-bash">python -m http.server -d site
@@ -252,6 +252,18 @@ category: [category]
 						}
 					}
 				});
+			});
+		</script>
+		<script>
+			// Add Ctrl+P shortcut for search
+			document.addEventListener("keydown", function(event) {
+				if (event.ctrlKey && event.key === "p") {
+					event.preventDefault(); // Prevent default browser action (like printing)
+					const searchLink = document.getElementById("search-nav-link");
+					if (searchLink) {
+						searchLink.click(); // Simulate a click on the search link
+					}
+				}
 			});
 		</script>
 	</body>
