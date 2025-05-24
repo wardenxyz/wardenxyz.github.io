@@ -420,7 +420,7 @@ git gc && git verify-pack -v .git/objects/pack/pack-*.idx | sort -k 3 -n | tail 
 		<script>
 			// Add Ctrl+P shortcut for search
 			document.addEventListener("keydown", function(event) {
-				if (event.ctrlKey && event.key === "p") {
+				if (event.ctrlKey && event.key === "k") {
 					event.preventDefault(); // Prevent default browser action (like printing)
 					const searchLink = document.getElementById("search-nav-link");
 					if (searchLink) {
