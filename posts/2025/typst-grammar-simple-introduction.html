@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Typst 语法简单介绍</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+		<!-- MathJax for mathematical formula support -->
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<meta
+			name="description"
+			content="A minimalist blog that uses pure markdown files"
+		/>
+	</head>
+	<body>
+		<nav>
+			<div class="logo">
+				<a href="/" style="font-size: 24px">随便写写</a>
+			</div>
+			<div class="nav-links">
+				<!-- <a href="/">首页</a> -->
+				<a href="/categories.html">分类</a>
+				<a href="/tags.html">标签</a>
+				<a href="/search.html?focus=true" id="search-nav-link">搜索</a>
+			</div>
+		</nav>
+
+		<div class="container">
+			<!-- <h1>Typst 语法简单介绍</h1> -->
+
+			<div class="metadata">2025-06-07 <div class="category">分类: <a href="/categories.html#计算机">计算机</a>, <a href="/categories.html#AI">AI</a></div> <div class="tags">标签: <a href="/tags.html#Typst">Typst</a></div></div>
+
+			<div class="main-content">
+				<div class="content"><h1 id="typst">Typst 语法简单介绍<a class="headerlink" href="#typst" title="Permanent link">&para;</a></h1>
+<h1 id="wardenxyz-typst-let-show">wardenxyz: 解释下 Typst 的 let 和 show<a class="headerlink" href="#wardenxyz-typst-let-show" title="Permanent link">&para;</a></h1>
+<p>GitHub Copilot: Typst 中的 <code>let</code> 和 <code>show</code> 是两个核心概念，用于变量绑定和内容样式化：</p>
+<h2 id="inline_code_placeholder_2_-"><code>let</code> - 变量绑定<a class="headerlink" href="#inline_code_placeholder_2_-" title="Permanent link">&para;</a></h2>
+<p><code>let</code> 用于创建变量或函数绑定：</p>
+<p><pre><code class="language-`typst">// 绑定简单值
+#let name = "张三"
+#let age = 25
+
+// 绑定函数
+#let greet(person) = [Hello, #person!]
+
+// 使用变量
+#name 今年 #age 岁
+#greet("李四")
+</code></pre><code>
+
+</code>let<code> 的特点：
+- 创建不可变绑定
+- 支持函数定义
+- 作用域局限于当前块
+
+## </code>show<code> - 样式规则
+
+</code>show<code> 用于定义元素的显示样式：
+
+CODE_BLOCK_PLACEHOLDER_1_</code></p>
+<p><code>show</code> 的用法：<br />
+- <code>show selector: transformation</code> - 基本语法<br />
+- 可以匹配元素类型、内容或条件<br />
+- 变换函数接收匹配的内容并返回新内容</p>
+<h2 id="_1">组合使用<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-`typst">#let emphasis-color = red
+#show strong: it => text(fill: emphasis-color, it)
+
+这是*强调*文本。
+</code></pre><code>
+
+这两个功能让 Typst 具有强大的自定义能力，</code>let<code> 管理数据和逻辑，</code>show<code> 控制视觉呈现。
+
+# wardenxyz: Typst 的函数是什么
+
+GitHub Copilot: 在 Typst 中，函数是可重用的代码块，用于封装逻辑和生成内容。
+
+## 函数定义
+
+使用 </code>let<code> 定义函数：
+
+CODE_BLOCK_PLACEHOLDER_3_</code></p>
+<h2 id="_2">函数特点<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>参数支持</strong>：可以有位置参数和命名参数</li>
+<li><strong>默认值</strong>：参数可以有默认值</li>
+<li><strong>返回内容</strong>：函数返回 Typst 内容，用方括号 <code>[]</code> 包围</li>
+<li><strong>闭包特性</strong>：可以访问外部作用域的变量</li>
+</ul>
+<h2 id="_3">高阶函数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-`typst">// 接受函数作为参数
+#let apply-style(content, styler) = styler(content)
+
+#let make-bold = content => strong(content)
+#let make-italic = content => emph(content)
+
+#apply-style("重要文本", make-bold)
+#apply-style("强调文本", make-italic)
+</code></pre><code>
+
+## 实际应用
+
+CODE_BLOCK_PLACEHOLDER_5_</code></p>
+<p>函数让 Typst 代码更模块化和可重用，是构建复杂文档的重要工具。</p>
+<h1 id="wardenxyz-let-show">wardenxyz: let 后面带着的是变量和函数，那 show 呢<a class="headerlink" href="#wardenxyz-let-show" title="Permanent link">&para;</a></h1>
+<p>GitHub Copilot: <code>show</code> 后面跟着的是<strong>选择器</strong>和<strong>变换函数</strong>，用于定义样式规则。</p>
+<h2 id="inline_code_placeholder_17_"><code>show</code> 的结构<a class="headerlink" href="#inline_code_placeholder_17_" title="Permanent link">&para;</a></h2>
+<p>基本语法：<code>#show selector: transformation</code></p>
+<h3 id="_4">选择器类型<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><pre><code class="language-`typst">// 1. 元素类型选择器
+#show heading: it => [...]
+#show strong: it => [...]
+#show table: it => [...]
+
+// 2. 字符串内容选择器
+#show "重要": strong
+#show "TODO": it => text(fill: red)[#it]
+
+// 3. 正则表达式选择器
+#show regex("r\d+"): it => text(fill: blue)[#it]
+
+// 4. 条件选择器
+#show heading.where(level: 1): it => [...]
+#show table.where(columns: 3): it => [...]
+
+// 5. 函数选择器
+#show raw.where(lang: "python"): it => [...]
+</code></pre><code>
+
+### 变换函numeric
+
+CODE_BLOCK_PLACEHOLDER_7_</code></p>
+<h2 id="inline_code_placeholder_20_">与 <code>let</code> 的区别<a class="headerlink" href="#inline_code_placeholder_20_" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><code>let</code></strong>：定义变量和函数，用于数据存储和逻辑封装</li>
+<li><strong><code>show</code></strong>：定义样式规则，用于控制内容的视觉呈现</li>
+</ul>
+<p><pre><code class="language-`typst">// let: 定义数据和逻辑
+#let my-color = blue
+#let format-title(content) = strong(content)
+
+// show: 定义样式规则
+#show heading: it => format-title(it.body)
+#show strong: text(fill: my-color)
+</code></pre><code>
+
+</code>show<code> 本质上是声明式的样式系统，告诉 Typst "当遇到某种内容时，如何显示它"。
+
+# wardenxyz: Typst 除了这两个还有什么重要的语法点吗
+
+GitHub Copilot: 除了 </code>let<code> 和 </code>show<code>，Typst 还有以下重要语法点：
+
+## </code>#set<code> - 设置样式
+
+用于设置元素的默认样式：
+
+CODE_BLOCK_PLACEHOLDER_9_</code></p>
+<h2 id="inline_code_placeholder_28_-inline_code_placeholder_29_-"><code>#import</code> 和 <code>#include</code> - 模块系统<a class="headerlink" href="#inline_code_placeholder_28_-inline_code_placeholder_29_-" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-`typst">// 导入其他文件的函数
+#import "utils.typ": helper-function, my-card
+
+// 包含其他文件的内容
+#include "chapter1.typ"
+
+// 导入包
+#import "@preview/cetz:0.1.0": canvas, draw
+</code></pre><code>
+
+## 内容块和代码模式
+
+CODE_BLOCK_PLACEHOLDER_11_</code></p>
+<h2 id="_5">条件语句和循环<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-`typst">// 条件语句
+#let score = 85
+#if score >= 90 {
+  [优秀]
+} else if score >= 80 {
+  [良好]
+} else {
+  [需要努力]
+}
+
+// 循环
+#for i in range(1, 4) {
+  [第 #i 项]
+}
+
+// 数组遍历
+#let items = ("苹果", "香蕉", "橙子")
+#for item in items {
+  [- #item]
+}
+</code></pre><code>
+
+## 内置函数和方法
+
+CODE_BLOCK_PLACEHOLDER_13_</code></p>
+<h2 id="inline_code_placeholder_32_-"><code>#context</code> - 上下文访问<a class="headerlink" href="#inline_code_placeholder_32_-" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-`typst">// 访问页面信息
+#context {
+  let page-num = here().page()
+  [当前第 #page-num 页]
+}
+
+// 访问计数器
+#context {
+  [当前标题编号：#counter(heading).display()]
+}
+</code></pre>`</p>
+<p>这些语法点配合使用，让 Typst 具备了完整的编程和排版能力。</p></div>
+			</div>
+		</div>
+
+		<button id="back-to-top" aria-label="回到顶部">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<polyline points="18 15 12 9 6 15"></polyline>
+			</svg>
+		</button>
+
+		<footer>
+			<p>MIT License</p>
+			<p>Copyright © 2024-2025 wardenxyz</p>
+		</footer>
+
+		<script>
+			// Initialize Mermaid diagrams
+			document.addEventListener("DOMContentLoaded", function () {
+				mermaid.initialize({
+					startOnLoad: true,
+					theme:
+						window.matchMedia &&
+						window.matchMedia("(prefers-color-scheme: dark)")
+							.matches
+							? "dark"
+							: "default",
+					flowchart: { curve: "basis" },
+					securityLevel: "loose",
+				});
+
+				// Configure MathJax
+				window.MathJax = {
+					tex: {
+						inlineMath: [
+							["$", "$"],
+							["\\(", "\\)"],
+						],
+						displayMath: [
+							["$$", "$$"],
+							["\\[", "\\]"],
+						],
+						processEscapes: true,
+						processEnvironments: true,
+					},
+					options: {
+						skipHtmlTags: [
+							"script",
+							"noscript",
+							"style",
+							"textarea",
+							"pre",
+						],
+					},
+				};
+			});
+
+			// Add copy buttons to code blocks
+			document.addEventListener("DOMContentLoaded", function () {
+				const codeBlocks = document.querySelectorAll("pre");
+
+				codeBlocks.forEach(function (block) {
+					// Create copy button
+					const button = document.createElement("button");
+					button.className = "copy-button";
+					button.textContent = "复制";
+
+					// Add the button to the code block
+					block.appendChild(button);
+
+					// Add click event
+					button.addEventListener("click", function () {
+						const code =
+							block.querySelector("code")?.textContent ||
+							block.textContent;
+
+						// Copy to clipboard
+						navigator.clipboard
+							.writeText(code)
+							.then(function () {
+								// Success feedback
+								button.textContent = "已复制!";
+								button.classList.add("copied");
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+									button.classList.remove("copied");
+								}, 2000);
+							})
+							.catch(function (error) {
+								console.error("复制失败:", error);
+								button.textContent = "复制失败";
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+								}, 2000);
+							});
+					});
+				});
+			});
+		</script>
+		
+		<script>
+			// Back to top button functionality
+			document.addEventListener("DOMContentLoaded", function() {
+				const backToTopButton = document.getElementById("back-to-top");
+				
+				// Show button when user scrolls down 300px from the top
+				window.addEventListener("scroll", function() {
+					if (window.pageYOffset > 300) {
+						backToTopButton.classList.add("visible");
+					} else {
+						backToTopButton.classList.remove("visible");
+					}
+				});
+				
+				// Smooth scroll to top when button is clicked
+				backToTopButton.addEventListener("click", function() {
+					window.scrollTo({
+						top: 0,
+						behavior: "smooth"
+					});
+				});
+			});
+		</script>
+		
+		<!-- 引入高亮搜索内容的脚本 -->
+		<script src="/assets/highlight.js"></script>
+		
+		<!-- 外部链接在新标签页打开 -->
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				// 获取所有链接
+				const links = document.querySelectorAll('a');
+				
+				links.forEach(function(link) {
+					const href = link.getAttribute('href');
+					
+					if (href) {
+						// 处理所有https链接和外部链接
+						if (
+							href.startsWith('http:') || 
+							href.startsWith('https:') || 
+							href.indexOf('://') !== -1 ||
+							(!href.startsWith('/') && !href.startsWith('#') && !href.startsWith('.'))
+						) {
+							// 直接为所有http/https链接添加target="_blank"
+							if (!link.hasAttribute('target')) {
+								link.setAttribute('target', '_blank');
+								link.setAttribute('rel', 'noopener noreferrer');
+							}
+						}
+					}
+				});
+			});
+		</script>
+		<script>
+			// Add Ctrl+P shortcut for search
+			document.addEventListener("keydown", function(event) {
+				if (event.ctrlKey && event.key === "k") {
+					event.preventDefault(); // Prevent default browser action (like printing)
+					const searchLink = document.getElementById("search-nav-link");
+					if (searchLink) {
+						searchLink.click(); // Simulate a click on the search link
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
