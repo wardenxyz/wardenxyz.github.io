@@ -13,6 +13,19 @@
     ]
   },
   {
+    "title": "Typst 语法简单介绍",
+    "url": "/posts/2025/typst-syntax-simple-introduction.html",
+    "content": "Typst 语法简单介绍 &para; wardenxyz: 解释下 Typst 的 let 和 show &para; GitHub Copilot: Typst 中的 let 和 show 是两个核心概念，用于变量绑定和内容样式化： let - 变量绑定 &para; let 用于创建变量或函数绑定： // 绑定简单值 #let name = \"张三\" #let age = 25 // 绑定函数 #let greet(person) = [Hello, #person!] // 使用变量 #name 今年 #age 岁 #greet(\"李四\") let 的特点： - 创建不可变绑定 - 支持函数定义 - 作用域局限于当前块 ## show - 样式规则 show 用于定义元素的显示样式： CODE_BLOCK_PLACEHOLDER_1_ show 的用法： - show selector: transformation - 基本语法 - 可以匹配元素类型、内容或条件 - 变换函数接收匹配的内容并返回新内容 组合使用 &para; #let emphasis-color = red #show strong: it => text(fill: emphasis-color, it) 这是*强调*文本。 这两个功能让 Typst 具有强大的自定义能力， let 管理数据和逻辑， show 控制视觉呈现。 # wardenxyz: Typst 的函数是什么 GitHub Copilot: 在 Typst 中，函数是可重用的代码块，用于封装逻辑和生成内容。 ## 函数定义 使用 let 定义函数： CODE_BLOCK_PLACEHOLDER_3_ 函数特点 &para; 参数支持 ：可以有位置参数和命名参数 默认值 ：参数可以有默认值 返回内容 ：函数返回 Typst 内容，用方括号 [] 包围 闭包特性 ：可以访问外部作用域的变量 高阶函数 &para; // 接受函数作为参数 #let apply-style(content, styler) = styler(content) #let make-bold = content => strong(content) #let make-italic = content => emph(content) #apply-style(\"重要文本\", make-bold) #apply-style(\"强调文本\", make-italic) ## 实际应用 CODE_BLOCK_PLACEHOLDER_5_ 函数让 Typst 代码更模块化和可重用，是构建复杂文档的重要工具。 wardenxyz: let 后面带着的是变量和函数，那 show 呢 &para; GitHub Copilot: show 后面跟着的是 选择器 和 变换函数 ，用于定义样式规则。 show 的结构 &para; 基本语法： #show selector: transformation 选择器类型 &para; // 1. 元素类型选择器 #show heading: it => [...] #show strong: it => [...] #show table: it => [...] // 2. 字符串内容选择器 #show \"重要\": strong #show \"TODO\": it => text(fill: red)[#it] // 3. 正则表达式选择器 #show regex(\"r\\d+\"): it => text(fill: blue)[#it] // 4. 条件选择器 #show heading.where(level: 1): it => [...] #show table.where(columns: 3): it => [...] // 5. 函数选择器 #show raw.where(lang: \"python\"): it => [...] ### 变换函numeric CODE_BLOCK_PLACEHOLDER_7_ 与 let 的区别 &para; let ：定义变量和函数，用于数据存储和逻辑封装 show ：定义样式规则，用于控制内容的视觉呈现 // let: 定义数据和逻辑 #let my-color = blue #let format-title(content) = strong(content) // show: 定义样式规则 #show heading: it => format-title(it.body) #show strong: text(fill: my-color) show 本质上是声明式的样式系统，告诉 Typst \"当遇到某种内容时，如何显示它\"。 # wardenxyz: Typst 除了这两个还有什么重要的语法点吗 GitHub Copilot: 除了 let 和 show ，Typst 还有以下重要语法点： ## #set - 设置样式 用于设置元素的默认样式： CODE_BLOCK_PLACEHOLDER_9_ #import 和 #include - 模块系统 &para; // 导入其他文件的函数 #import \"utils.typ\": helper-function, my-card // 包含其他文件的内容 #include \"chapter1.typ\" // 导入包 #import \"@preview/cetz:0.1.0\": canvas, draw ## 内容块和代码模式 CODE_BLOCK_PLACEHOLDER_11_ 条件语句和循环 &para; // 条件语句 #let score = 85 #if score >= 90 { [优秀] } else if score >= 80 { [良好] } else { [需要努力] } // 循环 #for i in range(1, 4) { [第 #i 项] } // 数组遍历 #let items = (\"苹果\", \"香蕉\", \"橙子\") #for item in items { [- #item] } ## 内置函数和方法 CODE_BLOCK_PLACEHOLDER_13_ #context - 上下文访问 &para; // 访问页面信息 #context { let page-num = here().page() [当前第 #page-num 页] } // 访问计数器 #context { [当前标题编号：#counter(heading).display()] } ` 这些语法点配合使用，让 Typst 具备了完整的编程和排版能力。",
+    "date": "2025-06-07",
+    "tags": [
+      "Typst"
+    ],
+    "category": [
+      "计算机",
+      "AI"
+    ]
+  },
+  {
     "title": "使用 Python 生成静态网页",
     "url": "/posts/2025/use_python_gen_site.html",
     "content": "使用 Python 生成静态网页 &para; 环境： PS D:\\workspace\\blog> python --version Python 3.12.0 步骤： 第一步，创建虚拟环境 uv venv .venv\\Scripts\\activate 第二步，下载依赖 uv pip install -r requirements.txt 第三步，生成索引（本地跳过这一步） uv run .github\\scripts\\update_indexes.py 第四步，生成静态网页 uv run .github\\scripts\\static_gen.py 第五步，预览 python -m http.server -d site 在浏览器中访问 http://localhost:8000 创建新的文章 &para; 在 posts 文件夹下按照年份创建文件，格式为 --- title: 标题 date: 2025-04-13 tags: [tag1, tag2] category: [category] --- # 标题 写完之后生成索引 uv run .github\\scripts\\update_indexes.py 生成静态网页 uv run .github\\scripts\\static_gen.py 本地预览 python -m http.server -d site 在浏览器中访问 http://localhost:8000 部署 &para; 该项目配置了 GitHub Actions 工作流，在你将代码推送到 GitHub 时自动构建和部署。 确保已在 GitHub 仓库设置中启用了 GitHub Pages 推送更改到 GitHub GitHub Actions 将自动构建并部署网站 自定义 &para; 修改 template.html 更改网站布局 修改 assets/styles.css 更改网站样式 在 static_gen.py 文件的顶部修改网站标题和其他配置",
@@ -85,19 +98,6 @@
     ],
     "category": [
       "计算机"
-    ]
-  },
-  {
-    "title": "Typst 语法简单介绍",
-    "url": "/posts/2025/typst-grammar-simple-introduction.html",
-    "content": "Typst 语法简单介绍 &para; wardenxyz: 解释下 Typst 的 let 和 show &para; GitHub Copilot: Typst 中的 let 和 show 是两个核心概念，用于变量绑定和内容样式化： let - 变量绑定 &para; let 用于创建变量或函数绑定： // 绑定简单值 #let name = \"张三\" #let age = 25 // 绑定函数 #let greet(person) = [Hello, #person!] // 使用变量 #name 今年 #age 岁 #greet(\"李四\") let 的特点： - 创建不可变绑定 - 支持函数定义 - 作用域局限于当前块 ## show - 样式规则 show 用于定义元素的显示样式： CODE_BLOCK_PLACEHOLDER_1_ show 的用法： - show selector: transformation - 基本语法 - 可以匹配元素类型、内容或条件 - 变换函数接收匹配的内容并返回新内容 组合使用 &para; #let emphasis-color = red #show strong: it => text(fill: emphasis-color, it) 这是*强调*文本。 这两个功能让 Typst 具有强大的自定义能力， let 管理数据和逻辑， show 控制视觉呈现。 # wardenxyz: Typst 的函数是什么 GitHub Copilot: 在 Typst 中，函数是可重用的代码块，用于封装逻辑和生成内容。 ## 函数定义 使用 let 定义函数： CODE_BLOCK_PLACEHOLDER_3_ 函数特点 &para; 参数支持 ：可以有位置参数和命名参数 默认值 ：参数可以有默认值 返回内容 ：函数返回 Typst 内容，用方括号 [] 包围 闭包特性 ：可以访问外部作用域的变量 高阶函数 &para; // 接受函数作为参数 #let apply-style(content, styler) = styler(content) #let make-bold = content => strong(content) #let make-italic = content => emph(content) #apply-style(\"重要文本\", make-bold) #apply-style(\"强调文本\", make-italic) ## 实际应用 CODE_BLOCK_PLACEHOLDER_5_ 函数让 Typst 代码更模块化和可重用，是构建复杂文档的重要工具。 wardenxyz: let 后面带着的是变量和函数，那 show 呢 &para; GitHub Copilot: show 后面跟着的是 选择器 和 变换函数 ，用于定义样式规则。 show 的结构 &para; 基本语法： #show selector: transformation 选择器类型 &para; // 1. 元素类型选择器 #show heading: it => [...] #show strong: it => [...] #show table: it => [...] // 2. 字符串内容选择器 #show \"重要\": strong #show \"TODO\": it => text(fill: red)[#it] // 3. 正则表达式选择器 #show regex(\"r\\d+\"): it => text(fill: blue)[#it] // 4. 条件选择器 #show heading.where(level: 1): it => [...] #show table.where(columns: 3): it => [...] // 5. 函数选择器 #show raw.where(lang: \"python\"): it => [...] ### 变换函numeric CODE_BLOCK_PLACEHOLDER_7_ 与 let 的区别 &para; let ：定义变量和函数，用于数据存储和逻辑封装 show ：定义样式规则，用于控制内容的视觉呈现 // let: 定义数据和逻辑 #let my-color = blue #let format-title(content) = strong(content) // show: 定义样式规则 #show heading: it => format-title(it.body) #show strong: text(fill: my-color) show 本质上是声明式的样式系统，告诉 Typst \"当遇到某种内容时，如何显示它\"。 # wardenxyz: Typst 除了这两个还有什么重要的语法点吗 GitHub Copilot: 除了 let 和 show ，Typst 还有以下重要语法点： ## #set - 设置样式 用于设置元素的默认样式： CODE_BLOCK_PLACEHOLDER_9_ #import 和 #include - 模块系统 &para; // 导入其他文件的函数 #import \"utils.typ\": helper-function, my-card // 包含其他文件的内容 #include \"chapter1.typ\" // 导入包 #import \"@preview/cetz:0.1.0\": canvas, draw ## 内容块和代码模式 CODE_BLOCK_PLACEHOLDER_11_ 条件语句和循环 &para; // 条件语句 #let score = 85 #if score >= 90 { [优秀] } else if score >= 80 { [良好] } else { [需要努力] } // 循环 #for i in range(1, 4) { [第 #i 项] } // 数组遍历 #let items = (\"苹果\", \"香蕉\", \"橙子\") #for item in items { [- #item] } ## 内置函数和方法 CODE_BLOCK_PLACEHOLDER_13_ #context - 上下文访问 &para; // 访问页面信息 #context { let page-num = here().page() [当前第 #page-num 页] } // 访问计数器 #context { [当前标题编号：#counter(heading).display()] } ` 这些语法点配合使用，让 Typst 具备了完整的编程和排版能力。",
-    "date": "2025-06-07",
-    "tags": [
-      "Typst"
-    ],
-    "category": [
-      "计算机",
-      "AI"
     ]
   },
   {
