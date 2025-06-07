@@ -214,8 +214,287 @@ CODE_BLOCK_PLACEHOLDER_13_</code></p>
 #context {
   [当前标题编号：#counter(heading).display()]
 }
-</code></pre>`</p>
-<p>这些语法点配合使用，让 Typst 具备了完整的编程和排版能力。</p></div>
+</code></pre><code>
+
+这些语法点配合使用，让 Typst 具备了完整的编程和排版能力。
+
+# wardenxyz: polygon 呢，这个的用处
+
+GitHub copilot: </code>polygon<code> 是 Typst 中用于绘制多边形的函数，主要用于创建几何图形和装饰元素。
+
+## 基本用法
+
+CODE_BLOCK_PLACEHOLDER_15_</code></p>
+<h2 id="_6">实际应用场景<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="1">1. 创建箭头和指示符<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p><pre><code class="language-`typst">// 右箭头
+#let right-arrow = polygon(
+  fill: black,
+  (0pt, 5pt),
+  (10pt, 5pt),
+  (10pt, 8pt),
+  (15pt, 4pt),
+  (10pt, 0pt),
+  (10pt, 3pt),
+  (0pt, 3pt)
+)
+
+流程：开始 #right-arrow 处理 #right-arrow 结束
+</code></pre><code>
+
+### 2. 装饰性元素
+
+CODE_BLOCK_PLACEHOLDER_17_</code></p>
+<h3 id="3">3. 图表和示意图<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p><pre><code class="language-`typst">// 创建简单的流程图节点
+#let diamond(content) = box(
+  polygon(
+    fill: yellow.lighten(60%),
+    stroke: blue,
+    (15pt, 0pt),
+    (30pt, 15pt),
+    (15pt, 30pt),
+    (0pt, 15pt)
+  )
+)
+
+#diamond[]
+</code></pre><code>
+
+### 4. 与其他元素结合
+
+CODE_BLOCK_PLACEHOLDER_19_</code></p>
+<h2 id="_7">参数说明<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>坐标点</strong>：定义多边形的顶点</li>
+<li><strong>fill</strong>：填充色</li>
+<li><strong>stroke</strong>：描边样式</li>
+<li><strong>closed</strong>：是否闭合（默认 true）</li>
+</ul>
+<p><code>polygon</code> 特别适合创建自定义图形、图标、装饰元素和简单的几何图表。</p>
+<h1 id="wardenxyz">wardenxyz: 那我怎么知道哪个点是哪个点<a class="headerlink" href="#wardenxyz" title="Permanent link">&para;</a></h1>
+<p>GitHub copilot: 在 <code>polygon</code> 中确定坐标点位置可以通过以下方法：</p>
+<h2 id="_8">坐标系统理解<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>Typst 使用<strong>左上角为原点 (0, 0)</strong> 的坐标系：<br />
+- <strong>x 轴</strong>：向右为正<br />
+- <strong>y 轴</strong>：向下为正</p>
+<p><pre><code class="language-`typst">// 可视化坐标点
+#let show-points(points) = {
+  for (i, point) in points.enumerate() {
+    place(dx: point.at(0), dy: point.at(1))[
+      #circle(radius: 2pt, fill: red)
+      #text(size: 8pt, fill: blue)[#i]
+    ]
+  }
+}
+
+// 示例：三角形的点
+#let triangle-points = (
+  (0pt, 0pt),    // 点0: 左上角
+  (40pt, 0pt),   // 点1: 右上角  
+  (20pt, 30pt)   // 点2: 底部中心
+)
+
+#polygon(..triangle-points, fill: yellow.lighten(80%), stroke: black)
+#show-points(triangle-points)
+</code></pre><code>
+
+## 调试技巧
+
+### 1. 逐步添加点
+
+CODE_BLOCK_PLACEHOLDER_21_</code></p>
+<h3 id="2">2. 使用网格背景<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p><pre><code class="language-`typst">// 创建网格帮助定位
+#let grid(width: 100pt, height: 100pt) = {
+  for x in range(0, int(width / 10pt) + 1) {
+    line(start: (x * 10pt, 0pt), end: (x * 10pt, height), stroke: gray + 0.5pt)
+  }
+  for y in range(0, int(height / 10pt) + 1) {
+    line(start: (0pt, y * 10pt), end: (width, y * 10pt), stroke: gray + 0.5pt)
+  }
+}
+
+#grid()
+#polygon((10pt, 10pt), (40pt, 20pt), (30pt, 50pt), fill: blue.lighten(70%))
+</code></pre><code>
+
+### 3. 标注坐标
+
+CODE_BLOCK_PLACEHOLDER_23_</code></p>
+<h2 id="_9">常用形状的点序<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-`typst">// 正方形（顺时针）
+#polygon(
+  (0pt, 0pt),    // 左上
+  (30pt, 0pt),   // 右上
+  (30pt, 30pt),  // 右下
+  (0pt, 30pt)    // 左下
+)
+
+// 箭头
+#polygon(
+  (0pt, 10pt),   // 箭尾上
+  (20pt, 10pt),  // 箭身上
+  (20pt, 5pt),   // 箭头上
+  (30pt, 15pt),  // 箭头尖
+  (20pt, 25pt),  // 箭头下
+  (20pt, 20pt),  // 箭身下
+  (0pt, 20pt)    // 箭尾下
+)
+</code></pre><code>
+
+建议先在纸上画出草图，标记好坐标，再转换为代码。
+
+# wardenxyz: 顺序是从左上第一个点开始顺时针旋转吗
+
+GitHub copilot: **不一定**，</code>polygon<code> 的点顺序是按照你提供的坐标顺序依次连接，不强制要求从左上角开始或顺时针。
+
+## 点的连接规则
+
+CODE_BLOCK_PLACEHOLDER_25_</code></p>
+<h2 id="_10">不同顺序的效果<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-`typst">// 顺时针绘制矩形
+#polygon(
+  (0pt, 0pt),    // 左上
+  (40pt, 0pt),   // 右上  
+  (40pt, 30pt),  // 右下
+  (0pt, 30pt),   // 左下
+  fill: blue.lighten(80%)
+)
+
+#v(1em)
+
+// 逆时针绘制（结果相同）
+#polygon(
+  (0pt, 0pt),    // 左上
+  (0pt, 30pt),   // 左下
+  (40pt, 30pt),  // 右下
+  (40pt, 0pt),   // 右上
+  fill: red.lighten(80%)
+)
+
+#v(1em)
+
+// 乱序连接（会产生交叉）
+#polygon(
+  (0pt, 0pt),    // 左上
+  (40pt, 30pt),  // 右下
+  (40pt, 0pt),   // 右上
+  (0pt, 30pt),   // 左下
+  fill: green.lighten(80%)
+)
+</code></pre><code>
+
+## 最佳实践
+
+1. **简单图形**：顺时针或逆时针都可以
+2. **复杂图形**：建议按边界顺序连接，避免交叉
+3. **调试技巧**：使用点可视化函数查看连接顺序
+
+CODE_BLOCK_PLACEHOLDER_27_</code></p>
+<p>关键是理解 Typst 会按你提供的点的顺序依次连线，最后自动闭合到第一个点。</p>
+<h1 id="wardenxyz_1">wardenxyz: 解释代码<a class="headerlink" href="#wardenxyz_1" title="Permanent link">&para;</a></h1>
+<p><pre><code class="language-typst">#polygon.regular(
+  fill: blue.lighten(80%),
+  stroke: blue,
+  size: 30pt,
+  vertices: 3,
+)
+</code></pre></p>
+<p>GitHub Copilot: 这段代码使用了 Typst 语言来绘制一个正多边形。让我来解释各个参数的作用：</p>
+<h2 id="_11">代码解释<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">#polygon.regular(
+  fill: blue.lighten(80%),      // 填充颜色：蓝色变浅80%
+  stroke: blue,                 // 边框颜色：蓝色
+  size: 30pt,                   // 大小：30点
+  vertices: 3,                  // 顶点数：3个（绘制三角形）
+)
+</code></pre></p>
+<p><strong>各参数说明：</strong></p>
+<ul>
+<li><code>fill: blue.lighten(80%)</code> - 设置多边形的填充颜色为浅蓝色（将蓝色亮度提高80%）</li>
+<li><code>stroke: blue</code> - 设置多边形边框的颜色为蓝色</li>
+<li><code>size: 30pt</code> - 设置多边形的大小为30点</li>
+<li><code>vertices: 3</code> - 设置多边形的顶点数为3，因此绘制的是一个三角形</li>
+</ul>
+<p><strong>最终效果：</strong> 这段代码会生成一个浅蓝色填充、蓝色边框的正三角形，大小为30点。</p>
+<h1 id="wardenxyz-regular">wardenxyz: .regular 是什么意思<a class="headerlink" href="#wardenxyz-regular" title="Permanent link">&para;</a></h1>
+<p>GitHub Copilot: <code>.regular</code> 是 Typst 中 <code>polygon</code> 模块的一个方法，用于创建<strong>正多边形</strong>。</p>
+<h2 id="_12">含义解释<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><code>.regular</code></strong> = "规则的"、"正的"</li>
+<li>表示创建的多边形是<strong>正多边形</strong>（所有边长相等，所有内角相等）</li>
+</ul>
+<h2 id="_13">与其他多边形方法的区别<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>在 Typst 中，<code>polygon</code> 有不同的方法：</p>
+<p><pre><code class="language-typst">// 正多边形 - 所有边和角都相等
+#polygon.regular(vertices: 3, size: 30pt)  // 正三角形
+
+// 不规则多边形 - 通过具体坐标点定义
+#polygon((0pt, 0pt), (10pt, 0pt), (5pt, 10pt))  // 任意三角形
+</code></pre></p>
+<h2 id="regular">为什么使用 .regular<a class="headerlink" href="#regular" title="Permanent link">&para;</a></h2>
+<p>使用 <code>.regular</code> 的优势：<br />
+- <strong>简单</strong>: 只需指定顶点数和大小<br />
+- <strong>规整</strong>: 自动生成完美的正多边形<br />
+- <strong>灵活</strong>: 通过 <code>vertices</code> 参数可以创建任意正多边形（三角形、正方形、五边形等）</p>
+<p>在你的代码中，<code>vertices: 3</code> 配合 <code>.regular</code> 创建了一个正三角形。</p>
+<h1 id="wardenxyz-curve-polygon">wardenxyz: curve 和 polygon 的异同<a class="headerlink" href="#wardenxyz-curve-polygon" title="Permanent link">&para;</a></h1>
+<p>GitHub Copilot: ## Curve 和 Polygon 的异同</p>
+<h3 id="_14"><strong>相同点</strong><a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<ul>
+<li>都是 Typst 中用于绘制图形的函数</li>
+<li>都可以设置颜色、填充、边框等样式属性</li>
+<li>都支持坐标点定义图形形状</li>
+</ul>
+<h3 id="_15"><strong>主要区别</strong><a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th><code>polygon</code></th>
+<th><code>curve</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>图形类型</strong></td>
+<td>多边形（直线段连接）</td>
+<td>曲线（平滑曲线）</td>
+</tr>
+<tr>
+<td><strong>边缘特征</strong></td>
+<td>直线边缘，有明确顶点</td>
+<td>平滑曲线边缘</td>
+</tr>
+<tr>
+<td><strong>封闭性</strong></td>
+<td>自动封闭图形</td>
+<td>可开放或封闭</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_16"><strong>使用示例对比</strong><a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p><pre><code class="language-`typst">// Polygon - 直线连接的多边形
+#polygon((0pt, 0pt), (20pt, 0pt), (10pt, 15pt))  // 三角形
+
+// Polygon 正多边形
+#polygon.regular(vertices: 6, size: 20pt)  // 正六边形
+
+// Curve - 平滑曲线
+#path(
+  fill: red.lighten(80%),
+  stroke: red,
+  closed: true,
+  ((0pt, 0pt), (20pt, 0pt), (10pt, 15pt))
+)
+</code></pre><code>
+
+### **选择建议**
+- **使用 </code>polygon<code>**: 需要绘制有明确边角的图形（三角形、四边形、星形等）
+- **使用 </code>curve<code>**: 需要绘制平滑的曲线图形（圆润的形状、波浪线等）
+
+在你的代码中，</code>polygon` 适合绘制三角形这种有明确顶点的几何图形。</p></div>
 			</div>
 		</div>
 
