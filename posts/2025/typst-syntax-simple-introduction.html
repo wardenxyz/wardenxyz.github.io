@@ -44,7 +44,7 @@
 <p>GitHub Copilot: Typst 中的 <code>let</code> 和 <code>show</code> 是两个核心概念，用于变量绑定和内容样式化：</p>
 <h2 id="inline_code_placeholder_2_-"><code>let</code> - 变量绑定<a class="headerlink" href="#inline_code_placeholder_2_-" title="Permanent link">&para;</a></h2>
 <p><code>let</code> 用于创建变量或函数绑定：</p>
-<p><pre><code class="language-`typst">// 绑定简单值
+<p><pre><code class="language-typst">// 绑定简单值
 #let name = "张三"
 #let age = 25
 
@@ -54,49 +54,68 @@
 // 使用变量
 #name 今年 #age 岁
 #greet("李四")
-</code></pre><code>
+</code></pre></p>
+<p><code>let</code> 的特点：<br />
+- 创建不可变绑定<br />
+- 支持函数定义<br />
+- 作用域局限于当前块</p>
+<h2 id="inline_code_placeholder_5_-"><code>show</code> - 样式规则<a class="headerlink" href="#inline_code_placeholder_5_-" title="Permanent link">&para;</a></h2>
+<p><code>show</code> 用于定义元素的显示样式：</p>
+<p><pre><code class="language-typst">// 为特定元素类型设置样式
+#show heading: it => [
+  #set text(fill: blue)
+  #it.body
+]
 
-</code>let<code> 的特点：
-- 创建不可变绑定
-- 支持函数定义
-- 作用域局限于当前块
+// 为特定内容设置样式
+#show "重要": strong
 
-## </code>show<code> - 样式规则
+// 条件样式
+#show heading.where(level: 1): it => [
+  #set text(size: 20pt)
+  #it
+]
 
-</code>show<code> 用于定义元素的显示样式：
-
-CODE_BLOCK_PLACEHOLDER_1_</code></p>
+= 标题一
+这是*重要*内容。
+</code></pre></p>
 <p><code>show</code> 的用法：<br />
 - <code>show selector: transformation</code> - 基本语法<br />
 - 可以匹配元素类型、内容或条件<br />
 - 变换函数接收匹配的内容并返回新内容</p>
 <h2 id="_1">组合使用<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p><pre><code class="language-`typst">#let emphasis-color = red
+<p><pre><code class="language-typst">#let emphasis-color = red
 #show strong: it => text(fill: emphasis-color, it)
 
 这是*强调*文本。
-</code></pre><code>
+</code></pre></p>
+<p>这两个功能让 Typst 具有强大的自定义能力，<code>let</code> 管理数据和逻辑，<code>show</code> 控制视觉呈现。</p>
+<h1 id="wardenxyz-typst">wardenxyz: Typst 的函数是什么<a class="headerlink" href="#wardenxyz-typst" title="Permanent link">&para;</a></h1>
+<p>GitHub Copilot: 在 Typst 中，函数是可重用的代码块，用于封装逻辑和生成内容。</p>
+<h2 id="_2">函数定义<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>使用 <code>let</code> 定义函数：</p>
+<p><pre><code class="language-typst">// 简单函数
+#let greet(name) = [Hello, #name!]
 
-这两个功能让 Typst 具有强大的自定义能力，</code>let<code> 管理数据和逻辑，</code>show<code> 控制视觉呈现。
+// 带默认参数的函数
+#let format-date(day, month: "January", year: 2024) = [
+  #day #month, #year
+]
 
-# wardenxyz: Typst 的函数是什么
-
-GitHub Copilot: 在 Typst 中，函数是可重用的代码块，用于封装逻辑和生成内容。
-
-## 函数定义
-
-使用 </code>let<code> 定义函数：
-
-CODE_BLOCK_PLACEHOLDER_3_</code></p>
-<h2 id="_2">函数特点<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+// 返回内容的函数
+#let highlight(content, color: red) = [
+  #text(fill: color, weight: "bold")[#content]
+]
+</code></pre></p>
+<h2 id="_3">函数特点<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>参数支持</strong>：可以有位置参数和命名参数</li>
 <li><strong>默认值</strong>：参数可以有默认值</li>
 <li><strong>返回内容</strong>：函数返回 Typst 内容，用方括号 <code>[]</code> 包围</li>
 <li><strong>闭包特性</strong>：可以访问外部作用域的变量</li>
 </ul>
-<h2 id="_3">高阶函数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p><pre><code class="language-`typst">// 接受函数作为参数
+<h2 id="_4">高阶函数<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">// 接受函数作为参数
 #let apply-style(content, styler) = styler(content)
 
 #let make-bold = content => strong(content)
@@ -104,18 +123,31 @@ CODE_BLOCK_PLACEHOLDER_3_</code></p>
 
 #apply-style("重要文本", make-bold)
 #apply-style("强调文本", make-italic)
-</code></pre><code>
+</code></pre></p>
+<h2 id="_5">实际应用<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">// 创建卡片组件
+#let card(title, content, color: gray) = [
+  #rect(
+    fill: color.lighten(80%),
+    stroke: color,
+    inset: 1em,
+    radius: 4pt
+  )[
+    #strong(title)
+    #v(0.5em)
+    #content
+  ]
+]
 
-## 实际应用
-
-CODE_BLOCK_PLACEHOLDER_5_</code></p>
+#card("提示", [这是一个提示信息], color: blue)
+</code></pre></p>
 <p>函数让 Typst 代码更模块化和可重用，是构建复杂文档的重要工具。</p>
 <h1 id="wardenxyz-let-show">wardenxyz: let 后面带着的是变量和函数，那 show 呢<a class="headerlink" href="#wardenxyz-let-show" title="Permanent link">&para;</a></h1>
 <p>GitHub Copilot: <code>show</code> 后面跟着的是<strong>选择器</strong>和<strong>变换函数</strong>，用于定义样式规则。</p>
-<h2 id="inline_code_placeholder_17_"><code>show</code> 的结构<a class="headerlink" href="#inline_code_placeholder_17_" title="Permanent link">&para;</a></h2>
+<h2 id="inline_code_placeholder_14_"><code>show</code> 的结构<a class="headerlink" href="#inline_code_placeholder_14_" title="Permanent link">&para;</a></h2>
 <p>基本语法：<code>#show selector: transformation</code></p>
-<h3 id="_4">选择器类型<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p><pre><code class="language-`typst">// 1. 元素类型选择器
+<h3 id="_6">选择器类型<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><pre><code class="language-typst">// 1. 元素类型选择器
 #show heading: it => [...]
 #show strong: it => [...]
 #show table: it => [...]
@@ -133,38 +165,61 @@ CODE_BLOCK_PLACEHOLDER_5_</code></p>
 
 // 5. 函数选择器
 #show raw.where(lang: "python"): it => [...]
-</code></pre><code>
+</code></pre></p>
+<h3 id="numeric">变换函numeric<a class="headerlink" href="#numeric" title="Permanent link">&para;</a></h3>
+<p><pre><code class="language-typst">// 1. 简单替换
+#show "重要": strong
 
-### 变换函numeric
+// 2. 函数变换
+#show heading: it => [
+  #set text(fill: blue, size: 1.2em)
+  #it.body
+]
 
-CODE_BLOCK_PLACEHOLDER_7_</code></p>
-<h2 id="inline_code_placeholder_20_">与 <code>let</code> 的区别<a class="headerlink" href="#inline_code_placeholder_20_" title="Permanent link">&para;</a></h2>
+// 3. 复杂变换
+#show figure: it => [
+  #rect(stroke: gray)[
+    #it.body
+    #align(center)[#emph(it.caption)]
+  ]
+]
+</code></pre></p>
+<h2 id="inline_code_placeholder_16_">与 <code>let</code> 的区别<a class="headerlink" href="#inline_code_placeholder_16_" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong><code>let</code></strong>：定义变量和函数，用于数据存储和逻辑封装</li>
 <li><strong><code>show</code></strong>：定义样式规则，用于控制内容的视觉呈现</li>
 </ul>
-<p><pre><code class="language-`typst">// let: 定义数据和逻辑
+<p><pre><code class="language-typst">// let: 定义数据和逻辑
 #let my-color = blue
 #let format-title(content) = strong(content)
 
 // show: 定义样式规则
 #show heading: it => format-title(it.body)
 #show strong: text(fill: my-color)
-</code></pre><code>
+</code></pre></p>
+<p><code>show</code> 本质上是声明式的样式系统，告诉 Typst "当遇到某种内容时，如何显示它"。</p>
+<h1 id="wardenxyz-typst_1">wardenxyz: Typst 除了这两个还有什么重要的语法点吗<a class="headerlink" href="#wardenxyz-typst_1" title="Permanent link">&para;</a></h1>
+<p>GitHub Copilot: 除了 <code>let</code> 和 <code>show</code>，Typst 还有以下重要语法点：</p>
+<h2 id="inline_code_placeholder_22_-"><code>#set</code> - 设置样式<a class="headerlink" href="#inline_code_placeholder_22_-" title="Permanent link">&para;</a></h2>
+<p>用于设置元素的默认样式：</p>
+<p><pre><code class="language-typst">// ...existing code...
 
-</code>show<code> 本质上是声明式的样式系统，告诉 Typst "当遇到某种内容时，如何显示它"。
+// 设置全局文本样式
+#set text(font: "Source Han Serif", size: 12pt)
 
-# wardenxyz: Typst 除了这两个还有什么重要的语法点吗
+// 设置标题样式
+#set heading(numbering: "1.")
 
-GitHub Copilot: 除了 </code>let<code> 和 </code>show<code>，Typst 还有以下重要语法点：
+// 设置页面样式
+#set page(margin: 2cm, numbering: "1")
 
-## </code>#set<code> - 设置样式
-
-用于设置元素的默认样式：
-
-CODE_BLOCK_PLACEHOLDER_9_</code></p>
-<h2 id="inline_code_placeholder_28_-inline_code_placeholder_29_-"><code>#import</code> 和 <code>#include</code> - 模块系统<a class="headerlink" href="#inline_code_placeholder_28_-inline_code_placeholder_29_-" title="Permanent link">&para;</a></h2>
-<p><pre><code class="language-`typst">// 导入其他文件的函数
+// 局部设置
+#set text(fill: red)
+这段文字是红色的
+#set text(fill: black) // 恢复默认
+</code></pre></p>
+<h2 id="inline_code_placeholder_23_-inline_code_placeholder_24_-"><code>#import</code> 和 <code>#include</code> - 模块系统<a class="headerlink" href="#inline_code_placeholder_23_-inline_code_placeholder_24_-" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">// 导入其他文件的函数
 #import "utils.typ": helper-function, my-card
 
 // 包含其他文件的内容
@@ -172,13 +227,23 @@ CODE_BLOCK_PLACEHOLDER_9_</code></p>
 
 // 导入包
 #import "@preview/cetz:0.1.0": canvas, draw
-</code></pre><code>
+</code></pre></p>
+<h2 id="_7">内容块和代码模式<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">// 内容模式（默认）
+这是普通文本
 
-## 内容块和代码模式
+// 代码模式（#开头）
+#let x = 5
+#if x > 3 { [x 大于 3] }
 
-CODE_BLOCK_PLACEHOLDER_11_</code></p>
-<h2 id="_5">条件语句和循环<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p><pre><code class="language-`typst">// 条件语句
+// 内容块（方括号）
+#let message = [
+  这是一个内容块
+  可以包含 *格式化* 文本
+]
+</code></pre></p>
+<h2 id="_8">条件语句和循环<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">// 条件语句
 #let score = 85
 #if score >= 90 {
   [优秀]
@@ -198,13 +263,22 @@ CODE_BLOCK_PLACEHOLDER_11_</code></p>
 #for item in items {
   [- #item]
 }
-</code></pre><code>
+</code></pre></p>
+<h2 id="_9">内置函数和方法<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">// 数学函数
+#calc.pow(2, 3) // 8
+#calc.sin(calc.pi / 2) // 1
 
-## 内置函数和方法
+// 字符串操作
+#"Hello World".split(" ") // ("Hello", "World")
+#upper("typst") // "TYPST"
 
-CODE_BLOCK_PLACEHOLDER_13_</code></p>
-<h2 id="inline_code_placeholder_32_-"><code>#context</code> - 上下文访问<a class="headerlink" href="#inline_code_placeholder_32_-" title="Permanent link">&para;</a></h2>
-<p><pre><code class="language-`typst">// 访问页面信息
+// 数组操作
+#(1, 2, 3).len() // 3
+#(1, 2, 3).at(1) // 2
+</code></pre></p>
+<h2 id="inline_code_placeholder_25_-"><code>#context</code> - 上下文访问<a class="headerlink" href="#inline_code_placeholder_25_-" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">// 访问页面信息
 #context {
   let page-num = here().page()
   [当前第 #page-num 页]
@@ -214,20 +288,38 @@ CODE_BLOCK_PLACEHOLDER_13_</code></p>
 #context {
   [当前标题编号：#counter(heading).display()]
 }
-</code></pre><code>
+</code></pre></p>
+<p>这些语法点配合使用，让 Typst 具备了完整的编程和排版能力。</p>
+<h1 id="wardenxyz-polygon">wardenxyz: polygon 呢，这个的用处<a class="headerlink" href="#wardenxyz-polygon" title="Permanent link">&para;</a></h1>
+<p>GitHub copilot: <code>polygon</code> 是 Typst 中用于绘制多边形的函数，主要用于创建几何图形和装饰元素。</p>
+<h2 id="_10">基本用法<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">// 绘制三角形
+#polygon(
+  (0pt, 0pt),
+  (20pt, 0pt),
+  (10pt, 15pt)
+)
 
-这些语法点配合使用，让 Typst 具备了完整的编程和排版能力。
+// 绘制正方形
+#polygon(
+  (0pt, 0pt),
+  (20pt, 0pt),
+  (20pt, 20pt),
+  (0pt, 20pt)
+)
 
-# wardenxyz: polygon 呢，这个的用处
-
-GitHub copilot: </code>polygon<code> 是 Typst 中用于绘制多边形的函数，主要用于创建几何图形和装饰元素。
-
-## 基本用法
-
-CODE_BLOCK_PLACEHOLDER_15_</code></p>
-<h2 id="_6">实际应用场景<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+// 设置样式
+#polygon(
+  fill: blue,
+  stroke: red + 2pt,
+  (0pt, 0pt),
+  (30pt, 0pt),
+  (15pt, 25pt)
+)
+</code></pre></p>
+<h2 id="_11">实际应用场景<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <h3 id="1">1. 创建箭头和指示符<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
-<p><pre><code class="language-`typst">// 右箭头
+<p><pre><code class="language-typst">// 右箭头
 #let right-arrow = polygon(
   fill: black,
   (0pt, 5pt),
@@ -240,13 +332,29 @@ CODE_BLOCK_PLACEHOLDER_15_</code></p>
 )
 
 流程：开始 #right-arrow 处理 #right-arrow 结束
-</code></pre><code>
+</code></pre></p>
+<h3 id="2">2. 装饰性元素<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p><pre><code class="language-typst">// 星形装饰
+#let star = polygon(
+  fill: aqua,
+  (10pt, 0pt),
+  (12pt, 6pt),
+  (18pt, 6pt),
+  (14pt, 10pt),
+  (16pt, 16pt),
+  (10pt, 13pt),
+  (4pt, 16pt),
+  (6pt, 10pt),
+  (2pt, 6pt),
+  (8pt, 6pt)
+)
 
-### 2. 装饰性元素
-
-CODE_BLOCK_PLACEHOLDER_17_</code></p>
+#align(center)[
+  #star 重要提示 #star
+]
+</code></pre></p>
 <h3 id="3">3. 图表和示意图<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
-<p><pre><code class="language-`typst">// 创建简单的流程图节点
+<p><pre><code class="language-typst">// 创建简单的流程图节点
 #let diamond(content) = box(
   polygon(
     fill: yellow.lighten(60%),
@@ -259,12 +367,24 @@ CODE_BLOCK_PLACEHOLDER_17_</code></p>
 )
 
 #diamond[]
-</code></pre><code>
+</code></pre></p>
+<h3 id="4">4. 与其他元素结合<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p><pre><code class="language-typst">// 带边框的提示框
+#let warning-box(content) = [
+  #polygon(
+    fill: orange.lighten(80%),
+    stroke: orange + 1pt,
+    (0pt, 0pt),
+    (100pt, 0pt),
+    (100pt, 40pt),
+    (0pt, 40pt)
+  )
+  #place(dx: 10pt, dy: 10pt)[#content]
+]
 
-### 4. 与其他元素结合
-
-CODE_BLOCK_PLACEHOLDER_19_</code></p>
-<h2 id="_7">参数说明<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+#warning-box([这是警告信息])
+</code></pre></p>
+<h2 id="_12">参数说明<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>坐标点</strong>：定义多边形的顶点</li>
 <li><strong>fill</strong>：填充色</li>
@@ -274,11 +394,11 @@ CODE_BLOCK_PLACEHOLDER_19_</code></p>
 <p><code>polygon</code> 特别适合创建自定义图形、图标、装饰元素和简单的几何图表。</p>
 <h1 id="wardenxyz">wardenxyz: 那我怎么知道哪个点是哪个点<a class="headerlink" href="#wardenxyz" title="Permanent link">&para;</a></h1>
 <p>GitHub copilot: 在 <code>polygon</code> 中确定坐标点位置可以通过以下方法：</p>
-<h2 id="_8">坐标系统理解<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="_13">坐标系统理解<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
 <p>Typst 使用<strong>左上角为原点 (0, 0)</strong> 的坐标系：<br />
 - <strong>x 轴</strong>：向右为正<br />
 - <strong>y 轴</strong>：向下为正</p>
-<p><pre><code class="language-`typst">// 可视化坐标点
+<p><pre><code class="language-typst">// 可视化坐标点
 #let show-points(points) = {
   for (i, point) in points.enumerate() {
     place(dx: point.at(0), dy: point.at(1))[
@@ -297,15 +417,19 @@ CODE_BLOCK_PLACEHOLDER_19_</code></p>
 
 #polygon(..triangle-points, fill: yellow.lighten(80%), stroke: black)
 #show-points(triangle-points)
-</code></pre><code>
+</code></pre></p>
+<h2 id="_14">调试技巧<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">1. 逐步添加点<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<p><pre><code class="language-typst">// 先画两个点
+#polygon((0pt, 0pt), (30pt, 0pt))
 
-## 调试技巧
+// 再加第三个点
+#polygon((0pt, 0pt), (30pt, 0pt), (15pt, 25pt))
 
-### 1. 逐步添加点
-
-CODE_BLOCK_PLACEHOLDER_21_</code></p>
-<h3 id="2">2. 使用网格背景<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
-<p><pre><code class="language-`typst">// 创建网格帮助定位
+// 继续添加...
+</code></pre></p>
+<h3 id="2_1">2. 使用网格背景<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<p><pre><code class="language-typst">// 创建网格帮助定位
 #let grid(width: 100pt, height: 100pt) = {
   for x in range(0, int(width / 10pt) + 1) {
     line(start: (x * 10pt, 0pt), end: (x * 10pt, height), stroke: gray + 0.5pt)
@@ -317,13 +441,28 @@ CODE_BLOCK_PLACEHOLDER_21_</code></p>
 
 #grid()
 #polygon((10pt, 10pt), (40pt, 20pt), (30pt, 50pt), fill: blue.lighten(70%))
-</code></pre><code>
+</code></pre></p>
+<h3 id="3_1">3. 标注坐标<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<p><pre><code class="language-typst">#let labeled-polygon(..points) = {
+  polygon(..points, fill: yellow.lighten(80%))
+  for (i, point) in points.pos().enumerate() {
+    place(dx: point.at(0) - 5pt, dy: point.at(1) - 10pt)[
+      #text(size: 8pt, fill: red)[
+        (#point.at(0), #point.at(1))
+      ]
+    ]
+  }
+}
 
-### 3. 标注坐标
-
-CODE_BLOCK_PLACEHOLDER_23_</code></p>
-<h2 id="_9">常用形状的点序<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<p><pre><code class="language-`typst">// 正方形（顺时针）
+#labeled-polygon(
+  (0pt, 0pt),
+  (30pt, 10pt), 
+  (25pt, 40pt),
+  (5pt, 35pt)
+)
+</code></pre></p>
+<h2 id="_15">常用形状的点序<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">// 正方形（顺时针）
 #polygon(
   (0pt, 0pt),    // 左上
   (30pt, 0pt),   // 右上
@@ -341,19 +480,21 @@ CODE_BLOCK_PLACEHOLDER_23_</code></p>
   (20pt, 20pt),  // 箭身下
   (0pt, 20pt)    // 箭尾下
 )
-</code></pre><code>
+</code></pre></p>
+<p>建议先在纸上画出草图，标记好坐标，再转换为代码。</p>
+<h1 id="wardenxyz_1">wardenxyz: 顺序是从左上第一个点开始顺时针旋转吗<a class="headerlink" href="#wardenxyz_1" title="Permanent link">&para;</a></h1>
+<p>GitHub copilot: <strong>不一定</strong>，<code>polygon</code> 的点顺序是按照你提供的坐标顺序依次连接，不强制要求从左上角开始或顺时针。</p>
+<h2 id="_16">点的连接规则<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">// 点按提供顺序连接：0→1→2→3→...→0（自动闭合）
 
-建议先在纸上画出草图，标记好坐标，再转换为代码。
+// 你的例子分析：
+#polygon((0pt, 0pt), (30pt, 0pt), (30pt, 25pt), (15pt, 25pt))
+//       点0: 左上    点1: 右上      点2: 右下      点3: 左下偏右
 
-# wardenxyz: 顺序是从左上第一个点开始顺时针旋转吗
-
-GitHub copilot: **不一定**，</code>polygon<code> 的点顺序是按照你提供的坐标顺序依次连接，不强制要求从左上角开始或顺时针。
-
-## 点的连接规则
-
-CODE_BLOCK_PLACEHOLDER_25_</code></p>
-<h2 id="_10">不同顺序的效果<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
-<p><pre><code class="language-`typst">// 顺时针绘制矩形
+// 连接顺序：(0,0) → (30,0) → (30,25) → (15,25) → 回到(0,0)
+</code></pre></p>
+<h2 id="_17">不同顺序的效果<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-typst">// 顺时针绘制矩形
 #polygon(
   (0pt, 0pt),    // 左上
   (40pt, 0pt),   // 右上  
@@ -383,17 +524,29 @@ CODE_BLOCK_PLACEHOLDER_25_</code></p>
   (0pt, 30pt),   // 左下
   fill: green.lighten(80%)
 )
-</code></pre><code>
+</code></pre></p>
+<h2 id="_18">最佳实践<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>简单图形</strong>：顺时针或逆时针都可以</li>
+<li><strong>复杂图形</strong>：建议按边界顺序连接，避免交叉</li>
+<li><strong>调试技巧</strong>：使用点可视化函数查看连接顺序</li>
+</ol>
+<p><pre><code class="language-typst">// 启用点可视化来调试
+#let show-points(points) = {
+  for (i, point) in points.enumerate() {
+    place(dx: point.at(0), dy: point.at(1))[
+      #circle(radius: 2pt, fill: red)
+      #text(size: 8pt, fill: blue)[#i]
+    ]
+  }
+}
 
-## 最佳实践
-
-1. **简单图形**：顺时针或逆时针都可以
-2. **复杂图形**：建议按边界顺序连接，避免交叉
-3. **调试技巧**：使用点可视化函数查看连接顺序
-
-CODE_BLOCK_PLACEHOLDER_27_</code></p>
+#let my-points = ((0pt, 0pt), (30pt, 0pt), (30pt, 25pt), (15pt, 25pt))
+#polygon(..my-points, fill: yellow.lighten(80%))
+#show-points(my-points)
+</code></pre></p>
 <p>关键是理解 Typst 会按你提供的点的顺序依次连线，最后自动闭合到第一个点。</p>
-<h1 id="wardenxyz_1">wardenxyz: 解释代码<a class="headerlink" href="#wardenxyz_1" title="Permanent link">&para;</a></h1>
+<h1 id="wardenxyz_2">wardenxyz: 解释代码<a class="headerlink" href="#wardenxyz_2" title="Permanent link">&para;</a></h1>
 <p><pre><code class="language-typst">#polygon.regular(
   fill: blue.lighten(80%),
   stroke: blue,
@@ -402,7 +555,7 @@ CODE_BLOCK_PLACEHOLDER_27_</code></p>
 )
 </code></pre></p>
 <p>GitHub Copilot: 这段代码使用了 Typst 语言来绘制一个正多边形。让我来解释各个参数的作用：</p>
-<h2 id="_11">代码解释<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h2 id="_19">代码解释<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
 <p><pre><code class="language-typst">#polygon.regular(
   fill: blue.lighten(80%),      // 填充颜色：蓝色变浅80%
   stroke: blue,                 // 边框颜色：蓝色
@@ -420,12 +573,12 @@ CODE_BLOCK_PLACEHOLDER_27_</code></p>
 <p><strong>最终效果：</strong> 这段代码会生成一个浅蓝色填充、蓝色边框的正三角形，大小为30点。</p>
 <h1 id="wardenxyz-regular">wardenxyz: .regular 是什么意思<a class="headerlink" href="#wardenxyz-regular" title="Permanent link">&para;</a></h1>
 <p>GitHub Copilot: <code>.regular</code> 是 Typst 中 <code>polygon</code> 模块的一个方法，用于创建<strong>正多边形</strong>。</p>
-<h2 id="_12">含义解释<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h2 id="_20">含义解释<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong><code>.regular</code></strong> = "规则的"、"正的"</li>
 <li>表示创建的多边形是<strong>正多边形</strong>（所有边长相等，所有内角相等）</li>
 </ul>
-<h2 id="_13">与其他多边形方法的区别<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<h2 id="_21">与其他多边形方法的区别<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
 <p>在 Typst 中，<code>polygon</code> 有不同的方法：</p>
 <p><pre><code class="language-typst">// 正多边形 - 所有边和角都相等
 #polygon.regular(vertices: 3, size: 30pt)  // 正三角形
@@ -441,13 +594,13 @@ CODE_BLOCK_PLACEHOLDER_27_</code></p>
 <p>在你的代码中，<code>vertices: 3</code> 配合 <code>.regular</code> 创建了一个正三角形。</p>
 <h1 id="wardenxyz-curve-polygon">wardenxyz: curve 和 polygon 的异同<a class="headerlink" href="#wardenxyz-curve-polygon" title="Permanent link">&para;</a></h1>
 <p>GitHub Copilot: ## Curve 和 Polygon 的异同</p>
-<h3 id="_14"><strong>相同点</strong><a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h3 id="_22"><strong>相同点</strong><a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <ul>
 <li>都是 Typst 中用于绘制图形的函数</li>
 <li>都可以设置颜色、填充、边框等样式属性</li>
 <li>都支持坐标点定义图形形状</li>
 </ul>
-<h3 id="_15"><strong>主要区别</strong><a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h3 id="_23"><strong>主要区别</strong><a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -474,8 +627,8 @@ CODE_BLOCK_PLACEHOLDER_27_</code></p>
 </tr>
 </tbody>
 </table>
-<h3 id="_16"><strong>使用示例对比</strong><a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<p><pre><code class="language-`typst">// Polygon - 直线连接的多边形
+<h3 id="_24"><strong>使用示例对比</strong><a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<p><pre><code class="language-typst">// Polygon - 直线连接的多边形
 #polygon((0pt, 0pt), (20pt, 0pt), (10pt, 15pt))  // 三角形
 
 // Polygon 正多边形
@@ -488,13 +641,13 @@ CODE_BLOCK_PLACEHOLDER_27_</code></p>
   closed: true,
   ((0pt, 0pt), (20pt, 0pt), (10pt, 15pt))
 )
-</code></pre><code>
-
-### **选择建议**
-- **使用 </code>polygon<code>**: 需要绘制有明确边角的图形（三角形、四边形、星形等）
-- **使用 </code>curve<code>**: 需要绘制平滑的曲线图形（圆润的形状、波浪线等）
-
-在你的代码中，</code>polygon` 适合绘制三角形这种有明确顶点的几何图形。</p></div>
+</code></pre></p>
+<h3 id="_25"><strong>选择建议</strong><a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>使用 <code>polygon</code></strong>: 需要绘制有明确边角的图形（三角形、四边形、星形等）</li>
+<li><strong>使用 <code>curve</code></strong>: 需要绘制平滑的曲线图形（圆润的形状、波浪线等）</li>
+</ul>
+<p>在你的代码中，<code>polygon</code> 适合绘制三角形这种有明确顶点的几何图形。</p></div>
 			</div>
 		</div>
 
