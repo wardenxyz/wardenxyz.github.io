@@ -162,6 +162,20 @@
     ]
   },
   {
+    "title": "背景颜色",
+    "url": "/posts/2025/background-color.html",
+    "content": "背景颜色 &para; 专注内容的纯色背景 374852 &para;",
+    "date": "2025-06-13",
+    "tags": [
+      "Android",
+      "Windows",
+      "纯色背景"
+    ],
+    "category": [
+      "生活"
+    ]
+  },
+  {
     "title": "在 zed 上配置 typstyle",
     "url": "/posts/2025/zed_use_typstyle.html",
     "content": "在 zed 上配置 typstyle &para; 在 Zed 上配置 Typst 的格式化工具，在 settings.json 中写入以下即可 \"languages\": { \"Typst\": { \"show_edit_predictions\": false, \"format_on_save\": \"on\", \"formatter\": { \"external\": { \"command\": \"typstyle\" } } } } Zed Typst 插件：https://github.com/weethet/typst.zed",
