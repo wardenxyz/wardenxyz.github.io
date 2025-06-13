@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>背景颜色</title>
+		<title>自用 git hook</title>
 		<link rel="stylesheet" href="/assets/styles.css" />
 		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,15 +34,65 @@
 		</nav>
 
 		<div class="container">
-			<!-- <h1>背景颜色</h1> -->
+			<!-- <h1>自用 git hook</h1> -->
 
-			<div class="metadata">2025-06-13 <div class="category">分类: <a href="/categories.html#生活">生活</a></div> <div class="tags">标签: <a href="/tags.html#Android">Android</a>, <a href="/tags.html#Windows">Windows</a>, <a href="/tags.html#纯色背景">纯色背景</a></div></div>
+			<div class="metadata">2025-06-13 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#git">git</a></div></div>
 
 			<div class="main-content">
-				<div class="content"><h1 id="_1">背景颜色<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>专注内容的纯色背景</p>
-<p><pre><code>#374852
-</code></pre></p></div>
+				<div class="content"><h1 id="git-hook">自用 git hook<a class="headerlink" href="#git-hook" title="Permanent link">&para;</a></h1>
+<h2 id="post-commit">post-commit<a class="headerlink" href="#post-commit" title="Permanent link">&para;</a></h2>
+<p>路径：.git/hooks/post-commit</p>
+<p><pre><code class="language-bash">#!/bin/sh
+
+# 定义计数器文件的路径
+COUNTER_FILE=".git_commit_counter"
+
+# 检查计数器文件是否存在，如果不存在，则初始化为0
+if [ ! -f "$COUNTER_FILE" ]; then
+    echo 0 > "$COUNTER_FILE"
+fi
+
+# 读取当前计数
+count=$(cat "$COUNTER_FILE")
+count=$((count+1))
+
+# 更新计数器文件
+echo $count > "$COUNTER_FILE"
+
+# 每10次提交执行一次git push
+if [ "$count" -eq 10 ]; then
+    git push origin main
+    # 重置计数器
+    echo 0 > "$COUNTER_FILE"
+fi
+</code></pre></p>
+<p>这个钩子用于自动计数提交次数，主要功能：</p>
+<ol>
+<li>创建/检查 <code>.git_commit_counter</code> 文件（需加入 <code>.gitignore</code>）</li>
+<li>读取并更新提交计数（每次提交 +1）</li>
+<li>每 10 次提交自动推送至远程</li>
+</ol>
+<p>该脚本可减少手动推送次数，提高频繁提交时的工作效率。</p>
+<hr />
+<h2 id="post-commit_1">post-commit<a class="headerlink" href="#post-commit_1" title="Permanent link">&para;</a></h2>
+<p>路径：.git/hooks/post-commit</p>
+<p><pre><code class="language-bash">#!/bin/sh
+
+git push origin main
+</code></pre></p>
+<p>这个钩子的作用是在每次成功提交（commit）后自动执行 git push 命令</p>
+<hr />
+<h2 id="commit-msg">commit-msg<a class="headerlink" href="#commit-msg" title="Permanent link">&para;</a></h2>
+<p>路径：.git/hooks/commit-msg</p>
+<p><pre><code class="language-bash">#!/bin/sh
+
+# 获取当前时间，格式为年-月-日 时:分:秒
+COMMIT_TIME=$(date "+%Y-%m-%d %H:%M:%S")
+
+# 在提交信息末尾添加当前时间
+echo "$COMMIT_TIME" >> $1
+</code></pre></p>
+<p>这个钩子会在提交信息之后添加当前时间</p></div>
 			</div>
 		</div>
 
