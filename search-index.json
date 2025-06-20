@@ -12,6 +12,20 @@
     ]
   },
   {
+    "title": "修改 npm node_modules 位置",
+    "url": "/posts/2025/npm-config.html",
+    "content": "修改 npm node_modules 位置 &para; 修改 npm install 时的 node_modules 位置 npm config set prefix \"D:\\npm\"",
+    "date": "2025-06-20",
+    "tags": [
+      "node",
+      "npm",
+      "node_modules"
+    ],
+    "category": [
+      "计算机"
+    ]
+  },
+  {
     "title": "GitHub 头像",
     "url": "/posts/2025/github-avatar.html",
     "content": "GitHub 头像 &para; 我的 GitHub 头像 Typst 版 #set page(width: 12cm, height: 12cm, margin: 0cm, fill: rgb(\"F0F0F0\")) #place(rect(fill: rgb(\"D3DF90\"), width: 2cm, height: 2cm), dx: 9cm, dy: 9cm) #place(rect(fill: rgb(\"D3DF90\"), width: 4cm, height: 2cm), dx: 7cm, dy: 1cm) #place(rect(fill: rgb(\"D3DF90\"), width: 2cm, height: 2cm), dx: 5cm, dy: 3cm) #place(rect(fill: rgb(\"D3DF90\"), width: 2cm, height: 4cm), dx: 3cm, dy: 5cm) #place(rect(fill: rgb(\"D3DF90\"), width: 2cm, height: 4cm), dx: 7cm, dy: 5cm) #place(rect(fill: rgb(\"D3DF90\"), width: 2cm, height: 2cm), dx: 1cm, dy: 9cm) #place(rect(fill: rgb(\"D3DF90\"), width: 2cm, height: 2cm), dx: 5cm, dy: 9cm) #place(rect(fill: rgb(\"D3DF90\"), width: 4cm, height: 2cm), dx: 1cm, dy: 1cm)",
