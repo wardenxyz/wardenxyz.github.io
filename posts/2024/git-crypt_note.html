@@ -75,11 +75,18 @@ Test/*.md filter=git-crypt diff=git-crypt
 Test/** filter=git-crypt diff=git-crypt
 </code></pre></p>
 <h2 id="5">5. 提交更改<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
-<p><pre><code class="language-bash">git add .gitattributes secret.txt
-git commit -m "Add git-crypt configuration"
-git push
+<p><pre><code class="language-bash">git add .gitattributes
 </code></pre></p>
-<h2 id="6">6. 解密文件<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-bash">git commit -m "Add git-crypt configuration"
+</code></pre></p>
+<p><pre><code class="language-bash">git add .
+</code></pre></p>
+<p><pre><code class="language-bash">git commit -m "commit all"
+</code></pre></p>
+<h2 id="6">6. 加密文件<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-bash">git-crypt lock
+</code></pre></p>
+<h2 id="7">7. 解密文件<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
 <p><pre><code class="language-bash">git-crypt unlock
 </code></pre></p>
 <h2 id="_3">相关命令<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
@@ -116,7 +123,68 @@ not encrypted: .gitattributes
     P --> Q
     Q --> G
     Q --> M
-</div></div>
+</div>
+
+<h1 id="ubuntu-git-crypt">Ubuntu 下使用 git-crypt<a class="headerlink" href="#ubuntu-git-crypt" title="Permanent link">&para;</a></h1>
+<h2 id="git-crypt_2">安装 git-crypt<a class="headerlink" href="#git-crypt_2" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-bash">sudo apt-get update
+</code></pre></p>
+<p><pre><code class="language-bash">sudo apt-get install git-crypt
+</code></pre></p>
+<h2 id="gpg">安装 gpg<a class="headerlink" href="#gpg" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-bash">sudo apt update
+</code></pre></p>
+<p><pre><code class="language-bash">sudo apt install gpg
+</code></pre></p>
+<p>目前实测可以和 git-crypt 一起使用的 git、gpg 版本如下：</p>
+<ul>
+<li>Ubuntu</li>
+</ul>
+<p><pre><code class="language-bash">git --version
+
+git version 2.48.1
+</code></pre></p>
+<p><pre><code class="language-bash">gpg --version
+
+gpg (GnuPG) 2.4.4
+libgcrypt 1.11.0
+Copyright (C) 2024 g10 Code GmbH
+License GNU GPL-3.0-or-later <https://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Home: /home/xyz/.gnupg
+支持的算法：
+公钥： RSA, ELG, DSA, ECDH, ECDSA, EDDSA
+密文： IDEA, 3DES, CAST5, BLOWFISH, AES, AES192, AES256, TWOFISH,
+    CAMELLIA128, CAMELLIA192, CAMELLIA256
+散列： SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224
+压缩： 不压缩, ZIP, ZLIB, BZIP2
+</code></pre></p>
+<ul>
+<li>Windows</li>
+</ul>
+<p><pre><code class="language-bash">git --version
+
+git version 2.49.1.windows.1
+</code></pre></p>
+<p><pre><code class="language-bash">gpg --version
+
+gpg (GnuPG) 2.4.8
+libgcrypt 1.11.1
+Copyright (C) 2025 g10 Code GmbH
+License GNU GPL-3.0-or-later <https://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Home: C:\Users\24109\AppData\Roaming\gnupg
+Supported algorithms:
+Pubkey: RSA, ELG, DSA, ECDH, ECDSA, EDDSA
+Cipher: IDEA, 3DES, CAST5, BLOWFISH, AES, AES192, AES256, TWOFISH,
+        CAMELLIA128, CAMELLIA192, CAMELLIA256
+Hash: SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224
+Compression: Uncompressed, ZIP, ZLIB, BZIP2
+</code></pre></p></div>
 			</div>
 		</div>
 
