@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>SOPS:Secrets OPerationS</title>
+		<link rel="stylesheet" href="/assets/styles.css" />
+		<link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+		<!-- MathJax for mathematical formula support -->
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<meta
+			name="description"
+			content="A minimalist blog that uses pure markdown files"
+		/>
+	</head>
+	<body>
+		<nav>
+			<div class="logo">
+				<a href="/" style="font-size: 24px">随便写写</a>
+			</div>
+			<div class="nav-links">
+				<!-- <a href="/">首页</a> -->
+				<a href="/categories.html">分类</a>
+				<a href="/tags.html">标签</a>
+				<a href="/search.html?focus=true" id="search-nav-link">搜索</a>
+			</div>
+		</nav>
+
+		<div class="container">
+			<!-- <h1>SOPS:Secrets OPerationS</h1> -->
+
+			<div class="metadata">2025-07-23 <div class="category">分类: <a href="/categories.html#计算机">计算机</a></div> <div class="tags">标签: <a href="/tags.html#sops">sops</a>, <a href="/tags.html#加密">加密</a>, <a href="/tags.html#age">age</a>, <a href="/tags.html#gpg">gpg</a></div></div>
+
+			<div class="main-content">
+				<div class="content"><h1 id="sopssecrets-operations">SOPS:Secrets OPerationS<a class="headerlink" href="#sopssecrets-operations" title="Permanent link">&para;</a></h1>
+<p>安装</p>
+<p>https://github.com/getsops/sops</p>
+<h2 id="_1">使用<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>创建 <code>.sops.yaml</code> 文件</p>
+<p><pre><code class="language-yaml">creation_rules:
+  - age: 'age1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' #age 公钥
+#   - pgp: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' #PGP 公钥
+</code></pre></p>
+<p>age 使用笔记：<a href="/posts/2025/age.md">age-note</a></p>
+<p>gpg 使用笔记：<a href="/posts/2024/gen_GPG_key.md">gpg-note</a></p>
+<h2 id="sops">sops 加密二进制文件<a class="headerlink" href="#sops" title="Permanent link">&para;</a></h2>
+<p><pre><code class="language-bash">sops --encrypt --input-type binary --output secret.json secret.bin
+</code></pre></p>
+<p><pre><code class="language-bash">sops --decrypt --output-type binary --output secret.bin secret.json
+</code></pre></p>
+<h2 id="sops_1">sops 加密文本文件<a class="headerlink" href="#sops_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>原地加密</li>
+</ul>
+<p><pre><code class="language-bash">sops -e -i secrets.txt
+</code></pre></p>
+<ul>
+<li>加密到新文件</li>
+</ul>
+<p><pre><code class="language-bash">sops --encrypt --output secrets.enc.txt secrets.txt
+</code></pre></p>
+<ul>
+<li>查看或编辑加密文件</li>
+</ul>
+<p><pre><code class="language-bash">sops secrets.enc.txt
+</code></pre></p>
+<ul>
+<li>解密文件（终端输出）</li>
+</ul>
+<p><pre><code class="language-bash">sops --decrypt a.txt
+</code></pre></p>
+<ul>
+<li>解密到新文件</li>
+</ul>
+<p><pre><code class="language-bash">sops --decrypt --output secrets.decrypted.txt secrets.enc.txt
+</code></pre></p></div>
+			</div>
+		</div>
+
+		<button id="back-to-top" aria-label="回到顶部">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<polyline points="18 15 12 9 6 15"></polyline>
+			</svg>
+		</button>
+
+		<footer>
+			<p>MIT License</p>
+			<p>Copyright © 2024-2025 wardenxyz</p>
+		</footer>
+
+		<script>
+			// Initialize Mermaid diagrams
+			document.addEventListener("DOMContentLoaded", function () {
+				mermaid.initialize({
+					startOnLoad: true,
+					theme:
+						window.matchMedia &&
+						window.matchMedia("(prefers-color-scheme: dark)")
+							.matches
+							? "dark"
+							: "default",
+					flowchart: { curve: "basis" },
+					securityLevel: "loose",
+				});
+
+				// Configure MathJax
+				window.MathJax = {
+					tex: {
+						inlineMath: [
+							["$", "$"],
+							["\\(", "\\)"],
+						],
+						displayMath: [
+							["$$", "$$"],
+							["\\[", "\\]"],
+						],
+						processEscapes: true,
+						processEnvironments: true,
+					},
+					options: {
+						skipHtmlTags: [
+							"script",
+							"noscript",
+							"style",
+							"textarea",
+							"pre",
+						],
+					},
+				};
+			});
+
+			// Add copy buttons to code blocks
+			document.addEventListener("DOMContentLoaded", function () {
+				const codeBlocks = document.querySelectorAll("pre");
+
+				codeBlocks.forEach(function (block) {
+					// Create copy button
+					const button = document.createElement("button");
+					button.className = "copy-button";
+					button.textContent = "复制";
+
+					// Add the button to the code block
+					block.appendChild(button);
+
+					// Add click event
+					button.addEventListener("click", function () {
+						const code =
+							block.querySelector("code")?.textContent ||
+							block.textContent;
+
+						// Copy to clipboard
+						navigator.clipboard
+							.writeText(code)
+							.then(function () {
+								// Success feedback
+								button.textContent = "已复制!";
+								button.classList.add("copied");
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+									button.classList.remove("copied");
+								}, 2000);
+							})
+							.catch(function (error) {
+								console.error("复制失败:", error);
+								button.textContent = "复制失败";
+
+								// Reset after 2 seconds
+								setTimeout(function () {
+									button.textContent = "复制";
+								}, 2000);
+							});
+					});
+				});
+			});
+		</script>
+		
+		<script>
+			// Back to top button functionality
+			document.addEventListener("DOMContentLoaded", function() {
+				const backToTopButton = document.getElementById("back-to-top");
+				
+				// Show button when user scrolls down 300px from the top
+				window.addEventListener("scroll", function() {
+					if (window.pageYOffset > 300) {
+						backToTopButton.classList.add("visible");
+					} else {
+						backToTopButton.classList.remove("visible");
+					}
+				});
+				
+				// Smooth scroll to top when button is clicked
+				backToTopButton.addEventListener("click", function() {
+					window.scrollTo({
+						top: 0,
+						behavior: "smooth"
+					});
+				});
+			});
+		</script>
+		
+		<!-- 引入高亮搜索内容的脚本 -->
+		<script src="/assets/highlight.js"></script>
+		
+		<!-- 外部链接在新标签页打开 -->
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+				// 获取所有链接
+				const links = document.querySelectorAll('a');
+				
+				links.forEach(function(link) {
+					const href = link.getAttribute('href');
+					
+					if (href) {
+						// 处理所有https链接和外部链接
+						if (
+							href.startsWith('http:') || 
+							href.startsWith('https:') || 
+							href.indexOf('://') !== -1 ||
+							(!href.startsWith('/') && !href.startsWith('#') && !href.startsWith('.'))
+						) {
+							// 直接为所有http/https链接添加target="_blank"
+							if (!link.hasAttribute('target')) {
+								link.setAttribute('target', '_blank');
+								link.setAttribute('rel', 'noopener noreferrer');
+							}
+						}
+					}
+				});
+			});
+		</script>
+		<script>
+			// Add Ctrl+P shortcut for search
+			document.addEventListener("keydown", function(event) {
+				if (event.ctrlKey && event.key === "k") {
+					event.preventDefault(); // Prevent default browser action (like printing)
+					const searchLink = document.getElementById("search-nav-link");
+					if (searchLink) {
+						searchLink.click(); // Simulate a click on the search link
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
