@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Typst 语法简单介绍</title>
+  <link rel="stylesheet" href="../../static/style.css" />
+  <link rel="icon" href="../../static/favicon.svg" type="image/svg+xml" />
+  <meta name="color-scheme" content="light dark" />
+  
+  <!-- MathJax Configuration -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true,
+        tags: 'ams'
+      },
+      options: {
+        ignoreHtmlClass: 'tex2jax_ignore',
+        processHtmlClass: 'tex2jax_process'
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../../index.html">My Blog</a>
+  <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-controls="primaryNav" aria-expanded="false">☰</button>
+  <nav class="nav" id="primaryNav">
+        <a class="nav-link" href="../../index.html">首页</a>
+        <a class="nav-link" href="../../categories.html">Categories</a>
+        <a class="nav-link" href="../../tags.html">Tags</a>
+        <a class="nav-link github" href="https://github.com/wardenxyz" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container layout layout-3">
+    <aside class="sidebar-col" id="sidebar">
+      <nav class="sidebar" aria-label="所有文章"><div class="sidebar-group"><div class="sidebar-year">Others</div><ul><li><a href="../../index.html">随便写写</a></li><li><a href="../../categories.html">Categories</a></li><li><a href="../../tags.html">Tags</a></li></ul></div><div class="sidebar-group"><div class="sidebar-year">2025</div><ul><li><a href="SOPS.html">SOPS:Secrets OPerationS</a></li><li><a href="age.html">age-note</a></li><li><a href="yt-dlp.html">yt-dlp 使用</a></li><li><a href="cross-platform-byte-control.md.html">跨系统避免换行符导致字节差异的方法</a></li><li><a href="introduce-passkey.html">Passkey:Secure,Convenient Login</a></li><li><a href="npm-config.html">修改 npm node_modules 位置</a></li><li><a href="powershell-get-command.html">PowerShell Get-Command 命令</a></li><li><a href="background-color.html">背景颜色</a></li><li><a href="git-hook.html">自用 git hook</a></li><li><a href="typst-syntax-simple-introduction.html" class="active">Typst 语法简单介绍</a></li><li><a href="shut-wps-background-runing.html">关闭 WPS 后台运行</a></li><li><a href="font.html">个人字体</a></li><li><a href="github-avatar.html">GitHub 头像</a></li><li><a href="regex-note.html">正则表达式简明指南</a></li><li><a href="Rollback-commit.html">回滚提交</a></li><li><a href="use_python_gen_site.html">使用 Python 生成静态网页</a></li><li><a href="install_wsl2_and_to_d_disk.html">安装 WSL2 并迁移到 D 盘</a></li><li><a href="zed_use_typstyle.html">在 zed 上配置 typstyle</a></li><li><a href="Rust_Windows_Config.html">在 Windows 上配置 Rust 环境</a></li><li><a href="conda_note.html">conda 使用笔记</a></li><li><a href="Zed_set_OpenAI_API_Compatible_model.html">在 Zed Editor 中配置 OpenAI API 兼容的模型</a></li><li><a href="zed_use.html">zed 使用笔记</a></li><li><a href="ollama_run_deepseek.html">ollama 运行 DeepSeek 模型</a></li></ul></div><div class="sidebar-group"><div class="sidebar-year">2024</div><ul><li><a href="../2024/pull_request_steps.html">Pull Request 的步骤</a></li><li><a href="../2024/Typst_note.html">Typst 笔记</a></li><li><a href="../2024/git_reset.html">git 重置当前分支</a></li><li><a href="../2024/vitepress_note.html">vitepress 学习笔记</a></li><li><a href="../2024/deploy_gitHub_page.html">GitHub page 搭建学习笔记</a></li><li><a href="../2024/Linux_note.html">Linux 学习笔记</a></li><li><a href="../2024/OpenSSL_encrypt_note.html">OpenSSL 加解密速查笔记</a></li><li><a href="../2024/python_note.html">python 学习笔记</a></li><li><a href="../2024/lazy.nvim_note.html">lazy.nvim 学习笔记</a></li><li><a href="../2024/git-izer_note.html">git-sizer 学习笔记</a></li><li><a href="../2024/git_force_overwrite_local_repo.html">git 强制覆盖本地仓库</a></li><li><a href="../2024/bilibili_embedding_code.html">B站嵌入代码</a></li><li><a href="../2024/personal_software.html">个人自用软件</a></li><li><a href="../2024/you-get_note.html">用 you-get 下载B站视频</a></li><li><a href="../2024/git-crypt_note.html">git-crypt 学习笔记</a></li><li><a href="../2024/gen_GPG_key.html">生成 GPG 密钥</a></li><li><a href="../2024/git-crypt_official_doc.html">git-crypt 官方文档</a></li><li><a href="../2024/git-crypt_official_doc_zh.html">git-crypt 官方文档中文翻译</a></li><li><a href="../2024/README_outline.html">README 文档结构</a></li><li><a href="../2024/git_commit_message_standard.html">git commit message 规范</a></li><li><a href="../2024/vscode_snippets_variable.html">vscode snippets 预置变量</a></li><li><a href="../2024/modern_cryptography.html">现代加密学</a></li><li><a href="../2024/former_doctor_who.html">神秘博士复活时间表</a></li><li><a href="../2024/ffmpeg_note.html">ffmpeg 自用命令</a></li><li><a href="../2024/qqmail_third_party_config.html">第三方邮箱客户端配置QQmail & Foxmail</a></li><li><a href="../2024/git_Cli.html">git 命令手册</a></li><li><a href="../2024/LaTeX_note.html">LaTeX 与希腊字母对照表</a></li><li><a href="../2024/git_branch.html">git 分支操作</a></li><li><a href="../2024/remove_file_from_git_history.html">从 git 提交中移除文件</a></li><li><a href="../2024/vim_note.html">Vim 高效速查笔记</a></li><li><a href="../2024/obsidian_shortcut_key.html">obsidian快捷键</a></li><li><a href="../2024/android_QQ_file_storage_path.html">手机QQ文件存储路径</a></li><li><a href="../2024/browser_UA_value.html">浏览器UA值</a></li><li><a href="../2024/gpg_communication.html">GPG 在通信中的简单理解</a></li><li><a href="../2024/vscode_note.html">VSCode 高效使用指南</a></li></ul></div></nav>
+    </aside>
+    <article class="content" id="content">
+      <h1 id="typst">Typst 语法简单介绍</h1>
+<h1 id="wardenxyz-typst-let-show">wardenxyz: 解释下 Typst 的 let 和 show</h1>
+<p>GitHub Copilot: Typst 中的 <code>let</code> 和 <code>show</code> 是两个核心概念，用于变量绑定和内容样式化：</p>
+<h2 id="let-"><code>let</code> - 变量绑定</h2>
+<p><code>let</code> 用于创建变量或函数绑定：</p>
+<pre><code class="language-typst">// 绑定简单值
+#let name = "张三"
+#let age = 25
+
+// 绑定函数
+#let greet(person) = [Hello, #person!]
+
+// 使用变量
+#name 今年 #age 岁
+#greet("李四")
+</code></pre>
+<p><code>let</code> 的特点：
+- 创建不可变绑定
+- 支持函数定义
+- 作用域局限于当前块</p>
+<h2 id="show-"><code>show</code> - 样式规则</h2>
+<p><code>show</code> 用于定义元素的显示样式：</p>
+<pre><code class="language-typst">// 为特定元素类型设置样式
+#show heading: it =&gt; [
+  #set text(fill: blue)
+  #it.body
+]
+
+// 为特定内容设置样式
+#show "重要": strong
+
+// 条件样式
+#show heading.where(level: 1): it =&gt; [
+  #set text(size: 20pt)
+  #it
+]
+
+= 标题一
+这是*重要*内容。
+</code></pre>
+<p><code>show</code> 的用法：
+- <code>show selector: transformation</code> - 基本语法
+- 可以匹配元素类型、内容或条件
+- 变换函数接收匹配的内容并返回新内容</p>
+<h2 id="_1">组合使用</h2>
+<pre><code class="language-typst">#let emphasis-color = red
+#show strong: it =&gt; text(fill: emphasis-color, it)
+
+这是*强调*文本。
+</code></pre>
+<p>这两个功能让 Typst 具有强大的自定义能力，<code>let</code> 管理数据和逻辑，<code>show</code> 控制视觉呈现。</p>
+<h1 id="wardenxyz-typst">wardenxyz: Typst 的函数是什么</h1>
+<p>GitHub Copilot: 在 Typst 中，函数是可重用的代码块，用于封装逻辑和生成内容。</p>
+<h2 id="_2">函数定义</h2>
+<p>使用 <code>let</code> 定义函数：</p>
+<pre><code class="language-typst">// 简单函数
+#let greet(name) = [Hello, #name!]
+
+// 带默认参数的函数
+#let format-date(day, month: "January", year: 2024) = [
+  #day #month, #year
+]
+
+// 返回内容的函数
+#let highlight(content, color: red) = [
+  #text(fill: color, weight: "bold")[#content]
+]
+</code></pre>
+<h2 id="_3">函数特点</h2>
+<ul>
+<li><strong>参数支持</strong>：可以有位置参数和命名参数</li>
+<li><strong>默认值</strong>：参数可以有默认值</li>
+<li><strong>返回内容</strong>：函数返回 Typst 内容，用方括号 <code>[]</code> 包围</li>
+<li><strong>闭包特性</strong>：可以访问外部作用域的变量</li>
+</ul>
+<h2 id="_4">高阶函数</h2>
+<pre><code class="language-typst">// 接受函数作为参数
+#let apply-style(content, styler) = styler(content)
+
+#let make-bold = content =&gt; strong(content)
+#let make-italic = content =&gt; emph(content)
+
+#apply-style("重要文本", make-bold)
+#apply-style("强调文本", make-italic)
+</code></pre>
+<h2 id="_5">实际应用</h2>
+<pre><code class="language-typst">// 创建卡片组件
+#let card(title, content, color: gray) = [
+  #rect(
+    fill: color.lighten(80%),
+    stroke: color,
+    inset: 1em,
+    radius: 4pt
+  )[
+    #strong(title)
+    #v(0.5em)
+    #content
+  ]
+]
+
+#card("提示", [这是一个提示信息], color: blue)
+</code></pre>
+<p>函数让 Typst 代码更模块化和可重用，是构建复杂文档的重要工具。</p>
+<h1 id="wardenxyz-let-show">wardenxyz: let 后面带着的是变量和函数，那 show 呢</h1>
+<p>GitHub Copilot: <code>show</code> 后面跟着的是<strong>选择器</strong>和<strong>变换函数</strong>，用于定义样式规则。</p>
+<h2 id="show"><code>show</code> 的结构</h2>
+<p>基本语法：<code>#show selector: transformation</code></p>
+<h3 id="_6">选择器类型</h3>
+<pre><code class="language-typst">// 1. 元素类型选择器
+#show heading: it =&gt; [...]
+#show strong: it =&gt; [...]
+#show table: it =&gt; [...]
+
+// 2. 字符串内容选择器
+#show "重要": strong
+#show "TODO": it =&gt; text(fill: red)[#it]
+
+// 3. 正则表达式选择器
+#show regex("r\d+"): it =&gt; text(fill: blue)[#it]
+
+// 4. 条件选择器
+#show heading.where(level: 1): it =&gt; [...]
+#show table.where(columns: 3): it =&gt; [...]
+
+// 5. 函数选择器
+#show raw.where(lang: "python"): it =&gt; [...]
+</code></pre>
+<h3 id="numeric">变换函numeric</h3>
+<pre><code class="language-typst">// 1. 简单替换
+#show "重要": strong
+
+// 2. 函数变换
+#show heading: it =&gt; [
+  #set text(fill: blue, size: 1.2em)
+  #it.body
+]
+
+// 3. 复杂变换
+#show figure: it =&gt; [
+  #rect(stroke: gray)[
+    #it.body
+    #align(center)[#emph(it.caption)]
+  ]
+]
+</code></pre>
+<h2 id="let">与 <code>let</code> 的区别</h2>
+<ul>
+<li><strong><code>let</code></strong>：定义变量和函数，用于数据存储和逻辑封装</li>
+<li><strong><code>show</code></strong>：定义样式规则，用于控制内容的视觉呈现</li>
+</ul>
+<pre><code class="language-typst">// let: 定义数据和逻辑
+#let my-color = blue
+#let format-title(content) = strong(content)
+
+// show: 定义样式规则
+#show heading: it =&gt; format-title(it.body)
+#show strong: text(fill: my-color)
+</code></pre>
+<p><code>show</code> 本质上是声明式的样式系统，告诉 Typst "当遇到某种内容时，如何显示它"。</p>
+<h1 id="wardenxyz-typst_1">wardenxyz: Typst 除了这两个还有什么重要的语法点吗</h1>
+<p>GitHub Copilot: 除了 <code>let</code> 和 <code>show</code>，Typst 还有以下重要语法点：</p>
+<h2 id="set-"><code>#set</code> - 设置样式</h2>
+<p>用于设置元素的默认样式：</p>
+<pre><code class="language-typst">// ...existing code...
+
+// 设置全局文本样式
+#set text(font: "Source Han Serif", size: 12pt)
+
+// 设置标题样式
+#set heading(numbering: "1.")
+
+// 设置页面样式
+#set page(margin: 2cm, numbering: "1")
+
+// 局部设置
+#set text(fill: red)
+这段文字是红色的
+#set text(fill: black) // 恢复默认
+</code></pre>
+<h2 id="import-include-"><code>#import</code> 和 <code>#include</code> - 模块系统</h2>
+<pre><code class="language-typst">// 导入其他文件的函数
+#import "utils.typ": helper-function, my-card
+
+// 包含其他文件的内容
+#include "chapter1.typ"
+
+// 导入包
+#import "@preview/cetz:0.1.0": canvas, draw
+</code></pre>
+<h2 id="_7">内容块和代码模式</h2>
+<pre><code class="language-typst">// 内容模式（默认）
+这是普通文本
+
+// 代码模式（#开头）
+#let x = 5
+#if x &gt; 3 { [x 大于 3] }
+
+// 内容块（方括号）
+#let message = [
+  这是一个内容块
+  可以包含 *格式化* 文本
+]
+</code></pre>
+<h2 id="_8">条件语句和循环</h2>
+<pre><code class="language-typst">// 条件语句
+#let score = 85
+#if score &gt;= 90 {
+  [优秀]
+} else if score &gt;= 80 {
+  [良好]
+} else {
+  [需要努力]
+}
+
+// 循环
+#for i in range(1, 4) {
+  [第 #i 项]
+}
+
+// 数组遍历
+#let items = ("苹果", "香蕉", "橙子")
+#for item in items {
+  [- #item]
+}
+</code></pre>
+<h2 id="_9">内置函数和方法</h2>
+<pre><code class="language-typst">// 数学函数
+#calc.pow(2, 3) // 8
+#calc.sin(calc.pi / 2) // 1
+
+// 字符串操作
+#"Hello World".split(" ") // ("Hello", "World")
+#upper("typst") // "TYPST"
+
+// 数组操作
+#(1, 2, 3).len() // 3
+#(1, 2, 3).at(1) // 2
+</code></pre>
+<h2 id="context-"><code>#context</code> - 上下文访问</h2>
+<pre><code class="language-typst">// 访问页面信息
+#context {
+  let page-num = here().page()
+  [当前第 #page-num 页]
+}
+
+// 访问计数器
+#context {
+  [当前标题编号：#counter(heading).display()]
+}
+</code></pre>
+<p>这些语法点配合使用，让 Typst 具备了完整的编程和排版能力。</p>
+<h1 id="wardenxyz-polygon">wardenxyz: polygon 呢，这个的用处</h1>
+<p>GitHub copilot: <code>polygon</code> 是 Typst 中用于绘制多边形的函数，主要用于创建几何图形和装饰元素。</p>
+<h2 id="_10">基本用法</h2>
+<pre><code class="language-typst">// 绘制三角形
+#polygon(
+  (0pt, 0pt),
+  (20pt, 0pt),
+  (10pt, 15pt)
+)
+
+// 绘制正方形
+#polygon(
+  (0pt, 0pt),
+  (20pt, 0pt),
+  (20pt, 20pt),
+  (0pt, 20pt)
+)
+
+// 设置样式
+#polygon(
+  fill: blue,
+  stroke: red + 2pt,
+  (0pt, 0pt),
+  (30pt, 0pt),
+  (15pt, 25pt)
+)
+</code></pre>
+<h2 id="_11">实际应用场景</h2>
+<h3 id="1">1. 创建箭头和指示符</h3>
+<pre><code class="language-typst">// 右箭头
+#let right-arrow = polygon(
+  fill: black,
+  (0pt, 5pt),
+  (10pt, 5pt),
+  (10pt, 8pt),
+  (15pt, 4pt),
+  (10pt, 0pt),
+  (10pt, 3pt),
+  (0pt, 3pt)
+)
+
+流程：开始 #right-arrow 处理 #right-arrow 结束
+</code></pre>
+<h3 id="2">2. 装饰性元素</h3>
+<pre><code class="language-typst">// 星形装饰
+#let star = polygon(
+  fill: aqua,
+  (10pt, 0pt),
+  (12pt, 6pt),
+  (18pt, 6pt),
+  (14pt, 10pt),
+  (16pt, 16pt),
+  (10pt, 13pt),
+  (4pt, 16pt),
+  (6pt, 10pt),
+  (2pt, 6pt),
+  (8pt, 6pt)
+)
+
+#align(center)[
+  #star 重要提示 #star
+]
+</code></pre>
+<h3 id="3">3. 图表和示意图</h3>
+<pre><code class="language-typst">// 创建简单的流程图节点
+#let diamond(content) = box(
+  polygon(
+    fill: yellow.lighten(60%),
+    stroke: blue,
+    (15pt, 0pt),
+    (30pt, 15pt),
+    (15pt, 30pt),
+    (0pt, 15pt)
+  )
+)
+
+#diamond[]
+</code></pre>
+<h3 id="4">4. 与其他元素结合</h3>
+<pre><code class="language-typst">// 带边框的提示框
+#let warning-box(content) = [
+  #polygon(
+    fill: orange.lighten(80%),
+    stroke: orange + 1pt,
+    (0pt, 0pt),
+    (100pt, 0pt),
+    (100pt, 40pt),
+    (0pt, 40pt)
+  )
+  #place(dx: 10pt, dy: 10pt)[#content]
+]
+
+#warning-box([这是警告信息])
+</code></pre>
+<h2 id="_12">参数说明</h2>
+<ul>
+<li><strong>坐标点</strong>：定义多边形的顶点</li>
+<li><strong>fill</strong>：填充色</li>
+<li><strong>stroke</strong>：描边样式</li>
+<li><strong>closed</strong>：是否闭合（默认 true）</li>
+</ul>
+<p><code>polygon</code> 特别适合创建自定义图形、图标、装饰元素和简单的几何图表。</p>
+<h1 id="wardenxyz">wardenxyz: 那我怎么知道哪个点是哪个点</h1>
+<p>GitHub copilot: 在 <code>polygon</code> 中确定坐标点位置可以通过以下方法：</p>
+<h2 id="_13">坐标系统理解</h2>
+<p>Typst 使用<strong>左上角为原点 (0, 0)</strong> 的坐标系：
+- <strong>x 轴</strong>：向右为正
+- <strong>y 轴</strong>：向下为正</p>
+<pre><code class="language-typst">// 可视化坐标点
+#let show-points(points) = {
+  for (i, point) in points.enumerate() {
+    place(dx: point.at(0), dy: point.at(1))[
+      #circle(radius: 2pt, fill: red)
+      #text(size: 8pt, fill: blue)[#i]
+    ]
+  }
+}
+
+// 示例：三角形的点
+#let triangle-points = (
+  (0pt, 0pt),    // 点0: 左上角
+  (40pt, 0pt),   // 点1: 右上角  
+  (20pt, 30pt)   // 点2: 底部中心
+)
+
+#polygon(..triangle-points, fill: yellow.lighten(80%), stroke: black)
+#show-points(triangle-points)
+</code></pre>
+<h2 id="_14">调试技巧</h2>
+<h3 id="1_1">1. 逐步添加点</h3>
+<pre><code class="language-typst">// 先画两个点
+#polygon((0pt, 0pt), (30pt, 0pt))
+
+// 再加第三个点
+#polygon((0pt, 0pt), (30pt, 0pt), (15pt, 25pt))
+
+// 继续添加...
+</code></pre>
+<h3 id="2_1">2. 使用网格背景</h3>
+<pre><code class="language-typst">// 创建网格帮助定位
+#let grid(width: 100pt, height: 100pt) = {
+  for x in range(0, int(width / 10pt) + 1) {
+    line(start: (x * 10pt, 0pt), end: (x * 10pt, height), stroke: gray + 0.5pt)
+  }
+  for y in range(0, int(height / 10pt) + 1) {
+    line(start: (0pt, y * 10pt), end: (width, y * 10pt), stroke: gray + 0.5pt)
+  }
+}
+
+#grid()
+#polygon((10pt, 10pt), (40pt, 20pt), (30pt, 50pt), fill: blue.lighten(70%))
+</code></pre>
+<h3 id="3_1">3. 标注坐标</h3>
+<pre><code class="language-typst">#let labeled-polygon(..points) = {
+  polygon(..points, fill: yellow.lighten(80%))
+  for (i, point) in points.pos().enumerate() {
+    place(dx: point.at(0) - 5pt, dy: point.at(1) - 10pt)[
+      #text(size: 8pt, fill: red)[
+        (#point.at(0), #point.at(1))
+      ]
+    ]
+  }
+}
+
+#labeled-polygon(
+  (0pt, 0pt),
+  (30pt, 10pt), 
+  (25pt, 40pt),
+  (5pt, 35pt)
+)
+</code></pre>
+<h2 id="_15">常用形状的点序</h2>
+<pre><code class="language-typst">// 正方形（顺时针）
+#polygon(
+  (0pt, 0pt),    // 左上
+  (30pt, 0pt),   // 右上
+  (30pt, 30pt),  // 右下
+  (0pt, 30pt)    // 左下
+)
+
+// 箭头
+#polygon(
+  (0pt, 10pt),   // 箭尾上
+  (20pt, 10pt),  // 箭身上
+  (20pt, 5pt),   // 箭头上
+  (30pt, 15pt),  // 箭头尖
+  (20pt, 25pt),  // 箭头下
+  (20pt, 20pt),  // 箭身下
+  (0pt, 20pt)    // 箭尾下
+)
+</code></pre>
+<p>建议先在纸上画出草图，标记好坐标，再转换为代码。</p>
+<h1 id="wardenxyz_1">wardenxyz: 顺序是从左上第一个点开始顺时针旋转吗</h1>
+<p>GitHub copilot: <strong>不一定</strong>，<code>polygon</code> 的点顺序是按照你提供的坐标顺序依次连接，不强制要求从左上角开始或顺时针。</p>
+<h2 id="_16">点的连接规则</h2>
+<pre><code class="language-typst">// 点按提供顺序连接：0→1→2→3→...→0（自动闭合）
+
+// 你的例子分析：
+#polygon((0pt, 0pt), (30pt, 0pt), (30pt, 25pt), (15pt, 25pt))
+//       点0: 左上    点1: 右上      点2: 右下      点3: 左下偏右
+
+// 连接顺序：(0,0) → (30,0) → (30,25) → (15,25) → 回到(0,0)
+</code></pre>
+<h2 id="_17">不同顺序的效果</h2>
+<pre><code class="language-typst">// 顺时针绘制矩形
+#polygon(
+  (0pt, 0pt),    // 左上
+  (40pt, 0pt),   // 右上  
+  (40pt, 30pt),  // 右下
+  (0pt, 30pt),   // 左下
+  fill: blue.lighten(80%)
+)
+
+#v(1em)
+
+// 逆时针绘制（结果相同）
+#polygon(
+  (0pt, 0pt),    // 左上
+  (0pt, 30pt),   // 左下
+  (40pt, 30pt),  // 右下
+  (40pt, 0pt),   // 右上
+  fill: red.lighten(80%)
+)
+
+#v(1em)
+
+// 乱序连接（会产生交叉）
+#polygon(
+  (0pt, 0pt),    // 左上
+  (40pt, 30pt),  // 右下
+  (40pt, 0pt),   // 右上
+  (0pt, 30pt),   // 左下
+  fill: green.lighten(80%)
+)
+</code></pre>
+<h2 id="_18">最佳实践</h2>
+<ol>
+<li><strong>简单图形</strong>：顺时针或逆时针都可以</li>
+<li><strong>复杂图形</strong>：建议按边界顺序连接，避免交叉</li>
+<li><strong>调试技巧</strong>：使用点可视化函数查看连接顺序</li>
+</ol>
+<pre><code class="language-typst">// 启用点可视化来调试
+#let show-points(points) = {
+  for (i, point) in points.enumerate() {
+    place(dx: point.at(0), dy: point.at(1))[
+      #circle(radius: 2pt, fill: red)
+      #text(size: 8pt, fill: blue)[#i]
+    ]
+  }
+}
+
+#let my-points = ((0pt, 0pt), (30pt, 0pt), (30pt, 25pt), (15pt, 25pt))
+#polygon(..my-points, fill: yellow.lighten(80%))
+#show-points(my-points)
+</code></pre>
+<p>关键是理解 Typst 会按你提供的点的顺序依次连线，最后自动闭合到第一个点。</p>
+<h1 id="wardenxyz_2">wardenxyz: 解释代码</h1>
+<pre><code class="language-typst">#polygon.regular(
+  fill: blue.lighten(80%),
+  stroke: blue,
+  size: 30pt,
+  vertices: 3,
+)
+</code></pre>
+<p>GitHub Copilot: 这段代码使用了 Typst 语言来绘制一个正多边形。让我来解释各个参数的作用：</p>
+<h2 id="_19">代码解释</h2>
+<pre><code class="language-typst">#polygon.regular(
+  fill: blue.lighten(80%),      // 填充颜色：蓝色变浅80%
+  stroke: blue,                 // 边框颜色：蓝色
+  size: 30pt,                   // 大小：30点
+  vertices: 3,                  // 顶点数：3个（绘制三角形）
+)
+</code></pre>
+<p><strong>各参数说明：</strong></p>
+<ul>
+<li><code>fill: blue.lighten(80%)</code> - 设置多边形的填充颜色为浅蓝色（将蓝色亮度提高80%）</li>
+<li><code>stroke: blue</code> - 设置多边形边框的颜色为蓝色</li>
+<li><code>size: 30pt</code> - 设置多边形的大小为30点</li>
+<li><code>vertices: 3</code> - 设置多边形的顶点数为3，因此绘制的是一个三角形</li>
+</ul>
+<p><strong>最终效果：</strong> 这段代码会生成一个浅蓝色填充、蓝色边框的正三角形，大小为30点。</p>
+<h1 id="wardenxyz-regular">wardenxyz: .regular 是什么意思</h1>
+<p>GitHub Copilot: <code>.regular</code> 是 Typst 中 <code>polygon</code> 模块的一个方法，用于创建<strong>正多边形</strong>。</p>
+<h2 id="_20">含义解释</h2>
+<ul>
+<li><strong><code>.regular</code></strong> = "规则的"、"正的"</li>
+<li>表示创建的多边形是<strong>正多边形</strong>（所有边长相等，所有内角相等）</li>
+</ul>
+<h2 id="_21">与其他多边形方法的区别</h2>
+<p>在 Typst 中，<code>polygon</code> 有不同的方法：</p>
+<pre><code class="language-typst">// 正多边形 - 所有边和角都相等
+#polygon.regular(vertices: 3, size: 30pt)  // 正三角形
+
+// 不规则多边形 - 通过具体坐标点定义
+#polygon((0pt, 0pt), (10pt, 0pt), (5pt, 10pt))  // 任意三角形
+</code></pre>
+<h2 id="regular">为什么使用 .regular</h2>
+<p>使用 <code>.regular</code> 的优势：
+- <strong>简单</strong>: 只需指定顶点数和大小
+- <strong>规整</strong>: 自动生成完美的正多边形
+- <strong>灵活</strong>: 通过 <code>vertices</code> 参数可以创建任意正多边形（三角形、正方形、五边形等）</p>
+<p>在你的代码中，<code>vertices: 3</code> 配合 <code>.regular</code> 创建了一个正三角形。</p>
+<h1 id="wardenxyz-curve-polygon">wardenxyz: curve 和 polygon 的异同</h1>
+<p>GitHub Copilot: ## Curve 和 Polygon 的异同</p>
+<h3 id="_22"><strong>相同点</strong></h3>
+<ul>
+<li>都是 Typst 中用于绘制图形的函数</li>
+<li>都可以设置颜色、填充、边框等样式属性</li>
+<li>都支持坐标点定义图形形状</li>
+</ul>
+<h3 id="_23"><strong>主要区别</strong></h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th><code>polygon</code></th>
+<th><code>curve</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>图形类型</strong></td>
+<td>多边形（直线段连接）</td>
+<td>曲线（平滑曲线）</td>
+</tr>
+<tr>
+<td><strong>边缘特征</strong></td>
+<td>直线边缘，有明确顶点</td>
+<td>平滑曲线边缘</td>
+</tr>
+<tr>
+<td><strong>封闭性</strong></td>
+<td>自动封闭图形</td>
+<td>可开放或封闭</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_24"><strong>使用示例对比</strong></h3>
+<pre><code class="language-typst">// Polygon - 直线连接的多边形
+#polygon((0pt, 0pt), (20pt, 0pt), (10pt, 15pt))  // 三角形
+
+// Polygon 正多边形
+#polygon.regular(vertices: 6, size: 20pt)  // 正六边形
+
+// Curve - 平滑曲线
+#path(
+  fill: red.lighten(80%),
+  stroke: red,
+  closed: true,
+  ((0pt, 0pt), (20pt, 0pt), (10pt, 15pt))
+)
+</code></pre>
+<h3 id="_25"><strong>选择建议</strong></h3>
+<ul>
+<li><strong>使用 <code>polygon</code></strong>: 需要绘制有明确边角的图形（三角形、四边形、星形等）</li>
+<li><strong>使用 <code>curve</code></strong>: 需要绘制平滑的曲线图形（圆润的形状、波浪线等）</li>
+</ul>
+<p>在你的代码中，<code>polygon</code> 适合绘制三角形这种有明确顶点的几何图形。</p>
+    </article>
+    <aside class="toc" id="toc">
+      <div class="toc-title">大纲</div>
+      <div class="toc">
+<ul>
+<li><a href="#typst">Typst 语法简单介绍</a></li>
+<li><a href="#wardenxyz-typst-let-show">wardenxyz: 解释下 Typst 的 let 和 show</a><ul>
+<li><a href="#let-">let - 变量绑定</a></li>
+<li><a href="#show-">show - 样式规则</a></li>
+<li><a href="#_1">组合使用</a></li>
+</ul>
+</li>
+<li><a href="#wardenxyz-typst">wardenxyz: Typst 的函数是什么</a><ul>
+<li><a href="#_2">函数定义</a></li>
+<li><a href="#_3">函数特点</a></li>
+<li><a href="#_4">高阶函数</a></li>
+<li><a href="#_5">实际应用</a></li>
+</ul>
+</li>
+<li><a href="#wardenxyz-let-show">wardenxyz: let 后面带着的是变量和函数，那 show 呢</a><ul>
+<li><a href="#show">show 的结构</a><ul>
+<li><a href="#_6">选择器类型</a></li>
+<li><a href="#numeric">变换函numeric</a></li>
+</ul>
+</li>
+<li><a href="#let">与 let 的区别</a></li>
+</ul>
+</li>
+<li><a href="#wardenxyz-typst_1">wardenxyz: Typst 除了这两个还有什么重要的语法点吗</a><ul>
+<li><a href="#set-">#set - 设置样式</a></li>
+<li><a href="#import-include-">#import 和 #include - 模块系统</a></li>
+<li><a href="#_7">内容块和代码模式</a></li>
+<li><a href="#_8">条件语句和循环</a></li>
+<li><a href="#_9">内置函数和方法</a></li>
+<li><a href="#context-">#context - 上下文访问</a></li>
+</ul>
+</li>
+<li><a href="#wardenxyz-polygon">wardenxyz: polygon 呢，这个的用处</a><ul>
+<li><a href="#_10">基本用法</a></li>
+<li><a href="#_11">实际应用场景</a><ul>
+<li><a href="#1">1. 创建箭头和指示符</a></li>
+<li><a href="#2">2. 装饰性元素</a></li>
+<li><a href="#3">3. 图表和示意图</a></li>
+<li><a href="#4">4. 与其他元素结合</a></li>
+</ul>
+</li>
+<li><a href="#_12">参数说明</a></li>
+</ul>
+</li>
+<li><a href="#wardenxyz">wardenxyz: 那我怎么知道哪个点是哪个点</a><ul>
+<li><a href="#_13">坐标系统理解</a></li>
+<li><a href="#_14">调试技巧</a><ul>
+<li><a href="#1_1">1. 逐步添加点</a></li>
+<li><a href="#2_1">2. 使用网格背景</a></li>
+<li><a href="#3_1">3. 标注坐标</a></li>
+</ul>
+</li>
+<li><a href="#_15">常用形状的点序</a></li>
+</ul>
+</li>
+<li><a href="#wardenxyz_1">wardenxyz: 顺序是从左上第一个点开始顺时针旋转吗</a><ul>
+<li><a href="#_16">点的连接规则</a></li>
+<li><a href="#_17">不同顺序的效果</a></li>
+<li><a href="#_18">最佳实践</a></li>
+</ul>
+</li>
+<li><a href="#wardenxyz_2">wardenxyz: 解释代码</a><ul>
+<li><a href="#_19">代码解释</a></li>
+</ul>
+</li>
+<li><a href="#wardenxyz-regular">wardenxyz: .regular 是什么意思</a><ul>
+<li><a href="#_20">含义解释</a></li>
+<li><a href="#_21">与其他多边形方法的区别</a></li>
+<li><a href="#regular">为什么使用 .regular</a></li>
+</ul>
+</li>
+<li><a href="#wardenxyz-curve-polygon">wardenxyz: curve 和 polygon 的异同</a><ul>
+<li><a href="#_22">相同点</a></li>
+<li><a href="#_23">主要区别</a></li>
+<li><a href="#_24">使用示例对比</a></li>
+<li><a href="#_25">选择建议</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container" style="text-align: center;">
+      <div>© 2024 - 2025 wardenxyz</div>
+      <div>MIT License</div>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="回到顶部">↑</button>
+
+  <script src="../../static/main.js"></script>
+</body>
+</html>

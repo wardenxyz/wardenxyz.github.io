@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>在 Windows 上配置 Rust 环境</title>
+  <link rel="stylesheet" href="../../static/style.css" />
+  <link rel="icon" href="../../static/favicon.svg" type="image/svg+xml" />
+  <meta name="color-scheme" content="light dark" />
+  
+  <!-- MathJax Configuration -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true,
+        tags: 'ams'
+      },
+      options: {
+        ignoreHtmlClass: 'tex2jax_ignore',
+        processHtmlClass: 'tex2jax_process'
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../../index.html">My Blog</a>
+  <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-controls="primaryNav" aria-expanded="false">☰</button>
+  <nav class="nav" id="primaryNav">
+        <a class="nav-link" href="../../index.html">首页</a>
+        <a class="nav-link" href="../../categories.html">Categories</a>
+        <a class="nav-link" href="../../tags.html">Tags</a>
+        <a class="nav-link github" href="https://github.com/wardenxyz" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container layout layout-3">
+    <aside class="sidebar-col" id="sidebar">
+      <nav class="sidebar" aria-label="所有文章"><div class="sidebar-group"><div class="sidebar-year">Others</div><ul><li><a href="../../index.html">随便写写</a></li><li><a href="../../categories.html">Categories</a></li><li><a href="../../tags.html">Tags</a></li></ul></div><div class="sidebar-group"><div class="sidebar-year">2025</div><ul><li><a href="SOPS.html">SOPS:Secrets OPerationS</a></li><li><a href="age.html">age-note</a></li><li><a href="yt-dlp.html">yt-dlp 使用</a></li><li><a href="cross-platform-byte-control.md.html">跨系统避免换行符导致字节差异的方法</a></li><li><a href="introduce-passkey.html">Passkey:Secure,Convenient Login</a></li><li><a href="npm-config.html">修改 npm node_modules 位置</a></li><li><a href="powershell-get-command.html">PowerShell Get-Command 命令</a></li><li><a href="background-color.html">背景颜色</a></li><li><a href="git-hook.html">自用 git hook</a></li><li><a href="typst-syntax-simple-introduction.html">Typst 语法简单介绍</a></li><li><a href="shut-wps-background-runing.html">关闭 WPS 后台运行</a></li><li><a href="font.html">个人字体</a></li><li><a href="github-avatar.html">GitHub 头像</a></li><li><a href="regex-note.html">正则表达式简明指南</a></li><li><a href="Rollback-commit.html">回滚提交</a></li><li><a href="use_python_gen_site.html">使用 Python 生成静态网页</a></li><li><a href="install_wsl2_and_to_d_disk.html">安装 WSL2 并迁移到 D 盘</a></li><li><a href="zed_use_typstyle.html">在 zed 上配置 typstyle</a></li><li><a href="Rust_Windows_Config.html" class="active">在 Windows 上配置 Rust 环境</a></li><li><a href="conda_note.html">conda 使用笔记</a></li><li><a href="Zed_set_OpenAI_API_Compatible_model.html">在 Zed Editor 中配置 OpenAI API 兼容的模型</a></li><li><a href="zed_use.html">zed 使用笔记</a></li><li><a href="ollama_run_deepseek.html">ollama 运行 DeepSeek 模型</a></li></ul></div><div class="sidebar-group"><div class="sidebar-year">2024</div><ul><li><a href="../2024/pull_request_steps.html">Pull Request 的步骤</a></li><li><a href="../2024/Typst_note.html">Typst 笔记</a></li><li><a href="../2024/git_reset.html">git 重置当前分支</a></li><li><a href="../2024/vitepress_note.html">vitepress 学习笔记</a></li><li><a href="../2024/deploy_gitHub_page.html">GitHub page 搭建学习笔记</a></li><li><a href="../2024/Linux_note.html">Linux 学习笔记</a></li><li><a href="../2024/OpenSSL_encrypt_note.html">OpenSSL 加解密速查笔记</a></li><li><a href="../2024/python_note.html">python 学习笔记</a></li><li><a href="../2024/lazy.nvim_note.html">lazy.nvim 学习笔记</a></li><li><a href="../2024/git-izer_note.html">git-sizer 学习笔记</a></li><li><a href="../2024/git_force_overwrite_local_repo.html">git 强制覆盖本地仓库</a></li><li><a href="../2024/bilibili_embedding_code.html">B站嵌入代码</a></li><li><a href="../2024/personal_software.html">个人自用软件</a></li><li><a href="../2024/you-get_note.html">用 you-get 下载B站视频</a></li><li><a href="../2024/git-crypt_note.html">git-crypt 学习笔记</a></li><li><a href="../2024/gen_GPG_key.html">生成 GPG 密钥</a></li><li><a href="../2024/git-crypt_official_doc.html">git-crypt 官方文档</a></li><li><a href="../2024/git-crypt_official_doc_zh.html">git-crypt 官方文档中文翻译</a></li><li><a href="../2024/README_outline.html">README 文档结构</a></li><li><a href="../2024/git_commit_message_standard.html">git commit message 规范</a></li><li><a href="../2024/vscode_snippets_variable.html">vscode snippets 预置变量</a></li><li><a href="../2024/modern_cryptography.html">现代加密学</a></li><li><a href="../2024/former_doctor_who.html">神秘博士复活时间表</a></li><li><a href="../2024/ffmpeg_note.html">ffmpeg 自用命令</a></li><li><a href="../2024/qqmail_third_party_config.html">第三方邮箱客户端配置QQmail & Foxmail</a></li><li><a href="../2024/git_Cli.html">git 命令手册</a></li><li><a href="../2024/LaTeX_note.html">LaTeX 与希腊字母对照表</a></li><li><a href="../2024/git_branch.html">git 分支操作</a></li><li><a href="../2024/remove_file_from_git_history.html">从 git 提交中移除文件</a></li><li><a href="../2024/vim_note.html">Vim 高效速查笔记</a></li><li><a href="../2024/obsidian_shortcut_key.html">obsidian快捷键</a></li><li><a href="../2024/android_QQ_file_storage_path.html">手机QQ文件存储路径</a></li><li><a href="../2024/browser_UA_value.html">浏览器UA值</a></li><li><a href="../2024/gpg_communication.html">GPG 在通信中的简单理解</a></li><li><a href="../2024/vscode_note.html">VSCode 高效使用指南</a></li></ul></div></nav>
+    </aside>
+    <article class="content" id="content">
+      <h1 id="windows-rust">在 Windows 上配置 Rust 环境</h1>
+<p>起因：想编译 Zed 的 Windows 版，但不想下载 visual studio</p>
+<p>视频：https://www.bilibili.com/video/BV12RDhYPE7M</p>
+<h2 id="_1">步骤简化</h2>
+<p>一、配置 GCC 环境</p>
+<p>在 <a href="https://github.com/niXman/mingw-builds-binaries/releases">mingw</a> 网页下下载 <code>x86_64-15.1.0-release-win32-seh-ucrt-rt_v12-rev0.7z</code></p>
+<p>二、下载 <a href="https://www.rust-lang.org/zh-CN/learn/get-started">Rust</a></p>
+<p>三、配置用户变量</p>
+<pre><code>变量                                值
+RUSTUP_DIST_SERVER                 https://mirrors.ustc.edu.cn/rust-static
+RUSTUP_UPDATE_ROOT                 https://mirrors.ustc.edu.cn/rust-static/rustup
+RUSTUP_HOME                        D:\Rust\rustup
+CARGO_HOME                         D:\Rust\cargo
+</code></pre>
+<p>四、安装</p>
+<p>点击下载的 <code>rustup-init.exe</code>，运行开启一个终端，按照步骤安装</p>
+<p>五、配置 cargo 镜像源</p>
+<p>在 <code>D:\Rust\cargo\config.toml</code> 中添加如下内容</p>
+<pre><code class="language-toml">[source.crates-io]
+replace-with = 'ustc'
+
+[source.ustc]
+registry = "sparse+https://mirrors.ustc.edu.cn/crates.io-index/"
+
+[registries.ustc]
+index = "sparse+https://mirrors.ustc.edu.cn/crates.io-index/"
+</code></pre>
+<h2 id="_2">详细解释</h2>
+<h3 id="gcc">配置 gcc 环境</h3>
+<p>在 <a href="https://github.com/niXman/mingw-builds-binaries/releases">mingw</a> 网页下下载 <code>x86_64-15.1.0-release-win32-seh-ucrt-rt_v12-rev0.7z</code>，其中 <code>x86_64</code> 是 64 位的，<code>seh</code> 是异常处理方式，<code>ucrt</code> 是 C 运行时库，<code>rt_v12-rev0</code> 是版本号，15.1.0 是 GCC 的版本号。</p>
+<p>解压后把 <code>bin</code> 路径放到环境变量中</p>
+<p>检测</p>
+<pre><code class="language-ps">gcc -v
+
+Using built-in specs.
+COLLECT_GCC=D:\workspace\mingw64\bin\gcc.exe
+COLLECT_LTO_WRAPPER=D:/workspace/mingw64/bin/../libexec/gcc/x86_64-w64-mingw32/15.1.0/lto-wrapper.exe
+Target: x86_64-w64-mingw32
+Configured with: ../../../src/gcc-15.1.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --with-sysroot=/c/buildroot/x86_64-1510-win32-seh-ucrt-rt_v12-rev0/mingw64 --enable-host-shared --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=win32 --enable-libstdcxx-threads=yes --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-mingw-wildcard --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-libstdcxx-filesystem-ts=yes --disable-libssp --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=nocona --with-tune=core2 --with-libiconv --with-system-zlib --with-gmp=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-mpc=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-isl=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-win32-seh-rev0, Built by MinGW-Builds project' --with-bugurl=https://github.com/niXman/mingw-builds LD_FOR_TARGET=/c/buildroot/x86_64-1510-win32-seh-ucrt-rt_v12-rev0/mingw64/bin/ld.exe --with-boot-ldflags='-pipe -fno-ident -L/c/buildroot/x86_64-1510-win32-seh-ucrt-rt_v12-rev0/mingw64/opt/lib -L/c/buildroot/prerequisites/x86_64-zlib-static/lib -L/c/buildroot/prerequisites/x86_64-w64-mingw32-static/lib  -Wl,--disable-dynamicbase -static-libstdc++ -static-libgcc'
+Thread model: win32
+Supported LTO compression algorithms: zlib
+gcc version 15.1.0 (x86_64-win32-seh-rev0, Built by MinGW-Builds project)
+</code></pre>
+<h3 id="rust">下载 Rust</h3>
+<p>这里下载 <a href="https://www.rust-lang.org/zh-CN/learn/get-started">Rust</a>，32 位和 64 位两种，根据实际情况选取</p>
+<h3 id="rust-toolchain">配置 Rust Toolchain 镜像源（用户变量）</h3>
+<ul>
+<li>中科大镜像源：https://mirrors.ustc.edu.cn/help/rust-static.html#rust-toolchain</li>
+</ul>
+<pre><code class="language-powershell">$env:RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static"
+$env:RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup"
+</code></pre>
+<p>配置好的用户变量：</p>
+<pre><code>变量                                值
+RUSTUP_DIST_SERVER                 https://mirrors.ustc.edu.cn/rust-static
+RUSTUP_UPDATE_ROOT                 https://mirrors.ustc.edu.cn/rust-static/rustup
+</code></pre>
+<h3 id="_3">配置安装位置</h3>
+<p>在 D 盘下创建两个文件夹</p>
+<pre><code>D:\Rust\rustup
+D:\Rust\cargo
+</code></pre>
+<p>把这两个文件夹加入到用户变量中去</p>
+<pre><code>变量                                值
+RUSTUP_HOME                        D:\Rust\rustup
+CARGO_HOME                         D:\Rust\cargo
+</code></pre>
+<h3 id="_4">用户变量汇总</h3>
+<pre><code>变量                                值
+RUSTUP_DIST_SERVER                 https://mirrors.ustc.edu.cn/rust-static
+RUSTUP_UPDATE_ROOT                 https://mirrors.ustc.edu.cn/rust-static/rustup
+RUSTUP_HOME                        D:\Rust\rustup
+CARGO_HOME                         D:\Rust\cargo
+</code></pre>
+<h3 id="_5">安装</h3>
+<p>点击下载的 <code>rustup-init.exe</code>，运行开启一个终端，如下</p>
+<pre><code class="language-powershell">Rust Visual C++ prerequisites
+
+Rust requires a linker and Windows API libraries but they don't seem to beavailable.
+
+These components can be acquired through a Visual Studio installer.
+
+1) Quick install via the Visual Studio Community installer
+(free for individuals,academic uses, and open source).
+
+2) Manually install the prerequisites
+(for enterprise and advanced users).
+
+3) Don't install the prerequisites
+(if you're targeting the GNU ABI)
+
+&gt;2                  &lt;----------------------------------------------------- 这里选第 2 个
+
+You can acquire the build tools by installing Hicrosoft Visual Studio.
+
+        https://visualstudio.microsoft.com/downloads
+
+Check the box for "Desktop development with C++" which will ensure that the needed components are installed.If your locale language is not Englishthen additionally check the box for English under Language packs.
+
+For more details see:
+
+        https://rust-lang.github.io/rustup/installation/windows-msvc.html
+
+Install the C++ build tools before proceeding.
+
+If you will be targeting the GNU ABI or otherwise know what you are
+doing then it is fine to continue installation without the build
+tools, but otherwise, install the C++ build tools before proceeding.
+
+Continue?(y/N)
+y                 &lt;----------------------------------------------------------------- Yes
+
+The Cargo home directory is located at:
+
+        D:\Rust\cargo
+
+This can be modified with the CARGO_HOME environment variable.
+
+The cargo, rustc, rustup and other commands will be added to Cargo's bin directory, located at:
+
+        D:\Rust\cargo\bin
+
+This path will then be added to your PATH environment variable by
+modifying the HKEY_CURRENT_USER/Environment/PATH registry key.
+
+You can uninstall at any time with rustup self uninstall and these changes will be reverted.
+
+Current installation options:
+
+        default host triple: x86_64-pc-windows-msvc
+            default toolchain: stable(default)
+                                profile: default
+     modify PATH variable: yes
+
+1) Proceed with standard installation(default - just press enter)
+
+2) Customize installation
+
+3) Cancel installation
+&gt;2                    &lt;------------------------------------------------------------------- 选第 2 个
+
+I'm going to ask you the value of each of these installation options.
+You may simply press the Enter key to leave unchanged.
+
+Default host triple? [x86_64-pc-windows-msvc]
+x86_64-pc-windows-gnu            &lt;------------------------------------ 输入 x86_64-pc-windows-gnu
+
+Default toolchain?(stable/beta/nightly/none) [stable]
+        &lt;----------------------------------------------- 回车
+
+Profile (which tools and data to install)?(minimal/default/complete) [default]
+        &lt;----------------------------------------------- 回车
+
+Modify PATH variable?(Y/n)
+y             &lt;----------------------------------------------------------------------- Yes
+
+Current installation options:
+
+        default host triple: x86_64-pc-windows-gnu
+            default toolchain: table
+                                profile: default
+     modify PATH variable: yes
+
+1) Proceed with selected options(default - just press enter)
+2) Customize installation
+3) Cancel installation
+&gt;1                   &lt;--------------------------------------------------------------- 选第 1 个
+
+info: profile set to 'default'
+info: setting default host triple to x86_64-pc-windows-gnu
+info: syncing channel updates for 'stable-x86_64-pc-windows-gnu'
+info: latest update on 2024-10-17, rust version 1.82.0(f6e511eec 2024-10-15)
+info:downloading component 'cargo'
+    10.3 MiB/  10.3MiB (100%)   4.8MiB/s in  2s  ETA: 0S
+info: downloading component 'clippy'
+     4.1 MiB/   4.1MiB (100%)   4.1MiB/s in  1s  ETA: 0s
+info: downloading component 'rust-docs'
+    16.3 MiB/  16.3MiB (100%)   1.7MiB/s in  9s  ETA: 0s
+info: downloading component 'rust-mingw'
+     4.7 MiB/   4.7MiB (100%)   2.3MiB/s in  2s  ETA: 0s
+info: downloading component 'rust-std'
+    23.7 MiB/  23.7MiB (100%)   3.7MiB/s in  8s  ETA: 0s
+info: downloading component 'rustc'
+    79.2 MiB/  79.2MiB (100%)   3.7MiB/s in 21s  ETA: 0s
+info: downloading component 'rustfmt'
+info: installing component 'cargo'
+info: installing component 'clippy'
+info: installing component 'rust-docs'
+    16.3 MiB/  16.3MiB (100%)   3.2MiB/s in  5s  ETA: 0s
+info: installing component 'rust-mingw'
+info: installing component'rust-std'
+    23.7 MiB/  23.7MiB (100%)  14.3MiB/s in  1S  ETA: 0s
+info: installing component 'rustc'
+    79.2 MiB/  79.2MiB (100%)  14.2MiB/s in  5s  ETA: 0s
+info: installing component 'rustfmt'
+info: default toolchain set to 'stable-x86_64-pc-windows-gnu'
+
+        stable-x86_64-pc-windows-gnu installed - rustc 1.82.0(f6e511eec 2024-10-15)
+
+Rust is installed now. Great!
+
+To get started you may need to restart your current shell
+This would reload its PATH environment variable to include
+Cargo's bin directory(D:Rust\cargo\bin)
+Press the Enter key to continue.
+</code></pre>
+<p>一共八步</p>
+<p>检测</p>
+<pre><code class="language-ps">rustup --version
+
+rustup 1.28.1 (f9edccde0 2025-03-05)
+info: This is the version for the rustup toolchain manager, not the rustc compiler.
+info: The currently active `rustc` version is `rustc 1.85.0 (4d91de4e4 2025-02-17)`
+</code></pre>
+<pre><code class="language-ps">cargo --version
+
+cargo 1.85.0 (d73d2caf9 2024-12-31)
+</code></pre>
+<h3 id="cargo">配置 cargo 镜像源</h3>
+<p>这里选择中科大镜像源：https://mirrors.ustc.edu.cn/help/crates.io-index.html</p>
+<p>在 <code>D:\Rust\cargo\config.toml</code> 中添加如下内容</p>
+<pre><code class="language-toml">[source.crates-io]
+replace-with = 'ustc'
+
+[source.ustc]
+registry = "sparse+https://mirrors.ustc.edu.cn/crates.io-index/"
+
+[registries.ustc]
+index = "sparse+https://mirrors.ustc.edu.cn/crates.io-index/"
+</code></pre>
+    </article>
+    <aside class="toc" id="toc">
+      <div class="toc-title">大纲</div>
+      <div class="toc">
+<ul>
+<li><a href="#windows-rust">在 Windows 上配置 Rust 环境</a><ul>
+<li><a href="#_1">步骤简化</a></li>
+<li><a href="#_2">详细解释</a><ul>
+<li><a href="#gcc">配置 gcc 环境</a></li>
+<li><a href="#rust">下载 Rust</a></li>
+<li><a href="#rust-toolchain">配置 Rust Toolchain 镜像源（用户变量）</a></li>
+<li><a href="#_3">配置安装位置</a></li>
+<li><a href="#_4">用户变量汇总</a></li>
+<li><a href="#_5">安装</a></li>
+<li><a href="#cargo">配置 cargo 镜像源</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container" style="text-align: center;">
+      <div>© 2024 - 2025 wardenxyz</div>
+      <div>MIT License</div>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="回到顶部">↑</button>
+
+  <script src="../../static/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>git-crypt 学习笔记</title>
+  <link rel="stylesheet" href="../../static/style.css" />
+  <link rel="icon" href="../../static/favicon.svg" type="image/svg+xml" />
+  <meta name="color-scheme" content="light dark" />
+  
+  <!-- MathJax Configuration -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true,
+        tags: 'ams'
+      },
+      options: {
+        ignoreHtmlClass: 'tex2jax_ignore',
+        processHtmlClass: 'tex2jax_process'
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../../index.html">My Blog</a>
+  <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-controls="primaryNav" aria-expanded="false">☰</button>
+  <nav class="nav" id="primaryNav">
+        <a class="nav-link" href="../../index.html">首页</a>
+        <a class="nav-link" href="../../categories.html">Categories</a>
+        <a class="nav-link" href="../../tags.html">Tags</a>
+        <a class="nav-link github" href="https://github.com/wardenxyz" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container layout layout-3">
+    <aside class="sidebar-col" id="sidebar">
+      <nav class="sidebar" aria-label="所有文章"><div class="sidebar-group"><div class="sidebar-year">Others</div><ul><li><a href="../../index.html">随便写写</a></li><li><a href="../../categories.html">Categories</a></li><li><a href="../../tags.html">Tags</a></li></ul></div><div class="sidebar-group"><div class="sidebar-year">2025</div><ul><li><a href="../2025/SOPS.html">SOPS:Secrets OPerationS</a></li><li><a href="../2025/age.html">age-note</a></li><li><a href="../2025/yt-dlp.html">yt-dlp 使用</a></li><li><a href="../2025/cross-platform-byte-control.md.html">跨系统避免换行符导致字节差异的方法</a></li><li><a href="../2025/introduce-passkey.html">Passkey:Secure,Convenient Login</a></li><li><a href="../2025/npm-config.html">修改 npm node_modules 位置</a></li><li><a href="../2025/powershell-get-command.html">PowerShell Get-Command 命令</a></li><li><a href="../2025/background-color.html">背景颜色</a></li><li><a href="../2025/git-hook.html">自用 git hook</a></li><li><a href="../2025/typst-syntax-simple-introduction.html">Typst 语法简单介绍</a></li><li><a href="../2025/shut-wps-background-runing.html">关闭 WPS 后台运行</a></li><li><a href="../2025/font.html">个人字体</a></li><li><a href="../2025/github-avatar.html">GitHub 头像</a></li><li><a href="../2025/regex-note.html">正则表达式简明指南</a></li><li><a href="../2025/Rollback-commit.html">回滚提交</a></li><li><a href="../2025/use_python_gen_site.html">使用 Python 生成静态网页</a></li><li><a href="../2025/install_wsl2_and_to_d_disk.html">安装 WSL2 并迁移到 D 盘</a></li><li><a href="../2025/zed_use_typstyle.html">在 zed 上配置 typstyle</a></li><li><a href="../2025/Rust_Windows_Config.html">在 Windows 上配置 Rust 环境</a></li><li><a href="../2025/conda_note.html">conda 使用笔记</a></li><li><a href="../2025/Zed_set_OpenAI_API_Compatible_model.html">在 Zed Editor 中配置 OpenAI API 兼容的模型</a></li><li><a href="../2025/zed_use.html">zed 使用笔记</a></li><li><a href="../2025/ollama_run_deepseek.html">ollama 运行 DeepSeek 模型</a></li></ul></div><div class="sidebar-group"><div class="sidebar-year">2024</div><ul><li><a href="pull_request_steps.html">Pull Request 的步骤</a></li><li><a href="Typst_note.html">Typst 笔记</a></li><li><a href="git_reset.html">git 重置当前分支</a></li><li><a href="vitepress_note.html">vitepress 学习笔记</a></li><li><a href="deploy_gitHub_page.html">GitHub page 搭建学习笔记</a></li><li><a href="Linux_note.html">Linux 学习笔记</a></li><li><a href="OpenSSL_encrypt_note.html">OpenSSL 加解密速查笔记</a></li><li><a href="python_note.html">python 学习笔记</a></li><li><a href="lazy.nvim_note.html">lazy.nvim 学习笔记</a></li><li><a href="git-izer_note.html">git-sizer 学习笔记</a></li><li><a href="git_force_overwrite_local_repo.html">git 强制覆盖本地仓库</a></li><li><a href="bilibili_embedding_code.html">B站嵌入代码</a></li><li><a href="personal_software.html">个人自用软件</a></li><li><a href="you-get_note.html">用 you-get 下载B站视频</a></li><li><a href="git-crypt_note.html" class="active">git-crypt 学习笔记</a></li><li><a href="gen_GPG_key.html">生成 GPG 密钥</a></li><li><a href="git-crypt_official_doc.html">git-crypt 官方文档</a></li><li><a href="git-crypt_official_doc_zh.html">git-crypt 官方文档中文翻译</a></li><li><a href="README_outline.html">README 文档结构</a></li><li><a href="git_commit_message_standard.html">git commit message 规范</a></li><li><a href="vscode_snippets_variable.html">vscode snippets 预置变量</a></li><li><a href="modern_cryptography.html">现代加密学</a></li><li><a href="former_doctor_who.html">神秘博士复活时间表</a></li><li><a href="ffmpeg_note.html">ffmpeg 自用命令</a></li><li><a href="qqmail_third_party_config.html">第三方邮箱客户端配置QQmail & Foxmail</a></li><li><a href="git_Cli.html">git 命令手册</a></li><li><a href="LaTeX_note.html">LaTeX 与希腊字母对照表</a></li><li><a href="git_branch.html">git 分支操作</a></li><li><a href="remove_file_from_git_history.html">从 git 提交中移除文件</a></li><li><a href="vim_note.html">Vim 高效速查笔记</a></li><li><a href="obsidian_shortcut_key.html">obsidian快捷键</a></li><li><a href="android_QQ_file_storage_path.html">手机QQ文件存储路径</a></li><li><a href="browser_UA_value.html">浏览器UA值</a></li><li><a href="gpg_communication.html">GPG 在通信中的简单理解</a></li><li><a href="vscode_note.html">VSCode 高效使用指南</a></li></ul></div></nav>
+    </aside>
+    <article class="content" id="content">
+      <h1 id="git-crypt">git-crypt 学习笔记</h1>
+<p>从 git-crypt 的<a href="https://github.com/AGWA/git-crypt/blob/master/README.md">官方文档</a>中可知</p>
+<p>git-crypt 使用 AES-256 在 CTR 模式下对文件进行加密，并且使用基于文件 SHA-1 HMAC 生成的合成初始化向量（IV）。这种操作模式在确定性选择明文攻击下被证明具有语义安全性，确保除了判断两个文件是否完全相同之外，不会泄露其他任何信息。</p>
+<p>git-crypt 是结合了 GPG（GNU Privacy Guard）和 AES 加密技术的一个工具。它允许通过 GPG 公钥/私钥系统来管理和分发加密密钥，从而实现对 Git 仓库中特定文件的安全保护。对于每个需要加密的文件，git-crypt 利用 AES-256 加密算法在 CTR 模式下进行加密，以保证数据安全。</p>
+<p>因此，git-crypt 在实际应用中整合了 GPG 的密钥管理和 AES 加密算法，实现了透明的文件加密与解密功能，使得在版本控制的同时能够保护敏感信息的安全。</p>
+<p>也就是说，git-crypt 是一个将 GPG 和 AES 结合的项目，GPG 来管理用户权限，AES 来加密文件。</p>
+<h2 id="_1">环境准备</h2>
+<ul>
+<li><a href="https://www.gpg4win.org/">gpg4win</a></li>
+<li><a href="https://git-scm.com/">git</a></li>
+<li><a href="https://github.com/AGWA/git-crypt">git-crypt</a></li>
+</ul>
+<p>要把从 <a href="https://github.com/AGWA/git-crypt/releases">git-crypt</a> 下载的 <code>git-crypt-0.7.0-x86_64.exe</code> 重命名为 <code>git-crypt.exe</code>，否则检测不到环境变量</p>
+<p>把 <code>git-crypt.exe</code> 放到 <code>git\bin</code> 目录下</p>
+<h2 id="_2">步骤</h2>
+<h2 id="1">1. 初始化仓库</h2>
+<pre><code class="language-bash">git init
+</code></pre>
+<h2 id="2-git-crypt">2. 初始化 git-crypt</h2>
+<pre><code class="language-bash">git-crypt init
+</code></pre>
+<h2 id="3-gpg">3. 添加 GPG 用户</h2>
+<pre><code class="language-bash">git-crypt add-gpg-user &lt;GPG_KEY_ID&gt;
+</code></pre>
+<h2 id="4">4. 配置加密文件</h2>
+<p>在 <code>.gitattributes</code> 文件中添加</p>
+<pre><code class="language-plaintext">## 加密指定文件
+secretfile filter=git-crypt diff=git-crypt
+
+## 加密指定文件夹下的md文件
+Test/*.md filter=git-crypt diff=git-crypt
+
+## 加密指定文件夹下的所有文件
+Test/** filter=git-crypt diff=git-crypt
+</code></pre>
+<h2 id="5">5. 提交更改</h2>
+<pre><code class="language-bash">git add .gitattributes
+</code></pre>
+<pre><code class="language-bash">git commit -m "Add git-crypt configuration"
+</code></pre>
+<pre><code class="language-bash">git add .
+</code></pre>
+<pre><code class="language-bash">git commit -m "commit all"
+</code></pre>
+<h2 id="6">6. 加密文件</h2>
+<pre><code class="language-bash">git-crypt lock
+</code></pre>
+<h2 id="7">7. 解密文件</h2>
+<pre><code class="language-bash">git-crypt unlock
+</code></pre>
+<h2 id="_3">相关命令</h2>
+<pre><code class="language-bash">$ git-crypt status
+not encrypted: .gitattributes
+    encrypted: secretfile
+</code></pre>
+<h2 id="git-crypt_1">git-crypt 工作流示意图</h2>
+<p><strong>（由 DeepSeek-R1 生成）</strong></p>
+<pre><code class="language-mermaid">graph TD
+    A[管理员] --&gt; B[初始化仓库]
+    B --&gt; C[创建.gitattributes文件]
+    C --&gt; D[指定加密文件模式]
+    D --&gt; E[添加GPG用户/导出密钥]
+
+    subgraph 有权限开发者
+        F[开发者] --&gt; G[克隆仓库]
+        G --&gt; H[git-crypt unlock]
+        H --&gt; I[查看解密文件]
+        I --&gt; J[修改文件]
+        J --&gt; K[自动加密提交]
+    end
+
+    subgraph 无权限开发者
+        L[普通成员] --&gt; M[克隆仓库]
+        M --&gt; N[看到加密内容]
+        N --&gt; O[修改非加密文件]
+        O --&gt; P[正常提交]
+    end
+
+    E --&gt; F
+    E --&gt; L
+    K --&gt; Q[远程仓库]
+    P --&gt; Q
+    Q --&gt; G
+    Q --&gt; M
+</code></pre>
+<h1 id="ubuntu-git-crypt">Ubuntu 下使用 git-crypt</h1>
+<h2 id="git-crypt_2">安装 git-crypt</h2>
+<pre><code class="language-bash">sudo apt-get update
+</code></pre>
+<pre><code class="language-bash">sudo apt-get install git-crypt
+</code></pre>
+<h2 id="gpg">安装 gpg</h2>
+<pre><code class="language-bash">sudo apt update
+</code></pre>
+<pre><code class="language-bash">sudo apt install gpg
+</code></pre>
+<p>导入密钥</p>
+<pre><code class="language-bash">gpg --import
+</code></pre>
+<p>目前实测可以和 git-crypt 一起使用的 git、gpg 版本如下：</p>
+<ul>
+<li>Ubuntu</li>
+</ul>
+<pre><code class="language-bash">git --version
+
+git version 2.48.1
+</code></pre>
+<pre><code class="language-bash">gpg --version
+
+gpg (GnuPG) 2.4.4
+libgcrypt 1.11.0
+Copyright (C) 2024 g10 Code GmbH
+License GNU GPL-3.0-or-later &lt;https://gnu.org/licenses/gpl.html&gt;
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Home: /home/xyz/.gnupg
+支持的算法：
+公钥： RSA, ELG, DSA, ECDH, ECDSA, EDDSA
+密文： IDEA, 3DES, CAST5, BLOWFISH, AES, AES192, AES256, TWOFISH,
+    CAMELLIA128, CAMELLIA192, CAMELLIA256
+散列： SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224
+压缩： 不压缩, ZIP, ZLIB, BZIP2
+</code></pre>
+<ul>
+<li>Windows</li>
+</ul>
+<pre><code class="language-bash">git --version
+
+git version 2.49.1.windows.1
+</code></pre>
+<pre><code class="language-bash">gpg --version
+
+gpg (GnuPG) 2.4.8
+libgcrypt 1.11.1
+Copyright (C) 2025 g10 Code GmbH
+License GNU GPL-3.0-or-later &lt;https://gnu.org/licenses/gpl.html&gt;
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Home: C:\Users\24109\AppData\Roaming\gnupg
+Supported algorithms:
+Pubkey: RSA, ELG, DSA, ECDH, ECDSA, EDDSA
+Cipher: IDEA, 3DES, CAST5, BLOWFISH, AES, AES192, AES256, TWOFISH,
+        CAMELLIA128, CAMELLIA192, CAMELLIA256
+Hash: SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224
+Compression: Uncompressed, ZIP, ZLIB, BZIP2
+</code></pre>
+    </article>
+    <aside class="toc" id="toc">
+      <div class="toc-title">大纲</div>
+      <div class="toc">
+<ul>
+<li><a href="#git-crypt">git-crypt 学习笔记</a><ul>
+<li><a href="#_1">环境准备</a></li>
+<li><a href="#_2">步骤</a></li>
+<li><a href="#1">1. 初始化仓库</a></li>
+<li><a href="#2-git-crypt">2. 初始化 git-crypt</a></li>
+<li><a href="#3-gpg">3. 添加 GPG 用户</a></li>
+<li><a href="#4">4. 配置加密文件</a></li>
+<li><a href="#5">5. 提交更改</a></li>
+<li><a href="#6">6. 加密文件</a></li>
+<li><a href="#7">7. 解密文件</a></li>
+<li><a href="#_3">相关命令</a></li>
+<li><a href="#git-crypt_1">git-crypt 工作流示意图</a></li>
+</ul>
+</li>
+<li><a href="#ubuntu-git-crypt">Ubuntu 下使用 git-crypt</a><ul>
+<li><a href="#git-crypt_2">安装 git-crypt</a></li>
+<li><a href="#gpg">安装 gpg</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container" style="text-align: center;">
+      <div>© 2024 - 2025 wardenxyz</div>
+      <div>MIT License</div>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="回到顶部">↑</button>
+
+  <script src="../../static/main.js"></script>
+</body>
+</html>

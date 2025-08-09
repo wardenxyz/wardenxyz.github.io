@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Passkey:Secure,Convenient Login</title>
+  <link rel="stylesheet" href="../../static/style.css" />
+  <link rel="icon" href="../../static/favicon.svg" type="image/svg+xml" />
+  <meta name="color-scheme" content="light dark" />
+  
+  <!-- MathJax Configuration -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true,
+        tags: 'ams'
+      },
+      options: {
+        ignoreHtmlClass: 'tex2jax_ignore',
+        processHtmlClass: 'tex2jax_process'
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../../index.html">My Blog</a>
+  <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-controls="primaryNav" aria-expanded="false">☰</button>
+  <nav class="nav" id="primaryNav">
+        <a class="nav-link" href="../../index.html">首页</a>
+        <a class="nav-link" href="../../categories.html">Categories</a>
+        <a class="nav-link" href="../../tags.html">Tags</a>
+        <a class="nav-link github" href="https://github.com/wardenxyz" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container layout layout-3">
+    <aside class="sidebar-col" id="sidebar">
+      <nav class="sidebar" aria-label="所有文章"><div class="sidebar-group"><div class="sidebar-year">Others</div><ul><li><a href="../../index.html">随便写写</a></li><li><a href="../../categories.html">Categories</a></li><li><a href="../../tags.html">Tags</a></li></ul></div><div class="sidebar-group"><div class="sidebar-year">2025</div><ul><li><a href="SOPS.html">SOPS:Secrets OPerationS</a></li><li><a href="age.html">age-note</a></li><li><a href="yt-dlp.html">yt-dlp 使用</a></li><li><a href="cross-platform-byte-control.md.html">跨系统避免换行符导致字节差异的方法</a></li><li><a href="introduce-passkey.html" class="active">Passkey:Secure,Convenient Login</a></li><li><a href="npm-config.html">修改 npm node_modules 位置</a></li><li><a href="powershell-get-command.html">PowerShell Get-Command 命令</a></li><li><a href="background-color.html">背景颜色</a></li><li><a href="git-hook.html">自用 git hook</a></li><li><a href="typst-syntax-simple-introduction.html">Typst 语法简单介绍</a></li><li><a href="shut-wps-background-runing.html">关闭 WPS 后台运行</a></li><li><a href="font.html">个人字体</a></li><li><a href="github-avatar.html">GitHub 头像</a></li><li><a href="regex-note.html">正则表达式简明指南</a></li><li><a href="Rollback-commit.html">回滚提交</a></li><li><a href="use_python_gen_site.html">使用 Python 生成静态网页</a></li><li><a href="install_wsl2_and_to_d_disk.html">安装 WSL2 并迁移到 D 盘</a></li><li><a href="zed_use_typstyle.html">在 zed 上配置 typstyle</a></li><li><a href="Rust_Windows_Config.html">在 Windows 上配置 Rust 环境</a></li><li><a href="conda_note.html">conda 使用笔记</a></li><li><a href="Zed_set_OpenAI_API_Compatible_model.html">在 Zed Editor 中配置 OpenAI API 兼容的模型</a></li><li><a href="zed_use.html">zed 使用笔记</a></li><li><a href="ollama_run_deepseek.html">ollama 运行 DeepSeek 模型</a></li></ul></div><div class="sidebar-group"><div class="sidebar-year">2024</div><ul><li><a href="../2024/pull_request_steps.html">Pull Request 的步骤</a></li><li><a href="../2024/Typst_note.html">Typst 笔记</a></li><li><a href="../2024/git_reset.html">git 重置当前分支</a></li><li><a href="../2024/vitepress_note.html">vitepress 学习笔记</a></li><li><a href="../2024/deploy_gitHub_page.html">GitHub page 搭建学习笔记</a></li><li><a href="../2024/Linux_note.html">Linux 学习笔记</a></li><li><a href="../2024/OpenSSL_encrypt_note.html">OpenSSL 加解密速查笔记</a></li><li><a href="../2024/python_note.html">python 学习笔记</a></li><li><a href="../2024/lazy.nvim_note.html">lazy.nvim 学习笔记</a></li><li><a href="../2024/git-izer_note.html">git-sizer 学习笔记</a></li><li><a href="../2024/git_force_overwrite_local_repo.html">git 强制覆盖本地仓库</a></li><li><a href="../2024/bilibili_embedding_code.html">B站嵌入代码</a></li><li><a href="../2024/personal_software.html">个人自用软件</a></li><li><a href="../2024/you-get_note.html">用 you-get 下载B站视频</a></li><li><a href="../2024/git-crypt_note.html">git-crypt 学习笔记</a></li><li><a href="../2024/gen_GPG_key.html">生成 GPG 密钥</a></li><li><a href="../2024/git-crypt_official_doc.html">git-crypt 官方文档</a></li><li><a href="../2024/git-crypt_official_doc_zh.html">git-crypt 官方文档中文翻译</a></li><li><a href="../2024/README_outline.html">README 文档结构</a></li><li><a href="../2024/git_commit_message_standard.html">git commit message 规范</a></li><li><a href="../2024/vscode_snippets_variable.html">vscode snippets 预置变量</a></li><li><a href="../2024/modern_cryptography.html">现代加密学</a></li><li><a href="../2024/former_doctor_who.html">神秘博士复活时间表</a></li><li><a href="../2024/ffmpeg_note.html">ffmpeg 自用命令</a></li><li><a href="../2024/qqmail_third_party_config.html">第三方邮箱客户端配置QQmail & Foxmail</a></li><li><a href="../2024/git_Cli.html">git 命令手册</a></li><li><a href="../2024/LaTeX_note.html">LaTeX 与希腊字母对照表</a></li><li><a href="../2024/git_branch.html">git 分支操作</a></li><li><a href="../2024/remove_file_from_git_history.html">从 git 提交中移除文件</a></li><li><a href="../2024/vim_note.html">Vim 高效速查笔记</a></li><li><a href="../2024/obsidian_shortcut_key.html">obsidian快捷键</a></li><li><a href="../2024/android_QQ_file_storage_path.html">手机QQ文件存储路径</a></li><li><a href="../2024/browser_UA_value.html">浏览器UA值</a></li><li><a href="../2024/gpg_communication.html">GPG 在通信中的简单理解</a></li><li><a href="../2024/vscode_note.html">VSCode 高效使用指南</a></li></ul></div></nav>
+    </aside>
+    <article class="content" id="content">
+      <h1 id="passkeysecureconvenient-login">Passkey:Secure,Convenient Login</h1>
+<h2 id="passkey">第一部分：Passkey 的基本原理 (密钥对)</h2>
+<p><strong>您的理解：</strong></p>
+<blockquote>
+<p>passkey 是一对密钥对，私钥存储在设备的安全芯片内，无法导出，公钥发送到相对于的网站服务器，只有私钥公钥对上才能登陆，以此免去了输密码的烦恼，也就减少了被盗风险。</p>
+</blockquote>
+<p><strong>这个理解完全正确！</strong> 这就是 Passkey 的基石。</p>
+<ul>
+<li><strong>非对称加密</strong>：您准确地指出了这是基于“密钥对”（公钥和私钥）的技术。</li>
+<li><strong>安全存储</strong>：私钥确实存储在设备的安全硬件中，如苹果的 Secure Enclave、Google 的 Titan M 芯片，或 Windows 电脑的 TPM 模块。这是它安全的关键，因为私钥物理上无法被恶意软件或远程攻击者读取和盗走。</li>
+<li><strong>不可导出</strong>：这是硬件层面的设计，保证了私钥“生于斯，长于斯，终于斯”，绝不会离开设备。</li>
+<li><strong>登录流程</strong>：您描述的“对上才能登陆”在技术上是一个“挑战-响应”签名过程。<ol>
+<li>服务器发送一个随机的“挑战”数据给你。</li>
+<li>你的设备使用安全芯片内的私钥对这个“挑战”进行“签名”。</li>
+<li>设备将签名后的结果发回给服务器。</li>
+<li>服务器用它之前存储的你的公钥来验证这个签名。验证通过，就证明你确实是私钥的持有者，登录成功。</li>
+</ol>
+</li>
+<li><strong>核心优势</strong>：您也说对了，它解决了两大痛点：<ol>
+<li><strong>便捷性</strong>：无需记忆和输入密码，用面容 ID、指纹或 PIN 码即可完成。</li>
+<li><strong>安全性</strong>：<ul>
+<li><strong>防钓鱼</strong>：由于 Passkey 与网站域名绑定，你无法在假的钓鱼网站上使用真网站的 Passkey，从根本上杜绝了钓鱼攻击。</li>
+<li><strong>防数据泄露</strong>：即使网站服务器被黑，泄露的也只是公钥，攻击者无法用公钥反推出你的私钥，你的账户依然安全。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<hr/>
+<h2 id="google-apple">第二部分：Google 和 Apple 的角色与云同步</h2>
+<p><strong>您的理解：</strong></p>
+<blockquote>
+<p>Google 和 apple 的密码管理器是存储加密后的私钥，是使用设备本身的加密来加密，例如在 Windows 上是 Windows hello，这样，无论是云厂商还是攻击者都无法窃取密码。</p>
+</blockquote>
+<p><strong>这个理解方向正确，但在具体实现上有一个非常关键的微妙差别。</strong></p>
+<p>您的结论“无论是云厂商还是攻击者都无法窃取”是<strong>正确</strong>的，但实现方式比您想象的更精妙。</p>
+<p>这里需要区分两种 Passkey：</p>
+<ol>
+<li>
+<p><strong>设备绑定 Passkey (Device-bound Passkey)</strong>：这是最传统的模式。私钥严格绑定在单一设备的硬件中，无法移动。如果你换了新手机，就得在新手机上重新注册一个 Passkey。安全但不够方便。</p>
+</li>
+<li>
+<p><strong>可同步 Passkey (Syncable Passkey)</strong>：这是 Apple 和 Google 等厂商大力推广的模式，也是我们通常所说的“Passkey”。它的目标是解决“换设备就不方便”的问题。</p>
+</li>
+</ol>
+<p>现在来修正一下您的理解：</p>
+<ul>
+<li><strong>云端同步的不是私钥本身，而是一个经过端到端加密的、可同步的“凭证数据包”。</strong></li>
+<li>当您创建一个<strong>可同步的 Passkey</strong> 时，这个 Passkey 的凭证（包含了密钥材料）会被一个只有您能控制的密钥进行<strong>端到端加密</strong>。</li>
+<li>这个加密后的“数据包”会被同步到您的 Apple iCloud 钥匙串或 Google 密码管理器中。</li>
+<li><strong>解密这个“数据包”的“钥匙”是什么？</strong> 这把钥匙与您的 Apple ID / Google 账户密码、以及您信任的设备的锁屏密码/生物识别（Face ID, Touch ID, Windows Hello）强相关。</li>
+<li><strong>因此，核心在于</strong>：<ul>
+<li><strong>Apple 和 Google 无法解密</strong>：它们只负责存储这个加密后的“保险箱”（数据包），但没有打开保险箱的钥匙。钥匙分散在您的账户和设备上。</li>
+<li><strong>攻击者无法利用</strong>：即使攻击者黑进了 Google 或 Apple 的服务器，偷走的也只是一个无法解密的“保险箱”。</li>
+<li><strong>Windows Hello 的作用</strong>：当你在 Chrome 浏览器（登录了 Google 账户）的 Windows 电脑上使用 Passkey 时，Windows Hello（你的指纹或 PIN）就是用来授权 Chrome 访问和使用本地安全存储（TPM）中的私钥，或者是解密从 Google 云端同步过来的 Passkey 凭证。它是一个授权和解锁的动作。</li>
+</ul>
+</li>
+</ul>
+<h3 id="_1">总结与精炼</h3>
+<ul>
+<li><strong>您的理解对在哪里</strong>：Passkey 的核心是密钥对，私钥在设备安全区，公钥在服务器，登录安全又方便。云同步的 Passkey 是被加密的，云厂商无法看到。</li>
+<li><strong>需要修正的细节</strong>：云端同步的不是简单“加密后的私钥”，而是一个<strong>端到端加密的、可同步的 Passkey 凭证</strong>。解密它的权力掌握在用户自己手中，通过账户和设备锁屏机制来共同实现。</li>
+</ul>
+<p>可以这样比喻：
+- <strong>设备绑定的 Passkey</strong>：像一把焊死在你家门上的钥匙，谁也拿不走，但你去了别处就没法开门。
+- <strong>可同步的 Passkey</strong>：像一个超级保险箱，里面装着你所有门的钥匙（加密的 Passkey 凭证）。这个保险箱被同步到云端。而打开这个保险箱的唯一方法，是同时使用你的“身份证”（Apple/Google 账户）和“指纹/面容”（设备解锁）。云服务商只是保管保险箱，但绝对打不开它。</p>
+    </article>
+    <aside class="toc" id="toc">
+      <div class="toc-title">大纲</div>
+      <div class="toc">
+<ul>
+<li><a href="#passkeysecureconvenient-login">Passkey:Secure,Convenient Login</a><ul>
+<li><a href="#passkey">第一部分：Passkey 的基本原理 (密钥对)</a></li>
+<li><a href="#google-apple">第二部分：Google 和 Apple 的角色与云同步</a><ul>
+<li><a href="#_1">总结与精炼</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container" style="text-align: center;">
+      <div>© 2024 - 2025 wardenxyz</div>
+      <div>MIT License</div>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="回到顶部">↑</button>
+
+  <script src="../../static/main.js"></script>
+</body>
+</html>

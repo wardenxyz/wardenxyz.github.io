@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>正则表达式简明指南</title>
+  <link rel="stylesheet" href="../../static/style.css" />
+  <link rel="icon" href="../../static/favicon.svg" type="image/svg+xml" />
+  <meta name="color-scheme" content="light dark" />
+  
+  <!-- MathJax Configuration -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true,
+        tags: 'ams'
+      },
+      options: {
+        ignoreHtmlClass: 'tex2jax_ignore',
+        processHtmlClass: 'tex2jax_process'
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../../index.html">My Blog</a>
+  <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-controls="primaryNav" aria-expanded="false">☰</button>
+  <nav class="nav" id="primaryNav">
+        <a class="nav-link" href="../../index.html">首页</a>
+        <a class="nav-link" href="../../categories.html">Categories</a>
+        <a class="nav-link" href="../../tags.html">Tags</a>
+        <a class="nav-link github" href="https://github.com/wardenxyz" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container layout layout-3">
+    <aside class="sidebar-col" id="sidebar">
+      <nav class="sidebar" aria-label="所有文章"><div class="sidebar-group"><div class="sidebar-year">Others</div><ul><li><a href="../../index.html">随便写写</a></li><li><a href="../../categories.html">Categories</a></li><li><a href="../../tags.html">Tags</a></li></ul></div><div class="sidebar-group"><div class="sidebar-year">2025</div><ul><li><a href="SOPS.html">SOPS:Secrets OPerationS</a></li><li><a href="age.html">age-note</a></li><li><a href="yt-dlp.html">yt-dlp 使用</a></li><li><a href="cross-platform-byte-control.md.html">跨系统避免换行符导致字节差异的方法</a></li><li><a href="introduce-passkey.html">Passkey:Secure,Convenient Login</a></li><li><a href="npm-config.html">修改 npm node_modules 位置</a></li><li><a href="powershell-get-command.html">PowerShell Get-Command 命令</a></li><li><a href="background-color.html">背景颜色</a></li><li><a href="git-hook.html">自用 git hook</a></li><li><a href="typst-syntax-simple-introduction.html">Typst 语法简单介绍</a></li><li><a href="shut-wps-background-runing.html">关闭 WPS 后台运行</a></li><li><a href="font.html">个人字体</a></li><li><a href="github-avatar.html">GitHub 头像</a></li><li><a href="regex-note.html" class="active">正则表达式简明指南</a></li><li><a href="Rollback-commit.html">回滚提交</a></li><li><a href="use_python_gen_site.html">使用 Python 生成静态网页</a></li><li><a href="install_wsl2_and_to_d_disk.html">安装 WSL2 并迁移到 D 盘</a></li><li><a href="zed_use_typstyle.html">在 zed 上配置 typstyle</a></li><li><a href="Rust_Windows_Config.html">在 Windows 上配置 Rust 环境</a></li><li><a href="conda_note.html">conda 使用笔记</a></li><li><a href="Zed_set_OpenAI_API_Compatible_model.html">在 Zed Editor 中配置 OpenAI API 兼容的模型</a></li><li><a href="zed_use.html">zed 使用笔记</a></li><li><a href="ollama_run_deepseek.html">ollama 运行 DeepSeek 模型</a></li></ul></div><div class="sidebar-group"><div class="sidebar-year">2024</div><ul><li><a href="../2024/pull_request_steps.html">Pull Request 的步骤</a></li><li><a href="../2024/Typst_note.html">Typst 笔记</a></li><li><a href="../2024/git_reset.html">git 重置当前分支</a></li><li><a href="../2024/vitepress_note.html">vitepress 学习笔记</a></li><li><a href="../2024/deploy_gitHub_page.html">GitHub page 搭建学习笔记</a></li><li><a href="../2024/Linux_note.html">Linux 学习笔记</a></li><li><a href="../2024/OpenSSL_encrypt_note.html">OpenSSL 加解密速查笔记</a></li><li><a href="../2024/python_note.html">python 学习笔记</a></li><li><a href="../2024/lazy.nvim_note.html">lazy.nvim 学习笔记</a></li><li><a href="../2024/git-izer_note.html">git-sizer 学习笔记</a></li><li><a href="../2024/git_force_overwrite_local_repo.html">git 强制覆盖本地仓库</a></li><li><a href="../2024/bilibili_embedding_code.html">B站嵌入代码</a></li><li><a href="../2024/personal_software.html">个人自用软件</a></li><li><a href="../2024/you-get_note.html">用 you-get 下载B站视频</a></li><li><a href="../2024/git-crypt_note.html">git-crypt 学习笔记</a></li><li><a href="../2024/gen_GPG_key.html">生成 GPG 密钥</a></li><li><a href="../2024/git-crypt_official_doc.html">git-crypt 官方文档</a></li><li><a href="../2024/git-crypt_official_doc_zh.html">git-crypt 官方文档中文翻译</a></li><li><a href="../2024/README_outline.html">README 文档结构</a></li><li><a href="../2024/git_commit_message_standard.html">git commit message 规范</a></li><li><a href="../2024/vscode_snippets_variable.html">vscode snippets 预置变量</a></li><li><a href="../2024/modern_cryptography.html">现代加密学</a></li><li><a href="../2024/former_doctor_who.html">神秘博士复活时间表</a></li><li><a href="../2024/ffmpeg_note.html">ffmpeg 自用命令</a></li><li><a href="../2024/qqmail_third_party_config.html">第三方邮箱客户端配置QQmail & Foxmail</a></li><li><a href="../2024/git_Cli.html">git 命令手册</a></li><li><a href="../2024/LaTeX_note.html">LaTeX 与希腊字母对照表</a></li><li><a href="../2024/git_branch.html">git 分支操作</a></li><li><a href="../2024/remove_file_from_git_history.html">从 git 提交中移除文件</a></li><li><a href="../2024/vim_note.html">Vim 高效速查笔记</a></li><li><a href="../2024/obsidian_shortcut_key.html">obsidian快捷键</a></li><li><a href="../2024/android_QQ_file_storage_path.html">手机QQ文件存储路径</a></li><li><a href="../2024/browser_UA_value.html">浏览器UA值</a></li><li><a href="../2024/gpg_communication.html">GPG 在通信中的简单理解</a></li><li><a href="../2024/vscode_note.html">VSCode 高效使用指南</a></li></ul></div></nav>
+    </aside>
+    <article class="content" id="content">
+      <h1 id="_1">正则表达式简明指南</h1>
+<h2 id="_2">核心元字符速查</h2>
+<table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>功能描述</th>
+<th>示例</th>
+<th>匹配案例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.</code></td>
+<td>匹配除换行符外的任意字符</td>
+<td><code>a.c</code></td>
+<td>abc, a1c</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>前导字符出现0次或多次</td>
+<td><code>ab*</code></td>
+<td>a, ab, abb</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>前导字符出现1次或多次</td>
+<td><code>ab+</code></td>
+<td>ab, abb</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>前导字符出现0次或1次</td>
+<td><code>ab?</code></td>
+<td>a, ab</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>匹配字符串起始位置</td>
+<td><code>^Start</code></td>
+<td>Start...</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>匹配字符串结束位置</td>
+<td><code>End$</code></td>
+<td>...End</td>
+</tr>
+<tr>
+<td><code>[]</code></td>
+<td>匹配括号内任意字符</td>
+<td><code>[aeiou]</code></td>
+<td>a, e</td>
+</tr>
+<tr>
+<td><code>[^]</code></td>
+<td>排除括号内字符</td>
+<td><code>[^0-9]</code></td>
+<td>a, B, @</td>
+</tr>
+<tr>
+<td><code>()</code></td>
+<td>创建捕获组</td>
+<td><code>(ab)+</code></td>
+<td>ab, abab</td>
+</tr>
+<tr>
+<td><code>\</code></td>
+<td>转义特殊字符</td>
+<td><code>\.</code></td>
+<td>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">字符类精要</h2>
+<ul>
+<li><strong>基础形式</strong>：<code>[A-Za-z]</code> 匹配任意字母，<code>[0-9]</code> 匹配数字</li>
+<li><strong>组合用法</strong>：<code>[\w.-]</code> 匹配字母/数字/下划线/点/连字符（常用邮箱验证）</li>
+<li><strong>排除匹配</strong>：<code>[^aeiou]</code> 匹配非元音字符</li>
+</ul>
+<h2 id="_4">量词匹配模式</h2>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>符号</th>
+<th>示例</th>
+<th>匹配结果对比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>贪婪匹配</td>
+<td>* + ?</td>
+<td><code>a.*b</code></td>
+<td>axxxxyb中的全部内容</td>
+</tr>
+<tr>
+<td>非贪婪匹配</td>
+<td>*? +? ??</td>
+<td><code>a.*?b</code></td>
+<td>axxxxyb中的第一个a和b之间的最短匹配</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">锚点定位技巧</h2>
+<ul>
+<li><code>^2025-</code> 匹配以"2025-"开头的字符串（如日期）</li>
+<li><code>-15$</code> 匹配以"-15"结尾的字符串</li>
+<li><code>^Hello$</code> 精确匹配整个字符串"Hello"</li>
+</ul>
+<h2 id="_6">捕获组实战</h2>
+<ol>
+<li><strong>基础分组</strong>
+<code>(\d{4})-(\d{2})-(\d{2})</code> 匹配日期格式，捕获年/月/日</li>
+</ol>
+<ul>
+<li>示例：2025-04-15 → Group1:2025 Group2:04 Group3:15</li>
+</ul>
+<ol start="2">
+<li><strong>反向引用</strong>
+<code>(\b\w+)\s+\1</code> 检测重复单词
+   - 匹配："hello hello"中连续重复的"hello"</li>
+</ol>
+<h2 id="_7">预定义字符类</h2>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>等效表达式</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\d</code></td>
+<td><code>[0-9]</code></td>
+<td>数字字符</td>
+</tr>
+<tr>
+<td><code>\w</code></td>
+<td><code>[A-Za-z0-9_]</code></td>
+<td>单词字符（含下划线）</td>
+</tr>
+<tr>
+<td><code>\s</code></td>
+<td><code>[ \t\n\r]</code></td>
+<td>空白字符（含空格/换行）</td>
+</tr>
+<tr>
+<td><code>\D</code></td>
+<td><code>[^0-9]</code></td>
+<td>非数字字符</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_8">高频使用技巧</h2>
+<ol>
+<li><strong>手机号验证</strong>：</li>
+</ol>
+<pre><code>^1[3-9]\d{9}$
+</code></pre>
+<ol start="2">
+<li><strong>邮箱验证</strong>：</li>
+</ol>
+<pre><code>^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$
+</code></pre>
+<ol start="3">
+<li><strong>HTML标签匹配</strong>：</li>
+</ol>
+<pre><code>&lt;([a-z]+)([^&lt;]+)*(?:&gt;(.*)&lt;\/\1&gt;| *\/&gt;)
+</code></pre>
+    </article>
+    <aside class="toc" id="toc">
+      <div class="toc-title">大纲</div>
+      <div class="toc">
+<ul>
+<li><a href="#_1">正则表达式简明指南</a><ul>
+<li><a href="#_2">核心元字符速查</a></li>
+<li><a href="#_3">字符类精要</a></li>
+<li><a href="#_4">量词匹配模式</a></li>
+<li><a href="#_5">锚点定位技巧</a></li>
+<li><a href="#_6">捕获组实战</a></li>
+<li><a href="#_7">预定义字符类</a></li>
+<li><a href="#_8">高频使用技巧</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container" style="text-align: center;">
+      <div>© 2024 - 2025 wardenxyz</div>
+      <div>MIT License</div>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="回到顶部">↑</button>
+
+  <script src="../../static/main.js"></script>
+</body>
+</html>

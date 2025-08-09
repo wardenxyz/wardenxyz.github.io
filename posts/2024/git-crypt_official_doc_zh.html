@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>git-crypt 官方文档中文翻译</title>
+  <link rel="stylesheet" href="../../static/style.css" />
+  <link rel="icon" href="../../static/favicon.svg" type="image/svg+xml" />
+  <meta name="color-scheme" content="light dark" />
+  
+  <!-- MathJax Configuration -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true,
+        tags: 'ams'
+      },
+      options: {
+        ignoreHtmlClass: 'tex2jax_ignore',
+        processHtmlClass: 'tex2jax_process'
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../../index.html">My Blog</a>
+  <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-controls="primaryNav" aria-expanded="false">☰</button>
+  <nav class="nav" id="primaryNav">
+        <a class="nav-link" href="../../index.html">首页</a>
+        <a class="nav-link" href="../../categories.html">Categories</a>
+        <a class="nav-link" href="../../tags.html">Tags</a>
+        <a class="nav-link github" href="https://github.com/wardenxyz" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container layout layout-3">
+    <aside class="sidebar-col" id="sidebar">
+      <nav class="sidebar" aria-label="所有文章"><div class="sidebar-group"><div class="sidebar-year">Others</div><ul><li><a href="../../index.html">随便写写</a></li><li><a href="../../categories.html">Categories</a></li><li><a href="../../tags.html">Tags</a></li></ul></div><div class="sidebar-group"><div class="sidebar-year">2025</div><ul><li><a href="../2025/SOPS.html">SOPS:Secrets OPerationS</a></li><li><a href="../2025/age.html">age-note</a></li><li><a href="../2025/yt-dlp.html">yt-dlp 使用</a></li><li><a href="../2025/cross-platform-byte-control.md.html">跨系统避免换行符导致字节差异的方法</a></li><li><a href="../2025/introduce-passkey.html">Passkey:Secure,Convenient Login</a></li><li><a href="../2025/npm-config.html">修改 npm node_modules 位置</a></li><li><a href="../2025/powershell-get-command.html">PowerShell Get-Command 命令</a></li><li><a href="../2025/background-color.html">背景颜色</a></li><li><a href="../2025/git-hook.html">自用 git hook</a></li><li><a href="../2025/typst-syntax-simple-introduction.html">Typst 语法简单介绍</a></li><li><a href="../2025/shut-wps-background-runing.html">关闭 WPS 后台运行</a></li><li><a href="../2025/font.html">个人字体</a></li><li><a href="../2025/github-avatar.html">GitHub 头像</a></li><li><a href="../2025/regex-note.html">正则表达式简明指南</a></li><li><a href="../2025/Rollback-commit.html">回滚提交</a></li><li><a href="../2025/use_python_gen_site.html">使用 Python 生成静态网页</a></li><li><a href="../2025/install_wsl2_and_to_d_disk.html">安装 WSL2 并迁移到 D 盘</a></li><li><a href="../2025/zed_use_typstyle.html">在 zed 上配置 typstyle</a></li><li><a href="../2025/Rust_Windows_Config.html">在 Windows 上配置 Rust 环境</a></li><li><a href="../2025/conda_note.html">conda 使用笔记</a></li><li><a href="../2025/Zed_set_OpenAI_API_Compatible_model.html">在 Zed Editor 中配置 OpenAI API 兼容的模型</a></li><li><a href="../2025/zed_use.html">zed 使用笔记</a></li><li><a href="../2025/ollama_run_deepseek.html">ollama 运行 DeepSeek 模型</a></li></ul></div><div class="sidebar-group"><div class="sidebar-year">2024</div><ul><li><a href="pull_request_steps.html">Pull Request 的步骤</a></li><li><a href="Typst_note.html">Typst 笔记</a></li><li><a href="git_reset.html">git 重置当前分支</a></li><li><a href="vitepress_note.html">vitepress 学习笔记</a></li><li><a href="deploy_gitHub_page.html">GitHub page 搭建学习笔记</a></li><li><a href="Linux_note.html">Linux 学习笔记</a></li><li><a href="OpenSSL_encrypt_note.html">OpenSSL 加解密速查笔记</a></li><li><a href="python_note.html">python 学习笔记</a></li><li><a href="lazy.nvim_note.html">lazy.nvim 学习笔记</a></li><li><a href="git-izer_note.html">git-sizer 学习笔记</a></li><li><a href="git_force_overwrite_local_repo.html">git 强制覆盖本地仓库</a></li><li><a href="bilibili_embedding_code.html">B站嵌入代码</a></li><li><a href="personal_software.html">个人自用软件</a></li><li><a href="you-get_note.html">用 you-get 下载B站视频</a></li><li><a href="git-crypt_note.html">git-crypt 学习笔记</a></li><li><a href="gen_GPG_key.html">生成 GPG 密钥</a></li><li><a href="git-crypt_official_doc.html">git-crypt 官方文档</a></li><li><a href="git-crypt_official_doc_zh.html" class="active">git-crypt 官方文档中文翻译</a></li><li><a href="README_outline.html">README 文档结构</a></li><li><a href="git_commit_message_standard.html">git commit message 规范</a></li><li><a href="vscode_snippets_variable.html">vscode snippets 预置变量</a></li><li><a href="modern_cryptography.html">现代加密学</a></li><li><a href="former_doctor_who.html">神秘博士复活时间表</a></li><li><a href="ffmpeg_note.html">ffmpeg 自用命令</a></li><li><a href="qqmail_third_party_config.html">第三方邮箱客户端配置QQmail & Foxmail</a></li><li><a href="git_Cli.html">git 命令手册</a></li><li><a href="LaTeX_note.html">LaTeX 与希腊字母对照表</a></li><li><a href="git_branch.html">git 分支操作</a></li><li><a href="remove_file_from_git_history.html">从 git 提交中移除文件</a></li><li><a href="vim_note.html">Vim 高效速查笔记</a></li><li><a href="obsidian_shortcut_key.html">obsidian快捷键</a></li><li><a href="android_QQ_file_storage_path.html">手机QQ文件存储路径</a></li><li><a href="browser_UA_value.html">浏览器UA值</a></li><li><a href="gpg_communication.html">GPG 在通信中的简单理解</a></li><li><a href="vscode_note.html">VSCode 高效使用指南</a></li></ul></div></nav>
+    </aside>
+    <article class="content" id="content">
+      <h1 id="git-crypt">git-crypt 官方文档中文翻译</h1>
+<h2 id="git-crypt-git">git-crypt - Git 中的透明文件加密</h2>
+<p>git-crypt 使 Git 仓库中的文件可以实现透明的加密和解密。您可以选择需要保护的文件，在提交时进行加密，在检出时进行解密。git-crypt 可以让您自由共享包含公共和私有内容的仓库。即使开发者没有密钥，git-crypt 也能让其实现克隆和提交含有加密文件的仓库。这样，您可以将秘密资料（如密钥或密码）存储在与代码相同的仓库中，而不需要锁定整个仓库。</p>
+<p>git-crypt 是由 <a href="https://www.agwa.name">Andrew Ayer</a>（ agwa@andrewayer.name ）编写的。
+更多信息，请访问 <a href="https://www.agwa.name/projects/git-crypt">https://www.agwa.name/projects/git-crypt</a>。</p>
+<h2 id="git-crypt_1">构建 git-crypt</h2>
+<p>参考 <a href="https://github.com/AGWA/git-crypt/blob/master/INSTALL.md">INSTALL.md</a> ​ 文件进行安装。</p>
+<h2 id="git-crypt_2">使用 git-crypt</h2>
+<p>配置仓库以使用 git-crypt：</p>
+<pre><code>cd repo
+git-crypt init
+</code></pre>
+<p>通过创建 .gitattributes 文件来指定要加密的文件：</p>
+<pre><code>secretfile filter=git-crypt diff=git-crypt
+*.key filter=git-crypt diff=git-crypt
+secretdir/** filter=git-crypt diff=git-crypt
+</code></pre>
+<p>.gitattributes 文件跟 .gitignore 类似，可以匹配通配符，并且应该提交到仓库里。更多信息可以查看下方内容。请确认不要错误地加密了 .gitattributes 文件本身（或者其他 Git 文件，例如 .gitignore 或者 .gitmodules）。请确认你的 .gitattributes 规则已经生效<em>在提交敏感文件之前</em>，否则这些文件将不会被加密！</p>
+<p>使用 GPG 分享仓库（给他人或自己）：</p>
+<pre><code>git-crypt add-gpg-user USER_ID
+</code></pre>
+<p>​ <code>USER_ID</code> ​ 可以是一个密钥 ID、完整指纹、电子邮件地址或
+其他任何唯一标识 GPG 公钥的方式（参见 gpg 手册页中的 "HOW TO
+SPECIFY A USER ID"）。注意：<code>git-crypt add-gpg-user</code> ​ 会
+在仓库根目录的 .git-crypt 目录下添加并提交一个 GPG 加密的密钥文件。</p>
+<p>另外，你可以导出一个对称密钥，安全地传递给协作者即可（无需 GPG，也不会在仓库中增加文件）：</p>
+<pre><code>git-crypt export-key /path/to/key
+</code></pre>
+<p>克隆包含加密文件的存储库后，使用 GPG 进行解密：</p>
+<pre><code>git-crypt unlock
+</code></pre>
+<p>或者使用对称密钥：</p>
+<pre><code>git-crypt unlock /path/to/key
+</code></pre>
+<p>这就是你需要做的全部工作——在 <code>git-crypt</code> ​ 配置完成后（无论是通过 <code>git-crypt init</code> ​ 还是 <code>git-crypt unlock</code> ​），你可以像往常一样使用 <code>git</code> ​。加密和解密过程会透明地进行。</p>
+<h2 id="_1">当前状态</h2>
+<p>git-crypt 的最新版本是 <a href="https://github.com/AGWA/git-crypt/blob/master/NEWS.md">0.7.0</a>，发布于
+2022-04-21。git-crypt 旨在实现无缺陷且可靠，即它不应崩溃、失效或泄露您的机密数据。然而，它尚未成熟，即它的文档、功能丰富性或易用性尚未达到应有的水平。此外，在 1.0 版本之前，可能会引入不向后兼容的变更。</p>
+<h2 id="_2">安全性</h2>
+<p>git-crypt 比其他透明的 git 加密系统更安全。
+git-crypt 使用 AES-256 在 CTR 模式下加密文件，并使用从文件的 SHA-1 HMAC 派生的合成 IV。
+这种操作模式在确定性选择明文攻击下被证明是语义安全的。
+这意味着尽管加密是确定性的（这是必需的，以便 git 可以区分文件是否已更改），
+但它不会泄露任何信息，只会暴露两个文件是否相同。
+其他透明的 git 加密方案使用 ECB 或 CBC 模式和固定 IV。这些系统在语义上不安全，会泄露信息。</p>
+<h2 id="_3">局限性</h2>
+<p>git-crypt 依赖于 git 过滤器，而这些过滤器并非为加密设计。因此，git-crypt 并非加密版本库中大多数或全部文件的最佳工具。git-crypt 真正擅长的是这样一种场景：你的版本库绝大多数内容是公开的，但其中有一些文件（可能是一组命名为*. key 的私钥，或是一个含有 API 凭证的文件）需要加密。如果需要加密整个版本库，考虑使用 <a href="https://spwhitton.name/tech/code/git-remote-gcrypt/">git-remote-gcrypt</a> 这类工具。（注：本文不对 git-remote-gcrypt 的安全性作出评价。）</p>
+<p>git-crypt 不会加密文件名、提交信息、符号链接目标、gitlink 或其他元数据。</p>
+<p>git-crypt 无法隐藏文件是否发生更改、文件长度，或者两个文件完全相同这一事实（参见上方“安全性”部分）</p>
+<p>git-crypt 并不支持撤销对之前已授予访问权限的加密仓库的访问。这既适用于多用户 GPG 模式（没有 del-gpg-user 命令来补充 add-gpg-user），也适用于对称密钥模式（不支持轮换密钥）。这是因为，在历史数据的背景下，这是一个固有的复杂问题。例如，即使某个时刻密钥被轮换了，拥有之前密钥的用户仍然可以访问之前的仓库历史。这个问题在 <a href="https://github.com/AGWA/git-crypt/issues/47">https://github.com/AGWA/git-crypt/issues/47</a> 中有更详细的讨论。</p>
+<p>使用 git-crypt 加密的文件无法被压缩。即使对加密文件做了最微小的改动，git 也得存储改动后的整个文件，而不是仅仅存储改动部分。</p>
+<p>虽然 git-crypt 使用 SHA-1 HMAC 保护单个文件内容，但如果整个仓库没有做防篡改保护，git-crypt 就不能安全使用（如果攻击者可以篡改你的仓库，他们就可以修改你的. gitattributes 文件来禁用加密）。如果必要，可以使用 git 的特性，例如签名标签，而不是仅仅依靠 git-crypt 来保证完整性。</p>
+<p>使用 git-crypt 加密的文件不能用 git-apply 打补丁，除非补丁本身也是加密的。要生成一个加密的补丁，可以使用命令 <code>git diff --no-textconv --binary</code> ​。或者，你也可以在 git 外部使用 patch 命令来打明文补丁。</p>
+<p>git-crypt 在一些第三方 git 图形用户界面（GUI）上无法可靠工作，例如 <a href="https://jira.atlassian.com/browse/SRCTREE-2511">Atlassian SourceTree</a> 和 GitHub for Mac。文件可能会保持未加密状态。</p>
+<h2 id="gitattributes">Gitattributes 文件</h2>
+<p>.gitattributes 文件的文档位于 gitattributes (5) 手册页面中。文件匹配模式与. gitignore 中使用的格式相同，详情可参见 gitignore (5) 手册页面，但需要注意的是，仅指定一个目录（例如 <code>/dir/</code> ​）不足以对该目录下的所有文件进行加密。</p>
+<p>另请注意，<code>dir/*</code> ​模式不会匹配 <code>dir</code> ​子目录下的文件。如果要加密整个 <code>dir</code> ​子树，请使用 <code>dir/**</code> ​：</p>
+<pre><code>dir/** filter=git-crypt diff=git-crypt
+</code></pre>
+<p>.gitattributes 文件不能被加密，因此请确保通配符不会意外地匹配到它。如有必要，你可以像这样将 .gitattributes 排除在加密之外：</p>
+<pre><code>.gitattributes !filter !diff
+</code></pre>
+    </article>
+    <aside class="toc" id="toc">
+      <div class="toc-title">大纲</div>
+      <div class="toc">
+<ul>
+<li><a href="#git-crypt">git-crypt 官方文档中文翻译</a><ul>
+<li><a href="#git-crypt-git">git-crypt - Git 中的透明文件加密</a></li>
+<li><a href="#git-crypt_1">构建 git-crypt</a></li>
+<li><a href="#git-crypt_2">使用 git-crypt</a></li>
+<li><a href="#_1">当前状态</a></li>
+<li><a href="#_2">安全性</a></li>
+<li><a href="#_3">局限性</a></li>
+<li><a href="#gitattributes">Gitattributes 文件</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container" style="text-align: center;">
+      <div>© 2024 - 2025 wardenxyz</div>
+      <div>MIT License</div>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="回到顶部">↑</button>
+
+  <script src="../../static/main.js"></script>
+</body>
+</html>
