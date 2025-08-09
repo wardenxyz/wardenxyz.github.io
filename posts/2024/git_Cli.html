@@ -30,13 +30,31 @@
   <script type="text/javascript" id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
   </script>
+  <!-- Mermaid Diagram -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" defer></script>
+  <script>
+    // Initialize Mermaid when DOM is ready
+    document.addEventListener('DOMContentLoaded', function(){
+      if(window.mermaid && mermaid.initialize){
+        const theme = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'default';
+        mermaid.initialize({ startOnLoad: true, theme });
+        if(mermaid.run){
+          try{ mermaid.run({ querySelector: '.mermaid' }); }catch(e){}
+        }
+      }
+    });
+  </script>
 </head>
-<body>
+<body data-base="../../">
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="../../index.html">My Blog</a>
   <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-controls="primaryNav" aria-expanded="false">☰</button>
-  <nav class="nav" id="primaryNav">
+      <div class="search" role="search">
+        <input type="search" id="searchInput" placeholder="搜索文章..." aria-label="搜索文章" autocomplete="off" />
+        <div class="search-results" id="searchResults" role="listbox" aria-label="搜索结果"></div>
+      </div>
+      <nav class="nav" id="primaryNav">
         <a class="nav-link" href="../../index.html">首页</a>
         <a class="nav-link" href="../../categories.html">Categories</a>
         <a class="nav-link" href="../../tags.html">Tags</a>
@@ -50,9 +68,10 @@
       <nav class="sidebar" aria-label="所有文章"><div class="sidebar-group"><div class="sidebar-year">Others</div><ul><li><a href="../../index.html">随便写写</a></li><li><a href="../../categories.html">Categories</a></li><li><a href="../../tags.html">Tags</a></li></ul></div><div class="sidebar-group"><div class="sidebar-year">2025</div><ul><li><a href="../2025/SOPS.html">SOPS:Secrets OPerationS</a></li><li><a href="../2025/age.html">age-note</a></li><li><a href="../2025/yt-dlp.html">yt-dlp 使用</a></li><li><a href="../2025/cross-platform-byte-control.md.html">跨系统避免换行符导致字节差异的方法</a></li><li><a href="../2025/introduce-passkey.html">Passkey:Secure,Convenient Login</a></li><li><a href="../2025/npm-config.html">修改 npm node_modules 位置</a></li><li><a href="../2025/powershell-get-command.html">PowerShell Get-Command 命令</a></li><li><a href="../2025/background-color.html">背景颜色</a></li><li><a href="../2025/git-hook.html">自用 git hook</a></li><li><a href="../2025/typst-syntax-simple-introduction.html">Typst 语法简单介绍</a></li><li><a href="../2025/shut-wps-background-runing.html">关闭 WPS 后台运行</a></li><li><a href="../2025/font.html">个人字体</a></li><li><a href="../2025/github-avatar.html">GitHub 头像</a></li><li><a href="../2025/regex-note.html">正则表达式简明指南</a></li><li><a href="../2025/Rollback-commit.html">回滚提交</a></li><li><a href="../2025/use_python_gen_site.html">使用 Python 生成静态网页</a></li><li><a href="../2025/install_wsl2_and_to_d_disk.html">安装 WSL2 并迁移到 D 盘</a></li><li><a href="../2025/zed_use_typstyle.html">在 zed 上配置 typstyle</a></li><li><a href="../2025/Rust_Windows_Config.html">在 Windows 上配置 Rust 环境</a></li><li><a href="../2025/conda_note.html">conda 使用笔记</a></li><li><a href="../2025/Zed_set_OpenAI_API_Compatible_model.html">在 Zed Editor 中配置 OpenAI API 兼容的模型</a></li><li><a href="../2025/zed_use.html">zed 使用笔记</a></li><li><a href="../2025/ollama_run_deepseek.html">ollama 运行 DeepSeek 模型</a></li></ul></div><div class="sidebar-group"><div class="sidebar-year">2024</div><ul><li><a href="pull_request_steps.html">Pull Request 的步骤</a></li><li><a href="Typst_note.html">Typst 笔记</a></li><li><a href="git_reset.html">git 重置当前分支</a></li><li><a href="vitepress_note.html">vitepress 学习笔记</a></li><li><a href="deploy_gitHub_page.html">GitHub page 搭建学习笔记</a></li><li><a href="Linux_note.html">Linux 学习笔记</a></li><li><a href="OpenSSL_encrypt_note.html">OpenSSL 加解密速查笔记</a></li><li><a href="python_note.html">python 学习笔记</a></li><li><a href="lazy.nvim_note.html">lazy.nvim 学习笔记</a></li><li><a href="git-izer_note.html">git-sizer 学习笔记</a></li><li><a href="git_force_overwrite_local_repo.html">git 强制覆盖本地仓库</a></li><li><a href="bilibili_embedding_code.html">B站嵌入代码</a></li><li><a href="personal_software.html">个人自用软件</a></li><li><a href="you-get_note.html">用 you-get 下载B站视频</a></li><li><a href="git-crypt_note.html">git-crypt 学习笔记</a></li><li><a href="gen_GPG_key.html">生成 GPG 密钥</a></li><li><a href="git-crypt_official_doc.html">git-crypt 官方文档</a></li><li><a href="git-crypt_official_doc_zh.html">git-crypt 官方文档中文翻译</a></li><li><a href="README_outline.html">README 文档结构</a></li><li><a href="git_commit_message_standard.html">git commit message 规范</a></li><li><a href="vscode_snippets_variable.html">vscode snippets 预置变量</a></li><li><a href="modern_cryptography.html">现代加密学</a></li><li><a href="former_doctor_who.html">神秘博士复活时间表</a></li><li><a href="ffmpeg_note.html">ffmpeg 自用命令</a></li><li><a href="qqmail_third_party_config.html">第三方邮箱客户端配置QQmail & Foxmail</a></li><li><a href="git_Cli.html" class="active">git 命令手册</a></li><li><a href="LaTeX_note.html">LaTeX 与希腊字母对照表</a></li><li><a href="git_branch.html">git 分支操作</a></li><li><a href="remove_file_from_git_history.html">从 git 提交中移除文件</a></li><li><a href="vim_note.html">Vim 高效速查笔记</a></li><li><a href="obsidian_shortcut_key.html">obsidian快捷键</a></li><li><a href="android_QQ_file_storage_path.html">手机QQ文件存储路径</a></li><li><a href="browser_UA_value.html">浏览器UA值</a></li><li><a href="gpg_communication.html">GPG 在通信中的简单理解</a></li><li><a href="vscode_note.html">VSCode 高效使用指南</a></li></ul></div></nav>
     </aside>
     <article class="content" id="content">
-      <h1 id="git">git 命令手册</h1>
+  <div class="post-meta" aria-label="文章元信息"><span class="meta-item meta-date" title="发布日期">📅 2024-04-08</span><span class="meta-item" title="分类">📂 <span class="badge badge-cat">计算机</span></span><span class="meta-item" title="标签">🏷️ <span class="badge badge-tag">git</span></span></div>
+  <h1 id="git">git 命令手册</h1>
 <h2 id="_1">常用语句</h2>
-<pre><code>== 初始化本地git仓库（创建新仓库）
+<pre class="highlight"><code>== 初始化本地git仓库（创建新仓库）
 git init
 
 == 配置用户名
@@ -283,10 +302,9 @@ git grep "delete from"
 git grep -e '#define' --and -e SORT_DIRENT
 
 git gc
-git fsck
-</code></pre>
+git fsck</code></pre>
 <h2 id="_2">新建仓库</h2>
-<pre><code>## 初始化当前项目
+<pre class="highlight"><code>## 初始化当前项目
 $ git init
 
 ## 新建一个目录，将其初始化为Git代码库
@@ -298,10 +316,9 @@ $ git init --bare &lt;directory&gt;
 
 ## 下载一个项目和它的整个代码历史
 ## 这个命令就是将一个版本库拷贝到另一个目录中，同时也将分支都拷贝到新的版本库中。这样就可以在新的版本库中提交到远程分支
-$ git clone [url]
-</code></pre>
+$ git clone [url]</code></pre>
 <h2 id="git_1">git 配置</h2>
-<pre><code>## 显示当前的Git配置
+<pre class="highlight"><code>## 显示当前的Git配置
 $ git config --list
 
 ## 编辑Git配置文件
@@ -318,17 +335,15 @@ $ git config --global user.name "My Name"
 $ git config --global alias.&lt;alias-name&gt; &lt;git-command&gt;
 
 ## 为Git命令创建一个快捷方式（别名）。
-$ git config --system core.editor &lt;editor&gt;
-</code></pre>
+$ git config --system core.editor &lt;editor&gt;</code></pre>
 <h2 id="git_2">git 状态</h2>
-<pre><code>## 显示分支，未跟踪文件，更改和其他不同
+<pre class="highlight"><code>## 显示分支，未跟踪文件，更改和其他不同
 $ git status
 
 ## 查看其他的git status的用法
-$ git help status
-</code></pre>
+$ git help status</code></pre>
 <h2 id="git_3">git 信息</h2>
-<pre><code>## 显示commit历史，以及每次commit发生变更的文件
+<pre class="highlight"><code>## 显示commit历史，以及每次commit发生变更的文件
 $ git log --stat
 
 ## 搜索提交历史，根据关键词
@@ -405,10 +420,9 @@ $ git br -v
 $ git br --merged
 
 ## 查看尚未被合并到当前分支的分支
-$ git br --no-merged
-</code></pre>
+$ git br --no-merged</code></pre>
 <h2 id="git_4">git 添加、暂存</h2>
-<pre><code>## 添加一个文件
+<pre class="highlight"><code>## 添加一个文件
 $ git add test.js
 
 ## 添加一个子目录中的文件
@@ -428,10 +442,9 @@ $ git add .
 
 ## 添加每个变化前，都会要求确认
 ## 对于同一个文件的多处变化，可以实现分次提交
-$ git add -p
-</code></pre>
+$ git add -p</code></pre>
 <h2 id="git_5">git 删除文件</h2>
-<pre><code>## 移除 HelloWorld.js
+<pre class="highlight"><code>## 移除 HelloWorld.js
 $ git rm HelloWorld.js
 
 ## 移除子目录中的文件
@@ -441,10 +454,9 @@ $ git rm /pather/to/the/file/HelloWorld.js
 $ git rm [file1] [file2] ...
 
 ## 停止追踪指定文件，但该文件会保留在工作区
-$ git rm --cached [file]
-</code></pre>
+$ git rm --cached [file]</code></pre>
 <h2 id="_3">管理分支</h2>
-<pre><code>## 查看所有的分支和远程分支
+<pre class="highlight"><code>## 查看所有的分支和远程分支
 $ git branch -a
 
 ## 创建一个新的分支
@@ -516,18 +528,16 @@ $ git co $id -b &lt;new_branch&gt;
 $ git br -d &lt;branch&gt;
 
 ## 强制删除某个分支 (未被合并的分支被删除的时候需要强制)
-$ git br -D &lt;branch&gt;
-</code></pre>
+$ git br -D &lt;branch&gt;</code></pre>
 <h2 id="git-checkout">git checkout</h2>
-<pre><code>## 检出一个版本库，默认将更新到master分支
+<pre class="highlight"><code>## 检出一个版本库，默认将更新到master分支
 $ git checkout
 ## 检出到一个特定的分支
 $ git checkout branchName
 ## 新建一个分支，并且切换过去，相当于"git branch &lt;名字&gt;; git checkout &lt;名字&gt;"
-$ git checkout -b newBranch
-</code></pre>
+$ git checkout -b newBranch</code></pre>
 <h2 id="_4">添加远程仓库</h2>
-<pre><code>## 下载远程仓库的所有变动
+<pre class="highlight"><code>## 下载远程仓库的所有变动
 $ git fetch [remote]
 
 ## 显示所有远程仓库
@@ -561,10 +571,9 @@ $ git push [remote] [branch]
 $ git push [remote] --force
 
 ## 推送所有分支到远程仓库
-$ git push [remote] --all
-</code></pre>
+$ git push [remote] --all</code></pre>
 <h2 id="_5">撤销：</h2>
-<pre><code>## 恢复暂存区的指定文件到工作区
+<pre class="highlight"><code>## 恢复暂存区的指定文件到工作区
 $ git checkout [file]
 
 ## 恢复某个commit的指定文件到暂存区和工作区
@@ -606,10 +615,9 @@ $ git stash list
 $ git stash apply
 
 ## 删除暂存区
-$ git stash drop
-</code></pre>
+$ git stash drop</code></pre>
 <h2 id="commit">提交 commit</h2>
-<pre><code>## 提交暂存区到仓库区附带提交信息
+<pre class="highlight"><code>## 提交暂存区到仓库区附带提交信息
 $ git commit -m [message]
 
 ## 提交暂存区的指定文件到仓库区
@@ -626,20 +634,18 @@ $ git commit -v
 $ git commit --amend -m [message]
 
 ## 重做上一次commit，并包括指定文件的新变化
-$ git commit --amend [file1] [file2] ...
-</code></pre>
+$ git commit --amend [file1] [file2] ...</code></pre>
 <h2 id="git-diff">git diff</h2>
-<pre><code>## 显示工作目录和索引的不同
+<pre class="highlight"><code>## 显示工作目录和索引的不同
 $ git diff
 
 ## 显示索引和最近一次提交的不同
 $ git diff --cached
 
 ## 显示工作目录和最近一次提交的不同
-$ git diff HEAD
-</code></pre>
+$ git diff HEAD</code></pre>
 <h2 id="git-grep">git grep</h2>
-<pre><code>可选配置：
+<pre class="highlight"><code>可选配置：
 ## 感谢Travis Jeffery提供的以下用法：
 ## 在搜索结果中显示行号
 $ git config --global grep.lineNumber true
@@ -650,10 +656,9 @@ $ git config --global alias.g "grep --break --heading --line-number"
 $ git grep 'variableName' -- '*.java'
 
 ## 搜索包含 "arrayListName" 和, "add" 或 "remove" 的所有行
-$ git grep -e 'arrayListName' --and \( -e add -e remove \)
-</code></pre>
+$ git grep -e 'arrayListName' --and \( -e add -e remove \)</code></pre>
 <h2 id="git-log">git log</h2>
-<pre><code>## 显示所有提交
+<pre class="highlight"><code>## 显示所有提交
 $ git log
 
 ## 显示某几条提交信息
@@ -672,18 +677,16 @@ $ git log -p &lt;file&gt;
 $ git log -p -2
 
 #查看提交统计信息
-$ git log --stat
-</code></pre>
+$ git log --stat</code></pre>
 <h2 id="merge">merge</h2>
-<pre><code>## 将其他分支合并到当前分支
+<pre class="highlight"><code>## 将其他分支合并到当前分支
 $ git merge branchName
 
 ## 在合并时创建一个新的合并后的提交
 ## 不要 Fast-Foward 合并，这样可以生成 merge 提交
-$ git merge --no-ff branchName
-</code></pre>
+$ git merge --no-ff branchName</code></pre>
 <h2 id="mv">mv 重命名或移动一个文件</h2>
-<pre><code>## 重命名
+<pre class="highlight"><code>## 重命名
 $ git mv test.js test2.js
 
 ## 移动
@@ -694,10 +697,9 @@ $ git mv [file-original] [file-renamed]
 
 ## 强制重命名或移动
 ## 这个文件已经存在，将要覆盖掉
-$ git mv -f myFile existingFile
-</code></pre>
+$ git mv -f myFile existingFile</code></pre>
 <h2 id="tag">tag</h2>
-<pre><code>## 列出所有tag
+<pre class="highlight"><code>## 列出所有tag
 $ git tag
 
 ## 新建一个tag在当前commit
@@ -722,27 +724,24 @@ $ git push [remote] [tag]
 $ git push [remote] --tags
 
 ## 新建一个分支，指向某个tag
-$ git checkout -b [branch] [tag]
-</code></pre>
+$ git checkout -b [branch] [tag]</code></pre>
 <h2 id="push">push</h2>
-<pre><code>## 从远端origin的master分支更新版本库
+<pre class="highlight"><code>## 从远端origin的master分支更新版本库
 ## git pull &lt;远端&gt; &lt;分支&gt;
 $ git pull origin master
 
 ## 抓取远程仓库所有分支更新并合并到本地，不要快进合并
-$ git pull --no-ff
-</code></pre>
+$ git pull --no-ff</code></pre>
 <h2 id="ci">ci</h2>
-<pre><code>$ git ci &lt;file&gt;
+<pre class="highlight"><code>$ git ci &lt;file&gt;
 $ git ci .
 ## 将git add, git rm和git ci等操作都合并在一起做
 $ git ci -a
 $ git ci -am "some comments"
 ## 修改最后一次提交记录
-$ git ci --amend
-</code></pre>
+$ git ci --amend</code></pre>
 <h2 id="rebase">rebase</h2>
-<pre><code>## 将experimentBranch应用到master上面
+<pre class="highlight"><code>## 将experimentBranch应用到master上面
 ## git rebase &lt;basebranch&gt; &lt;topicbranch&gt;
 $ git rebase master experimentBranch
 reset (谨慎使用)
@@ -759,10 +758,9 @@ $ git reset dha78as
 
 ## 将当前分支恢复到某次提交，覆盖现在的工作目录
 ## 并且删除所有未提交的改变和指定提交之后的所有提交
-$ git reset --hard dha78as
-</code></pre>
+$ git reset --hard dha78as</code></pre>
 <h2 id="_6">其他</h2>
-<pre><code>## 生成一个可供发布的压缩包
+<pre class="highlight"><code>## 生成一个可供发布的压缩包
 $ git archive
 
 ## 打补丁
@@ -772,8 +770,7 @@ $ git apply ../sync.patch
 $ git apply --check ../sync.patch
 
 ## 查看Git的版本
-$ git --version
-</code></pre>
+$ git --version</code></pre>
     </article>
     <aside class="toc" id="toc">
       <div class="toc-title">大纲</div>

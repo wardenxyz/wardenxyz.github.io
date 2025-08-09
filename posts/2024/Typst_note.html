@@ -30,13 +30,31 @@
   <script type="text/javascript" id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
   </script>
+  <!-- Mermaid Diagram -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" defer></script>
+  <script>
+    // Initialize Mermaid when DOM is ready
+    document.addEventListener('DOMContentLoaded', function(){
+      if(window.mermaid && mermaid.initialize){
+        const theme = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'default';
+        mermaid.initialize({ startOnLoad: true, theme });
+        if(mermaid.run){
+          try{ mermaid.run({ querySelector: '.mermaid' }); }catch(e){}
+        }
+      }
+    });
+  </script>
 </head>
-<body>
+<body data-base="../../">
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="../../index.html">My Blog</a>
   <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-controls="primaryNav" aria-expanded="false">☰</button>
-  <nav class="nav" id="primaryNav">
+      <div class="search" role="search">
+        <input type="search" id="searchInput" placeholder="搜索文章..." aria-label="搜索文章" autocomplete="off" />
+        <div class="search-results" id="searchResults" role="listbox" aria-label="搜索结果"></div>
+      </div>
+      <nav class="nav" id="primaryNav">
         <a class="nav-link" href="../../index.html">首页</a>
         <a class="nav-link" href="../../categories.html">Categories</a>
         <a class="nav-link" href="../../tags.html">Tags</a>
@@ -50,17 +68,15 @@
       <nav class="sidebar" aria-label="所有文章"><div class="sidebar-group"><div class="sidebar-year">Others</div><ul><li><a href="../../index.html">随便写写</a></li><li><a href="../../categories.html">Categories</a></li><li><a href="../../tags.html">Tags</a></li></ul></div><div class="sidebar-group"><div class="sidebar-year">2025</div><ul><li><a href="../2025/SOPS.html">SOPS:Secrets OPerationS</a></li><li><a href="../2025/age.html">age-note</a></li><li><a href="../2025/yt-dlp.html">yt-dlp 使用</a></li><li><a href="../2025/cross-platform-byte-control.md.html">跨系统避免换行符导致字节差异的方法</a></li><li><a href="../2025/introduce-passkey.html">Passkey:Secure,Convenient Login</a></li><li><a href="../2025/npm-config.html">修改 npm node_modules 位置</a></li><li><a href="../2025/powershell-get-command.html">PowerShell Get-Command 命令</a></li><li><a href="../2025/background-color.html">背景颜色</a></li><li><a href="../2025/git-hook.html">自用 git hook</a></li><li><a href="../2025/typst-syntax-simple-introduction.html">Typst 语法简单介绍</a></li><li><a href="../2025/shut-wps-background-runing.html">关闭 WPS 后台运行</a></li><li><a href="../2025/font.html">个人字体</a></li><li><a href="../2025/github-avatar.html">GitHub 头像</a></li><li><a href="../2025/regex-note.html">正则表达式简明指南</a></li><li><a href="../2025/Rollback-commit.html">回滚提交</a></li><li><a href="../2025/use_python_gen_site.html">使用 Python 生成静态网页</a></li><li><a href="../2025/install_wsl2_and_to_d_disk.html">安装 WSL2 并迁移到 D 盘</a></li><li><a href="../2025/zed_use_typstyle.html">在 zed 上配置 typstyle</a></li><li><a href="../2025/Rust_Windows_Config.html">在 Windows 上配置 Rust 环境</a></li><li><a href="../2025/conda_note.html">conda 使用笔记</a></li><li><a href="../2025/Zed_set_OpenAI_API_Compatible_model.html">在 Zed Editor 中配置 OpenAI API 兼容的模型</a></li><li><a href="../2025/zed_use.html">zed 使用笔记</a></li><li><a href="../2025/ollama_run_deepseek.html">ollama 运行 DeepSeek 模型</a></li></ul></div><div class="sidebar-group"><div class="sidebar-year">2024</div><ul><li><a href="pull_request_steps.html">Pull Request 的步骤</a></li><li><a href="Typst_note.html" class="active">Typst 笔记</a></li><li><a href="git_reset.html">git 重置当前分支</a></li><li><a href="vitepress_note.html">vitepress 学习笔记</a></li><li><a href="deploy_gitHub_page.html">GitHub page 搭建学习笔记</a></li><li><a href="Linux_note.html">Linux 学习笔记</a></li><li><a href="OpenSSL_encrypt_note.html">OpenSSL 加解密速查笔记</a></li><li><a href="python_note.html">python 学习笔记</a></li><li><a href="lazy.nvim_note.html">lazy.nvim 学习笔记</a></li><li><a href="git-izer_note.html">git-sizer 学习笔记</a></li><li><a href="git_force_overwrite_local_repo.html">git 强制覆盖本地仓库</a></li><li><a href="bilibili_embedding_code.html">B站嵌入代码</a></li><li><a href="personal_software.html">个人自用软件</a></li><li><a href="you-get_note.html">用 you-get 下载B站视频</a></li><li><a href="git-crypt_note.html">git-crypt 学习笔记</a></li><li><a href="gen_GPG_key.html">生成 GPG 密钥</a></li><li><a href="git-crypt_official_doc.html">git-crypt 官方文档</a></li><li><a href="git-crypt_official_doc_zh.html">git-crypt 官方文档中文翻译</a></li><li><a href="README_outline.html">README 文档结构</a></li><li><a href="git_commit_message_standard.html">git commit message 规范</a></li><li><a href="vscode_snippets_variable.html">vscode snippets 预置变量</a></li><li><a href="modern_cryptography.html">现代加密学</a></li><li><a href="former_doctor_who.html">神秘博士复活时间表</a></li><li><a href="ffmpeg_note.html">ffmpeg 自用命令</a></li><li><a href="qqmail_third_party_config.html">第三方邮箱客户端配置QQmail & Foxmail</a></li><li><a href="git_Cli.html">git 命令手册</a></li><li><a href="LaTeX_note.html">LaTeX 与希腊字母对照表</a></li><li><a href="git_branch.html">git 分支操作</a></li><li><a href="remove_file_from_git_history.html">从 git 提交中移除文件</a></li><li><a href="vim_note.html">Vim 高效速查笔记</a></li><li><a href="obsidian_shortcut_key.html">obsidian快捷键</a></li><li><a href="android_QQ_file_storage_path.html">手机QQ文件存储路径</a></li><li><a href="browser_UA_value.html">浏览器UA值</a></li><li><a href="gpg_communication.html">GPG 在通信中的简单理解</a></li><li><a href="vscode_note.html">VSCode 高效使用指南</a></li></ul></div></nav>
     </aside>
     <article class="content" id="content">
-      <h1 id="typst">Typst 笔记</h1>
-<p><a href="https://typst.app/docs">Tyspt 官方文档</a></p>
+  <div class="post-meta" aria-label="文章元信息"><span class="meta-item meta-date" title="发布日期">📅 2024-11-27</span><span class="meta-item" title="分类">📂 <span class="badge badge-cat">计算机</span></span><span class="meta-item" title="标签">🏷️ <span class="badge badge-tag">Typst</span></span></div>
+  <h1 id="typst">Typst 笔记</h1>
+<p><a href="https://typst.app/docs" rel="noopener noreferrer" target="_blank">Tyspt 官方文档</a></p>
 <h2 id="_1">导出命令</h2>
 <h3 id="pdf">PDF（默认格式）</h3>
-<pre><code class="language-bash">typst c input.typ
-</code></pre>
-<pre><code class="language-bash">typst c input.typ --pages 1-3  # 仅导出第1-3页
-</code></pre>
+<pre class="highlight"><code class="language-bash">typst c input.typ</code></pre>
+<pre class="highlight"><code class="language-bash">typst c input.typ --pages 1-3  # 仅导出第1-3页</code></pre>
 <h3 id="png">PNG</h3>
-<pre><code class="language-bash">typst c input.typ output.png
-</code></pre>
+<pre class="highlight"><code class="language-bash">typst c input.typ output.png</code></pre>
 <ul>
 <li>
 <p>多页时必须加上 <code>"png-{0p}.png"</code> 参数，这个参数为导出的文件命令</p>
@@ -72,16 +88,13 @@
 <p>可通过 <code>--ppi</code> 调整分辨率（默认 144 PPI）</p>
 </li>
 </ul>
-<pre><code class="language-bash">typst c input.typ "png-{0p}.png" --ppi 300  # 300 DPI，补零页码
-</code></pre>
+<pre class="highlight"><code class="language-bash">typst c input.typ "png-{0p}.png" --ppi 300  # 300 DPI，补零页码</code></pre>
 <ul>
 <li><code>{t}</code> 参数是总页数</li>
 </ul>
-<pre><code class="language-bash">typst c main.typ "page-{0p}-of-{t}.png"
-</code></pre>
+<pre class="highlight"><code class="language-bash">typst c main.typ "page-{0p}-of-{t}.png"</code></pre>
 <h3 id="svg">SVG</h3>
-<pre><code class="language-bash">typst c input.typ output.svg
-</code></pre>
+<pre class="highlight"><code class="language-bash">typst c input.typ output.svg</code></pre>
 <ul>
 <li>
 <p>多页时必须加上 <code>"png-{0p}.png"</code> 参数，这个参数为导出的文件命令</p>
@@ -90,119 +103,91 @@
 <p><code>{0p}</code> 会补零，<code>{p}</code> 不会补零，推荐使用 <code>{0p}</code>，在文件管理器中，补零格式（01, 02...）的排序永远比自然数字（1, 2...）更可靠</p>
 </li>
 </ul>
-<pre><code class="language-bash">typst c input.typ "svg-{0p}.svg" --pages 2,4-6  # 导出第 2、4、5、6 页
-</code></pre>
+<pre class="highlight"><code class="language-bash">typst c input.typ "svg-{0p}.svg" --pages 2,4-6  # 导出第 2、4、5、6 页</code></pre>
 <ul>
 <li><code>{t}</code> 参数是总页数</li>
 </ul>
-<pre><code class="language-bash">typst c main.typ "page-{0p}-of-{t}.svg"
-</code></pre>
+<pre class="highlight"><code class="language-bash">typst c main.typ "page-{0p}-of-{t}.svg"</code></pre>
 <h3 id="html">HTML（实验性功能）</h3>
-<pre><code class="language-bash">typst c --features html input.typ output.html
-</code></pre>
+<pre class="highlight"><code class="language-bash">typst c --features html input.typ output.html</code></pre>
 <h2 id="_2">部分语法</h2>
 <h3 id="_3">标题</h3>
-<pre><code class="language-typst">= 第一级大标题
-== 第二级大标题
-</code></pre>
+<pre class="highlight"><code class="language-typst">= 第一级大标题
+== 第二级大标题</code></pre>
 <h3 id="_4">无序列表</h3>
-<pre><code class="language-typst">- 无序列表
-</code></pre>
+<pre class="highlight"><code class="language-typst">- 无序列表</code></pre>
 <h3 id="_5">有序列表</h3>
-<pre><code class="language-typst">1. 有序列表
-+ 有序列表
-</code></pre>
+<pre class="highlight"><code class="language-typst">1. 有序列表
++ 有序列表</code></pre>
 <h3 id="_6">加重字体</h3>
-<pre><code class="language-typst">*加重字体*
-</code></pre>
+<pre class="highlight"><code class="language-typst">*加重字体*</code></pre>
 <h3 id="_7">斜体</h3>
-<pre><code class="language-typst">_斜体_
-</code></pre>
+<pre class="highlight"><code class="language-typst">_斜体_</code></pre>
 <h3 id="_8">字体</h3>
 <p>全局：</p>
-<pre><code class="language-typst">#set text(font: "kaiti", fill: red, size: 12pt)
-大小为12磅，字体为楷体的红色内容
-</code></pre>
+<pre class="highlight"><code class="language-typst">#set text(font: "kaiti", fill: red, size: 12pt)
+大小为12磅，字体为楷体的红色内容</code></pre>
 <p>局部：</p>
-<pre><code class="language-typst">#text(font: "kaiti", fill: red, size: 12pt)[大小为12磅，字体为楷体的红色内容]
-</code></pre>
+<pre class="highlight"><code class="language-typst">#text(font: "kaiti", fill: red, size: 12pt)[大小为12磅，字体为楷体的红色内容]</code></pre>
 <h3 id="_9">位置</h3>
 <p>全局：</p>
-<pre><code class="language-typst">#set align(left)
-居左
-</code></pre>
+<pre class="highlight"><code class="language-typst">#set align(left)
+居左</code></pre>
 <p>局部：</p>
-<pre><code class="language-typst">#align(left)[居左]
-</code></pre>
+<pre class="highlight"><code class="language-typst">#align(left)[居左]</code></pre>
 <h3 id="_10">下划线</h3>
-<pre><code class="language-typst">#underline[此处有下划线]
-</code></pre>
+<pre class="highlight"><code class="language-typst">#underline[此处有下划线]</code></pre>
 <h3 id="_11">上划线</h3>
-<pre><code class="language-typst">#overline[此处有上划线]
-</code></pre>
+<pre class="highlight"><code class="language-typst">#overline[此处有上划线]</code></pre>
 <h3 id="_12">上标</h3>
-<pre><code class="language-typst">#super[这里是上标内容]
-</code></pre>
+<pre class="highlight"><code class="language-typst">#super[这里是上标内容]</code></pre>
 <h3 id="_13">下标</h3>
-<pre><code class="language-typst">#sub[这里是下标内容]
-</code></pre>
+<pre class="highlight"><code class="language-typst">#sub[这里是下标内容]</code></pre>
 <h3 id="_14">删除线</h3>
-<pre><code class="language-typst">#strike[被删除的内容]
-</code></pre>
+<pre class="highlight"><code class="language-typst">#strike[被删除的内容]</code></pre>
 <h3 id="_15">高亮</h3>
-<pre><code class="language-typst">#highlight[高亮内容]
-</code></pre>
+<pre class="highlight"><code class="language-typst">#highlight[高亮内容]</code></pre>
 <h3 id="_16">链接</h3>
-<pre><code class="language-typst">#link("https://baidu.com")[百度]
-</code></pre>
+<pre class="highlight"><code class="language-typst">#link("https://baidu.com")[百度]</code></pre>
 <h3 id="_17">字间距 &amp; 行间距</h3>
-<pre><code class="language-typst">#set par(leading: 18pt) //行间距
-#set text(tracking: 0.1pt) //字间距
-</code></pre>
+<pre class="highlight"><code class="language-typst">#set par(leading: 18pt) //行间距
+#set text(tracking: 0.1pt) //字间距</code></pre>
 <h3 id="_18">文档属性</h3>
-<pre><code class="language-typst">#set document(
+<pre class="highlight"><code class="language-typst">#set document(
   title: title,
   author: author,
   keywords: str,array,
   date: none, auto,datetime,
-)
-</code></pre>
+)</code></pre>
 <h3 id="_19">页边距</h3>
-<pre><code class="language-typst">  #set page(margin: (
+<pre class="highlight"><code class="language-typst">  #set page(margin: (
     top: 2.54cm, //上边距
     bottom: 2.54cm, //下边距
     right: 2.54cm, //右边距
     left: 2.54cm, //左边距
-  ))
-</code></pre>
+  ))</code></pre>
 <h3 id="_20">水印</h3>
-<pre><code class="language-typst">#set page(background: rotate(45deg,
+<pre class="highlight"><code class="language-typst">#set page(background: rotate(45deg,
   text(50pt, fill: rgb("FFCBC4"))[
     *这是水印*
   ]
-))
-</code></pre>
+))</code></pre>
 <h3 id="_21">引用</h3>
-<pre><code class="language-typst">#set quote(block: true) //开启引用块
+<pre class="highlight"><code class="language-typst">#set quote(block: true) //开启引用块
 
 #quote(attribution: [引用文本的来源])[
   引用的文本
-]
-</code></pre>
+]</code></pre>
 <h3 id="_22">大纲</h3>
-<pre><code class="language-typst">#outline()
-</code></pre>
+<pre class="highlight"><code class="language-typst">#outline()</code></pre>
 <h3 id="_23">手动分页</h3>
-<pre><code class="language-typst">#pagebreak()
-</code></pre>
+<pre class="highlight"><code class="language-typst">#pagebreak()</code></pre>
 <h3 id="_24">插入图片</h3>
-<pre><code class="language-typst">#image("4.jpeg")
-</code></pre>
-<pre><code class="language-typst">#figure(
+<pre class="highlight"><code class="language-typst">#image("4.jpeg")</code></pre>
+<pre class="highlight"><code class="language-typst">#figure(
     image("图片路径", width: 10pt),
     caption: "说明"
-)
-</code></pre>
+)</code></pre>
     </article>
     <aside class="toc" id="toc">
       <div class="toc-title">大纲</div>
