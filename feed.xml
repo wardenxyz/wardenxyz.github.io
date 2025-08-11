@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>wardenxyz Blog</title>
+    <link>https://wardenxyz.github.io</link>
+    <description>技术与笔记</description>
+    
+    <item>
+      <title>SOPS:Secrets OPerationS</title>
+      <link>https://wardenxyz.github.io/posts/2025/SOPS.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/SOPS.html</guid>
+      <pubDate>Wed, 23 Jul 2025 00:00:00 -0000</pubDate>
+      <description>安装</description>
+    </item>
+
+    <item>
+      <title>age-note</title>
+      <link>https://wardenxyz.github.io/posts/2025/age.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/age.html</guid>
+      <pubDate>Tue, 22 Jul 2025 00:00:00 -0000</pubDate>
+      <description>age 是一个简单的加密工具，旨在提供一种安全、易用的方式来加密文件和数据。它的设计理念是简洁和高效，适合需要快速加密和解密的场景。</description>
+    </item>
+
+    <item>
+      <title>yt-dlp 使用</title>
+      <link>https://wardenxyz.github.io/posts/2025/yt-dlp.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/yt-dlp.html</guid>
+      <pubDate>Sat, 19 Jul 2025 00:00:00 -0000</pubDate>
+      <description>yt-dlp 是一个强大的视频下载工具，支持从多个网站下载视频和音频。它是 youtube-dl 的一个分支，提供了更多的功能和更好的性能。</description>
+    </item>
+
+    <item>
+      <title>跨系统避免换行符导致字节差异的方法</title>
+      <link>https://wardenxyz.github.io/posts/2025/cross-platform-byte-control.md.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/cross-platform-byte-control.md.html</guid>
+      <pubDate>Tue, 15 Jul 2025 00:00:00 -0000</pubDate>
+      <description>在不同操作系统下，会因为换行符导致字节差异，下面介绍了一个方法精确控制输出内容的字节。</description>
+    </item>
+
+    <item>
+      <title>Passkey:Secure,Convenient Login</title>
+      <link>https://wardenxyz.github.io/posts/2025/introduce-passkey.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/introduce-passkey.html</guid>
+      <pubDate>Fri, 04 Jul 2025 00:00:00 -0000</pubDate>
+      <description>您的理解：</description>
+    </item>
+
+    <item>
+      <title>修改 npm node_modules 位置</title>
+      <link>https://wardenxyz.github.io/posts/2025/npm-config.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/npm-config.html</guid>
+      <pubDate>Fri, 20 Jun 2025 00:00:00 -0000</pubDate>
+      <description>修改 npm install 时的 node_modules 位置</description>
+    </item>
+
+    <item>
+      <title>PowerShell Get-Command 命令</title>
+      <link>https://wardenxyz.github.io/posts/2025/powershell-get-command.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/powershell-get-command.html</guid>
+      <pubDate>Sat, 14 Jun 2025 00:00:00 -0000</pubDate>
+      <description>这个命令会告诉你 typst 的实际可执行文件路径或是否是别名/函数</description>
+    </item>
+
+    <item>
+      <title>背景颜色</title>
+      <link>https://wardenxyz.github.io/posts/2025/background-color.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/background-color.html</guid>
+      <pubDate>Fri, 13 Jun 2025 00:00:00 -0000</pubDate>
+      <description>专注内容的纯色背景</description>
+    </item>
+
+    <item>
+      <title>自用 git hook</title>
+      <link>https://wardenxyz.github.io/posts/2025/git-hook.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/git-hook.html</guid>
+      <pubDate>Fri, 13 Jun 2025 00:00:00 -0000</pubDate>
+      <description>路径：.git/hooks/post-commit</description>
+    </item>
+
+    <item>
+      <title>Typst 语法简单介绍</title>
+      <link>https://wardenxyz.github.io/posts/2025/typst-syntax-simple-introduction.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/typst-syntax-simple-introduction.html</guid>
+      <pubDate>Sat, 07 Jun 2025 00:00:00 -0000</pubDate>
+      <description>GitHub Copilot: Typst 中的 let 和 show 是两个核心概念，用于变量绑定和内容样式化：</description>
+    </item>
+
+    <item>
+      <title>关闭 WPS 后台运行</title>
+      <link>https://wardenxyz.github.io/posts/2025/shut-wps-background-runing.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/shut-wps-background-runing.html</guid>
+      <pubDate>Tue, 03 Jun 2025 00:00:00 -0000</pubDate>
+      <description>搬运自： https://www.zhihu.com/question/498031038</description>
+    </item>
+
+    <item>
+      <title>个人字体</title>
+      <link>https://wardenxyz.github.io/posts/2025/font.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/font.html</guid>
+      <pubDate>Sun, 18 May 2025 00:00:00 -0000</pubDate>
+      <description>Typst 使用字体： Source Han Sans CN</description>
+    </item>
+
+    <item>
+      <title>GitHub 头像</title>
+      <link>https://wardenxyz.github.io/posts/2025/github-avatar.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/github-avatar.html</guid>
+      <pubDate>Sat, 26 Apr 2025 00:00:00 -0000</pubDate>
+      <description>我的 GitHub 头像 Typst 版</description>
+    </item>
+
+    <item>
+      <title>正则表达式简明指南</title>
+      <link>https://wardenxyz.github.io/posts/2025/regex-note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/regex-note.html</guid>
+      <pubDate>Tue, 15 Apr 2025 00:00:00 -0000</pubDate>
+      <description>正则表达式简明指南 核心元字符速查 元字符 功能描述 示例 匹配案例 . 匹配除换行符外的任意字符 a.c abc, a1c * 前导字符出现0次或多次 ab* a, ab, abb + 前导字符出现1次或多次 ab+ ab, abb ? 前导字符出现0次或1次 ab? a, ab ^ 匹配字符串起始位置 ^Start Start... $ 匹配字符串结束位</description>
+    </item>
+
+    <item>
+      <title>回滚提交</title>
+      <link>https://wardenxyz.github.io/posts/2025/Rollback-commit.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/Rollback-commit.html</guid>
+      <pubDate>Mon, 14 Apr 2025 00:00:00 -0000</pubDate>
+      <description>要强制回滚到前两个提交之前，可以使用以下 Git 命令：</description>
+    </item>
+
+    <item>
+      <title>使用 Python 生成静态网页</title>
+      <link>https://wardenxyz.github.io/posts/2025/use_python_gen_site.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/use_python_gen_site.html</guid>
+      <pubDate>Sat, 12 Apr 2025 00:00:00 -0000</pubDate>
+      <description>环境：</description>
+    </item>
+
+    <item>
+      <title>安装 WSL2 并迁移到 D 盘</title>
+      <link>https://wardenxyz.github.io/posts/2025/install_wsl2_and_to_d_disk.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/install_wsl2_and_to_d_disk.html</guid>
+      <pubDate>Thu, 10 Apr 2025 00:00:00 -0000</pubDate>
+      <description>以下是在 Windows 上安装 WSL2 的主要步骤：</description>
+    </item>
+
+    <item>
+      <title>在 zed 上配置 typstyle</title>
+      <link>https://wardenxyz.github.io/posts/2025/zed_use_typstyle.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/zed_use_typstyle.html</guid>
+      <pubDate>Fri, 21 Mar 2025 00:00:00 -0000</pubDate>
+      <description>在 Zed 上配置 Typst 的格式化工具，在 settings.json 中写入以下即可</description>
+    </item>
+
+    <item>
+      <title>在 Windows 上配置 Rust 环境</title>
+      <link>https://wardenxyz.github.io/posts/2025/Rust_Windows_Config.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/Rust_Windows_Config.html</guid>
+      <pubDate>Sun, 16 Mar 2025 00:00:00 -0000</pubDate>
+      <description>起因：想编译 Zed 的 Windows 版，但不想下载 visual studio</description>
+    </item>
+
+    <item>
+      <title>conda 使用笔记</title>
+      <link>https://wardenxyz.github.io/posts/2025/conda_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/conda_note.html</guid>
+      <pubDate>Sat, 15 Mar 2025 00:00:00 -0000</pubDate>
+      <description>conda 使用笔记 conda 常用命令 # 创建环境时指定 Python 版本 conda create --name myenv python=3.8 # 更精确的版本控制 conda create --name myenv python=3.8.5 # 激活环境 conda activate env_name # 列出所有的 conda 虚拟环境 c</description>
+    </item>
+
+    <item>
+      <title>在 Zed Editor 中配置 OpenAI API 兼容的模型</title>
+      <link>https://wardenxyz.github.io/posts/2025/Zed_set_OpenAI_API_Compatible_model.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/Zed_set_OpenAI_API_Compatible_model.html</guid>
+      <pubDate>Fri, 14 Mar 2025 00:00:00 -0000</pubDate>
+      <description>在 setting.json 中写入</description>
+    </item>
+
+    <item>
+      <title>zed 使用笔记</title>
+      <link>https://wardenxyz.github.io/posts/2025/zed_use.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/zed_use.html</guid>
+      <pubDate>Tue, 11 Mar 2025 00:00:00 -0000</pubDate>
+      <description>系统：Windows11 24H2</description>
+    </item>
+
+    <item>
+      <title>ollama 运行 DeepSeek 模型</title>
+      <link>https://wardenxyz.github.io/posts/2025/ollama_run_deepseek.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/ollama_run_deepseek.html</guid>
+      <pubDate>Thu, 23 Jan 2025 00:00:00 -0000</pubDate>
+      <description>最近 DeepSeek-R1 开源，风头无两，用 o1 几十分之一的成本训练出一个比肩 o1 的模型，而且还开源，不仅把模型开源，还把训练方法开源，而且还是 MIT 协议，随意商用</description>
+    </item>
+
+    <item>
+      <title>Pull Request 的步骤</title>
+      <link>https://wardenxyz.github.io/posts/2024/pull_request_steps.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/pull_request_steps.html</guid>
+      <pubDate>Sun, 01 Dec 2024 00:00:00 -0000</pubDate>
+      <description>为开源项目提 Pull Request (PR) 的步骤如下：</description>
+    </item>
+
+    <item>
+      <title>Typst 笔记</title>
+      <link>https://wardenxyz.github.io/posts/2024/Typst_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/Typst_note.html</guid>
+      <pubDate>Wed, 27 Nov 2024 00:00:00 -0000</pubDate>
+      <description>Tyspt 官方文档</description>
+    </item>
+
+    <item>
+      <title>git 重置当前分支</title>
+      <link>https://wardenxyz.github.io/posts/2024/git_reset.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/git_reset.html</guid>
+      <pubDate>Wed, 16 Oct 2024 00:00:00 -0000</pubDate>
+      <description>git reset 命令用于重置当前分支的 HEAD 到指定的状态。以下是一些常用的 git reset 命令：</description>
+    </item>
+
+    <item>
+      <title>vitepress 学习笔记</title>
+      <link>https://wardenxyz.github.io/posts/2024/vitepress_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/vitepress_note.html</guid>
+      <pubDate>Sat, 12 Oct 2024 00:00:00 -0000</pubDate>
+      <description>我的 vitepress 目录结构是</description>
+    </item>
+
+    <item>
+      <title>GitHub page 搭建学习笔记</title>
+      <link>https://wardenxyz.github.io/posts/2024/deploy_gitHub_page.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/deploy_gitHub_page.html</guid>
+      <pubDate>Wed, 09 Oct 2024 00:00:00 -0000</pubDate>
+      <description>其中 id_rsa 是私钥， id_rsa.pub 是公钥</description>
+    </item>
+
+    <item>
+      <title>Linux 学习笔记</title>
+      <link>https://wardenxyz.github.io/posts/2024/Linux_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/Linux_note.html</guid>
+      <pubDate>Mon, 07 Oct 2024 00:00:00 -0000</pubDate>
+      <description>提示：使用 man &lt;命令&gt; 查看详细手册， tldr &lt;命令&gt; 获取简化版帮助</description>
+    </item>
+
+    <item>
+      <title>OpenSSL 加解密速查笔记</title>
+      <link>https://wardenxyz.github.io/posts/2024/OpenSSL_encrypt_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/OpenSSL_encrypt_note.html</guid>
+      <pubDate>Sun, 06 Oct 2024 00:00:00 -0000</pubDate>
+      <description>通用参数说明：</description>
+    </item>
+
+    <item>
+      <title>python 学习笔记</title>
+      <link>https://wardenxyz.github.io/posts/2024/python_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/python_note.html</guid>
+      <pubDate>Sun, 06 Oct 2024 00:00:00 -0000</pubDate>
+      <description>清华源：</description>
+    </item>
+
+    <item>
+      <title>lazy.nvim 学习笔记</title>
+      <link>https://wardenxyz.github.io/posts/2024/lazy.nvim_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/lazy.nvim_note.html</guid>
+      <pubDate>Fri, 04 Oct 2024 00:00:00 -0000</pubDate>
+      <description>两个命令，三个路径，两个命令是拉取 lazy.nvim 和拉取 init.lua 配置文件命令，三个路径是 lazy.nvim 的路径、init.lua 的路径和 Neovim 插件的路径</description>
+    </item>
+
+    <item>
+      <title>git-sizer 学习笔记</title>
+      <link>https://wardenxyz.github.io/posts/2024/git-izer_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/git-izer_note.html</guid>
+      <pubDate>Tue, 01 Oct 2024 00:00:00 -0000</pubDate>
+      <description>从 git-sizer 的输出中可以看出，你的 Git 仓库的整体大小和结构信息。以下是一些关键点的解释：</description>
+    </item>
+
+    <item>
+      <title>git 强制覆盖本地仓库</title>
+      <link>https://wardenxyz.github.io/posts/2024/git_force_overwrite_local_repo.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/git_force_overwrite_local_repo.html</guid>
+      <pubDate>Sun, 01 Sep 2024 00:00:00 -0000</pubDate>
+      <description>git 强制覆盖本地仓库</description>
+    </item>
+
+    <item>
+      <title>B站嵌入代码</title>
+      <link>https://wardenxyz.github.io/posts/2024/bilibili_embedding_code.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/bilibili_embedding_code.html</guid>
+      <pubDate>Thu, 01 Aug 2024 00:00:00 -0000</pubDate>
+      <description>在</description>
+    </item>
+
+    <item>
+      <title>个人自用软件</title>
+      <link>https://wardenxyz.github.io/posts/2024/personal_software.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/personal_software.html</guid>
+      <pubDate>Thu, 01 Aug 2024 00:00:00 -0000</pubDate>
+      <description>simple_live https://github.com/xiaoyaocz/dart_simple_live</description>
+    </item>
+
+    <item>
+      <title>用 you-get 下载B站视频</title>
+      <link>https://wardenxyz.github.io/posts/2024/you-get_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/you-get_note.html</guid>
+      <pubDate>Thu, 01 Aug 2024 00:00:00 -0000</pubDate>
+      <description>在 edge 浏览器下载 Cookie-Editor 扩展，然后打开 B站 ，通过 Cookie-Editor 导出B站的 cookie</description>
+    </item>
+
+    <item>
+      <title>git-crypt 学习笔记</title>
+      <link>https://wardenxyz.github.io/posts/2024/git-crypt_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/git-crypt_note.html</guid>
+      <pubDate>Wed, 10 Jul 2024 00:00:00 -0000</pubDate>
+      <description>从 git-crypt 的 官方文档 中可知</description>
+    </item>
+
+    <item>
+      <title>生成 GPG 密钥</title>
+      <link>https://wardenxyz.github.io/posts/2024/gen_GPG_key.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/gen_GPG_key.html</guid>
+      <pubDate>Wed, 10 Jul 2024 00:00:00 -0000</pubDate>
+      <description>下载 GPG： gpg4win</description>
+    </item>
+
+    <item>
+      <title>git-crypt 官方文档</title>
+      <link>https://wardenxyz.github.io/posts/2024/git-crypt_official_doc.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/git-crypt_official_doc.html</guid>
+      <pubDate>Mon, 08 Jul 2024 00:00:00 -0000</pubDate>
+      <description>原文档: https://github.com/AGWA/git-crypt/blob/master/README.md</description>
+    </item>
+
+    <item>
+      <title>git-crypt 官方文档中文翻译</title>
+      <link>https://wardenxyz.github.io/posts/2024/git-crypt_official_doc_zh.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/git-crypt_official_doc_zh.html</guid>
+      <pubDate>Mon, 01 Jul 2024 00:00:00 -0000</pubDate>
+      <description>git-crypt 使 Git 仓库中的文件可以实现透明的加密和解密。您可以选择需要保护的文件，在提交时进行加密，在检出时进行解密。git-crypt 可以让您自由共享包含公共和私有内容的仓库。即使开发者没有密钥，git-crypt 也能让其实现克隆和提交含有加密文件的仓库。这样，您可以将秘密资料（如密钥或密码）存储在与代码相同的仓库中，而不需要锁定整个仓库</description>
+    </item>
+
+    <item>
+      <title>README 文档结构</title>
+      <link>https://wardenxyz.github.io/posts/2024/README_outline.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/README_outline.html</guid>
+      <pubDate>Sat, 01 Jun 2024 00:00:00 -0000</pubDate>
+      <description>Foobar is a Python library for dealing with word pluralization.（项目简介）</description>
+    </item>
+
+    <item>
+      <title>git commit message 规范</title>
+      <link>https://wardenxyz.github.io/posts/2024/git_commit_message_standard.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/git_commit_message_standard.html</guid>
+      <pubDate>Sat, 01 Jun 2024 00:00:00 -0000</pubDate>
+      <description>在 Git 中，提交信息的规范非常重要，因为它可以帮助其他开发者了解每次提交的目的。以下是一种常见的提交信息规范：</description>
+    </item>
+
+    <item>
+      <title>vscode snippets 预置变量</title>
+      <link>https://wardenxyz.github.io/posts/2024/vscode_snippets_variable.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/vscode_snippets_variable.html</guid>
+      <pubDate>Wed, 01 May 2024 00:00:00 -0000</pubDate>
+      <description>在 Visual Studio Code 中，你可以使用许多预定义的变量来创建代码片段（snippets）。以下是一些常用的预定义变量：</description>
+    </item>
+
+    <item>
+      <title>现代加密学</title>
+      <link>https://wardenxyz.github.io/posts/2024/modern_cryptography.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/modern_cryptography.html</guid>
+      <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
+      <description>核心特性</description>
+    </item>
+
+    <item>
+      <title>神秘博士复活时间表</title>
+      <link>https://wardenxyz.github.io/posts/2024/former_doctor_who.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/former_doctor_who.html</guid>
+      <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
+      <description>第一任博士是在老版第三季的《第十行星》中重生的，这个视频资料已经丢失了只能在哔哩哔哩动画上找到重生瞬间。重生原因是因为博士要毁灭赛博人母星，结果能量超载损害了博士的健康从而重生。</description>
+    </item>
+
+    <item>
+      <title>ffmpeg 自用命令</title>
+      <link>https://wardenxyz.github.io/posts/2024/ffmpeg_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/ffmpeg_note.html</guid>
+      <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
+      <description>下载链接： ffmpeg</description>
+    </item>
+
+    <item>
+      <title>第三方邮箱客户端配置QQmail &amp; Foxmail</title>
+      <link>https://wardenxyz.github.io/posts/2024/qqmail_third_party_config.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/qqmail_third_party_config.html</guid>
+      <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
+      <description>如果您的邮件客户端不在上述列出的范围内，您可以尝试如下通用配置：</description>
+    </item>
+
+    <item>
+      <title>git 命令手册</title>
+      <link>https://wardenxyz.github.io/posts/2024/git_Cli.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/git_Cli.html</guid>
+      <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
+      <description>git 命令手册 常用语句 == 初始化本地git仓库（创建新仓库） git init == 配置用户名 git config --global user.name "xxx" == 配置邮件 git config --global user.email "xxx@xxx.com" == git status等命令自动着色 git config --glob</description>
+    </item>
+
+    <item>
+      <title>LaTeX 与希腊字母对照表</title>
+      <link>https://wardenxyz.github.io/posts/2024/LaTeX_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/LaTeX_note.html</guid>
+      <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
+      <description>LaTeX 与希腊字母对照表 小写字母 大写字母 英文 小写 LaTeX 公式 小写 LaTeX 形式效果 大写 LaTeX 公式 大写 LaTeX 形式效果 α Α Alpha $\alpha$ α \alpha α $\Alpha$ A \Alpha A β Β Beta $\beta$ β \beta β $\Beta$ B \Beta B γ Γ G</description>
+    </item>
+
+  </channel>
+</rss>
