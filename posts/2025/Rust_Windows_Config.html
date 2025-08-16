@@ -312,6 +312,12 @@ registry = "sparse+https://mirrors.ustc.edu.cn/crates.io-index/"
 
 [registries.ustc]
 index = "sparse+https://mirrors.ustc.edu.cn/crates.io-index/"</code></pre>
+<p>备用清华源</p>
+<pre class="highlight"><code class="language-toml">[source.crates-io]
+replace-with = 'mirror'
+
+[source.mirror]
+registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"</code></pre>
     </article>
     <aside class="toc" id="toc">
       <div class="toc-title">大纲</div>
