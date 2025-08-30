@@ -70,19 +70,19 @@
     </item>
 
     <item>
-      <title>背景颜色</title>
-      <link>https://wardenxyz.github.io/posts/2025/background-color.html</link>
-      <guid>https://wardenxyz.github.io/posts/2025/background-color.html</guid>
-      <pubDate>Fri, 13 Jun 2025 00:00:00 -0000</pubDate>
-      <description>专注内容的纯色背景</description>
-    </item>
-
-    <item>
       <title>自用 git hook</title>
       <link>https://wardenxyz.github.io/posts/2025/git-hook.html</link>
       <guid>https://wardenxyz.github.io/posts/2025/git-hook.html</guid>
       <pubDate>Fri, 13 Jun 2025 00:00:00 -0000</pubDate>
       <description>路径：.git/hooks/post-commit</description>
+    </item>
+
+    <item>
+      <title>背景颜色</title>
+      <link>https://wardenxyz.github.io/posts/2025/background-color.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/background-color.html</guid>
+      <pubDate>Fri, 13 Jun 2025 00:00:00 -0000</pubDate>
+      <description>专注内容的纯色背景</description>
     </item>
 
     <item>
@@ -246,19 +246,19 @@
     </item>
 
     <item>
-      <title>OpenSSL 加解密速查笔记</title>
-      <link>https://wardenxyz.github.io/posts/2024/OpenSSL_encrypt_note.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/OpenSSL_encrypt_note.html</guid>
-      <pubDate>Sun, 06 Oct 2024 00:00:00 -0000</pubDate>
-      <description>通用参数说明：</description>
-    </item>
-
-    <item>
       <title>python 学习笔记</title>
       <link>https://wardenxyz.github.io/posts/2024/python_note.html</link>
       <guid>https://wardenxyz.github.io/posts/2024/python_note.html</guid>
       <pubDate>Sun, 06 Oct 2024 00:00:00 -0000</pubDate>
       <description>清华源：</description>
+    </item>
+
+    <item>
+      <title>OpenSSL 加解密速查笔记</title>
+      <link>https://wardenxyz.github.io/posts/2024/OpenSSL_encrypt_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/OpenSSL_encrypt_note.html</guid>
+      <pubDate>Sun, 06 Oct 2024 00:00:00 -0000</pubDate>
+      <description>通用参数说明：</description>
     </item>
 
     <item>
@@ -286,6 +286,14 @@
     </item>
 
     <item>
+      <title>用 you-get 下载B站视频</title>
+      <link>https://wardenxyz.github.io/posts/2024/you-get_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/you-get_note.html</guid>
+      <pubDate>Thu, 01 Aug 2024 00:00:00 -0000</pubDate>
+      <description>在 edge 浏览器下载 Cookie-Editor 扩展，然后打开 B站 ，通过 Cookie-Editor 导出B站的 cookie</description>
+    </item>
+
+    <item>
       <title>B站嵌入代码</title>
       <link>https://wardenxyz.github.io/posts/2024/bilibili_embedding_code.html</link>
       <guid>https://wardenxyz.github.io/posts/2024/bilibili_embedding_code.html</guid>
@@ -302,11 +310,11 @@
     </item>
 
     <item>
-      <title>用 you-get 下载B站视频</title>
-      <link>https://wardenxyz.github.io/posts/2024/you-get_note.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/you-get_note.html</guid>
-      <pubDate>Thu, 01 Aug 2024 00:00:00 -0000</pubDate>
-      <description>在 edge 浏览器下载 Cookie-Editor 扩展，然后打开 B站 ，通过 Cookie-Editor 导出B站的 cookie</description>
+      <title>生成 GPG 密钥</title>
+      <link>https://wardenxyz.github.io/posts/2024/gen_GPG_key.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/gen_GPG_key.html</guid>
+      <pubDate>Wed, 10 Jul 2024 00:00:00 -0000</pubDate>
+      <description>下载 GPG： gpg4win</description>
     </item>
 
     <item>
@@ -315,14 +323,6 @@
       <guid>https://wardenxyz.github.io/posts/2024/git-crypt_note.html</guid>
       <pubDate>Wed, 10 Jul 2024 00:00:00 -0000</pubDate>
       <description>从 git-crypt 的 官方文档 中可知</description>
-    </item>
-
-    <item>
-      <title>生成 GPG 密钥</title>
-      <link>https://wardenxyz.github.io/posts/2024/gen_GPG_key.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/gen_GPG_key.html</guid>
-      <pubDate>Wed, 10 Jul 2024 00:00:00 -0000</pubDate>
-      <description>下载 GPG： gpg4win</description>
     </item>
 
     <item>
@@ -366,19 +366,19 @@
     </item>
 
     <item>
-      <title>现代加密学</title>
-      <link>https://wardenxyz.github.io/posts/2024/modern_cryptography.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/modern_cryptography.html</guid>
+      <title>obsidian快捷键</title>
+      <link>https://wardenxyz.github.io/posts/2024/obsidian_shortcut_key.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/obsidian_shortcut_key.html</guid>
       <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
-      <description>核心特性</description>
+      <description>obsidian快捷键 快捷键 效果 Ctrl+K 快速切换 Ctrl+A 选中全部 Ctrl+S 保存 Ctrl+M 重命名文件 Ctrl+, 打开设置 Ctrl+K 关闭所有标签页 Ctrl+W 关闭当前标签页 Ctrl+ ` 切换实时预览/源码视图 Ctrl+N 新建笔记 Ctrl+F 在当前文件中查找 Ctrl+H 在当前文件中查找并替换 Ctrl+</description>
     </item>
 
     <item>
-      <title>神秘博士复活时间表</title>
-      <link>https://wardenxyz.github.io/posts/2024/former_doctor_who.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/former_doctor_who.html</guid>
+      <title>浏览器UA值</title>
+      <link>https://wardenxyz.github.io/posts/2024/browser_UA_value.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/browser_UA_value.html</guid>
       <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
-      <description>第一任博士是在老版第三季的《第十行星》中重生的，这个视频资料已经丢失了只能在哔哩哔哩动画上找到重生瞬间。重生原因是因为博士要毁灭赛博人母星，结果能量超载损害了博士的健康从而重生。</description>
+      <description>浏览器UA值 简单搜索的UA值 Mozilla/5.0 (Linux; Android 11; RMX3161 Build/RKQ1.201217.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/76.0.3809.89 Mobile Safari/537.36 T7/12</description>
     </item>
 
     <item>
@@ -390,19 +390,19 @@
     </item>
 
     <item>
-      <title>第三方邮箱客户端配置QQmail &amp; Foxmail</title>
-      <link>https://wardenxyz.github.io/posts/2024/qqmail_third_party_config.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/qqmail_third_party_config.html</guid>
+      <title>现代加密学</title>
+      <link>https://wardenxyz.github.io/posts/2024/modern_cryptography.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/modern_cryptography.html</guid>
       <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
-      <description>如果您的邮件客户端不在上述列出的范围内，您可以尝试如下通用配置：</description>
+      <description>核心特性</description>
     </item>
 
     <item>
-      <title>git 命令手册</title>
-      <link>https://wardenxyz.github.io/posts/2024/git_Cli.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/git_Cli.html</guid>
+      <title>Vim 高效速查笔记</title>
+      <link>https://wardenxyz.github.io/posts/2024/vim_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/vim_note.html</guid>
       <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
-      <description>git 命令手册 常用语句 == 初始化本地git仓库（创建新仓库） git init == 配置用户名 git config --global user.name "xxx" == 配置邮件 git config --global user.email "xxx@xxx.com" == git status等命令自动着色 git config --glob</description>
+      <description>推荐配置： .vimrc 添加 inoremap jj &lt;Esc&gt; 用 jj 替代ESC</description>
     </item>
 
   </channel>
