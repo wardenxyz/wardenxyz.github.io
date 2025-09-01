@@ -6,6 +6,14 @@
     <description>技术与笔记</description>
     
     <item>
+      <title>win11 右键菜单切换到 win10 右键菜单</title>
+      <link>https://wardenxyz.github.io/posts/2025/win11-context-menu-to-win10-context-menu.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/win11-context-menu-to-win10-context-menu.html</guid>
+      <pubDate>Mon, 01 Sep 2025 00:00:00 -0000</pubDate>
+      <description>官方解答</description>
+    </item>
+
+    <item>
       <title>GitHub 打野指南</title>
       <link>https://wardenxyz.github.io/posts/2025/How-to-Search-for-AI-API-Keys-on-GitHub.html</link>
       <guid>https://wardenxyz.github.io/posts/2025/How-to-Search-for-AI-API-Keys-on-GitHub.html</guid>
@@ -395,14 +403,6 @@
       <guid>https://wardenxyz.github.io/posts/2024/modern_cryptography.html</guid>
       <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
       <description>核心特性</description>
-    </item>
-
-    <item>
-      <title>Vim 高效速查笔记</title>
-      <link>https://wardenxyz.github.io/posts/2024/vim_note.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/vim_note.html</guid>
-      <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
-      <description>推荐配置： .vimrc 添加 inoremap jj &lt;Esc&gt; 用 jj 替代ESC</description>
     </item>
 
   </channel>
