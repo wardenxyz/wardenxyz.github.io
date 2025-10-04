@@ -294,11 +294,11 @@
     </item>
 
     <item>
-      <title>用 you-get 下载B站视频</title>
-      <link>https://wardenxyz.github.io/posts/2024/you-get_note.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/you-get_note.html</guid>
+      <title>个人自用软件</title>
+      <link>https://wardenxyz.github.io/posts/2024/personal_software.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/personal_software.html</guid>
       <pubDate>Thu, 01 Aug 2024 00:00:00 -0000</pubDate>
-      <description>在 edge 浏览器下载 Cookie-Editor 扩展，然后打开 B站 ，通过 Cookie-Editor 导出B站的 cookie</description>
+      <description>simple_live https://github.com/xiaoyaocz/dart_simple_live</description>
     </item>
 
     <item>
@@ -310,19 +310,11 @@
     </item>
 
     <item>
-      <title>个人自用软件</title>
-      <link>https://wardenxyz.github.io/posts/2024/personal_software.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/personal_software.html</guid>
+      <title>用 you-get 下载B站视频</title>
+      <link>https://wardenxyz.github.io/posts/2024/you-get_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/you-get_note.html</guid>
       <pubDate>Thu, 01 Aug 2024 00:00:00 -0000</pubDate>
-      <description>simple_live https://github.com/xiaoyaocz/dart_simple_live</description>
-    </item>
-
-    <item>
-      <title>生成 GPG 密钥</title>
-      <link>https://wardenxyz.github.io/posts/2024/gen_GPG_key.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/gen_GPG_key.html</guid>
-      <pubDate>Wed, 10 Jul 2024 00:00:00 -0000</pubDate>
-      <description>下载 GPG： gpg4win</description>
+      <description>在 edge 浏览器下载 Cookie-Editor 扩展，然后打开 B站 ，通过 Cookie-Editor 导出B站的 cookie</description>
     </item>
 
     <item>
@@ -331,6 +323,14 @@
       <guid>https://wardenxyz.github.io/posts/2024/git-crypt_note.html</guid>
       <pubDate>Wed, 10 Jul 2024 00:00:00 -0000</pubDate>
       <description>从 git-crypt 的 官方文档 中可知</description>
+    </item>
+
+    <item>
+      <title>生成 GPG 密钥</title>
+      <link>https://wardenxyz.github.io/posts/2024/gen_GPG_key.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/gen_GPG_key.html</guid>
+      <pubDate>Wed, 10 Jul 2024 00:00:00 -0000</pubDate>
+      <description>下载 GPG： gpg4win</description>
     </item>
 
     <item>
@@ -374,19 +374,27 @@
     </item>
 
     <item>
-      <title>obsidian快捷键</title>
-      <link>https://wardenxyz.github.io/posts/2024/obsidian_shortcut_key.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/obsidian_shortcut_key.html</guid>
+      <title>VSCode 高效使用指南</title>
+      <link>https://wardenxyz.github.io/posts/2024/vscode_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/vscode_note.html</guid>
       <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
-      <description>obsidian快捷键 快捷键 效果 Ctrl+K 快速切换 Ctrl+A 选中全部 Ctrl+S 保存 Ctrl+M 重命名文件 Ctrl+, 打开设置 Ctrl+K 关闭所有标签页 Ctrl+W 关闭当前标签页 Ctrl+ ` 切换实时预览/源码视图 Ctrl+N 新建笔记 Ctrl+F 在当前文件中查找 Ctrl+H 在当前文件中查找并替换 Ctrl+</description>
+      <description>💡 提示：密钥认证可免密操作，首次连接需输入密码验证身份</description>
     </item>
 
     <item>
-      <title>浏览器UA值</title>
-      <link>https://wardenxyz.github.io/posts/2024/browser_UA_value.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/browser_UA_value.html</guid>
+      <title>Vim 高效速查笔记</title>
+      <link>https://wardenxyz.github.io/posts/2024/vim_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/vim_note.html</guid>
       <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
-      <description>浏览器UA值 简单搜索的UA值 Mozilla/5.0 (Linux; Android 11; RMX3161 Build/RKQ1.201217.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/76.0.3809.89 Mobile Safari/537.36 T7/12</description>
+      <description>推荐配置： .vimrc 添加 inoremap jj &lt;Esc&gt; 用 jj 替代ESC</description>
+    </item>
+
+    <item>
+      <title>LaTeX 与希腊字母对照表</title>
+      <link>https://wardenxyz.github.io/posts/2024/LaTeX_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/LaTeX_note.html</guid>
+      <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
+      <description>LaTeX 与希腊字母对照表 小写字母 大写字母 英文 小写 LaTeX 公式 小写 LaTeX 形式效果 大写 LaTeX 公式 大写 LaTeX 形式效果 α Α Alpha $\alpha$ α \alpha α $\Alpha$ A \Alpha A β Β Beta $\beta$ β \beta β $\Beta$ B \Beta B γ Γ G</description>
     </item>
 
     <item>
@@ -395,14 +403,6 @@
       <guid>https://wardenxyz.github.io/posts/2024/ffmpeg_note.html</guid>
       <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
       <description>下载链接： ffmpeg</description>
-    </item>
-
-    <item>
-      <title>现代加密学</title>
-      <link>https://wardenxyz.github.io/posts/2024/modern_cryptography.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/modern_cryptography.html</guid>
-      <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
-      <description>核心特性</description>
     </item>
 
   </channel>
