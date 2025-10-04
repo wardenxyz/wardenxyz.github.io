@@ -123,10 +123,7 @@
     <div class="container header-inner">
       <a class="brand" href="../../index.html">My Blog</a>
   <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-controls="primaryNav" aria-expanded="false">☰</button>
-      <div class="search" role="search">
-        <input type="search" id="searchInput" placeholder="搜索文章..." aria-label="搜索文章" autocomplete="off" />
-        <div class="search-results" id="searchResults" role="listbox" aria-label="搜索结果" aria-live="polite" aria-expanded="false"></div>
-      </div>
+      <button class="icon-button search-toggle" id="searchToggle" aria-label="打开搜索" title="搜索" aria-haspopup="dialog" aria-expanded="false">🔍</button>
       <button class="drawer-toggle sidebar-toggle" id="sidebarToggle" aria-label="打开文章目录" aria-controls="sidebar" aria-expanded="false">文章目录</button>
       <button class="drawer-toggle toc-toggle" id="tocToggle" aria-label="打开大纲" aria-controls="toc" aria-expanded="false">大纲</button>
       <button class="theme-toggle" id="themeToggle" aria-label="切换主题" title="切换主题">🖥️</button>
@@ -241,6 +238,22 @@ openssl rsa -pubout -in private.pem -out public.pem</code></pre>
   </footer>
 
   <button id="backToTop" class="back-to-top" aria-label="回到顶部" title="回到顶部">↑</button>
+
+  <div class="search-modal" id="searchModal" role="dialog" aria-modal="true" aria-labelledby="searchModalLabel">
+    <div class="search-modal__panel">
+      <div class="search-modal__header">
+        <div class="search-modal__title" id="searchModalLabel">搜索</div>
+        <button class="icon-button search-close" id="searchClose" aria-label="关闭搜索">✕</button>
+      </div>
+      <div class="search-modal__body">
+        <label class="search-input-wrapper" for="searchInput">
+          <span class="search-input-icon">🔍</span>
+          <input type="search" id="searchInput" placeholder="搜索文章..." aria-label="搜索文章" autocomplete="off" />
+        </label>
+        <div class="search-results" id="searchResults" role="listbox" aria-label="搜索结果" aria-live="polite" aria-expanded="false"></div>
+      </div>
+    </div>
+  </div>
 
   <!-- Main JavaScript with defer for better performance -->
   <script src="../../static/main.js" defer></script>
