@@ -6,6 +6,14 @@
     <description>技术与笔记</description>
     
     <item>
+      <title>如何在 zed 中配置 REPL（python）</title>
+      <link>https://wardenxyz.github.io/posts/2025/zed-REPL-guide.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/zed-REPL-guide.html</guid>
+      <pubDate>Tue, 21 Oct 2025 00:00:00 -0000</pubDate>
+      <description>在 zed 的 settings.json 中写入</description>
+    </item>
+
+    <item>
       <title>win11 右键菜单切换到 win10 右键菜单</title>
       <link>https://wardenxyz.github.io/posts/2025/win11-context-menu-to-win10-context-menu.html</link>
       <guid>https://wardenxyz.github.io/posts/2025/win11-context-menu-to-win10-context-menu.html</guid>
@@ -302,19 +310,19 @@
     </item>
 
     <item>
-      <title>用 you-get 下载B站视频</title>
-      <link>https://wardenxyz.github.io/posts/2024/you-get_note.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/you-get_note.html</guid>
-      <pubDate>Thu, 01 Aug 2024 00:00:00 -0000</pubDate>
-      <description>在 edge 浏览器下载 Cookie-Editor 扩展，然后打开 B站 ，通过 Cookie-Editor 导出B站的 cookie</description>
-    </item>
-
-    <item>
       <title>B站嵌入代码</title>
       <link>https://wardenxyz.github.io/posts/2024/bilibili_embedding_code.html</link>
       <guid>https://wardenxyz.github.io/posts/2024/bilibili_embedding_code.html</guid>
       <pubDate>Thu, 01 Aug 2024 00:00:00 -0000</pubDate>
       <description>在</description>
+    </item>
+
+    <item>
+      <title>用 you-get 下载B站视频</title>
+      <link>https://wardenxyz.github.io/posts/2024/you-get_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/you-get_note.html</guid>
+      <pubDate>Thu, 01 Aug 2024 00:00:00 -0000</pubDate>
+      <description>在 edge 浏览器下载 Cookie-Editor 扩展，然后打开 B站 ，通过 Cookie-Editor 导出B站的 cookie</description>
     </item>
 
     <item>
@@ -350,19 +358,19 @@
     </item>
 
     <item>
-      <title>git commit message 规范</title>
-      <link>https://wardenxyz.github.io/posts/2024/git_commit_message_standard.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/git_commit_message_standard.html</guid>
-      <pubDate>Sat, 01 Jun 2024 00:00:00 -0000</pubDate>
-      <description>在 Git 中，提交信息的规范非常重要，因为它可以帮助其他开发者了解每次提交的目的。以下是一种常见的提交信息规范：</description>
-    </item>
-
-    <item>
       <title>README 文档结构</title>
       <link>https://wardenxyz.github.io/posts/2024/README_outline.html</link>
       <guid>https://wardenxyz.github.io/posts/2024/README_outline.html</guid>
       <pubDate>Sat, 01 Jun 2024 00:00:00 -0000</pubDate>
       <description>Foobar is a Python library for dealing with word pluralization.（项目简介）</description>
+    </item>
+
+    <item>
+      <title>git commit message 规范</title>
+      <link>https://wardenxyz.github.io/posts/2024/git_commit_message_standard.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/git_commit_message_standard.html</guid>
+      <pubDate>Sat, 01 Jun 2024 00:00:00 -0000</pubDate>
+      <description>在 Git 中，提交信息的规范非常重要，因为它可以帮助其他开发者了解每次提交的目的。以下是一种常见的提交信息规范：</description>
     </item>
 
     <item>
@@ -374,35 +382,27 @@
     </item>
 
     <item>
-      <title>从 git 提交中移除文件</title>
-      <link>https://wardenxyz.github.io/posts/2024/remove_file_from_git_history.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/remove_file_from_git_history.html</guid>
-      <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
-      <description>删除一个文件的提交历史，git 官方推荐一个 python 工具 git filter-repo ，下面是命令</description>
-    </item>
-
-    <item>
-      <title>git 分支操作</title>
-      <link>https://wardenxyz.github.io/posts/2024/git_branch.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/git_branch.html</guid>
-      <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
-      <description>如果你想要将仓库彻底固定在当前提交，你可以创建一个新的分支。这样，你就可以在这个新的分支上进行工作，而不会影响到主分支。以下是如何创建新分支的命令：</description>
-    </item>
-
-    <item>
-      <title>神秘博士复活时间表</title>
-      <link>https://wardenxyz.github.io/posts/2024/former_doctor_who.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/former_doctor_who.html</guid>
-      <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
-      <description>第一任博士是在老版第三季的《第十行星》中重生的，这个视频资料已经丢失了只能在哔哩哔哩动画上找到重生瞬间。重生原因是因为博士要毁灭赛博人母星，结果能量超载损害了博士的健康从而重生。</description>
-    </item>
-
-    <item>
       <title>VSCode 高效使用指南</title>
       <link>https://wardenxyz.github.io/posts/2024/vscode_note.html</link>
       <guid>https://wardenxyz.github.io/posts/2024/vscode_note.html</guid>
       <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
       <description>💡 提示：密钥认证可免密操作，首次连接需输入密码验证身份</description>
+    </item>
+
+    <item>
+      <title>Vim 高效速查笔记</title>
+      <link>https://wardenxyz.github.io/posts/2024/vim_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/vim_note.html</guid>
+      <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
+      <description>推荐配置： .vimrc 添加 inoremap jj &lt;Esc&gt; 用 jj 替代ESC</description>
+    </item>
+
+    <item>
+      <title>LaTeX 与希腊字母对照表</title>
+      <link>https://wardenxyz.github.io/posts/2024/LaTeX_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/LaTeX_note.html</guid>
+      <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
+      <description>LaTeX 与希腊字母对照表 小写字母 大写字母 英文 小写 LaTeX 公式 小写 LaTeX 形式效果 大写 LaTeX 公式 大写 LaTeX 形式效果 α Α Alpha $\alpha$ α \alpha α $\Alpha$ A \Alpha A β Β Beta $\beta$ β \beta β $\Beta$ B \Beta B γ Γ G</description>
     </item>
 
   </channel>
