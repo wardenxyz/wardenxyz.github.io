@@ -168,6 +168,15 @@
 target = D:\Python\Python312\Lib\site-packages
 index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 cache-dir = D:\python\pip-cache</code></pre>
+<h2 id="uv">uv</h2>
+<ul>
+<li>uv cache dir</li>
+</ul>
+<pre class="highlight"><code class="language-bash">[System.Environment]::SetEnvironmentVariable('UV_CACHE_DIR', 'D:\uv\cache', 'User')</code></pre>
+<ul>
+<li>uv python install dir</li>
+</ul>
+<pre class="highlight"><code class="language-bash">[System.Environment]::SetEnvironmentVariable('UV_PYTHON_INSTALL_DIR', 'D:\python', 'User')</code></pre>
 <h2 id="python_1">python 列出依赖库</h2>
 <pre class="highlight"><code class="language-bash">pip freeze &gt; requirements.txt</code></pre>
 <pre class="highlight"><code class="language-bash">uv pip freeze &gt; requirements.txt</code></pre>
@@ -299,6 +308,9 @@ Required-by:</code></pre>
 </ul>
 <pre class="highlight"><code class="language-bash">[System.Environment]::SetEnvironmentVariable('UV_CACHE_DIR', 'D:\uv\cache', 'User')</code></pre>
 <p>重启之后再运行 <code>uv cache dir</code> 就可以查看新的 uv cache 位置了</p>
+<h2 id="uv-python">uv 管理多版本 python 的命令</h2>
+<pre class="highlight"><code class="language-bash">[System.Environment]::SetEnvironmentVariable('UV_PYTHON_INSTALL_DIR', 'D:\python', 'User')</code></pre>
+<p>重启之后再运行 <code>uv python dir</code> 就可以查看新的 uv 下载多个版本 python 位置了</p>
 <h2 id="pip-cache">pip cache</h2>
 <ul>
 <li>查看 pip cache 的位置</li>
@@ -315,7 +327,7 @@ Required-by:</code></pre>
 <pre class="highlight"><code class="language-ini">[global]
 cache-dir = D:\python\pip-cache</code></pre>
 <p>重启之后再运行 <code>uv cache dir</code> 就可以查看新的 uv cache 位置了</p>
-<h2 id="uv">uv 换源</h2>
+<h2 id="uv_1">uv 换源</h2>
 <p>这里只谈项目级修改，不涉及全局修改</p>
 <p>在 <code>pyproject.toml</code> 中加入</p>
 <pre class="highlight"><code class="language-toml">[tool.uv]
@@ -357,6 +369,7 @@ default = true</code></pre>
 <ul>
 <li><a href="#python">python 学习笔记</a><ul>
 <li><a href="#pipini">pip.ini 配置</a></li>
+<li><a href="#uv">uv</a></li>
 <li><a href="#python_1">python 列出依赖库</a></li>
 <li><a href="#_1">创建和使用虚拟环境</a></li>
 <li><a href="#python-pip">python pip 换源</a></li>
@@ -365,8 +378,9 @@ default = true</code></pre>
 <li><a href="#_3">查看指定库的详细信息</a></li>
 <li><a href="#python_2">查看 Python 已安装的第三方库</a></li>
 <li><a href="#uv-cache">uv cache</a></li>
+<li><a href="#uv-python">uv 管理多版本 python 的命令</a></li>
 <li><a href="#pip-cache">pip cache</a></li>
-<li><a href="#uv">uv 换源</a></li>
+<li><a href="#uv_1">uv 换源</a></li>
 </ul>
 </li>
 </ul>
