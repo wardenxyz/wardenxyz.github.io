@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Docker Desktop 学习笔记</title>
+  <meta name="description" content="先安装 WSL2" />
+<link rel="canonical" href="https://wardenxyz.github.io/posts/2025/docker-note.html" />
+<meta property="og:title" content="Docker Desktop 学习笔记" />
+<meta property="og:description" content="先安装 WSL2" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wardenxyz.github.io/posts/2025/docker-note.html" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Docker Desktop 学习笔记" />
+<meta name="twitter:description" content="先安装 WSL2" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Docker Desktop 学习笔记", "datePublished": "2025-11-24T00:00:00", "url": "https://wardenxyz.github.io/posts/2025/docker-note.html", "keywords": "docker", "inLanguage": "zh-CN"}</script>
+  
+  <!-- Performance optimizations -->
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  
+  <!-- Critical CSS -->
+  <link rel="stylesheet" href="../../static/style.css" />
+  <link rel="icon" href="../../static/favicon.svg" type="image/svg+xml" />
+  <link rel="alternate" type="application/rss+xml" title="My Blog" href="../../feed.xml" />
+  
+  <!-- Apply saved theme early to avoid FOUC -->
+  <script>
+    (function(){
+      try{
+        var t = localStorage.getItem('theme');
+        if(t === 'light' || t === 'dark'){
+          document.documentElement.setAttribute('data-theme', t);
+        }
+      }catch(_e){/* noop */}
+    })();
+    
+    // Register Service Worker for better caching
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        var basePath = (document.body && document.body.getAttribute('data-base')) || '';
+        var scope = basePath || './';
+        if (scope.charAt(scope.length - 1) !== '/') {
+          scope += '/';
+        }
+        var swUrl = (basePath || '') + 'static/sw.js';
+        navigator.serviceWorker.register(swUrl, { scope: scope })
+          .then(function(registration) {
+            console.log('SW registered with scope: ', registration.scope);
+          })
+          .catch(function(error) {
+            console.log('SW registration failed: ', error);
+          });
+      });
+    }
+  </script>
+  
+  <!-- MathJax: only load when page actually contains math -->
+  <script>
+    (function(){
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+          processEscapes: true,
+          processEnvironments: true,
+          tags: 'ams'
+        },
+        options: {
+          ignoreHtmlClass: 'tex2jax_ignore',
+          processHtmlClass: 'tex2jax_process'
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function pageHasMath(){
+        try{
+          var content = document.getElementById('content');
+          if(!content) return false;
+          var text = content.textContent || '';
+          return /\$[^$]+\$|\\\(|\\\[|\\begin\{equation\}/.test(text);
+        }catch(_e){
+          return false;
+        }
+      }
+
+      function loadMathJax(){
+        if(document.getElementById('MathJax-script')) return;
+        var s = document.createElement('script');
+        s.id = 'MathJax-script';
+        s.async = true;
+        s.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js';
+        document.head.appendChild(s);
+      }
+
+      if(document.readyState === 'loading'){
+        document.addEventListener('DOMContentLoaded', function(){
+          if(pageHasMath()) loadMathJax();
+        });
+      }else{
+        if(pageHasMath()) loadMathJax();
+      }
+    })();
+  </script>
+  
+  <!-- Mermaid Diagram -->
+  <script>
+    // Optimize Mermaid loading
+    function loadMermaid() {
+      if (document.querySelector('.mermaid')) {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js';
+        script.defer = true;
+        script.onload = function() {
+          if(window.mermaid && mermaid.initialize){
+            const dt = document.documentElement.getAttribute('data-theme');
+            const theme = dt === 'dark' ? 'dark' : (dt === 'light' ? 'default' : ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'default'));
+            mermaid.initialize({ startOnLoad: true, theme });
+            if(mermaid.run){
+              try{ mermaid.run({ querySelector: '.mermaid' }); }catch(e){}
+            }
+          }
+        };
+        document.head.appendChild(script);
+      }
+    }
+    
+    // Load Mermaid only when needed
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadMermaid);
+    } else {
+      loadMermaid();
+    }
+  </script>
+</head>
+<body data-base="../../">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../../index.html">My Blog</a>
+  <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-controls="primaryNav" aria-expanded="false">☰</button>
+      <button class="icon-button search-toggle" id="searchToggle" aria-label="打开搜索" title="搜索" aria-haspopup="dialog" aria-expanded="false">🔍</button>
+      <button class="drawer-toggle sidebar-toggle" id="sidebarToggle" aria-label="打开文章目录" aria-controls="sidebar" aria-expanded="false">文章目录</button>
+      <button class="drawer-toggle toc-toggle" id="tocToggle" aria-label="打开大纲" aria-controls="toc" aria-expanded="false">大纲</button>
+      <button class="theme-toggle" id="themeToggle" aria-label="切换主题" title="切换主题">🖥️</button>
+      <nav class="nav" id="primaryNav">
+        <a class="nav-link" href="../../index.html">首页</a>
+        <a class="nav-link" href="../../categories.html">Categories</a>
+        <a class="nav-link" href="../../tags.html">Tags</a>
+        <a class="nav-link github" href="https://github.com/wardenxyz" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container layout layout-3">
+    <aside class="sidebar-col" id="sidebar">
+      <nav class="sidebar" aria-label="所有文章"><div class="sidebar-group"><div class="sidebar-year">Others</div><ul><li><a href="../../index.html">Home</a></li><li><a href="../../categories.html">Categories</a></li><li><a href="../../tags.html">Tags</a></li></ul></div><div class="sidebar-group"><div class="sidebar-year">2025</div><ul><li><a href="docker-note.html" class="active">Docker Desktop 学习笔记</a></li><li><a href="zed-REPL-guide.html">如何在 zed 中配置 REPL（python）</a></li><li><a href="win11-context-menu-to-win10-context-menu.html">win11 右键菜单切换到 win10 右键菜单</a></li><li><a href="How-to-Search-for-AI-API-Keys-on-GitHub.html">GitHub 打野指南</a></li><li><a href="SOPS.html">SOPS:Secrets OPerationS</a></li><li><a href="age.html">age-note</a></li><li><a href="yt-dlp.html">yt-dlp 使用</a></li><li><a href="cross-platform-byte-control.md.html">跨系统避免换行符导致字节差异的方法</a></li><li><a href="introduce-passkey.html">Passkey:Secure,Convenient Login</a></li><li><a href="npm-config.html">修改 npm node_modules 位置</a></li><li><a href="powershell-get-command.html">PowerShell Get-Command 命令</a></li><li><a href="git-hook.html">自用 git hook</a></li><li><a href="background-color.html">背景颜色</a></li><li><a href="typst-syntax-simple-introduction.html">Typst 语法简单介绍</a></li><li><a href="shut-wps-background-runing.html">关闭 WPS 后台运行</a></li><li><a href="font.html">个人字体</a></li><li><a href="github-avatar.html">GitHub 头像</a></li><li><a href="regex-note.html">正则表达式简明指南</a></li><li><a href="Rollback-commit.html">回滚提交</a></li><li><a href="use_python_gen_site.html">使用 Python 生成静态网页</a></li><li><a href="install_wsl2_and_to_d_disk.html">安装 WSL2 并迁移到 D 盘</a></li><li><a href="zed_use_typstyle.html">在 zed 上配置 typstyle</a></li><li><a href="Rust_Windows_Config.html">在 Windows 上配置 Rust 环境</a></li><li><a href="conda_note.html">conda 使用笔记</a></li><li><a href="Zed_set_OpenAI_API_Compatible_model.html">在 Zed Editor 中配置 OpenAI API 兼容的模型</a></li><li><a href="zed_use.html">zed 使用笔记</a></li><li><a href="ollama_run_deepseek.html">ollama 运行 DeepSeek 模型</a></li></ul></div><div class="sidebar-group"><div class="sidebar-year">2024</div><ul><li><a href="../2024/pull_request_steps.html">Pull Request 的步骤</a></li><li><a href="../2024/Typst_note.html">Typst 笔记</a></li><li><a href="../2024/git_reset.html">git 重置当前分支</a></li><li><a href="../2024/vitepress_note.html">vitepress 学习笔记</a></li><li><a href="../2024/deploy_gitHub_page.html">GitHub page 搭建学习笔记</a></li><li><a href="../2024/Linux_note.html">Linux 学习笔记</a></li><li><a href="../2024/python_note.html">python 学习笔记</a></li><li><a href="../2024/OpenSSL_encrypt_note.html">OpenSSL 加解密速查笔记</a></li><li><a href="../2024/lazy.nvim_note.html">lazy.nvim 学习笔记</a></li><li><a href="../2024/git-izer_note.html">git-sizer 学习笔记</a></li><li><a href="../2024/git_force_overwrite_local_repo.html">git 强制覆盖本地仓库</a></li><li><a href="../2024/personal_software.html">个人自用软件</a></li><li><a href="../2024/bilibili_embedding_code.html">B站嵌入代码</a></li><li><a href="../2024/you-get_note.html">用 you-get 下载B站视频</a></li><li><a href="../2024/git-crypt_note.html">git-crypt 学习笔记</a></li><li><a href="../2024/gen_GPG_key.html">生成 GPG 密钥</a></li><li><a href="../2024/git-crypt_official_doc.html">git-crypt 官方文档</a></li><li><a href="../2024/git-crypt_official_doc_zh.html">git-crypt 官方文档中文翻译</a></li><li><a href="../2024/README_outline.html">README 文档结构</a></li><li><a href="../2024/git_commit_message_standard.html">git commit message 规范</a></li><li><a href="../2024/vscode_snippets_variable.html">vscode snippets 预置变量</a></li><li><a href="../2024/vscode_note.html">VSCode 高效使用指南</a></li><li><a href="../2024/vim_note.html">Vim 高效速查笔记</a></li><li><a href="../2024/LaTeX_note.html">LaTeX 与希腊字母对照表</a></li><li><a href="../2024/ffmpeg_note.html">ffmpeg 自用命令</a></li><li><a href="../2024/gpg_communication.html">GPG 在通信中的简单理解</a></li><li><a href="../2024/git_branch.html">git 分支操作</a></li><li><a href="../2024/former_doctor_who.html">神秘博士复活时间表</a></li><li><a href="../2024/modern_cryptography.html">现代加密学</a></li><li><a href="../2024/obsidian_shortcut_key.html">obsidian快捷键</a></li><li><a href="../2024/remove_file_from_git_history.html">从 git 提交中移除文件</a></li><li><a href="../2024/git_Cli.html">git 命令手册</a></li><li><a href="../2024/browser_UA_value.html">浏览器UA值</a></li><li><a href="../2024/qqmail_third_party_config.html">第三方邮箱客户端配置QQmail & Foxmail</a></li><li><a href="../2024/android_QQ_file_storage_path.html">手机QQ文件存储路径</a></li></ul></div></nav>
+    </aside>
+    <article class="content" id="content">
+  <div class="post-meta" aria-label="文章元信息"><span class="meta-item meta-date" title="发布日期">📅 2025-11-24</span><span class="meta-item" title="分类">📂 <span class="badge badge-cat">计算机</span></span><span class="meta-item" title="标签">🏷️ <span class="badge badge-tag">docker</span></span></div>
+  <h1 id="docker-desktop">Docker Desktop 学习笔记</h1>
+<h2 id="_1">基础配置</h2>
+<p>先安装 <a href="install_wsl2_and_to_d_disk.html">WSL2</a></p>
+<p>然后去 docker 官网下载 <a href="https://www.docker.com" rel="noopener noreferrer" target="_blank">docker desktop</a></p>
+<p>安装好之后修改配置：</p>
+<hr/>
+<ol>
+<li>修改拉取的镜像位置</li>
+</ol>
+<p>settings ——&gt; Advanced ——&gt; Resources ——&gt; Disk image location</p>
+<p>这里修改为 <code>D:\docker\DockerDesktopWSL</code>，</p>
+<hr/>
+<ol start="2">
+<li>修改文件共享位置</li>
+</ol>
+<p>settings ——&gt; Resources ——&gt; File sharing</p>
+<p>这里修改为 <code>D:\docker\file sharing</code></p>
+<hr/>
+<ol start="3">
+<li>修改 docker hub 镜像</li>
+</ol>
+<p>settings ——&gt; Docker Engine</p>
+<p>这里是 docker hub 镜像位置，去<a href="https://console.huaweicloud.com/swr/?region=cn-southwest-2#/swr/mirror" rel="noopener noreferrer" target="_blank">华为云镜像中心</a>右上角的镜像加速器那儿复制镜像网址，让后填入其中</p>
+<hr/>
+<h2 id="_2">概念讲解</h2>
+<p>使用 vaultwarden 的 docker 部署命令来解释</p>
+<pre class="highlight"><code class="language-bash">docker pull vaultwarden/server:latest
+docker run --detach --name vaultwarden \
+  --env DOMAIN="https://vw.domain.tld" \
+  --volume D:/workspace/vaultwarden_backupdata:/data/ \
+  --restart unless-stopped \
+  --publish 127.0.0.1:8000:80 \
+  vaultwarden/server:latest</code></pre>
+<p>查看是否挂载成功的命令</p>
+<pre class="highlight"><code class="language-bash">docker exec -it vaultwarden ls -l /data</code></pre>
+<h3 id="_3">镜像</h3>
+<p>从 docker hub 拉取下来就是镜像，例如 <code>docker pull vaultwarden/server:latest</code> 命令，就是拉取了 vaultwarden 的最新版本</p>
+<p>存储位置是 <code>Disk image location</code> 下的 vhdx 文件中，我已经把 <code>Disk image location</code> 修改为了 <code>D:\docker\DockerDesktopWSL</code>，所以是存储在这个路径下</p>
+<h3 id="_4">容器</h3>
+<p>创建一个容器来运行镜像，例如</p>
+<pre class="highlight"><code class="language-bash">docker run --detach --name vaultwarden</code></pre>
+<ul>
+<li><code>docker run</code>：创建并运行一个容器</li>
+<li><code>--detach</code>：后台运行</li>
+<li><code>--name vaultwarden</code>：容器名是 vaultwarden</li>
+</ul>
+<p>存储位置也是 <code>Disk image location</code> 下的 vhdx 文件中，我已经把 <code>Disk image location</code> 修改为了 <code>D:\docker\DockerDesktopWSL</code>，所以是存储在这个路径下</p>
+<h3 id="_5">卷</h3>
+<p>这个目录是存储服务器持久化数据的地方，也是 Windows 宿主机所在路径</p>
+<p><code>--volume D:/docker/DockerDesktopWSL/:/data/</code> 就是卷所在目录，冒号之前的就是自定义路径，冒号之后的得翻阅文档才能确定</p>
+<p>卷的路径需要在运行容器时自定义，不想前两个可以全局化配置</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>示例</th>
+<th>位置</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Docker 管理的 Volume</strong></td>
+<td><code>docker volume create mydata</code></td>
+<td>存在 WSL2 的 docker/volumes</td>
+<td>最稳定、性能好</td>
+</tr>
+<tr>
+<td><strong>绑定挂载（Bind Mount）</strong></td>
+<td><code>D:/your-vaultwarden-data:/data</code></td>
+<td>你本地 Windows 文件夹</td>
+<td>方便查看和备份</td>
+</tr>
+</tbody>
+</table>
+<p>容器的文件系统是 临时的：</p>
+<ul>
+<li>删除容器 → 数据也删除</li>
+<li>升级镜像 → 数据丢失</li>
+<li>重建容器 → 空空如也</li>
+</ul>
+<p>为了让重要数据 不跟着容器一起消失，Docker 提供了 Volume。</p>
+<p>我使用的是 bind mount。</p>
+<p>对于 Vaultwarden，它完全适合使用 bind mount，因为方便你在 Windows 上备份和同步。</p>
+<p>Volume 就是用来存“容器生命周期之外仍要保存的数据”</p>
+<p>比如数据库内容、上传文件、配置、密钥等</p>
+<p>容器删了没关系，Volume 里的数据还在</p>
+<h3 id="-env-domainhttpsvwdomaintld"><code>--env DOMAIN="https://vw.domain.tld"</code></h3>
+<p>给容器里的程序设置一个环境变量。</p>
+<p>容器内能看到：</p>
+<pre class="highlight"><code class="language-ini">DOMAIN=https://vw.domain.tld</code></pre>
+<h3 id="-publish-127001800080"><code>--publish 127.0.0.1:8000:80</code></h3>
+<p>端口映射：</p>
+<ul>
+<li>容器内 Vaultwarden 监听的是端口 80</li>
+<li>映射到 宿主机的 127.0.0.1:8000</li>
+</ul>
+<p>所以在 Windows 打开：</p>
+<p><a href="http://localhost:8000" rel="noopener noreferrer" target="_blank">http://localhost:8000</a></p>
+<p>如果想要让同局域网下的其它设备访问的话就去除 <code>127.0.0.1:</code> 字段，只保留 <code>--publish 8000:80</code>，意思是映射到 8000 端口</p>
+<p>然后在同局域网下的其它设备访问 <code>http://&lt;你的WindowsIP地址&gt;:&lt;宿主机端口&gt;</code>，其中 Windows IP 地址是打开 pwsh，输入 <code>ipconfig</code> 就可查看 ip 地址</p>
+<h3 id="-restart-unless-stopped"><code>--restart unless-stopped</code></h3>
+<p>自动重启策略：</p>
+<ul>
+<li>宿主机重启后 → 自动启动</li>
+<li>手动停止后 → 不自动启动</li>
+</ul>
+<p>容器和镜像存储在 Disk image location 下，服务器持久化数据存储在 volume 下</p>
+<h2 id="docker">docker 删除缓存</h2>
+<h3 id="build-cache">构建缓存（Build Cache）</h3>
+<p>当你用 docker build 时，会产生很多分层缓存，用来加速下次 build。</p>
+<p>特点：</p>
+<ul>
+<li>不在运行的容器使用</li>
+<li>不包含运行时数据</li>
+<li>删了最多就是下次 build 会变慢一点</li>
+</ul>
+<pre class="highlight"><code class="language-bash">docker builder prune -a</code></pre>
+<h3 id="unused-image">未使用的镜像（unused image）</h3>
+<p>包括：</p>
+<ul>
+<li>没容器在使用的镜像</li>
+<li>被替换下来的老版本镜像</li>
+<li>下载但没用过的镜像</li>
+</ul>
+<pre class="highlight"><code class="language-bash">docker image prune -a</code></pre>
+<h3 id="stopped-containers">停止的容器（stopped containers）</h3>
+<p>停止的容器不是在运行，也没有用处。</p>
+<pre class="highlight"><code class="language-bash">docker container prune</code></pre>
+<h3 id="unused-networks">未使用的网络（unused networks）</h3>
+<p>只是 Docker 创建但容器没有使用的网络。</p>
+<pre class="highlight"><code class="language-bash">docker network prune</code></pre>
+<h3 id="_6">安全清理的一键命令</h3>
+<p>它会清理：</p>
+<ul>
+<li>build 缓存</li>
+<li>停止的容器</li>
+<li>未使用的镜像</li>
+<li>unused networks</li>
+</ul>
+<p><strong>不删 volumes，所以很安全。</strong></p>
+<pre class="highlight"><code class="language-bash">docker system prune -a</code></pre>
+<h3 id="volumes">清除 volumes 的命令要极度小心</h3>
+<pre class="highlight"><code class="language-bash">docker volume prune</code></pre>
+<h2 id="docker_1">docker 的通俗理解</h2>
+<table>
+<thead>
+<tr>
+<th>真实含义</th>
+<th>类比</th>
+<th>存放位置</th>
+<th>删除会丢失吗？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>镜像（Image）</strong></td>
+<td>VSCode 安装包/程序本体</td>
+<td>Disk image location（vhdx）</td>
+<td>删除不会影响 volume</td>
+</tr>
+<tr>
+<td><strong>容器本体（容器的 rootfs）</strong></td>
+<td>VSCode 进程运行时的临时数据</td>
+<td>Disk image location（vhdx）</td>
+<td>删除不会影响 volume</td>
+</tr>
+<tr>
+<td><strong>Volume（持久化数据）</strong></td>
+<td>VSCode 打开的项目文本文件</td>
+<td>Windows 本地磁盘</td>
+<td>✔ 永远不会因容器删除而丢失</td>
+</tr>
+<tr>
+<td><strong>Bind mount（你用的方式）</strong></td>
+<td>Windows 上的真实文件夹</td>
+<td>Windows 本地磁盘</td>
+<td>✔ 永远不会因 Docker 行为丢失</td>
+</tr>
+</tbody>
+</table>
+    </article>
+    <aside class="toc" id="toc">
+      <div class="toc-title">大纲</div>
+      <div class="toc">
+<ul>
+<li><a href="#docker-desktop">Docker Desktop 学习笔记</a><ul>
+<li><a href="#_1">基础配置</a></li>
+<li><a href="#_2">概念讲解</a><ul>
+<li><a href="#_3">镜像</a></li>
+<li><a href="#_4">容器</a></li>
+<li><a href="#_5">卷</a></li>
+<li><a href="#-env-domainhttpsvwdomaintld">--env DOMAIN="https://vw.domain.tld"</a></li>
+<li><a href="#-publish-127001800080">--publish 127.0.0.1:8000:80</a></li>
+<li><a href="#-restart-unless-stopped">--restart unless-stopped</a></li>
+</ul>
+</li>
+<li><a href="#docker">docker 删除缓存</a><ul>
+<li><a href="#build-cache">构建缓存（Build Cache）</a></li>
+<li><a href="#unused-image">未使用的镜像（unused image）</a></li>
+<li><a href="#stopped-containers">停止的容器（stopped containers）</a></li>
+<li><a href="#unused-networks">未使用的网络（unused networks）</a></li>
+<li><a href="#_6">安全清理的一键命令</a></li>
+<li><a href="#volumes">清除 volumes 的命令要极度小心</a></li>
+</ul>
+</li>
+<li><a href="#docker_1">docker 的通俗理解</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container" style="text-align: center;">
+      <div>© 2024 - 2025 wardenxyz</div>
+      <div>MIT License</div>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="回到顶部" title="回到顶部">↑</button>
+
+  <div class="search-modal" id="searchModal" role="dialog" aria-modal="true" aria-labelledby="searchModalLabel">
+    <div class="search-modal__panel">
+      <div class="search-modal__header">
+        <div class="search-modal__title" id="searchModalLabel">搜索</div>
+        <button class="icon-button search-close" id="searchClose" aria-label="关闭搜索">✕</button>
+      </div>
+      <div class="search-modal__body">
+        <label class="search-input-wrapper" for="searchInput">
+          <span class="search-input-icon">🔍</span>
+          <input type="search" id="searchInput" placeholder="搜索文章..." aria-label="搜索文章" autocomplete="off" />
+        </label>
+        <div class="search-results" id="searchResults" role="listbox" aria-label="搜索结果" aria-live="polite" aria-expanded="false"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript with defer for better performance -->
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js" defer></script>
+  <script src="../../static/main.js" defer></script>
+  <!-- Only load performance tooling in dev / when explicitly requested -->
+  <script>
+    (function(){
+      try{
+        var isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+        var params = new URLSearchParams(location.search || '');
+        if(isLocal || params.get('debug-perf') === '1'){
+          var s = document.createElement('script');
+          s.src = '../../static/performance.js';
+          s.defer = true;
+          document.head.appendChild(s);
+        }
+      }catch(_e){/* noop */}
+    })();
+  </script>
+</body>
+</html>
