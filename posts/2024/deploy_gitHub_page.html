@@ -23,6 +23,9 @@
   
   <!-- Critical CSS -->
   <link rel="stylesheet" href="../../static/style.css" />
+  <link rel="stylesheet" href="../../static/theme.css" />
+  <!-- Prism.js 代码高亮 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" />
   <link rel="icon" href="../../static/favicon.svg" type="image/svg+xml" />
   <link rel="alternate" type="application/rss+xml" title="My Blog" href="../../feed.xml" />
   
@@ -141,21 +144,38 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="../../index.html">My Blog</a>
-  <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-controls="primaryNav" aria-expanded="false">☰</button>
-      <button class="icon-button search-toggle" id="searchToggle" aria-label="打开搜索" title="搜索" aria-haspopup="dialog" aria-expanded="false">🔍</button>
-      <button class="drawer-toggle sidebar-toggle" id="sidebarToggle" aria-label="打开文章目录" aria-controls="sidebar" aria-expanded="false">文章目录</button>
-      <button class="drawer-toggle toc-toggle" id="tocToggle" aria-label="打开大纲" aria-controls="toc" aria-expanded="false">大纲</button>
-      <button class="theme-toggle" id="themeToggle" aria-label="切换主题" title="切换主题">🖥️</button>
+      
+      <!-- 导航链接 -->
       <nav class="nav" id="primaryNav">
         <a class="nav-link" href="../../index.html">首页</a>
-        <a class="nav-link" href="../../categories.html">Categories</a>
-        <a class="nav-link" href="../../tags.html">Tags</a>
+        <a class="nav-link" href="../../categories.html">分类</a>
+        <a class="nav-link" href="../../tags.html">标签</a>
         <a class="nav-link github" href="https://github.com/wardenxyz" target="_blank" rel="noopener">GitHub</a>
       </nav>
+      
+      <!-- 内嵌搜索框（电脑端） -->
+      <div class="header-search" id="headerSearch">
+        <span class="header-search-icon">🔍</span>
+        <input type="search" id="headerSearchInput" class="header-search-input" placeholder="搜索文章..." aria-label="搜索文章" autocomplete="off" />
+        <div class="header-search-results" id="headerSearchResults"></div>
+      </div>
+      
+      <!-- 移动端搜索按钮 -->
+      <button class="icon-button search-toggle" id="searchToggle" aria-label="打开搜索" title="搜索">🔍</button>
+      
+      <!-- 主题切换 -->
+      <button class="theme-toggle" id="themeToggle" aria-label="切换主题" title="切换主题">🖥️</button>
+      
+      <!-- 移动端按钮 -->
+      <button class="menu-toggle" id="menuToggle" aria-label="打开菜单" aria-controls="primaryNav" aria-expanded="false">☰</button>
+      <button class="drawer-toggle sidebar-toggle" id="sidebarToggle" aria-label="打开文章目录" aria-controls="sidebar" aria-expanded="false">目录</button>
+      <button class="drawer-toggle toc-toggle" id="tocToggle" aria-label="打开大纲" aria-controls="toc" aria-expanded="false">大纲</button>
     </div>
   </header>
 
   <main class="container layout layout-3">
+    <!-- 手机端抽屉遮罩层 -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
     <aside class="sidebar-col" id="sidebar">
       <nav class="sidebar" aria-label="所有文章"><div class="sidebar-group"><div class="sidebar-year">Others</div><ul><li><a href="../../index.html">Home</a></li><li><a href="../../categories.html">Categories</a></li><li><a href="../../tags.html">Tags</a></li></ul></div><div class="sidebar-group"><div class="sidebar-year">2025</div><ul><li><a href="../2025/docker-note.html">Docker Desktop 学习笔记</a></li><li><a href="../2025/zed-REPL-guide.html">如何在 zed 中配置 REPL（python）</a></li><li><a href="../2025/win11-context-menu-to-win10-context-menu.html">win11 右键菜单切换到 win10 右键菜单</a></li><li><a href="../2025/How-to-Search-for-AI-API-Keys-on-GitHub.html">GitHub 打野指南</a></li><li><a href="../2025/SOPS.html">SOPS:Secrets OPerationS</a></li><li><a href="../2025/age.html">age-note</a></li><li><a href="../2025/yt-dlp.html">yt-dlp 使用</a></li><li><a href="../2025/cross-platform-byte-control.md.html">跨系统避免换行符导致字节差异的方法</a></li><li><a href="../2025/introduce-passkey.html">Passkey:Secure,Convenient Login</a></li><li><a href="../2025/npm-config.html">修改 npm node_modules 位置</a></li><li><a href="../2025/powershell-get-command.html">PowerShell Get-Command 命令</a></li><li><a href="../2025/git-hook.html">自用 git hook</a></li><li><a href="../2025/background-color.html">背景颜色</a></li><li><a href="../2025/typst-syntax-simple-introduction.html">Typst 语法简单介绍</a></li><li><a href="../2025/shut-wps-background-runing.html">关闭 WPS 后台运行</a></li><li><a href="../2025/font.html">个人字体</a></li><li><a href="../2025/github-avatar.html">GitHub 头像</a></li><li><a href="../2025/regex-note.html">正则表达式简明指南</a></li><li><a href="../2025/Rollback-commit.html">回滚提交</a></li><li><a href="../2025/use_python_gen_site.html">使用 Python 生成静态网页</a></li><li><a href="../2025/install_wsl2_and_to_d_disk.html">安装 WSL2 并迁移到 D 盘</a></li><li><a href="../2025/zed_use_typstyle.html">在 zed 上配置 typstyle</a></li><li><a href="../2025/Rust_Windows_Config.html">在 Windows 上配置 Rust 环境</a></li><li><a href="../2025/conda_note.html">conda 使用笔记</a></li><li><a href="../2025/Zed_set_OpenAI_API_Compatible_model.html">在 Zed Editor 中配置 OpenAI API 兼容的模型</a></li><li><a href="../2025/zed_use.html">zed 使用笔记</a></li><li><a href="../2025/ollama_run_deepseek.html">ollama 运行 DeepSeek 模型</a></li></ul></div><div class="sidebar-group"><div class="sidebar-year">2024</div><ul><li><a href="pull_request_steps.html">Pull Request 的步骤</a></li><li><a href="Typst_note.html">Typst 笔记</a></li><li><a href="git_reset.html">git 重置当前分支</a></li><li><a href="vitepress_note.html">vitepress 学习笔记</a></li><li><a href="deploy_gitHub_page.html" class="active">GitHub page 搭建学习笔记</a></li><li><a href="Linux_note.html">Linux 学习笔记</a></li><li><a href="python_note.html">python 学习笔记</a></li><li><a href="OpenSSL_encrypt_note.html">OpenSSL 加解密速查笔记</a></li><li><a href="lazy.nvim_note.html">lazy.nvim 学习笔记</a></li><li><a href="git-izer_note.html">git-sizer 学习笔记</a></li><li><a href="git_force_overwrite_local_repo.html">git 强制覆盖本地仓库</a></li><li><a href="personal_software.html">个人自用软件</a></li><li><a href="bilibili_embedding_code.html">B站嵌入代码</a></li><li><a href="you-get_note.html">用 you-get 下载B站视频</a></li><li><a href="git-crypt_note.html">git-crypt 学习笔记</a></li><li><a href="gen_GPG_key.html">生成 GPG 密钥</a></li><li><a href="git-crypt_official_doc.html">git-crypt 官方文档</a></li><li><a href="git-crypt_official_doc_zh.html">git-crypt 官方文档中文翻译</a></li><li><a href="README_outline.html">README 文档结构</a></li><li><a href="git_commit_message_standard.html">git commit message 规范</a></li><li><a href="vscode_snippets_variable.html">vscode snippets 预置变量</a></li><li><a href="vscode_note.html">VSCode 高效使用指南</a></li><li><a href="vim_note.html">Vim 高效速查笔记</a></li><li><a href="LaTeX_note.html">LaTeX 与希腊字母对照表</a></li><li><a href="ffmpeg_note.html">ffmpeg 自用命令</a></li><li><a href="gpg_communication.html">GPG 在通信中的简单理解</a></li><li><a href="git_branch.html">git 分支操作</a></li><li><a href="former_doctor_who.html">神秘博士复活时间表</a></li><li><a href="modern_cryptography.html">现代加密学</a></li><li><a href="obsidian_shortcut_key.html">obsidian快捷键</a></li><li><a href="remove_file_from_git_history.html">从 git 提交中移除文件</a></li><li><a href="git_Cli.html">git 命令手册</a></li><li><a href="browser_UA_value.html">浏览器UA值</a></li><li><a href="qqmail_third_party_config.html">第三方邮箱客户端配置QQmail & Foxmail</a></li><li><a href="android_QQ_file_storage_path.html">手机QQ文件存储路径</a></li></ul></div></nav>
     </aside>
@@ -270,6 +290,45 @@ jobs:
   <!-- Main JavaScript with defer for better performance -->
   <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js" defer></script>
   <script src="../../static/main.js" defer></script>
+  
+  <!-- Prism.js 代码语法高亮 -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js" defer></script>
+  
+  <!-- 代码块语言标签 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('pre[class*="language-"]').forEach(function(pre) {
+        var match = pre.className.match(/language-(\w+)/);
+        if (match && match[1]) {
+          var lang = match[1];
+          // 美化语言名称
+          var langMap = {
+            'js': 'JavaScript', 'javascript': 'JavaScript',
+            'ts': 'TypeScript', 'typescript': 'TypeScript',
+            'py': 'Python', 'python': 'Python',
+            'rb': 'Ruby', 'ruby': 'Ruby',
+            'sh': 'Shell', 'bash': 'Bash', 'shell': 'Shell', 'zsh': 'Zsh',
+            'ps1': 'PowerShell', 'powershell': 'PowerShell',
+            'html': 'HTML', 'css': 'CSS', 'scss': 'SCSS', 'sass': 'Sass',
+            'json': 'JSON', 'yaml': 'YAML', 'yml': 'YAML', 'toml': 'TOML',
+            'xml': 'XML', 'md': 'Markdown', 'markdown': 'Markdown',
+            'sql': 'SQL', 'graphql': 'GraphQL',
+            'c': 'C', 'cpp': 'C++', 'csharp': 'C#', 'cs': 'C#',
+            'java': 'Java', 'kotlin': 'Kotlin', 'swift': 'Swift',
+            'go': 'Go', 'rust': 'Rust', 'rs': 'Rust',
+            'php': 'PHP', 'lua': 'Lua', 'r': 'R',
+            'dockerfile': 'Dockerfile', 'docker': 'Docker',
+            'nginx': 'Nginx', 'apache': 'Apache',
+            'vim': 'Vim', 'typst': 'Typst', 'latex': 'LaTeX', 'tex': 'TeX'
+          };
+          var displayName = langMap[lang.toLowerCase()] || lang.toUpperCase();
+          pre.setAttribute('data-language', displayName);
+        }
+      });
+    });
+  </script>
+  
   <!-- Only load performance tooling in dev / when explicitly requested -->
   <script>
     (function(){
