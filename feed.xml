@@ -214,30 +214,6 @@
     </item>
 
     <item>
-      <title>Home</title>
-      <link>https://wardenxyz.github.io/index.html</link>
-      <guid>https://wardenxyz.github.io/index.html</guid>
-      <pubDate>Fri, 28 Feb 2025 00:00:00 -0000</pubDate>
-      <description>欢迎来到我基于 GitHub 的博客！这是一个极简的博客，使用纯 Markdown 文件和 GitHub 的原生功能。</description>
-    </item>
-
-    <item>
-      <title>Categories</title>
-      <link>https://wardenxyz.github.io/categories.html</link>
-      <guid>https://wardenxyz.github.io/categories.html</guid>
-      <pubDate>Fri, 28 Feb 2025 00:00:00 -0000</pubDate>
-      <description>Categories AI 2025-06-07 Typst 语法简单介绍 GitHub 2025-04-26 GitHub 头像 font 2025-05-18 个人字体 数学 2024-04-08 LaTeX 与希腊字母对照表 生活 2025-06-13 背景颜色 2024-04-08 神秘博士复活时间表 计算机 2025-11-24 Docker De</description>
-    </item>
-
-    <item>
-      <title>Tags</title>
-      <link>https://wardenxyz.github.io/tags.html</link>
-      <guid>https://wardenxyz.github.io/tags.html</guid>
-      <pubDate>Fri, 28 Feb 2025 00:00:00 -0000</pubDate>
-      <description>Tags AI 2025-08-16 GitHub 打野指南 2025-01-23 ollama 运行 DeepSeek 模型 Android 2025-06-13 背景颜色 2024-08-01 个人自用软件 2024-04-08 手机QQ文件存储路径 B站 2024-08-01 B站嵌入代码 2024-08-01 用 you-get 下载B站视频 Dee</description>
-    </item>
-
-    <item>
       <title>ollama 运行 DeepSeek 模型</title>
       <link>https://wardenxyz.github.io/posts/2025/ollama_run_deepseek.html</link>
       <guid>https://wardenxyz.github.io/posts/2025/ollama_run_deepseek.html</guid>
@@ -403,6 +379,30 @@
       <guid>https://wardenxyz.github.io/posts/2024/git_commit_message_standard.html</guid>
       <pubDate>Sat, 01 Jun 2024 00:00:00 -0000</pubDate>
       <description>在 Git 中，提交信息的规范非常重要，因为它可以帮助其他开发者了解每次提交的目的。以下是一种常见的提交信息规范：</description>
+    </item>
+
+    <item>
+      <title>vscode snippets 预置变量</title>
+      <link>https://wardenxyz.github.io/posts/2024/vscode_snippets_variable.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/vscode_snippets_variable.html</guid>
+      <pubDate>Wed, 01 May 2024 00:00:00 -0000</pubDate>
+      <description>在 Visual Studio Code 中，你可以使用许多预定义的变量来创建代码片段（snippets）。以下是一些常用的预定义变量：</description>
+    </item>
+
+    <item>
+      <title>VSCode 高效使用指南</title>
+      <link>https://wardenxyz.github.io/posts/2024/vscode_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/vscode_note.html</guid>
+      <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
+      <description>💡 提示：密钥认证可免密操作，首次连接需输入密码验证身份</description>
+    </item>
+
+    <item>
+      <title>Vim 高效速查笔记</title>
+      <link>https://wardenxyz.github.io/posts/2024/vim_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/vim_note.html</guid>
+      <pubDate>Mon, 08 Apr 2024 00:00:00 -0000</pubDate>
+      <description>推荐配置： .vimrc 添加 inoremap jj &lt;Esc&gt; 用 jj 替代ESC</description>
     </item>
 
   </channel>
