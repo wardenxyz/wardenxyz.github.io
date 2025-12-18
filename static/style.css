@@ -388,6 +388,7 @@ body,
 	border-radius: 8px;
 	overflow: auto;
 	border: 1px solid var(--border);
+	max-width: 100%;
 }
 .content code {
 	background: var(--surface);
@@ -495,6 +496,7 @@ body:has(.header-hidden) .sidebar-col {
 		background-color 0.2s ease,
 		transform 0.2s ease,
 		box-shadow 0.2s ease;
+	z-index: 90;
 }
 .back-to-top:hover {
 	background: var(--surface);
