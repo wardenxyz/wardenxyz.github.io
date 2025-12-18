@@ -477,8 +477,11 @@ body:has(.header-hidden) .sidebar-col {
 }
 .back-to-top {
 	position: fixed;
-	right: 24px;
-	bottom: 28px;
+	/* default offsets; tweaked per breakpoint via CSS vars */
+	--fab-right: 24px;
+	--fab-bottom: 28px;
+	right: var(--fab-right);
+	bottom: var(--fab-bottom);
 	width: 48px;
 	height: 48px;
 	border-radius: 50%;
@@ -495,6 +498,13 @@ body:has(.header-hidden) .sidebar-col {
 		background-color 0.2s ease,
 		transform 0.2s ease,
 		box-shadow 0.2s ease;
+	z-index: 130;
+}
+@supports (right: calc(env(safe-area-inset-right) + 0px)) {
+	.back-to-top {
+		right: calc(var(--fab-right) + env(safe-area-inset-right));
+		bottom: calc(var(--fab-bottom) + env(safe-area-inset-bottom));
+	}
 }
 .back-to-top:hover {
 	background: var(--surface);
@@ -504,8 +514,8 @@ body:has(.header-hidden) .sidebar-col {
 /* Medium screens */
 @media (min-width: 768px) and (max-width: 1199px) {
 	.back-to-top {
-		right: 20px;
-		bottom: 24px;
+		--fab-right: 20px;
+		--fab-bottom: 24px;
 		width: 46px;
 		height: 46px;
 		font-size: 18px;
@@ -514,8 +524,8 @@ body:has(.header-hidden) .sidebar-col {
 /* Small screens */
 @media (max-width: 767px) {
 	.back-to-top {
-		right: 16px;
-		bottom: 20px;
+		--fab-right: 18px;
+		--fab-bottom: 22px;
 		width: 44px;
 		height: 44px;
 		font-size: 18px;
@@ -1094,8 +1104,8 @@ mjx-container[jax="SVG"][justify="right"] {
 	.back-to-top {
 		width: 52px;
 		height: 52px;
-		right: 16px;
-		bottom: 20px;
+		--fab-right: 20px;
+		--fab-bottom: 26px;
 		font-size: 22px;
 	}
 
