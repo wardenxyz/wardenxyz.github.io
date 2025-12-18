@@ -589,11 +589,13 @@ body:has(.header-hidden) .sidebar-col {
 		border: 1px solid var(--border);
 		border-radius: 16px;
 		padding: 16px 12px;
+		padding-bottom: 24px; /* Add padding for scroll */
 		box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
 		display: none;
 		z-index: 110;
 		overflow: auto;
 		border-right: none;
+		transition: top 0.3s ease, max-height 0.3s ease;
 	}
 	.sidebar-col.open {
 		display: block;
@@ -609,10 +611,12 @@ body:has(.header-hidden) .sidebar-col {
 		border: 1px solid var(--border);
 		border-radius: 16px;
 		padding: 16px;
+		padding-bottom: 24px; /* Add padding for scroll */
 		box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
 		display: none;
 		z-index: 110;
 		overflow: auto;
+		transition: top 0.3s ease, max-height 0.3s ease;
 	}
 	#toc.open {
 		display: block;
@@ -621,10 +625,12 @@ body:has(.header-hidden) .sidebar-col {
 	.header-hidden ~ main .sidebar-col,
 	body:has(.header-hidden) .sidebar-col {
 		top: 12px;
+		max-height: calc(100vh - 24px);
 	}
 	.header-hidden ~ main #toc,
 	body:has(.header-hidden) #toc {
 		top: 12px;
+		max-height: calc(100vh - 24px);
 	}
 	#toc .toc-title {
 		display: flex;
@@ -718,12 +724,14 @@ body:has(.header-hidden) .sidebar-col {
 		border-left: 1px solid var(--border);
 		padding-left: 16px;
 		top: calc(var(--header-h, 56px) + 20px);
-		max-height: calc(100vh - 100px);
+		max-height: calc(100vh - var(--header-h, 56px) - 40px);
+		padding-bottom: 20px;
 	}
 	/* When header is hidden, move TOC up */
 	.header-hidden ~ main #toc,
 	body:has(.header-hidden) #toc {
 		top: 20px;
+		max-height: calc(100vh - 40px);
 	}
 }
 
