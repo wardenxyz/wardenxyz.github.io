@@ -477,11 +477,8 @@ body:has(.header-hidden) .sidebar-col {
 }
 .back-to-top {
 	position: fixed;
-	/* default offsets; tweaked per breakpoint via CSS vars */
-	--fab-right: 24px;
-	--fab-bottom: 28px;
-	right: var(--fab-right);
-	bottom: var(--fab-bottom);
+	right: 24px;
+	bottom: 28px;
 	width: 48px;
 	height: 48px;
 	border-radius: 50%;
@@ -498,27 +495,6 @@ body:has(.header-hidden) .sidebar-col {
 		background-color 0.2s ease,
 		transform 0.2s ease,
 		box-shadow 0.2s ease;
-	z-index: 130;
-}
-@supports (inset-inline-end: 1px) {
-	.back-to-top {
-		right: auto;
-		bottom: auto;
-		inset-inline-end: max(var(--fab-right), 18px);
-		inset-block-end: max(var(--fab-bottom), 18px);
-	}
-}
-@supports (inset-inline-end: max(1px, 2px)) and (inset-block-end: calc(env(safe-area-inset-bottom) + 0px)) {
-	.back-to-top {
-		inset-inline-end: max(var(--fab-right), calc(env(safe-area-inset-right) + 16px));
-		inset-block-end: max(var(--fab-bottom), calc(env(safe-area-inset-bottom) + 20px));
-	}
-}
-@supports (right: calc(env(safe-area-inset-right) + 0px)) {
-	.back-to-top {
-		right: calc(var(--fab-right) + env(safe-area-inset-right));
-		bottom: calc(var(--fab-bottom) + env(safe-area-inset-bottom));
-	}
 }
 .back-to-top:hover {
 	background: var(--surface);
@@ -528,8 +504,8 @@ body:has(.header-hidden) .sidebar-col {
 /* Medium screens */
 @media (min-width: 768px) and (max-width: 1199px) {
 	.back-to-top {
-		--fab-right: 22px;
-		--fab-bottom: 26px;
+		right: 20px;
+		bottom: 24px;
 		width: 46px;
 		height: 46px;
 		font-size: 18px;
@@ -538,8 +514,8 @@ body:has(.header-hidden) .sidebar-col {
 /* Small screens */
 @media (max-width: 767px) {
 	.back-to-top {
-		--fab-right: 22px;
-		--fab-bottom: 28px;
+		right: 16px;
+		bottom: 20px;
 		width: 44px;
 		height: 44px;
 		font-size: 18px;
@@ -1118,8 +1094,8 @@ mjx-container[jax="SVG"][justify="right"] {
 	.back-to-top {
 		width: 52px;
 		height: 52px;
-		--fab-right: 26px;
-		--fab-bottom: 34px;
+		right: 16px;
+		bottom: 20px;
 		font-size: 22px;
 	}
 
