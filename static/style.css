@@ -500,6 +500,20 @@ body:has(.header-hidden) .sidebar-col {
 		box-shadow 0.2s ease;
 	z-index: 130;
 }
+@supports (inset-inline-end: 1px) {
+	.back-to-top {
+		right: auto;
+		bottom: auto;
+		inset-inline-end: max(var(--fab-right), 18px);
+		inset-block-end: max(var(--fab-bottom), 18px);
+	}
+}
+@supports (inset-inline-end: max(1px, 2px)) and (inset-block-end: calc(env(safe-area-inset-bottom) + 0px)) {
+	.back-to-top {
+		inset-inline-end: max(var(--fab-right), calc(env(safe-area-inset-right) + 16px));
+		inset-block-end: max(var(--fab-bottom), calc(env(safe-area-inset-bottom) + 20px));
+	}
+}
 @supports (right: calc(env(safe-area-inset-right) + 0px)) {
 	.back-to-top {
 		right: calc(var(--fab-right) + env(safe-area-inset-right));
@@ -514,8 +528,8 @@ body:has(.header-hidden) .sidebar-col {
 /* Medium screens */
 @media (min-width: 768px) and (max-width: 1199px) {
 	.back-to-top {
-		--fab-right: 20px;
-		--fab-bottom: 24px;
+		--fab-right: 22px;
+		--fab-bottom: 26px;
 		width: 46px;
 		height: 46px;
 		font-size: 18px;
@@ -524,8 +538,8 @@ body:has(.header-hidden) .sidebar-col {
 /* Small screens */
 @media (max-width: 767px) {
 	.back-to-top {
-		--fab-right: 18px;
-		--fab-bottom: 22px;
+		--fab-right: 22px;
+		--fab-bottom: 28px;
 		width: 44px;
 		height: 44px;
 		font-size: 18px;
@@ -1104,8 +1118,8 @@ mjx-container[jax="SVG"][justify="right"] {
 	.back-to-top {
 		width: 52px;
 		height: 52px;
-		--fab-right: 20px;
-		--fab-bottom: 26px;
+		--fab-right: 26px;
+		--fab-bottom: 34px;
 		font-size: 22px;
 	}
 
