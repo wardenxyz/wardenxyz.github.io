@@ -240,6 +240,14 @@
     mq.addEventListener('change', e=>{ if(!e.matches) { closeMenu(); requestAnimationFrame(setHeaderHeight);} });
     // Close when clicking a link (for single page feel)
     nav.addEventListener('click', e=>{ if(e.target.closest('a')) { closeMenu(); requestAnimationFrame(setHeaderHeight);} });
+
+    // Close on scroll
+    window.addEventListener('scroll', () => {
+      if(nav.classList.contains('open')) {
+        closeMenu();
+        requestAnimationFrame(setHeaderHeight);
+      }
+    }, {passive: true});
   }
 
   function initSidebarDrawer(){
@@ -1155,3 +1163,48 @@ function highlightInElement(root, words){
   }
   return firstMark;
 }
+
+// Reading Progress Bar
+(function(){
+  function initProgressBar() {
+    const progressBar = document.getElementById('progressBar');
+    if (!progressBar) return;
+    
+    function updateProgress() {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      progressBar.style.width = scrolled + '%';
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initProgressBar);
+  } else {
+    initProgressBar();
+  }
+})();
+
+// Image Lightbox (Medium Zoom)
+(function(){
+  function initMediumZoom() {
+    if (typeof mediumZoom === 'function') {
+      mediumZoom('.content img', {
+        margin: 24,
+        background: 'var(--bg)',
+        scrollOffset: 0,
+      });
+    }
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMediumZoom);
+  } else {
+    // Wait a bit for the script to load if it's deferred
+    setTimeout(initMediumZoom, 100);
+    window.addEventListener('load', initMediumZoom);
+  }
+})();

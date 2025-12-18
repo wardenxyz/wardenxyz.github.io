@@ -54,8 +54,10 @@ body {
 }
 body {
 	margin: 0;
-	font:
-		16px/1.65 system-ui,
+	font-family:
+		"Inter",
+		"Noto Sans SC",
+		system-ui,
 		-apple-system,
 		Segoe UI,
 		Roboto,
@@ -63,6 +65,8 @@ body {
 		Arial,
 		"Apple Color Emoji",
 		"Segoe UI Emoji";
+	font-size: 16px;
+	line-height: 1.65;
 	background: var(--bg);
 	color: var(--text);
 	/* Leave space for fixed header; JS sets --header-h dynamically */
@@ -134,8 +138,23 @@ body,
 	/* Auto-hide transition */
 	transition: transform 0.3s ease;
 }
+.progress-container {
+	position: absolute;
+	bottom: -1px;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background: transparent;
+	z-index: 101;
+}
+.progress-bar {
+	height: 100%;
+	background: var(--link);
+	width: 0%;
+	transition: width 0.1s ease;
+}
 .site-header.header-hidden {
-	transform: translateY(-100%);
+	transform: translateY(calc(-100% + 2px));
 }
 .header-inner {
 	display: flex;
@@ -378,6 +397,28 @@ body,
 .content {
 	min-width: 0;
 }
+/* Typography improvements for better readability */
+.content p {
+	margin-bottom: 1.6em;
+	line-height: 1.8;
+}
+.content li {
+	margin-bottom: 0.6em;
+	line-height: 1.7;
+}
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+	margin-top: 1.8em;
+	margin-bottom: 0.8em;
+	line-height: 1.35;
+}
+.content h1:first-child {
+	margin-top: 0;
+}
 .content img {
 	max-width: 100%;
 	height: auto;
@@ -400,6 +441,7 @@ body,
 	align-self: start;
 	border-left: 1px solid var(--border);
 	padding-left: 18px;
+	padding-bottom: 20px;
 	max-height: calc(100vh - 100px);
 	overflow: auto;
 	transition: top 0.3s ease;
@@ -426,6 +468,7 @@ body:has(.header-hidden) #toc {
 	border-right: 1px solid var(--border);
 	padding-right: 18px;
 	padding-left: 8px;
+	padding-bottom: 20px;
 	transition: top 0.3s ease;
 }
 /* When header is hidden, move sidebar up */
@@ -471,7 +514,7 @@ body:has(.header-hidden) .sidebar-col {
 }
 @media (max-width: 767px) {
 	.site-footer {
-		padding: 12px 0;
+		padding: 6px 0;
 		font-size: 12px;
 	}
 }
@@ -818,6 +861,28 @@ body:has(.header-hidden) .sidebar-col {
 	}
 }
 
+/* Page transition animation */
+@keyframes fadeInPage {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Enable native View Transitions for supported browsers */
+@view-transition {
+	navigation: auto;
+}
+
+/* Fallback/Enhancement: Animate main content on load */
+.layout {
+	animation: fadeInPage 0.4s ease-out;
+}
+
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
 	*,
@@ -861,10 +926,9 @@ body:has(.header-hidden) .sidebar-col {
 .content table {
 	border-collapse: collapse;
 	display: block;
-	width: auto;
+	width: fit-content;
 	max-width: 100%;
-	margin-left: auto;
-	margin-right: auto;
+	margin: 1.5em auto;
 	overflow-x: auto;
 }
 .content th,
@@ -881,6 +945,41 @@ body:has(.header-hidden) .sidebar-col {
 }
 
 /* Post meta block */
+.breadcrumbs {
+	margin-bottom: 12px;
+	font-size: 14px;
+	color: var(--muted);
+}
+.breadcrumbs ol {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+.breadcrumb-item {
+	display: inline-flex;
+	align-items: center;
+}
+.breadcrumb-item:not(:last-child)::after {
+	content: "/";
+	margin-left: 8px;
+	color: var(--border);
+}
+.breadcrumb-item a {
+	color: var(--muted);
+	text-decoration: none;
+}
+.breadcrumb-item a:hover {
+	color: var(--link);
+	text-decoration: underline;
+}
+.breadcrumb-item.active {
+	color: var(--text);
+	font-weight: 500;
+}
+
 .post-meta {
 	display: flex;
 	flex-wrap: wrap;
