@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+SC:wght@400;500;700&display=swap');
+
 :root {
 	--bg: #ffffff;
 	--text: #111111;
@@ -55,7 +57,7 @@ body {
 body {
 	margin: 0;
 	font:
-		16px/1.65 system-ui,
+		16px/1.8 "Inter", "Noto Sans SC", system-ui,
 		-apple-system,
 		Segoe UI,
 		Roboto,
@@ -400,14 +402,16 @@ body,
 	align-self: start;
 	border-left: 1px solid var(--border);
 	padding-left: 18px;
-	max-height: calc(100vh - 100px);
+	max-height: calc(100vh - var(--header-h, 56px) - 40px);
 	overflow: auto;
-	transition: top 0.3s ease;
+	transition: top 0.3s ease, max-height 0.3s ease;
+	padding-bottom: 20px;
 }
 /* When header is hidden, move TOC up */
 .header-hidden ~ main #toc,
 body:has(.header-hidden) #toc {
 	top: 20px;
+	max-height: calc(100vh - 40px);
 }
 .toc-title {
 	font-weight: 700;
@@ -421,17 +425,19 @@ body:has(.header-hidden) #toc {
 	position: sticky;
 	top: calc(var(--header-h, 56px) + 20px);
 	align-self: start;
-	max-height: calc(100vh - 100px);
+	max-height: calc(100vh - var(--header-h, 56px) - 40px);
 	overflow: auto;
 	border-right: 1px solid var(--border);
 	padding-right: 18px;
 	padding-left: 8px;
-	transition: top 0.3s ease;
+	transition: top 0.3s ease, max-height 0.3s ease;
+	padding-bottom: 20px;
 }
 /* When header is hidden, move sidebar up */
 .header-hidden ~ main .sidebar-col,
 body:has(.header-hidden) .sidebar-col {
 	top: 20px;
+	max-height: calc(100vh - 40px);
 }
 .sidebar {
 	font-size: 14px;
@@ -1104,3 +1110,99 @@ mjx-container[jax="SVG"][justify="right"] {
 		min-height: 48px;
 	}
 }
+
+/* Reading Progress Bar */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--link);
+  width: 0%;
+  z-index: 9999;
+  transition: width 0.1s ease;
+}
+
+/* Page Transitions */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+.breadcrumbs a {
+  color: var(--muted);
+  text-decoration: none;
+}
+.breadcrumbs a:hover {
+  color: var(--link);
+  text-decoration: underline;
+}
+.breadcrumbs .current {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* Lightbox */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+.lightbox-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.lightbox-img {
+  max-width: 90%;
+  max-height: 90%;
+  box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+  border-radius: 4px;
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+.lightbox-overlay.active .lightbox-img {
+  transform: scale(1);
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* Typography Enhancements */
+.content p {
+  margin-bottom: 1.5em;
+  line-height: 1.8;
+}
+.content blockquote {
+  border-left: 4px solid var(--link);
+  background: color-mix(in srgb, var(--link) 10%, transparent);
+  margin: 1.5em 0;
+  padding: 1em 1.5em;
+  border-radius: 0 8px 8px 0;
+}
+
