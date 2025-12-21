@@ -4,15 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>在 Windows 上配置 Rust 环境</title>
-  <meta name="description" content="起因：想编译 Zed 的 Windows 版，但不想下载 visual studio" />
+  <meta name="description" content="视频： https://www.bilibili.com/video/BV12RDhYPE7M" />
 <link rel="canonical" href="https://wardenxyz.github.io/posts/2025/Rust_Windows_Config.html" />
 <meta property="og:title" content="在 Windows 上配置 Rust 环境" />
-<meta property="og:description" content="起因：想编译 Zed 的 Windows 版，但不想下载 visual studio" />
+<meta property="og:description" content="视频： https://www.bilibili.com/video/BV12RDhYPE7M" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://wardenxyz.github.io/posts/2025/Rust_Windows_Config.html" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="在 Windows 上配置 Rust 环境" />
-<meta name="twitter:description" content="起因：想编译 Zed 的 Windows 版，但不想下载 visual studio" />
+<meta name="twitter:description" content="视频： https://www.bilibili.com/video/BV12RDhYPE7M" />
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "在 Windows 上配置 Rust 环境", "datePublished": "2025-03-16T00:00:00", "url": "https://wardenxyz.github.io/posts/2025/Rust_Windows_Config.html", "keywords": "Rust", "inLanguage": "zh-CN"}</script>
   
   <!-- Performance optimizations -->
@@ -187,18 +187,24 @@
     </aside>
     <article class="content" id="content">
   <nav class="breadcrumbs" aria-label="面包屑导航"><ol><li class="breadcrumb-item"><a href="../../index.html">首页</a></li><li class="breadcrumb-item">2025</li><li class="breadcrumb-item active" aria-current="page">在 Windows 上配置 Rust 环境</li></ol></nav>
-  <div class="post-meta" aria-label="文章元信息"><span class="meta-item meta-date" title="发布时间">📅发布时间: 2025-03-16</span><span class="meta-item meta-date" title="最后修改">📝最后修改: 2025-08-16</span><span class="meta-item" title="分类">📂 <span class="badge badge-cat">计算机</span></span><span class="meta-item" title="标签">🏷️ <span class="badge badge-tag">Rust</span></span></div>
+  <div class="post-meta" aria-label="文章元信息"><span class="meta-item meta-date" title="发布时间">📅发布时间: 2025-03-16</span><span class="meta-item meta-date" title="最后修改">📝最后修改: 2025-12-21</span><span class="meta-item" title="分类">📂 <span class="badge badge-cat">计算机</span></span><span class="meta-item" title="标签">🏷️ <span class="badge badge-tag">Rust</span></span></div>
   <h1 id="windows-rust">在 Windows 上配置 Rust 环境</h1>
-<p>起因：想编译 Zed 的 Windows 版，但不想下载 visual studio</p>
 <p>视频：<a href="https://www.bilibili.com/video/BV12RDhYPE7M" rel="noopener noreferrer" target="_blank">https://www.bilibili.com/video/BV12RDhYPE7M</a></p>
 <h2 id="_1">步骤简化</h2>
 <p>一、配置 GCC 环境</p>
 <p>在 <a href="https://github.com/niXman/mingw-builds-binaries/releases" rel="noopener noreferrer" target="_blank">mingw</a> 网页下下载 <code>x86_64-15.1.0-release-win32-seh-ucrt-rt_v12-rev0.7z</code></p>
 <p>二、下载 <a href="https://www.rust-lang.org/zh-CN/learn/get-started" rel="noopener noreferrer" target="_blank">Rust</a></p>
 <p>三、配置用户变量</p>
+<p>中科大源</p>
 <pre class="highlight"><code>变量                                值
 RUSTUP_DIST_SERVER                 https://mirrors.ustc.edu.cn/rust-static
 RUSTUP_UPDATE_ROOT                 https://mirrors.ustc.edu.cn/rust-static/rustup
+RUSTUP_HOME                        D:\Rust\rustup
+CARGO_HOME                         D:\Rust\cargo</code></pre>
+<p>或者清华源</p>
+<pre class="highlight"><code>变量                                值
+RUSTUP_DIST_SERVER                 https://mirrors.tuna.tsinghua.edu.cn/rustup
+RUSTUP_UPDATE_ROOT                 https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
 RUSTUP_HOME                        D:\Rust\rustup
 CARGO_HOME                         D:\Rust\cargo</code></pre>
 <p>四、安装</p>
@@ -229,32 +235,25 @@ Thread model: win32
 Supported LTO compression algorithms: zlib
 gcc version 15.1.0 (x86_64-win32-seh-rev0, Built by MinGW-Builds project)</code></pre>
 <h3 id="rust">下载 Rust</h3>
-<p>这里下载 <a href="https://www.rust-lang.org/zh-CN/learn/get-started" rel="noopener noreferrer" target="_blank">Rust</a>，32 位和 64 位两种，根据实际情况选取</p>
+<p>这里下载 <a href="https://www.rust-lang.org/zh-CN/learn/get-started" rel="noopener noreferrer" target="_blank">Rust</a></p>
 <h3 id="rust-toolchain">配置 Rust Toolchain 镜像源（用户变量）</h3>
 <ul>
 <li>中科大镜像源：<a href="https://mirrors.ustc.edu.cn/help/rust-static.html#rust-toolchain" rel="noopener noreferrer" target="_blank">https://mirrors.ustc.edu.cn/help/rust-static.html#rust-toolchain</a></li>
 </ul>
-<pre class="highlight"><code class="language-powershell">$env:RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static"
-$env:RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup"</code></pre>
-<p>配置好的用户变量：</p>
-<pre class="highlight"><code>变量                                值
-RUSTUP_DIST_SERVER                 https://mirrors.ustc.edu.cn/rust-static
-RUSTUP_UPDATE_ROOT                 https://mirrors.ustc.edu.cn/rust-static/rustup</code></pre>
-<h3 id="_3">配置安装位置</h3>
-<p>在 D 盘下创建两个文件夹</p>
-<pre class="highlight"><code>D:\Rust\rustup
-D:\Rust\cargo</code></pre>
-<p>把这两个文件夹加入到用户变量中去</p>
-<pre class="highlight"><code>变量                                值
-RUSTUP_HOME                        D:\Rust\rustup
-CARGO_HOME                         D:\Rust\cargo</code></pre>
-<h3 id="_4">用户变量汇总</h3>
 <pre class="highlight"><code>变量                                值
 RUSTUP_DIST_SERVER                 https://mirrors.ustc.edu.cn/rust-static
 RUSTUP_UPDATE_ROOT                 https://mirrors.ustc.edu.cn/rust-static/rustup
 RUSTUP_HOME                        D:\Rust\rustup
 CARGO_HOME                         D:\Rust\cargo</code></pre>
-<h3 id="_5">安装</h3>
+<ul>
+<li>或者清华源：<a href="https://mirrors.tuna.tsinghua.edu.cn/help/rustup" rel="noopener noreferrer" target="_blank">https://mirrors.tuna.tsinghua.edu.cn/help/rustup</a></li>
+</ul>
+<pre class="highlight"><code>变量                                值
+RUSTUP_DIST_SERVER                 https://mirrors.tuna.tsinghua.edu.cn/rustup
+RUSTUP_UPDATE_ROOT                 https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
+RUSTUP_HOME                        D:\Rust\rustup
+CARGO_HOME                         D:\Rust\cargo</code></pre>
+<h3 id="_3">&lt; ★重要★ &gt; 安装 &lt; ★重要★ &gt;</h3>
 <p>点击下载的 <code>rustup-init.exe</code>，运行开启一个终端，如下</p>
 <pre class="highlight"><code class="language-powershell">Rust Visual C++ prerequisites
 
@@ -395,7 +394,7 @@ info: The currently active `rustc` version is `rustc 1.85.0 (4d91de4e4 2025-02-1
 <pre class="highlight"><code class="language-ps">cargo --version
 
 cargo 1.85.0 (d73d2caf9 2024-12-31)</code></pre>
-<h3 id="cargo">配置 cargo 镜像源</h3>
+<h3 id="cargo">&lt; ★重要★ &gt; 配置 cargo 镜像源 &lt; ★重要★ &gt;</h3>
 <p>这里选择中科大镜像源：<a href="https://mirrors.ustc.edu.cn/help/crates.io-index.html" rel="noopener noreferrer" target="_blank">https://mirrors.ustc.edu.cn/help/crates.io-index.html</a></p>
 <p>在 <code>D:\Rust\cargo\config.toml</code> 中添加如下内容</p>
 <pre class="highlight"><code class="language-toml">[source.crates-io]
@@ -423,10 +422,8 @@ registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"</code>
 <li><a href="#gcc">配置 gcc 环境</a></li>
 <li><a href="#rust">下载 Rust</a></li>
 <li><a href="#rust-toolchain">配置 Rust Toolchain 镜像源（用户变量）</a></li>
-<li><a href="#_3">配置安装位置</a></li>
-<li><a href="#_4">用户变量汇总</a></li>
-<li><a href="#_5">安装</a></li>
-<li><a href="#cargo">配置 cargo 镜像源</a></li>
+<li><a href="#_3">&lt; ★重要★ &gt; 安装 &lt; ★重要★ &gt;</a></li>
+<li><a href="#cargo">&lt; ★重要★ &gt; 配置 cargo 镜像源 &lt; ★重要★ &gt;</a></li>
 </ul>
 </li>
 </ul>
@@ -469,9 +466,6 @@ registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"</code>
   <!-- Prism.js 代码语法高亮 -->
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js" defer></script>
-  
-  <!-- Medium Zoom for Image Lightbox -->
-  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" defer></script>
   
   <!-- 代码块语言标签 -->
   <script>
