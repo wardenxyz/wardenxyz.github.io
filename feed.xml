@@ -63,8 +63,8 @@
 
     <item>
       <title>跨系统避免换行符导致字节差异的方法</title>
-      <link>https://wardenxyz.github.io/posts/2025/cross-platform-byte-control.md.html</link>
-      <guid>https://wardenxyz.github.io/posts/2025/cross-platform-byte-control.md.html</guid>
+      <link>https://wardenxyz.github.io/posts/2025/cross-platform-byte-control.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/cross-platform-byte-control.html</guid>
       <pubDate>Tue, 15 Jul 2025 00:00:00 -0000</pubDate>
       <description>在不同操作系统下，会因为换行符导致字节差异，下面介绍了一个方法精确控制输出内容的字节。</description>
     </item>
@@ -94,19 +94,19 @@
     </item>
 
     <item>
-      <title>背景颜色</title>
-      <link>https://wardenxyz.github.io/posts/2025/background-color.html</link>
-      <guid>https://wardenxyz.github.io/posts/2025/background-color.html</guid>
-      <pubDate>Fri, 13 Jun 2025 00:00:00 -0000</pubDate>
-      <description>专注内容的纯色背景</description>
-    </item>
-
-    <item>
       <title>自用 git hook</title>
       <link>https://wardenxyz.github.io/posts/2025/git-hook.html</link>
       <guid>https://wardenxyz.github.io/posts/2025/git-hook.html</guid>
       <pubDate>Fri, 13 Jun 2025 00:00:00 -0000</pubDate>
       <description>路径：.git/hooks/post-commit</description>
+    </item>
+
+    <item>
+      <title>背景颜色</title>
+      <link>https://wardenxyz.github.io/posts/2025/background-color.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/background-color.html</guid>
+      <pubDate>Fri, 13 Jun 2025 00:00:00 -0000</pubDate>
+      <description>专注内容的纯色背景</description>
     </item>
 
     <item>
@@ -334,19 +334,19 @@
     </item>
 
     <item>
-      <title>用 you-get 下载B站视频</title>
-      <link>https://wardenxyz.github.io/posts/2024/you-get_note.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/you-get_note.html</guid>
-      <pubDate>Thu, 01 Aug 2024 00:00:00 -0000</pubDate>
-      <description>在 edge 浏览器下载 Cookie-Editor 扩展，然后打开 B站 ，通过 Cookie-Editor 导出B站的 cookie</description>
-    </item>
-
-    <item>
       <title>B站嵌入代码</title>
       <link>https://wardenxyz.github.io/posts/2024/bilibili_embedding_code.html</link>
       <guid>https://wardenxyz.github.io/posts/2024/bilibili_embedding_code.html</guid>
       <pubDate>Thu, 01 Aug 2024 00:00:00 -0000</pubDate>
       <description>在</description>
+    </item>
+
+    <item>
+      <title>用 you-get 下载B站视频</title>
+      <link>https://wardenxyz.github.io/posts/2024/you-get_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/you-get_note.html</guid>
+      <pubDate>Thu, 01 Aug 2024 00:00:00 -0000</pubDate>
+      <description>在 edge 浏览器下载 Cookie-Editor 扩展，然后打开 B站 ，通过 Cookie-Editor 导出B站的 cookie</description>
     </item>
 
     <item>
@@ -390,19 +390,19 @@
     </item>
 
     <item>
-      <title>README 文档结构</title>
-      <link>https://wardenxyz.github.io/posts/2024/README_outline.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/README_outline.html</guid>
-      <pubDate>Sat, 01 Jun 2024 00:00:00 -0000</pubDate>
-      <description>Foobar is a Python library for dealing with word pluralization.（项目简介）</description>
-    </item>
-
-    <item>
       <title>git commit message 规范</title>
       <link>https://wardenxyz.github.io/posts/2024/git_commit_message_standard.html</link>
       <guid>https://wardenxyz.github.io/posts/2024/git_commit_message_standard.html</guid>
       <pubDate>Sat, 01 Jun 2024 00:00:00 -0000</pubDate>
       <description>在 Git 中，提交信息的规范非常重要，因为它可以帮助其他开发者了解每次提交的目的。以下是一种常见的提交信息规范：</description>
+    </item>
+
+    <item>
+      <title>README 文档结构</title>
+      <link>https://wardenxyz.github.io/posts/2024/README_outline.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/README_outline.html</guid>
+      <pubDate>Sat, 01 Jun 2024 00:00:00 -0000</pubDate>
+      <description>Foobar is a Python library for dealing with word pluralization.（项目简介）</description>
     </item>
 
   </channel>
