@@ -6,6 +6,14 @@
     <description>技术与笔记</description>
     
     <item>
+      <title>英雄头像</title>
+      <link>https://wardenxyz.github.io/posts/2026/hero.html</link>
+      <guid>https://wardenxyz.github.io/posts/2026/hero.html</guid>
+      <pubDate>Tue, 22 Sep 2026 00:00:00 -0000</pubDate>
+      <description>五角星头像</description>
+    </item>
+
+    <item>
       <title>Docker Desktop 学习笔记</title>
       <link>https://wardenxyz.github.io/posts/2025/docker-note.html</link>
       <guid>https://wardenxyz.github.io/posts/2025/docker-note.html</guid>
@@ -94,19 +102,19 @@
     </item>
 
     <item>
-      <title>自用 git hook</title>
-      <link>https://wardenxyz.github.io/posts/2025/git-hook.html</link>
-      <guid>https://wardenxyz.github.io/posts/2025/git-hook.html</guid>
-      <pubDate>Fri, 13 Jun 2025 00:00:00 -0000</pubDate>
-      <description>路径：.git/hooks/post-commit</description>
-    </item>
-
-    <item>
       <title>背景颜色</title>
       <link>https://wardenxyz.github.io/posts/2025/background-color.html</link>
       <guid>https://wardenxyz.github.io/posts/2025/background-color.html</guid>
       <pubDate>Fri, 13 Jun 2025 00:00:00 -0000</pubDate>
       <description>专注内容的纯色背景</description>
+    </item>
+
+    <item>
+      <title>自用 git hook</title>
+      <link>https://wardenxyz.github.io/posts/2025/git-hook.html</link>
+      <guid>https://wardenxyz.github.io/posts/2025/git-hook.html</guid>
+      <pubDate>Fri, 13 Jun 2025 00:00:00 -0000</pubDate>
+      <description>路径：.git/hooks/post-commit</description>
     </item>
 
     <item>
@@ -234,7 +242,7 @@
       <link>https://wardenxyz.github.io/tags.html</link>
       <guid>https://wardenxyz.github.io/tags.html</guid>
       <pubDate>Fri, 28 Feb 2025 00:00:00 -0000</pubDate>
-      <description>Tags AI 2025-08-16 GitHub 打野指南 2025-01-23 ollama 运行 DeepSeek 模型 Android 2025-06-13 背景颜色 2024-08-01 个人自用软件 2024-04-08 手机QQ文件存储路径 B站 2024-08-01 B站嵌入代码 2024-08-01 用 you-get 下载B站视频 Dee</description>
+      <description>Tags AI 2025-08-16 GitHub 打野指南 2025-01-23 ollama 运行 DeepSeek 模型 Android 2025-06-13 背景颜色 2024-08-01 个人自用软件 2024-04-08 手机QQ文件存储路径 B站 2024-08-01 用 you-get 下载B站视频 2024-08-01 B站嵌入代码 Dee</description>
     </item>
 
     <item>
@@ -294,19 +302,19 @@
     </item>
 
     <item>
-      <title>OpenSSL 加解密速查笔记</title>
-      <link>https://wardenxyz.github.io/posts/2024/OpenSSL_encrypt_note.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/OpenSSL_encrypt_note.html</guid>
-      <pubDate>Sun, 06 Oct 2024 00:00:00 -0000</pubDate>
-      <description>通用参数说明：</description>
-    </item>
-
-    <item>
       <title>python 学习笔记</title>
       <link>https://wardenxyz.github.io/posts/2024/python_note.html</link>
       <guid>https://wardenxyz.github.io/posts/2024/python_note.html</guid>
       <pubDate>Sun, 06 Oct 2024 00:00:00 -0000</pubDate>
       <description>C:\Users\admin\AppData\Roaming\pip\pip.ini</description>
+    </item>
+
+    <item>
+      <title>OpenSSL 加解密速查笔记</title>
+      <link>https://wardenxyz.github.io/posts/2024/OpenSSL_encrypt_note.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/OpenSSL_encrypt_note.html</guid>
+      <pubDate>Sun, 06 Oct 2024 00:00:00 -0000</pubDate>
+      <description>通用参数说明：</description>
     </item>
 
     <item>
@@ -334,19 +342,19 @@
     </item>
 
     <item>
-      <title>B站嵌入代码</title>
-      <link>https://wardenxyz.github.io/posts/2024/bilibili_embedding_code.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/bilibili_embedding_code.html</guid>
-      <pubDate>Thu, 01 Aug 2024 00:00:00 -0000</pubDate>
-      <description>在</description>
-    </item>
-
-    <item>
       <title>用 you-get 下载B站视频</title>
       <link>https://wardenxyz.github.io/posts/2024/you-get_note.html</link>
       <guid>https://wardenxyz.github.io/posts/2024/you-get_note.html</guid>
       <pubDate>Thu, 01 Aug 2024 00:00:00 -0000</pubDate>
       <description>在 edge 浏览器下载 Cookie-Editor 扩展，然后打开 B站 ，通过 Cookie-Editor 导出B站的 cookie</description>
+    </item>
+
+    <item>
+      <title>B站嵌入代码</title>
+      <link>https://wardenxyz.github.io/posts/2024/bilibili_embedding_code.html</link>
+      <guid>https://wardenxyz.github.io/posts/2024/bilibili_embedding_code.html</guid>
+      <pubDate>Thu, 01 Aug 2024 00:00:00 -0000</pubDate>
+      <description>在</description>
     </item>
 
     <item>
@@ -395,14 +403,6 @@
       <guid>https://wardenxyz.github.io/posts/2024/git_commit_message_standard.html</guid>
       <pubDate>Sat, 01 Jun 2024 00:00:00 -0000</pubDate>
       <description>在 Git 中，提交信息的规范非常重要，因为它可以帮助其他开发者了解每次提交的目的。以下是一种常见的提交信息规范：</description>
-    </item>
-
-    <item>
-      <title>README 文档结构</title>
-      <link>https://wardenxyz.github.io/posts/2024/README_outline.html</link>
-      <guid>https://wardenxyz.github.io/posts/2024/README_outline.html</guid>
-      <pubDate>Sat, 01 Jun 2024 00:00:00 -0000</pubDate>
-      <description>Foobar is a Python library for dealing with word pluralization.（项目简介）</description>
     </item>
 
   </channel>
